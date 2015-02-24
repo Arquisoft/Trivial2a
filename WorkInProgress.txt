@@ -1,4 +1,19 @@
 *****************************************************************
+* WORK IN PROGRESS						*
+*								*
+*	Format:							*
+*	Task. Description.					*
+*	Team Member.						*
+*								*
+*****************************************************************
+
+Punto 3. IdentificaciÃ³n de Stakeholders.
+RuÃ¡n Alves.
+
+Punto 4. IdentificaciÃ³n inicial de los atributos de calidad.
+Cristian GonzÃ¡lez FernÃ¡ndez.
+
+*****************************************************************
 *  COMPLETED							*
 *								*
 *	Format:							*
@@ -9,22 +24,7 @@
 *	- Team Member2						*
 *								*
 *****************************************************************
-Puntos 1 y 2. Descripción del proyecto y Metodología Utilizada.
-Cristian González Fernández.
+Puntos 1 y 2. DescripciÃ³n del proyecto y MetodologÃ­a Utilizada.
+Cristian GonzÃ¡lez FernÃ¡ndez.
 Revised by:
 -
-
-*****************************************************************
-* WORK IN PROGRESS						*
-*								*
-*	Format:							*
-*	Task. Description.					*
-*	Team Member.						*
-*								*
-*****************************************************************
-
-Punto 3. Identificación de Stakeholders.
-Ruán Alves.
-
-Punto 4. Identificación inicial de los atributos de calidad.
-Cristian González Fernández.
