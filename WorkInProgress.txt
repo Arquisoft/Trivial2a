@@ -13,6 +13,9 @@ Ruán Alves.
 Punto 5. Primer acercamiento a la solución y riesgos.
 José Antonio Montero Hernández.
 
+Punto 7. Lista de atributos de calidad.
+Jhonny Sánchez.
+
 *****************************************************************
 *  COMPLETED							*
 *								*
