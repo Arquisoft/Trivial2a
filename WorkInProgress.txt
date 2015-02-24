@@ -1,0 +1,30 @@
+*****************************************************************
+*  COMPLETED							*
+*								*
+*	Format:							*
+*	Task. Description.					*
+*	Team Member.						*
+*	Revised by:						*
+*	- Team Member1						*
+*	- Team Member2						*
+*								*
+*****************************************************************
+Puntos 1 y 2. Descripción del proyecto y Metodología Utilizada.
+Cristian González Fernández.
+Revised by:
+-
+
+*****************************************************************
+* WORK IN PROGRESS						*
+*								*
+*	Format:							*
+*	Task. Description.					*
+*	Team Member.						*
+*								*
+*****************************************************************
+
+Punto 3. Identificación de Stakeholders.
+Ruán Alves.
+
+Punto 4. Identificación inicial de los atributos de calidad.
+Cristian González Fernández.
