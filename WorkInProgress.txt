@@ -1,4 +1,4 @@
-*****************************************************************
+﻿*****************************************************************
 * WORK IN PROGRESS						*
 *								*
 *	Format:							*
@@ -32,4 +32,4 @@ Revised by:
 Punto 4. Identificación inicial de los atributos de calidad.
 Cristian González Fernández.
 Revised by:
--
+- Samanta Baragaño González
