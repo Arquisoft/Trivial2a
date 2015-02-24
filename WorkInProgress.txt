@@ -10,9 +10,6 @@
 Punto 3. Identificación de Stakeholders.
 Ruán Alves.
 
-Punto 4. Identificación inicial de los atributos de calidad.
-Cristian González Fernández.
-
 Punto 5. Primer acercamiento a la solución y riesgos.
 José Antonio Montero Hernández.
 
@@ -28,6 +25,11 @@ José Antonio Montero Hernández.
 *								*
 *****************************************************************
 Puntos 1 y 2. Descripción del proyecto y Metodología Utilizada.
+Cristian González Fernández.
+Revised by:
+-
+
+Punto 4. Identificación inicial de los atributos de calidad.
 Cristian González Fernández.
 Revised by:
 -
