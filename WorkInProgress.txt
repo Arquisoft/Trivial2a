@@ -13,6 +13,9 @@ Ruán Alves.
 Punto 4. Identificación inicial de los atributos de calidad.
 Cristian González Fernández.
 
+Punto 5. Primer acercamiento a la solución y riesgos.
+José Antonio Montero Hernández.
+
 *****************************************************************
 *  COMPLETED							*
 *								*
