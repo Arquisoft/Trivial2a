@@ -13,8 +13,7 @@ Ruán Alves.
 Punto 5. Primer acercamiento a la solución y riesgos.
 José Antonio Montero Hernández.
 
-Punto 7. Lista de atributos de calidad.
-Jhonny Sánchez.
+
 
 Prototipo. Primera etapa del traductor.
 José Antonio Montero Hernández.
@@ -39,3 +38,7 @@ Punto 4. Identificación inicial de los atributos de calidad.
 Cristian González Fernández.
 Revised by:
 - Samanta Baragaño González
+- Jhonny Sánchez
+
+Punto 7. Lista de atributos de calidad.
+Jhonny Sánchez.
