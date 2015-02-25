@@ -16,6 +16,9 @@ José Antonio Montero Hernández.
 Punto 7. Lista de atributos de calidad.
 Jhonny Sánchez.
 
+Prototipo. Primera etapa del traductor.
+José Antonio Montero Hernández.
+
 *****************************************************************
 *  COMPLETED							*
 *								*
