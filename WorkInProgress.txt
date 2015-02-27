@@ -18,6 +18,9 @@ José Antonio Montero Hernández.
 Prototipo. Primera etapa del traductor.
 José Antonio Montero Hernández.
 
+Punto 11. Vistas.
+Ivana Fraile, Ángela Álvarez, María Piris.
+
 *****************************************************************
 *  COMPLETED							*
 *								*
