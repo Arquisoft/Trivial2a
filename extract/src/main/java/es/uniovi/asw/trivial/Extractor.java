@@ -1,8 +1,8 @@
 package es.uniovi.asw.trivial;
 
 public class Extractor {
-	
-	public void usage() {
+
+    public void usage() {
 		System.out.println("Wellcome to Trivial Extractor");
 	}
 	public int run(String[] args) {
