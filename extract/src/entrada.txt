@@ -10,8 +10,70 @@ $CATEGORY: Deportes
 $CATEGORY: Historia
 
 //Comentario
-::Q1:: ¿Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a "Las Indias"? {
+::Q2:: ¿Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a "Las Indias"? {
 =La Pinta, La Ninia y La Santa Maria
 ~La Punta, La Nena y La Virgen Maria
 ~La Pita, La Minia y La Seniora Maria
+};
+
+&CATEGORY:Arte y Literatura
+::Q3::De qué estilo arquitectónico es la Catedral de Notre Dame en París?{
+~Románico ,
+=Gótico ,
+~Barroco 
+};
+&CATEGORY:Historia
+::Q4::Con qué se fabricaba el pergamino?{
+=Con piel de animales ,
+~Con tiras de madera ,
+~Con hojas de arbusto 
+};
+&CATEGORY:Historia
+::Q5::Quién fue famoso esposo de Frida Kahlo?{
+~José Vasconcelos ,
+=Diego Rivera ,
+~León Trotsky 
+};
+&CATEGORY:Deportes
+::Q6::Qué atleta se hizo famoso por utilizar una nueva técnica en atletismo?{
+=Dick Fosbury 
+~Carl Lewis ,
+~Emil Zátopek 
+};
+&CATEGORY:Arte y Literatura
+::Q7::Qué instrumento está expresamente 'bien afinado' en ciertas obras de Bach?{
+=El clave ,
+~El oboe ,
+~Todos
+};
+&CATEGORY:Ciencias y Naturaleza
+::Q8::Qué grasas hacen tan saludable el aceite de oliva?{
+Las saturadas ,
+=Las monoinsaturadas ,
+~Las trans 
+};
+&CATEGORY:Ciencias y Naturaleza
+::Q9::Un uno seguido de cien ceros es también... {
+=El nombre de un buscador de Internet ,
+~Una secuencia binaria de encriptación ,
+~El nombre de un sistema solar 
+};
+&CATEGORY:Ciencias y Naturaleza
+::Q10:Qué enfermedad se considera erradicada? ::{
+~Peste ,
+=Viruela ,
+~Cólera 
+};
+
+&CATEGORY:Historia
+::Q11::Quién dijo 'sólo sé que no sé nada?{
+~Platón ,
+~Aristóteles ,
+=Sócrates
+};
+&CATEGORY:Ciencias y Naturaleza
+::Q12::En qué lugar del cuerpo se produce la insulina?{
+~En la hipófisis ,
+=En el páncreas ,
+~En el duodeno 
 };
