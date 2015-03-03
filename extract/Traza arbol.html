@@ -1,0 +1,48 @@
+<html>
+<head>
+<style type="text/css">
+.value { font-weight: bold; }
+.dots { color: #888888; }
+.type { color: #BBBBBB; }
+.pos { color: #CCCCCC; }
+.sourceText { color: #BBBBBB; }
+.posText {
+	color: #BBBBBB;
+	text-decoration: underline; font-weight: bold;
+}
+.null {
+	color: #FF0000;
+	font-weight: bold;
+	font-style: italic;
+}
+</style>
+</head>
+
+<body><pre>
+[ASTPrinter] -------------------------------- line:col  line:col
+
+<span class="dots"></span>Fichero &rarr;                                         <span class="pos">1:11  16:37  </span><span class="sourceText">$CATEGORY:</span><span class="posText"> Deportes</span><span class="sourceText"> ... </span><span class="posText">~La Pita, La Minia y La Seniora Maria</span><span class="sourceText"></span>
+<span class="dots">�  </span>elementos  <span class="type">List&lt;Elemento&gt;</span> = 
+<span class="dots">�  �  </span>Elemento &rarr;                                  <span class="pos">1:11  7:8    </span><span class="sourceText">$CATEGORY:</span><span class="posText"> Deportes</span><span class="sourceText"> ... </span><span class="posText">~Sevilla</span><span class="sourceText"></span>
+<span class="dots">�  �  �  </span>"<span class="value"> Deportes</span>"  
+<span class="dots">�  �  �  </span>Pregunta &rarr;                               <span class="pos">4:3  7:8     </span><span class="sourceText">::</span><span class="posText">Q1:: ¿En que ciudad nacio Fernando Alonso? {</span><span class="sourceText"> ... </span><span class="posText">~Sevilla</span><span class="sourceText"></span>
+<span class="dots">�  �  �  �  </span>"<span class="value">Q1</span>"  
+<span class="dots">�  �  �  �  </span>"<span class="value"> ¿En que ciudad nacio Fernando Alonso? </span>"  
+<span class="dots">�  �  �  �  </span>"<span class="value">Oviedo</span>"  
+<span class="dots">�  �  �  �  </span>incorrectas  <span class="type">List&lt;String&gt;</span> = 
+<span class="dots">�  �  �  �  �  </span>"<span class="value">Valencia</span>"
+<span class="dots">�  �  �  �  �  </span>"<span class="value">Sevilla</span>"
+<span class="dots">�  �  </span>Elemento &rarr;                                  <span class="pos">10:11  16:37 </span><span class="sourceText">$CATEGORY:</span><span class="posText"> Historia</span><span class="sourceText"> ... </span><span class="posText">~La Pita, La Minia y La Seniora Maria</span><span class="sourceText"></span>
+<span class="dots">�  �  �  </span>"<span class="value"> Historia</span>"  
+<span class="dots">�  �  �  </span>Pregunta &rarr;                               <span class="pos">13:3  16:37  </span><span class="sourceText">::</span><span class="posText">Q1:: ¿Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a "Las Indias"? {</span><span class="sourceText"> ... </span><span class="posText">~La Pita, La Minia y La Seniora Maria</span><span class="sourceText"></span>
+<span class="dots">�  �  �  �  </span>"<span class="value">Q1</span>"  
+<span class="dots">�  �  �  �  </span>"<span class="value"> ¿Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a "Las Indias"? </span>"  
+<span class="dots">�  �  �  �  </span>"<span class="value">La Pinta, La Ninia y La Santa Maria</span>"  
+<span class="dots">�  �  �  �  </span>incorrectas  <span class="type">List&lt;String&gt;</span> = 
+<span class="dots">�  �  �  �  �  </span>"<span class="value">La Punta, La Nena y La Virgen Maria</span>"
+<span class="dots">�  �  �  �  �  </span>"<span class="value">La Pita, La Minia y La Seniora Maria</span>"
+
+[ASTPrinter] --------------------------------
+</pre>
+</body>
+</html>

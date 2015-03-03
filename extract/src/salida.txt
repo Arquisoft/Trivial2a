@@ -1,0 +1,18 @@
+{ "category":" Deportes",
+  "question":"Q1",
+  "text":" ¿En que ciudad nacio Fernando Alonso? ",
+  "correct":"Oviedo",
+  "incorrect": [
+		"Valencia",
+		"Sevilla" ]
+}
+
+{ "category":" Historia",
+  "question":"Q1",
+  "text":" ¿Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a "Las Indias"? ",
+  "correct":"La Pinta, La Ninia y La Santa Maria",
+  "incorrect": [
+		"La Punta, La Nena y La Virgen Maria",
+		"La Pita, La Minia y La Seniora Maria" ]
+}
+

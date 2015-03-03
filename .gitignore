@@ -7,6 +7,7 @@ target
 
 *.pydevproject
 .metadata
+.recommenders
 .gradle
 bin/
 tmp/
@@ -23,3 +24,9 @@ local.properties
 .buildpath
 .target
 .texlipse
+
+yacc.exe
+*.bat
+lexico.l
+sintac.y
+y.output
