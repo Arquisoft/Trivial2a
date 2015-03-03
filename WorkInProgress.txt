@@ -13,11 +13,6 @@ Ruán Alves.
 Punto 5. Primer acercamiento a la solución y riesgos.
 José Antonio Montero Hernández.
 
-
-
-Prototipo. Primera etapa del traductor.
-José Antonio Montero Hernández.
-
 Punto 11. Vistas.
 Ivana Fraile, Ángela Álvarez, María Piris.
 
@@ -45,3 +40,12 @@ Revised by:
 
 Punto 7. Lista de atributos de calidad.
 Jhonny Sánchez.
+Revised by:
+
+Prototipo. Primera etapa del traductor.
+José Antonio Montero Hernández.
+Revised by:
+
+Prototipo. Segunda etapa del traductor sin controlador de MongoDB.
+José Antonio Montero Hernández.
+Revised by:
