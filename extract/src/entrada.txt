@@ -1,7 +1,7 @@
 $CATEGORY: Deportes
 
 //Comentario
-::Q1:: Â¿En que ciudad nacio Fernando Alonso? {
+::Q1:: ¿En que ciudad nacio Fernando Alonso? {
 =Oviedo
 ~Valencia
 ~Sevilla
@@ -10,7 +10,7 @@ $CATEGORY: Deportes
 $CATEGORY: Historia
 
 //Comentario
-::Q2:: Â¿Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a "Las Indias"? {
+::Q2:: ¿Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a "Las Indias"? {
 =La Pinta, La Ninia y La Santa Maria
 ~La Punta, La Nena y La Virgen Maria
 ~La Pita, La Minia y La Seniora Maria
@@ -18,7 +18,7 @@ $CATEGORY: Historia
 
 $CATEGORY: Arte y Literatura
 
-::Q3:: Â¿De que estilo arquitectonico es la Catedral de Notre Dame en Paris?{
+::Q3:: ¿De que estilo arquitectonico es la Catedral de Notre Dame en Paris?{
 =Gotico
 ~Romanico
 ~Barroco 
@@ -26,7 +26,7 @@ $CATEGORY: Arte y Literatura
 
 $CATEGORY:Historia
 
-::Q4:: Â¿Con que se fabricaba el pergamino?{
+::Q4:: ¿Con que se fabricaba el pergamino?{
 =Con piel de animales
 ~Con tiras de madera
 ~Con hojas de arbusto 
@@ -34,7 +34,7 @@ $CATEGORY:Historia
 
 $CATEGORY: Historia
 
-::Q5:: Â¿Quien fue famoso esposo de Frida Kahlo?{
+::Q5:: ¿Quien fue famoso esposo de Frida Kahlo?{
 =Diego Rivera
 ~Jose Vasconcelos
 ~Leon Trotsky 
@@ -42,7 +42,7 @@ $CATEGORY: Historia
 
 $CATEGORY: Deportes
 
-::Q6:: Â¿Que atleta se hizo famoso por utilizar una nueva tecnica en atletismo?{
+::Q6:: ¿Que atleta se hizo famoso por utilizar una nueva tecnica en atletismo?{
 =Dick Fosbury
 ~Carl Lewis
 ~Emil Zatopek 
@@ -50,7 +50,7 @@ $CATEGORY: Deportes
 
 $CATEGORY: Arte y Literatura
 
-::Q7:: Â¿Que instrumento esta expresamente "bien afinado" en ciertas obras de Bach?{
+::Q7:: ¿Que instrumento esta expresamente "bien afinado" en ciertas obras de Bach?{
 =El clave
 ~El oboe
 ~Todos
@@ -58,7 +58,7 @@ $CATEGORY: Arte y Literatura
 
 $CATEGORY: Ciencias y Naturaleza
 
-::Q8:: Â¿Que grasas hacen tan saludable el aceite de oliva?{
+::Q8:: ¿Que grasas hacen tan saludable el aceite de oliva?{
 =Las monoinsaturadas
 ~Las saturadas
 ~Las trans 
@@ -66,7 +66,7 @@ $CATEGORY: Ciencias y Naturaleza
 
 $CATEGORY: Ciencias y Naturaleza
 
-::Q9:: Â¿Que es tambien un uno seguido de cien ceros? {
+::Q9:: ¿Que es tambien un uno seguido de cien ceros? {
 =El nombre de un buscador de Internet
 ~Una secuencia binaria de encriptacion 
 ~El nombre de un sistema solar 
@@ -74,7 +74,7 @@ $CATEGORY: Ciencias y Naturaleza
 
 $CATEGORY: Ciencias y Naturaleza
 
-::Q10:: Â¿Que enfermedad se considera erradicada?{
+::Q10:: ¿Que enfermedad se considera erradicada?{
 =Viruela
 ~Peste
 ~Colera 
@@ -82,7 +82,7 @@ $CATEGORY: Ciencias y Naturaleza
 
 $CATEGORY: Historia
 
-::Q11:: Â¿Quien dijo "solo se que no se nada"?{
+::Q11:: ¿Quien dijo "solo se que no se nada"?{
 =Socrates
 ~Platon
 ~Aristoteles
@@ -90,8 +90,8 @@ $CATEGORY: Historia
 
 $CATEGORY:Ciencias y Naturaleza
 
-::Q12:: Â¿En que lugar del cuerpo se produce la insulina?{
-=En el pencreas
+::Q12:: ¿En que lugar del cuerpo se produce la insulina?{
+=En el pancreas
 ~En la hipofisis
 ~En el duodeno 
 };
