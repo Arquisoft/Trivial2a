@@ -30,3 +30,5 @@ yacc.exe
 lexico.l
 sintac.y
 y.output
+
+!Trivial2a.bat
