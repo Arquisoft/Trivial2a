@@ -32,6 +32,7 @@ Revised by:
 Punto 3. Identificación de Stakeholders.
 Ruán Alves.
 Revised by:
+- María Piris
 
 Punto 4. Identificación inicial de los atributos de calidad.
 Cristian González Fernández.
