@@ -22,16 +22,17 @@ import es.uniovi.asw.trivial.visitor.ASTPrinter;
  * - En Generaci�n de C�digo: 'codigo/GestionDeMemoria.java' y 'codigo/SeleccionDeInstrucciones.java'
  */
 public class Main {
-	public static final String sourceFile = "src/entrada.txt";
+	public static String sourceFile="";
 
 	public static void main(String[] args) throws Exception {
+		sourceFile = args[0];
 		GestorErrores gestor = new GestorErrores();
 
-		AST raiz = compile(sourceFile, gestor); // Poner args[0] en vez de sourceFile en la versi�n final
+		AST raiz = compile(args[0], gestor);
 		if (!gestor.hayErrores())
 			System.out.println("El programa de entrada no tiene errores.");
 
-		ASTPrinter.toHtml(sourceFile, raiz, "Traza arbol"); // Utilidad generada por VGen (opcional)
+		ASTPrinter.toHtml(args[0], raiz, "Traza arbol"); // Utilidad generada por VGen (opcional)
 	}
 
 	/**

@@ -1,0 +1,97 @@
+$CATEGORY: Deportes
+
+//Comentario
+::Q1:: ¿En que ciudad nacio Fernando Alonso? {
+=Oviedo
+~Valencia
+~Sevilla
+};
+
+$CATEGORY: Historia
+
+//Comentario
+::Q2:: ¿Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a "Las Indias"? {
+=La Pinta, La Ninia y La Santa Maria
+~La Punta, La Nena y La Virgen Maria
+~La Pita, La Minia y La Seniora Maria
+};
+
+$CATEGORY: Arte y Literatura
+
+::Q3:: ¿De que estilo arquitectonico es la Catedral de Notre Dame en Paris?{
+=Gotico
+~Romanico
+~Barroco 
+};
+
+$CATEGORY:Historia
+
+::Q4:: ¿Con que se fabricaba el pergamino?{
+=Con piel de animales
+~Con tiras de madera
+~Con hojas de arbusto 
+};
+
+$CATEGORY: Historia
+
+::Q5:: ¿Quien fue famoso esposo de Frida Kahlo?{
+=Diego Rivera
+~Jose Vasconcelos
+~Leon Trotsky 
+};
+
+$CATEGORY: Deportes
+
+::Q6:: ¿Que atleta se hizo famoso por utilizar una nueva tecnica en atletismo?{
+=Dick Fosbury
+~Carl Lewis
+~Emil Zatopek 
+};
+
+$CATEGORY: Arte y Literatura
+
+::Q7:: ¿Que instrumento esta expresamente "bien afinado" en ciertas obras de Bach?{
+=El clave
+~El oboe
+~Todos
+};
+
+$CATEGORY: Ciencias y Naturaleza
+
+::Q8:: ¿Que grasas hacen tan saludable el aceite de oliva?{
+=Las monoinsaturadas
+~Las saturadas
+~Las trans 
+};
+
+$CATEGORY: Ciencias y Naturaleza
+
+::Q9:: ¿Que es tambien un uno seguido de cien ceros? {
+=El nombre de un buscador de Internet
+~Una secuencia binaria de encriptacion 
+~El nombre de un sistema solar 
+};
+
+$CATEGORY: Ciencias y Naturaleza
+
+::Q10:: ¿Que enfermedad se considera erradicada?{
+=Viruela
+~Peste
+~Colera 
+};
+
+$CATEGORY: Historia
+
+::Q11:: ¿Quien dijo "solo se que no se nada"?{
+=Socrates
+~Platon
+~Aristoteles
+};
+
+$CATEGORY:Ciencias y Naturaleza
+
+::Q12:: ¿En que lugar del cuerpo se produce la insulina?{
+=En el pancreas
+~En la hipofisis
+~En el duodeno 
+};

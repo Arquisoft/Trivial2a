@@ -1,0 +1,138 @@
+<html>
+<head>
+<style type="text/css">
+.value { font-weight: bold; }
+.dots { color: #888888; }
+.type { color: #BBBBBB; }
+.pos { color: #CCCCCC; }
+.sourceText { color: #BBBBBB; }
+.posText {
+	color: #BBBBBB;
+	text-decoration: underline; font-weight: bold;
+}
+.null {
+	color: #FF0000;
+	font-weight: bold;
+	font-style: italic;
+}
+</style>
+</head>
+
+<body><pre>
+[ASTPrinter] -------------------------------- line:col  line:col
+
+<span class="dots"></span>Fichero &rarr;                                         <span class="pos">1:11  96:15  </span><span class="sourceText">$CATEGORY:</span><span class="posText"> Deportes</span><span class="sourceText"> ... </span><span class="posText">~En el duodeno </span><span class="sourceText"></span>
+<span class="dots">?  </span>elementos  <span class="type">List&lt;Elemento&gt;</span> = 
+<span class="dots">?  ?  </span>Elemento &rarr;                                  <span class="pos">1:11  7:8    </span><span class="sourceText">$CATEGORY:</span><span class="posText"> Deportes</span><span class="sourceText"> ... </span><span class="posText">~Sevilla</span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  </span>"<span class="value"> Deportes</span>"  
+<span class="dots">?  ?  ?  </span>Pregunta &rarr;                               <span class="pos">4:3  7:8     </span><span class="sourceText">::</span><span class="posText">Q1:: ¿En que ciudad nacio Fernando Alonso? {</span><span class="sourceText"> ... </span><span class="posText">~Sevilla</span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Q1</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value"> ¿En que ciudad nacio Fernando Alonso? </span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Oviedo</span>"  
+<span class="dots">?  ?  ?  ?  </span>incorrectas  <span class="type">List&lt;String&gt;</span> = 
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Valencia</span>"
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Sevilla</span>"
+<span class="dots">?  ?  </span>Elemento &rarr;                                  <span class="pos">10:11  16:37 </span><span class="sourceText">$CATEGORY:</span><span class="posText"> Historia</span><span class="sourceText"> ... </span><span class="posText">~La Pita, La Minia y La Seniora Maria</span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  </span>"<span class="value"> Historia</span>"  
+<span class="dots">?  ?  ?  </span>Pregunta &rarr;                               <span class="pos">13:3  16:37  </span><span class="sourceText">::</span><span class="posText">Q2:: ¿Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a "Las Indias"? {</span><span class="sourceText"> ... </span><span class="posText">~La Pita, La Minia y La Seniora Maria</span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Q2</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value"> ¿Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a "Las Indias"? </span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">La Pinta, La Ninia y La Santa Maria</span>"  
+<span class="dots">?  ?  ?  ?  </span>incorrectas  <span class="type">List&lt;String&gt;</span> = 
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">La Punta, La Nena y La Virgen Maria</span>"
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">La Pita, La Minia y La Seniora Maria</span>"
+<span class="dots">?  ?  </span>Elemento &rarr;                                  <span class="pos">19:11  24:9  </span><span class="sourceText">$CATEGORY:</span><span class="posText"> Arte y Literatura</span><span class="sourceText"> ... </span><span class="posText">~Barroco </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  </span>"<span class="value"> Arte y Literatura</span>"  
+<span class="dots">?  ?  ?  </span>Pregunta &rarr;                               <span class="pos">21:3  24:9   </span><span class="sourceText">::</span><span class="posText">Q3:: ¿De que estilo arquitectonico es la Catedral de Notre Dame en Paris?{</span><span class="sourceText"> ... </span><span class="posText">~Barroco </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Q3</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value"> ¿De que estilo arquitectonico es la Catedral de Notre Dame en Paris?</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Gotico</span>"  
+<span class="dots">?  ?  ?  ?  </span>incorrectas  <span class="type">List&lt;String&gt;</span> = 
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Romanico</span>"
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Barroco </span>"
+<span class="dots">?  ?  </span>Elemento &rarr;                                  <span class="pos">27:11  32:22 </span><span class="sourceText">$CATEGORY:</span><span class="posText">Historia</span><span class="sourceText"> ... </span><span class="posText">~Con hojas de arbusto </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  </span>"<span class="value">Historia</span>"  
+<span class="dots">?  ?  ?  </span>Pregunta &rarr;                               <span class="pos">29:3  32:22  </span><span class="sourceText">::</span><span class="posText">Q4:: ¿Con que se fabricaba el pergamino?{</span><span class="sourceText"> ... </span><span class="posText">~Con hojas de arbusto </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Q4</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value"> ¿Con que se fabricaba el pergamino?</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Con piel de animales</span>"  
+<span class="dots">?  ?  ?  ?  </span>incorrectas  <span class="type">List&lt;String&gt;</span> = 
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Con tiras de madera</span>"
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Con hojas de arbusto </span>"
+<span class="dots">?  ?  </span>Elemento &rarr;                                  <span class="pos">35:11  40:14 </span><span class="sourceText">$CATEGORY:</span><span class="posText"> Historia</span><span class="sourceText"> ... </span><span class="posText">~Leon Trotsky </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  </span>"<span class="value"> Historia</span>"  
+<span class="dots">?  ?  ?  </span>Pregunta &rarr;                               <span class="pos">37:3  40:14  </span><span class="sourceText">::</span><span class="posText">Q5:: ¿Quien fue famoso esposo de Frida Kahlo?{</span><span class="sourceText"> ... </span><span class="posText">~Leon Trotsky </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Q5</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value"> ¿Quien fue famoso esposo de Frida Kahlo?</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Diego Rivera</span>"  
+<span class="dots">?  ?  ?  ?  </span>incorrectas  <span class="type">List&lt;String&gt;</span> = 
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Jose Vasconcelos</span>"
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Leon Trotsky </span>"
+<span class="dots">?  ?  </span>Elemento &rarr;                                  <span class="pos">43:11  48:14 </span><span class="sourceText">$CATEGORY:</span><span class="posText"> Deportes</span><span class="sourceText"> ... </span><span class="posText">~Emil Zatopek </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  </span>"<span class="value"> Deportes</span>"  
+<span class="dots">?  ?  ?  </span>Pregunta &rarr;                               <span class="pos">45:3  48:14  </span><span class="sourceText">::</span><span class="posText">Q6:: ¿Que atleta se hizo famoso por utilizar una nueva tecnica en atletismo?{</span><span class="sourceText"> ... </span><span class="posText">~Emil Zatopek </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Q6</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value"> ¿Que atleta se hizo famoso por utilizar una nueva tecnica en atletismo?</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Dick Fosbury</span>"  
+<span class="dots">?  ?  ?  ?  </span>incorrectas  <span class="type">List&lt;String&gt;</span> = 
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Carl Lewis</span>"
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Emil Zatopek </span>"
+<span class="dots">?  ?  </span>Elemento &rarr;                                  <span class="pos">51:11  56:6  </span><span class="sourceText">$CATEGORY:</span><span class="posText"> Arte y Literatura</span><span class="sourceText"> ... </span><span class="posText">~Todos</span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  </span>"<span class="value"> Arte y Literatura</span>"  
+<span class="dots">?  ?  ?  </span>Pregunta &rarr;                               <span class="pos">53:3  56:6   </span><span class="sourceText">::</span><span class="posText">Q7:: ¿Que instrumento esta expresamente "bien afinado" en ciertas obras de Bach?{</span><span class="sourceText"> ... </span><span class="posText">~Todos</span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Q7</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value"> ¿Que instrumento esta expresamente "bien afinado" en ciertas obras de Bach?</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">El clave</span>"  
+<span class="dots">?  ?  ?  ?  </span>incorrectas  <span class="type">List&lt;String&gt;</span> = 
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">El oboe</span>"
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Todos</span>"
+<span class="dots">?  ?  </span>Elemento &rarr;                                  <span class="pos">59:11  64:11 </span><span class="sourceText">$CATEGORY:</span><span class="posText"> Ciencias y Naturaleza</span><span class="sourceText"> ... </span><span class="posText">~Las trans </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  </span>"<span class="value"> Ciencias y Naturaleza</span>"  
+<span class="dots">?  ?  ?  </span>Pregunta &rarr;                               <span class="pos">61:3  64:11  </span><span class="sourceText">::</span><span class="posText">Q8:: ¿Que grasas hacen tan saludable el aceite de oliva?{</span><span class="sourceText"> ... </span><span class="posText">~Las trans </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Q8</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value"> ¿Que grasas hacen tan saludable el aceite de oliva?</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Las monoinsaturadas</span>"  
+<span class="dots">?  ?  ?  ?  </span>incorrectas  <span class="type">List&lt;String&gt;</span> = 
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Las saturadas</span>"
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Las trans </span>"
+<span class="dots">?  ?  </span>Elemento &rarr;                                  <span class="pos">67:11  72:31 </span><span class="sourceText">$CATEGORY:</span><span class="posText"> Ciencias y Naturaleza</span><span class="sourceText"> ... </span><span class="posText">~El nombre de un sistema solar </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  </span>"<span class="value"> Ciencias y Naturaleza</span>"  
+<span class="dots">?  ?  ?  </span>Pregunta &rarr;                               <span class="pos">69:3  72:31  </span><span class="sourceText">::</span><span class="posText">Q9:: ¿Que es tambien un uno seguido de cien ceros? {</span><span class="sourceText"> ... </span><span class="posText">~El nombre de un sistema solar </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Q9</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value"> ¿Que es tambien un uno seguido de cien ceros? </span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">El nombre de un buscador de Internet</span>"  
+<span class="dots">?  ?  ?  ?  </span>incorrectas  <span class="type">List&lt;String&gt;</span> = 
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Una secuencia binaria de encriptacion </span>"
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">El nombre de un sistema solar </span>"
+<span class="dots">?  ?  </span>Elemento &rarr;                                  <span class="pos">75:11  80:8  </span><span class="sourceText">$CATEGORY:</span><span class="posText"> Ciencias y Naturaleza</span><span class="sourceText"> ... </span><span class="posText">~Colera </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  </span>"<span class="value"> Ciencias y Naturaleza</span>"  
+<span class="dots">?  ?  ?  </span>Pregunta &rarr;                               <span class="pos">77:3  80:8   </span><span class="sourceText">::</span><span class="posText">Q10:: ¿Que enfermedad se considera erradicada?{</span><span class="sourceText"> ... </span><span class="posText">~Colera </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Q10</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value"> ¿Que enfermedad se considera erradicada?</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Viruela</span>"  
+<span class="dots">?  ?  ?  ?  </span>incorrectas  <span class="type">List&lt;String&gt;</span> = 
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Peste</span>"
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Colera </span>"
+<span class="dots">?  ?  </span>Elemento &rarr;                                  <span class="pos">83:11  88:12 </span><span class="sourceText">$CATEGORY:</span><span class="posText"> Historia</span><span class="sourceText"> ... </span><span class="posText">~Aristoteles</span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  </span>"<span class="value"> Historia</span>"  
+<span class="dots">?  ?  ?  </span>Pregunta &rarr;                               <span class="pos">85:3  88:12  </span><span class="sourceText">::</span><span class="posText">Q11:: ¿Quien dijo "solo se que no se nada"?{</span><span class="sourceText"> ... </span><span class="posText">~Aristoteles</span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Q11</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value"> ¿Quien dijo "solo se que no se nada"?</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Socrates</span>"  
+<span class="dots">?  ?  ?  ?  </span>incorrectas  <span class="type">List&lt;String&gt;</span> = 
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Platon</span>"
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">Aristoteles</span>"
+<span class="dots">?  ?  </span>Elemento &rarr;                                  <span class="pos">91:11  96:15 </span><span class="sourceText">$CATEGORY:</span><span class="posText">Ciencias y Naturaleza</span><span class="sourceText"> ... </span><span class="posText">~En el duodeno </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  </span>"<span class="value">Ciencias y Naturaleza</span>"  
+<span class="dots">?  ?  ?  </span>Pregunta &rarr;                               <span class="pos">93:3  96:15  </span><span class="sourceText">::</span><span class="posText">Q12:: ¿En que lugar del cuerpo se produce la insulina?{</span><span class="sourceText"> ... </span><span class="posText">~En el duodeno </span><span class="sourceText"></span>
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">Q12</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value"> ¿En que lugar del cuerpo se produce la insulina?</span>"  
+<span class="dots">?  ?  ?  ?  </span>"<span class="value">En el pancreas</span>"  
+<span class="dots">?  ?  ?  ?  </span>incorrectas  <span class="type">List&lt;String&gt;</span> = 
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">En la hipofisis</span>"
+<span class="dots">?  ?  ?  ?  ?  </span>"<span class="value">En el duodeno </span>"
+
+[ASTPrinter] --------------------------------
+</pre>
+</body>
+</html>
