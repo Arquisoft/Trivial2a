@@ -43,6 +43,7 @@ Revised by:
 Punto 7. Lista de atributos de calidad.
 Jhonny Sánchez.
 Revised by:
+- Ruan Alves
 
 Prototipo. Primera etapa del traductor.
 José Antonio Montero Hernández.
