@@ -49,3 +49,7 @@ Revised by:
 Prototipo. Segunda etapa del traductor sin controlador de MongoDB.
 José Antonio Montero Hernández.
 Revised by:
+
+Punto 6 y 8. Stakeholders e intereses.
+Alvaro Velazquez Vico.
+Revised by:
