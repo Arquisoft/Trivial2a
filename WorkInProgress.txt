@@ -30,7 +30,7 @@ Ivana Fraile, Ángela Álvarez, María Piris.
 Puntos 1 y 2. Descripción del proyecto y Metodología Utilizada.
 Cristian González Fernández.
 Revised by:
--
+- Ivana Fraile
 
 Punto 4. Identificación inicial de los atributos de calidad.
 Cristian González Fernández.
