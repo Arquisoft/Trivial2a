@@ -30,7 +30,7 @@ public class Main {
 
 		AST raiz = compile(args[0], gestor);
 		if (!gestor.hayErrores())
-			System.out.println("El programa de entrada no tiene errores.");
+			System.out.println("El archivo de entrada no contiene errores.");
 
 		ASTPrinter.toHtml(args[0], raiz, "Traza arbol"); // Utilidad generada por VGen (opcional)
 	}
