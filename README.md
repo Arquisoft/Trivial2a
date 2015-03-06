@@ -7,7 +7,7 @@ Software Architecture course - [University of Oviedo](http://www.uniovi.es), 201
 
 
 =======
-Autores:
+Desarrolladores:
 
 
 | Apellido1 | Apellido2        | Nombre                 | DNI | Id | Usuario Github |
