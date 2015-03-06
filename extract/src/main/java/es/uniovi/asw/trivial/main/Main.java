@@ -7,7 +7,6 @@ import java.io.Writer;
 
 import es.uniovi.asw.trivial.ast.AST;
 import es.uniovi.asw.trivial.codigo.GeneracionDeCodigo;
-import es.uniovi.asw.trivial.semantico.Semantico;
 import es.uniovi.asw.trivial.sintactico.Parser;
 import es.uniovi.asw.trivial.sintactico.Yylex;
 import es.uniovi.asw.trivial.visitor.ASTPrinter;
@@ -22,17 +21,17 @@ import es.uniovi.asw.trivial.visitor.ASTPrinter;
  * - En Generaci�n de C�digo: 'codigo/GestionDeMemoria.java' y 'codigo/SeleccionDeInstrucciones.java'
  */
 public class Main {
-	public static String sourceFile="";
+	public static String sourceFile="src/entrada.txt";
 
 	public static void main(String[] args) throws Exception {
-		sourceFile = args[0];
+		//sourceFile = args[0];
 		GestorErrores gestor = new GestorErrores();
 
-		AST raiz = compile(args[0], gestor);
+		AST raiz = compile(sourceFile, gestor);
 		if (!gestor.hayErrores())
 			System.out.println("El archivo de entrada no contiene errores.");
 
-		ASTPrinter.toHtml(args[0], raiz, "Traza arbol"); // Utilidad generada por VGen (opcional)
+		ASTPrinter.toHtml(sourceFile, raiz, "Traza arbol"); // Utilidad generada por VGen (opcional)
 	}
 
 	/**
@@ -49,13 +48,7 @@ public class Main {
 		if (raiz == null) // Hay errores o AST no implementado
 			return null;
 
-		// 2. Fase de Análisis Semántico
-		Semantico semantico = new Semantico(gestor);
-		semantico.analiza(raiz);
-		if (gestor.hayErrores())
-			return raiz;
-
-		// 3. Fase de Generación de Código
+		// 2. Fase de Generación de Código
 		File sourceFile = new File(sourceName);
 		Writer out = new FileWriter(new File(sourceFile.getParent(), "salida.txt"));
 

@@ -37,7 +37,7 @@ public class ASTPrinter extends DefaultVisitor {
 	// Normalmente no ser� necesario especificarlo. Usar mejor los dos m�todos anteriores.
 	public static void toHtml(String sourceFile, AST raiz, String filename, int tabWidth) {
 		try {
-			PrintWriter writer = new PrintWriter(new FileWriter(filename.endsWith(".html") ? filename : filename + ".html"));
+			PrintWriter writer = new PrintWriter(new FileWriter((filename.endsWith(".html") ? filename : filename + ".html")));
 			generateHeader(writer);
 			writer.println("[ASTPrinter] -------------------------------- line:col  line:col");
 			if (raiz != null) {
