@@ -21,6 +21,7 @@ package es.uniovi.asw.trivial.sintactico;
 
 import java.io.*;
 import java.util.*;
+
 import es.uniovi.asw.trivial.ast.*;
 import es.uniovi.asw.trivial.main.*;
 //#line 24 "Parser.java"
@@ -230,7 +231,7 @@ final static String yyrule[] = {
 };
 
 //#line 45 "sintac.y"
-/* No es necesario modificar esta sección ------------------ */
+/* No es necesario modificar esta secci�n ------------------ */
 
 public GIFTParser(GIFTYylex lex, GestorErrores gestor, boolean debug) {
 	this(debug);

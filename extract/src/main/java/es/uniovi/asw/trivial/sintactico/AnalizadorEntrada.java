@@ -6,7 +6,7 @@ import es.uniovi.asw.trivial.main.GestorErrores;
 
 public class AnalizadorEntrada {
 	
-	public Parser getSintactico(String sourceName, String formatoEntrada, GestorErrores gestor) throws Exception{
+	public GIFTParser getSintactico(String sourceName, String formatoEntrada, GestorErrores gestor) throws Exception{
 		if(formatoEntrada.toUpperCase().equals("GIFT")){
 			GIFTYylex lexico = new GIFTYylex(new FileReader(sourceName), gestor);
 			return new GIFTParser(lexico, gestor, false);
