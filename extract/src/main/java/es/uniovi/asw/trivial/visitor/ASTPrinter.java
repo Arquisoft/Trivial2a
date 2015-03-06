@@ -48,7 +48,7 @@ public class ASTPrinter extends DefaultVisitor {
 			writer.println(ls + ls + "[ASTPrinter] --------------------------------");
 			generateFooter(writer);
 			writer.close();
-			System.out.println(ls + "ASTPrinter: Fichero '" + filename + ".html' generado con �xito. Abra el fichero para validar el �rbol AST generado.");
+			System.out.println(ls + "ASTPrinter: Fichero '" + filename + ".html' generado con éxito. Abra el fichero para validar el árbol AST generado.");
 		} catch (IOException e) {
 			System.out.println(ls + "ASTPrinter: No se ha podido crear el fichero " + filename);
 			e.printStackTrace();

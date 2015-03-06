@@ -14,7 +14,7 @@ import es.uniovi.asw.trivial.ast.Position;
  * on 3/03/15 20:33 from the specification file
  * <tt>lexico.l</tt>
  */
-public class Yylex {
+public class GIFTYylex {
 
   /** This character denotes the end of file */
   public static final int YYEOF = -1;
@@ -225,7 +225,7 @@ public class Yylex {
   private boolean zzEOFDone;
 
   /* user code: */
-	public Yylex(Reader in, GestorErrores gestor) {
+	public GIFTYylex(Reader in, GestorErrores gestor) {
 		this(in);
 		this.gestor = gestor;
 	}
@@ -236,7 +236,7 @@ public class Yylex {
 
 	// Traza para probar el léxico de manera independiente al sintáctico
 	public static void main(String[] args) throws Exception {
-		Yylex lex = new Yylex(new FileReader(Main.sourceFile), new GestorErrores());
+		GIFTYylex lex = new GIFTYylex(new FileReader(Main.sourceFile), new GestorErrores());
 		int token;
 		while ((token = lex.yylex()) != 0)
 			System.out.println("\t[" + lex.line() + ":" + lex.column() + "] Token: " + token + ". Lexema: " + lex.lexeme());
@@ -251,7 +251,7 @@ public class Yylex {
    *
    * @param   in  the java.io.Reader to read input from.
    */
-  public Yylex(java.io.Reader in) {
+  public GIFTYylex(java.io.Reader in) {
     this.zzReader = in;
   }
 
@@ -261,7 +261,7 @@ public class Yylex {
    *
    * @param   in  the java.io.Inputstream to read input from.
    */
-  public Yylex(java.io.InputStream in) {
+  public GIFTYylex(java.io.InputStream in) {
     this(new java.io.InputStreamReader(in));
   }
 
@@ -596,11 +596,11 @@ public class Yylex {
 
       switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
         case 2: 
-          { return Parser.TEXTO;
+          { return GIFTParser.TEXTO;
           }
         case 7: break;
         case 6: 
-          { return Parser.CATEGORIA;
+          { return GIFTParser.CATEGORIA;
           }
         case 8: break;
         case 5: 

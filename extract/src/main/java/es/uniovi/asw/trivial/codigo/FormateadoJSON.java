@@ -21,7 +21,7 @@ public class FormateadoJSON extends DefaultVisitor {
 	}
 
 	/*
-	 * Poner aqu� los visit necesarios.
+	 * Poner aquí los visit necesarios.
 	 * Si se ha usado VGen solo hay que copiarlos de la clase 'visitor/EsqueletoVisitor.java'.
 	 */
 

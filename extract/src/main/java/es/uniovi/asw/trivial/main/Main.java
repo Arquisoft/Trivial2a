@@ -1,14 +1,13 @@
 package es.uniovi.asw.trivial.main;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.Writer;
 
 import es.uniovi.asw.trivial.ast.AST;
-import es.uniovi.asw.trivial.codigo.GeneracionDeCodigo;
+import es.uniovi.asw.trivial.codigo.GeneracionDeFormatoSalida;
+import es.uniovi.asw.trivial.sintactico.AnalizadorEntrada;
 import es.uniovi.asw.trivial.sintactico.Parser;
-import es.uniovi.asw.trivial.sintactico.Yylex;
 import es.uniovi.asw.trivial.visitor.ASTPrinter;
 
 /**
@@ -16,15 +15,31 @@ import es.uniovi.asw.trivial.visitor.ASTPrinter;
  * 
  * No es necesario modificar este fichero. 
  * En su lugar hay modificar:
- * - En An�lisis Sint�ctico: 'sintactico/sintac.y' y 'sintactico/lexico.l'
- * - En An�lisis Sem�ntico: 'semantico/FaseIdentificaci�n.java' y 'semantico/FaseInferencia.java'
- * - En Generaci�n de C�digo: 'codigo/GestionDeMemoria.java' y 'codigo/SeleccionDeInstrucciones.java'
+ * - En Análisis Sintactico: 'sintactico/sintac.y' y 'sintactico/lexico.l'
+ * - En Generación de Codigo: 'codigo/GestionDeMemoria.java' y 'codigo/SeleccionDeInstrucciones.java'
  */
 public class Main {
-	public static String sourceFile="src/entrada.txt";
+	//FICHEROS
+	public static String sourceFile;
+	public static String outputFile;
+	
+	//FORMATOS
+	public static String formatoEntrada;
+	public static String formatoSalida;
 
-	public static void main(String[] args) throws Exception {
-		//sourceFile = args[0];
+	public static void main(String[] args) throws Exception {	
+		//Main con opciones
+//		sourceFile = args[0];		
+//		formatoEntrada = args[1];
+//		outputFile = args[2];
+//		formatoSalida = args[3];
+		
+		//Main sin opciones
+		sourceFile = "src/entrada.txt";
+		formatoEntrada = "GIFT";
+		outputFile = "salida.txt";
+		formatoSalida = "JSON";
+		
 		GestorErrores gestor = new GestorErrores();
 
 		AST raiz = compile(sourceFile, gestor);
@@ -40,8 +55,7 @@ public class Main {
 	public static AST compile(String sourceName, GestorErrores gestor) throws Exception {
 
 		// 1. Fases de Análisis Léxico y Sintáctico
-		Yylex lexico = new Yylex(new FileReader(sourceName), gestor);
-		Parser sintactico = new Parser(lexico, gestor, false);
+		Parser sintactico = new AnalizadorEntrada().getSintactico(sourceName, formatoEntrada, gestor);
 		sintactico.parse();
 
 		AST raiz = sintactico.getAST();
@@ -50,10 +64,10 @@ public class Main {
 
 		// 2. Fase de Generación de Código
 		File sourceFile = new File(sourceName);
-		Writer out = new FileWriter(new File(sourceFile.getParent(), "salida.txt"));
+		Writer out = new FileWriter(new File(sourceFile.getParent(), outputFile));
 
-		GeneracionDeCodigo generador = new GeneracionDeCodigo();
-		generador.genera(sourceFile.getName(), raiz, out);
+		GeneracionDeFormatoSalida generador = new GeneracionDeFormatoSalida();
+		generador.genera(sourceFile.getName(), raiz, out, formatoSalida);
 		out.close();
 
 		return raiz;
