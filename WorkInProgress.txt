@@ -6,8 +6,6 @@
 *	Team Member.						*
 *								*
 *****************************************************************
-Punto 9. Descripción del negocio de la solución.
-Ruan Alves.
 
 Punto 11. Vistas.
 Ivana Fraile, Ángela Álvarez, María Piris.
@@ -59,3 +57,6 @@ Revised by:
 Punto 6 y 8. Stakeholders e intereses.
 Alvaro Velazquez Vico.
 Revised by:
+
+Punto 9. Descripción del negocio de la solución.
+Ruan Alves.
