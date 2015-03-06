@@ -6,6 +6,8 @@
 *	Team Member.						*
 *								*
 *****************************************************************
+Punto 9. Descripción del negocio de la solución.
+Ruan Alves.
 
 Punto 11. Vistas.
 Ivana Fraile, Ángela Álvarez, María Piris.
