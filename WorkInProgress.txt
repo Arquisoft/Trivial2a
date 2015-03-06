@@ -7,9 +7,6 @@
 *								*
 *****************************************************************
 
-Punto 5. Primer acercamiento a la solución y riesgos.
-José Antonio Montero Hernández.
-
 Punto 11. Vistas.
 Ivana Fraile, Ángela Álvarez, María Piris.
 
@@ -39,6 +36,10 @@ Cristian González Fernández.
 Revised by:
 - Samanta Baragaño González
 - Jhonny Sánchez
+
+Punto 5. Primer acercamiento a la solución y riesgos.
+José Antonio Montero Hernández.
+Revised by:
 
 Punto 7. Lista de atributos de calidad.
 Jhonny Sánchez.
