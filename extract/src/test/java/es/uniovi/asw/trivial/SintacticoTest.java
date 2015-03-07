@@ -35,7 +35,7 @@ public class SintacticoTest {
 		File trazaArbol = new File("trazaArbolTest1.html");
 
 		
-		assertThat(FileUtils.contentEquals(trazaArbol, trazaArbolEsperada)).isTrue();
+		assertThat(FileUtils.contentEquals(trazaArbolEsperada, trazaArbol)).isTrue();
 	}
 
 }
