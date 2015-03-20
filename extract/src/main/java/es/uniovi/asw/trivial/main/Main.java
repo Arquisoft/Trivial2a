@@ -56,10 +56,7 @@ public class Main {
 	public static AST compile(String sourceName, GestorErrores gestor) throws Exception {
 
 		// 1. Fases de Análisis Léxico y Sintáctico
-		Parser sintactico = new AnalizadorEntrada().getSintactico(sourceName, formatoEntrada, gestor);
-		sintactico.parse();
-
-		AST raiz = sintactico.getAST();
+		AST raiz = new AnalizadorEntrada().process(sourceName, formatoEntrada, gestor);
 		if (raiz == null) // Hay errores o AST no implementado
 			return null;
 
