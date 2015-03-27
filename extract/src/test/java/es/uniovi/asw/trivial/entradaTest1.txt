@@ -11,7 +11,7 @@ $CATEGORY: Historia
 
 //Comentario
 ::Q2:: Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a "Las Indias"? {
-=La Pinta, La Niña y La Santa Maria
+=La Pinta, La Ninia y La Santa Maria
 ~La Punta, La Nena y La Virgen Maria
 ~La Pita, La Minia y La Seniora Maria
 };
