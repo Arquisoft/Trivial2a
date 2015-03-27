@@ -19,7 +19,6 @@ Desarrolladores:
 |González|Fernández|Cristian|UO231602|[cristiangonzalezfernandez](https://github.com/cristiangonzalezfernandez)|
 |Montero|Hernandez|Jose Antonio|UO179746|[joanmontero](https://github.com/joanmontero)|
 |Piris|García|María|UO230886|[mariapiris](https://github.com/mariapiris)|
-|Sánchez|Illisaca|Jhonny Cristian|UO225242|[jhonnysanchezillisaca](https://github.com/jhonnysanchezillisaca)|
 |Velázquez|Vico|Álvaro|UO232635|[alvarovv](https://github.com/alvarovv)|
 
 
