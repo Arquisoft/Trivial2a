@@ -1,5 +1,7 @@
 package persistence;
 
+import java.util.List;
+
 import model.Statistic;
 import model.User;
 
@@ -16,5 +18,7 @@ public interface UserDao {
 	void delete(String login);
 	
 	Statistic getStatistic(User user);
+	
+	List<User> getUsers();
 
 }

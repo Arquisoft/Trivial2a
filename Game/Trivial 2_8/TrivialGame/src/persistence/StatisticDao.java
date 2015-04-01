@@ -12,4 +12,6 @@ public interface StatisticDao {
 	Map<Integer, Integer> getStatisticHistory();
 	
 	Map<String,Map<Integer,Integer>> getAllStatistics();
+	
+	int getLastId();
 }

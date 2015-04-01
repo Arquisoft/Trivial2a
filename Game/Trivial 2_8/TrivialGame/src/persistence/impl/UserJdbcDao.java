@@ -1,5 +1,7 @@
 package persistence.impl;
 
+import java.util.List;
+
 import model.Statistic;
 import model.User;
 import persistence.UserDao;
@@ -38,6 +40,12 @@ public class UserJdbcDao implements UserDao {
 
 	@Override
 	public Statistic getStatistic(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> getUsers() {
 		// TODO Auto-generated method stub
 		return null;
 	}
