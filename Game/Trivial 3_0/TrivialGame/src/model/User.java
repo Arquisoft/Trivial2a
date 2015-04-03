@@ -42,5 +42,9 @@ public class User {
 	public Statistic getStatistics() {
 		return statistics;
 	}
+
+	public void setStatistics(Statistic statistics) {
+		this.statistics = statistics;
+	}
 	
 }
