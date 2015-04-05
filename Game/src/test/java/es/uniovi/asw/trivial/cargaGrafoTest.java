@@ -1,10 +1,9 @@
 package es.uniovi.asw.trivial;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.*;
+import org.junit.Test;
 
 import java.util.List;
-
-import org.junit.Test;
 
 import es.uniovi.asw.trivial.model.BoardOptions;
 import es.uniovi.asw.trivial.model.Panel;
@@ -16,7 +15,7 @@ public class cargaGrafoTest {
 	public void test() {
 		Panel panel = new Panel(BoardOptions.BIG);
 		List<Square> nodos = panel.getSquares();
-		assertEquals(73,nodos.size());
+		assertThat(nodos.size()).isEqualTo(73);
 		
 	}
 
