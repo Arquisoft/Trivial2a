@@ -12,7 +12,7 @@ public class Conf {
 	public static List<String> getNodes(final String fichero) {
 		FileReader f = null;
 		BufferedReader b = null;
-		String ruta = "src/" + fichero;
+		String ruta = System.getProperty("user.dir") + fichero;
 
 		List<String> nodes = new ArrayList<String>();
 		try {
@@ -26,7 +26,7 @@ public class Conf {
 				if (linea.startsWith("ID:")) {
 					nodes.add(linea.substring(3));
 				}
-				linea = b.readLine().trim();
+				linea = b.readLine();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,7 +47,7 @@ public class Conf {
 
 		FileReader f = null;
 		BufferedReader b = null;
-		String ruta = "src/" + fichero;
+		String ruta =  System.getProperty("user.dir") + fichero;
 
 		List<String> edges = new ArrayList<String>();
 		try {
@@ -62,7 +62,7 @@ public class Conf {
 					edges.add(linea.substring(3));
 				}
 				
-				linea = b.readLine().trim();
+				linea = b.readLine();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

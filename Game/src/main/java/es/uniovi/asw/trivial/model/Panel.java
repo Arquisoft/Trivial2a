@@ -23,7 +23,7 @@ public class Panel {
 		switch(op)
 		{
 			case BIG:
-			loadGraph("grafo.txt");
+			loadGraph("/grafo.txt");
 		}
 			
 	}

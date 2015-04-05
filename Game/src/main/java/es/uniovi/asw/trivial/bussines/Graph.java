@@ -378,24 +378,10 @@ private void recursiveDFS(T source, boolean[]visitados){
 }
 
 public List<T> getNodesToVisit(T nodo, int dice){
-	path = 0; //Inicializamos la variable de paso
-	List<T> visitados = new ArrayList<T>();
-
-	recursiveDFSRec(nodo,visitados, dice);
-		
-	return visitados;
+	return null;
 }
 
 private void recursiveDFSRec(T source, List<T> visitados, int dice){
-	
-	visitados.add(source);  //El primero no cuenta
-	for(int i=0;i<size;i++){
-		if(visitados.get(i)==null && existEdge(source,nodes[i]) && path<=dice)
-		{
-			path++;
-			recursiveDFSRec(nodes[i],visitados,dice);
-		}
-	}
 }
 
 
