@@ -14,7 +14,6 @@ public class Pregunta extends AbstractTraceable implements AST {
 		this.incorrectas = incorrectas;
 	}
 
-	@SuppressWarnings("unchecked")
 	public Pregunta(Object titulo, Object texto, Object correcta, Object incorrectas) {
 		this.titulo = (titulo instanceof Token) ? ((Token)titulo).getLexeme() : (String) titulo;
 		this.texto = (texto instanceof Token) ? ((Token)texto).getLexeme() : (String) texto;

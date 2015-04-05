@@ -19,11 +19,16 @@
 //#line 3 "sintac.y"
 package es.uniovi.asw.trivial.sintactico;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import es.uniovi.asw.trivial.ast.*;
-import es.uniovi.asw.trivial.main.*;
+import es.uniovi.asw.trivial.ast.AST;
+import es.uniovi.asw.trivial.ast.Elemento;
+import es.uniovi.asw.trivial.ast.Fichero;
+import es.uniovi.asw.trivial.ast.Pregunta;
+import es.uniovi.asw.trivial.ast.Token;
+import es.uniovi.asw.trivial.main.GestorErrores;
 //#line 24 "Parser.java"
 
 

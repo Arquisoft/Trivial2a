@@ -1,9 +1,20 @@
 package es.uniovi.asw.trivial.visitor;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
-import es.uniovi.asw.trivial.ast.*;
-import java.util.*;
+import es.uniovi.asw.trivial.ast.AST;
+import es.uniovi.asw.trivial.ast.Elemento;
+import es.uniovi.asw.trivial.ast.Fichero;
+import es.uniovi.asw.trivial.ast.Position;
+import es.uniovi.asw.trivial.ast.Pregunta;
+import es.uniovi.asw.trivial.ast.Traceable;
 
 /**
  * ASTPrinter. Utilidad que ayuda a validar un arbol AST:
@@ -153,6 +164,7 @@ public class ASTPrinter extends DefaultVisitor {
 	}
 
 	// Versi�n compacta de una linea para nodos que solo tienen un atributo String
+	@SuppressWarnings("unused")
 	private void printCompact(int indent, String nodeName, AST node, String attName, Object value) {
 		//		String text = ls + tabula(indent) + name + " &rarr;  ";
 		//		text = String.format("%1$-" + 83 + "s", text);

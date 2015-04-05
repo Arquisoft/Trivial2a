@@ -7,8 +7,6 @@ import java.io.Writer;
 import es.uniovi.asw.trivial.ast.AST;
 import es.uniovi.asw.trivial.codigo.GeneracionDeFormatoSalida;
 import es.uniovi.asw.trivial.sintactico.AnalizadorEntrada;
-import es.uniovi.asw.trivial.sintactico.GIFTParser;
-import es.uniovi.asw.trivial.sintactico.Parser;
 import es.uniovi.asw.trivial.visitor.ASTPrinter;
 
 /**

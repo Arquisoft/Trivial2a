@@ -2,17 +2,15 @@ package es.uniovi.asw.trivial.codigo;
 
 import java.io.PrintWriter;
 import java.io.Writer;
-import java.util.List;
 
-import es.uniovi.asw.trivial.ast.AST;
 import es.uniovi.asw.trivial.ast.Elemento;
-import es.uniovi.asw.trivial.ast.Fichero;
 import es.uniovi.asw.trivial.ast.Pregunta;
 import es.uniovi.asw.trivial.visitor.DefaultVisitor;
 
 public class FormateadoJSON extends DefaultVisitor {
 
 	private PrintWriter writer;
+	@SuppressWarnings("unused")
 	private String sourceFile;
 
 	public FormateadoJSON(Writer writer, String sourceFile) {
