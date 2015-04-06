@@ -1,4 +1,4 @@
-package es.uniovi.asw.trivial.bussines;
+package es.uniovi.asw.trivial.bussines.gameClasses;
 
 import java.util.Random;
 

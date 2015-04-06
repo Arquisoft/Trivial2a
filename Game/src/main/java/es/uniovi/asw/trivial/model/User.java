@@ -9,15 +9,15 @@ public class User {
 	private String login;
 	private Score score;
 	private Statistic statistics;
-	private Square square;
+	private int position;
 	
-	
-	public Square getSquare() {
-		return square;
+
+	public int getPosition() {
+		return position;
 	}
 
-	public void setSquare(Square square) {
-		this.square = square;
+	public void setPosition(int position) {
+		this.position = position;
 	}
 
 	public User(String login){

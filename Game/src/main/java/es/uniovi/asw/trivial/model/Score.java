@@ -1,7 +1,8 @@
 package es.uniovi.asw.trivial.model;
 
 /** Clase "Score" del modelo.
- * @author Gonz�lez Fernandez Cristian y Vel�zquez Vico �lvaro
+ * @author Gonz�lez Fernandez Cristian
+ * @author Vel�zquez Vico �lvaro
  * @version 1 - Last changes: -
  */
 public class Score {

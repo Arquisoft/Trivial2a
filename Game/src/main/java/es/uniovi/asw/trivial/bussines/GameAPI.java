@@ -2,8 +2,8 @@ package es.uniovi.asw.trivial.bussines;
 
 import java.util.List;
 
-import es.uniovi.asw.trivial.model.BoardOptions;
-import es.uniovi.asw.trivial.model.Square;
+import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
+import es.uniovi.asw.trivial.model.BoardOption;
 import es.uniovi.asw.trivial.model.User;
 
 public interface GameAPI {
@@ -14,9 +14,8 @@ public interface GameAPI {
 	 * 
 	 * @return List<BoardOptions>
 	 */
-	List<BoardOptions> getBoardOptions();
-	
-	void selectBoardOption(BoardOptions option);
+	List<BoardOption> getBoardOptions();
+	void selectBoardOption(int optionId);
 	List<User> getUserList();
 	boolean createUser(User user);
 	
@@ -27,8 +26,8 @@ public interface GameAPI {
 	//Sin implementar, llamaria al m�todo recorrido en profundidad el cual hay que cambiar
 	// tambien para que mire solo un numero de nodos
 	
-	boolean movePlayer(Square square);
-	List<Square> getMovements();
+	void movePlayerTo(int squareNumber) throws IllegalActionException;
+	List<Integer> getMovements();
 	User getWinner();
 	boolean isFinished();
 	void correctAnswer();
