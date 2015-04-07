@@ -21,5 +21,10 @@ public class SimplePersistenceFactory implements PersistenceFactory{
 	public StatisticDao createStatisticDao() {
 		return new StatisticJdbcDao();
 	}
+	
+	@Override
+	public QuestionDao createQuestionDao(){
+		return new QuestionJdbcDao();
+	}
 
 }

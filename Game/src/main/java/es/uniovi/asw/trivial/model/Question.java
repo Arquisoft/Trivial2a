@@ -5,10 +5,11 @@ import java.util.List;
 
 /** Clase "Question" del modelo.
  * @author Gonz�lez Fernandez Cristian y Vel�zquez Vico �lvaro
- * @version 1 - Last changes: -
+ * @version 2 - Last changes: - ID added
  */
 public class Question {
 	
+	private int id;
 	private String statement;
 	private String correctAnswer;
 	private List<String> incorrectAnswers = new ArrayList<String>();
@@ -46,6 +47,14 @@ public class Question {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	
+	public int getId(){
+		return id;
+	}
+	
+	public void setId(int id){
+		this.id = id;
 	}
 	
 }
