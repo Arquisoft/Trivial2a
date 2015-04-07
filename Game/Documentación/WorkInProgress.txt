@@ -1,0 +1,23 @@
+﻿*****************************************************************
+* WORK IN PROGRESS						*
+*								*
+*	Format:							*
+*	Task. Description.					*
+*	Team Member.						*
+*								*
+*****************************************************************
+
+Punto 1 Descripción del proyecto
+Ruan Alves.
+
+*****************************************************************
+*  COMPLETED							*
+*								*
+*	Format:							*
+*	Task. Description.					*
+*	Team Member.						*
+*	Revised by:						*
+*	- Team Member1						*
+*	- Team Member2						*
+*								*
+*****************************************************************
