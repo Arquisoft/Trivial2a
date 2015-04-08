@@ -10,15 +10,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.Toolkit;
 
 public class VentanaPrincipal extends JFrame {
 
 	/**
-	 * Ventana de inicio de la aplicaci�n que muestra las opciones de jugar
+	 * Ventana de inicio de la aplicación que muestra las opciones de jugar
 	 * instrucciones y salir
 	 * 
 	 * 
-	 * faltan ventanas de: instrucciones, pregunta correcta, pregunta
+	 * Faltan ventanas de: instrucciones, pregunta correcta, pregunta
 	 * incorrecta, fin del juego
 	 */
 	private static final long serialVersionUID = 1L;
@@ -28,9 +29,13 @@ public class VentanaPrincipal extends JFrame {
 	private JButton btnJugar;
 	private JButton btnInstrucciones;
 	private JButton btnSalir;
+	private JButton btnEstadsticas;
 
 	// Util
 
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -68,7 +73,7 @@ public class VentanaPrincipal extends JFrame {
 	private JPanel getPnBackground() {
 		if (pnBackground == null) {
 			pnBackground = new JPanel();
-			pnBackground.setBounds(5, 5, 1024, 651);
+			pnBackground.setBounds(5, 5, 1024, 655);
 			pnBackground.setOpaque(false);
 			pnBackground.setLayout(null);
 
@@ -80,11 +85,12 @@ public class VentanaPrincipal extends JFrame {
 	private JPanel getPnInicio() {
 		if (pnInicio == null) {
 			pnInicio = new JPanel();
-			pnInicio.setBounds(335, 400, 350, 150);
-			pnInicio.setLayout(new GridLayout(3, 1, 0, 25));
+			pnInicio.setBounds(335, 400, 350, 220);
+			pnInicio.setLayout(new GridLayout(4, 1, 0, 25));
 			pnInicio.setOpaque(false);
 			pnInicio.add(getBtnJugar());
 			pnInicio.add(getBtnInstrucciones());
+			pnInicio.add(getBtnEstadsticas());
 			pnInicio.add(getBtnSalir());
 		}
 		return pnInicio;
@@ -107,10 +113,29 @@ public class VentanaPrincipal extends JFrame {
 	private JButton getBtnInstrucciones() {
 		if (btnInstrucciones == null) {
 			btnInstrucciones = new JButton("Instrucciones");
+			btnInstrucciones.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+
+				}
+			});
 			btnInstrucciones.setBackground(Color.yellow);
 			btnInstrucciones.setOpaque(true);
 		}
 		return btnInstrucciones;
+	}
+
+	private JButton getBtnEstadsticas() {
+		if (btnEstadsticas == null) {
+			btnEstadsticas = new JButton("Estad\u00EDsticas");
+			btnEstadsticas.setBackground(Color.green);
+			btnEstadsticas.setOpaque(true);
+			btnEstadsticas.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					mostrarVentanaLoginAdmin();
+				}
+			});
+		}
+		return btnEstadsticas;
 	}
 
 	private JButton getBtnSalir() {
@@ -131,5 +156,11 @@ public class VentanaPrincipal extends JFrame {
 		VentanaJugadores vJ = new VentanaJugadores(this);
 		vJ.setModal(true);
 		vJ.setVisible(true);
+	}
+
+	private void mostrarVentanaLoginAdmin() {
+		VentanaLoginAdmin vL = new VentanaLoginAdmin(this);
+		vL.setModal(true);
+		vL.setVisible(true);
 	}
 }

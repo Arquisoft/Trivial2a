@@ -27,7 +27,7 @@ import es.uniovi.asw.trivial.model.User;
 public class VentanaJugadores extends JDialog {
 
 	/**
-	 * En esta ventana se irian introduciendo los nombres de los jugadores
+	 * En esta ventana se irían introduciendo el nombre de los jugadores
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPanel;
@@ -227,7 +227,7 @@ public class VentanaJugadores extends JDialog {
 						.getResource("/es/uniovi/asw/trivial/images/icon.png")));
 		setResizable(false);
 		setTitle("Trivial2a");
-		setBounds(100, 100, 600, 400);
+		setBounds(370, 180, 600, 400);
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(getContentPanel(), BorderLayout.CENTER);
 	}
