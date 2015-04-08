@@ -2,9 +2,9 @@ package es.uniovi.asw.trivial.ugi;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -17,6 +17,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import es.uniovi.asw.trivial.bussines.GameAPI;
@@ -26,7 +27,7 @@ import es.uniovi.asw.trivial.model.User;
 public class VentanaJugadores extends JDialog {
 
 	/**
-	 * En esta ventana se ir�an introduciendo el nombre de los jugadores
+	 * En esta ventana se irian introduciendo los nombres de los jugadores
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPanel;
@@ -35,65 +36,63 @@ public class VentanaJugadores extends JDialog {
 	private JTextField txtUsuario2;
 	private JTextField txtUsuario3;
 	private JTextField txtUsuario4;
+	private JTextField txtUsuario5;
+	private JTextField txtUsuario6;
+	private JLabel lblJugadores;
+	private JPanel pnJugadores;
+	private JLabel lblJ1;
+	private JLabel lblJ6;
+	private JLabel lblJ4;
+	private JLabel lblJ5;
+	private JLabel lblJ2;
+	private JLabel lblJ3;
 
 	private List<JTextField> jugadores;
 	private VentanaPrincipal vp;
 
 	public JPanel getContentPanel() {
 		if (contentPanel == null) {
-			contentPanel = new JPanel();
+			contentPanel = new JPanelBackground(
+					"/es/uniovi/asw/trivial/images/bgquestion.png");
 			contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-			GridBagLayout gbl_contentPanel = new GridBagLayout();
-			gbl_contentPanel.columnWidths = new int[] { 0, 0, 0, 0 };
-			gbl_contentPanel.rowHeights = new int[] { 50, 30, 30, 0, 0, 0, 0,
-					0, 0, 0, 0 };
-			gbl_contentPanel.columnWeights = new double[] { 1.0, 0.0, 1.0,
-					Double.MIN_VALUE };
-			gbl_contentPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0,
-					0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-			contentPanel.setLayout(gbl_contentPanel);
-			GridBagConstraints gbc_lblJugadores = new GridBagConstraints();
-			gbc_lblJugadores.insets = new Insets(0, 0, 5, 5);
-			gbc_lblJugadores.gridx = 1;
-			gbc_lblJugadores.gridy = 2;
-			contentPanel.add(getLblJugadores(), gbc_lblJugadores);
+			contentPanel.setLayout(new BorderLayout(0, 0));
+			contentPanel.add(getLblJugadores(), BorderLayout.NORTH);
 			jugadores = new ArrayList<JTextField>();
-			GridBagConstraints gbc_txtUsuario1 = new GridBagConstraints();
-			gbc_txtUsuario1.insets = new Insets(0, 0, 5, 5);
-			gbc_txtUsuario1.gridx = 1;
-			gbc_txtUsuario1.gridy = 4;
-			contentPanel.add(getTxtUsuario1(), gbc_txtUsuario1);
 			jugadores.add(getTxtUsuario1());
-			GridBagConstraints gbc_txtUsuario2 = new GridBagConstraints();
-			gbc_txtUsuario2.insets = new Insets(0, 0, 5, 5);
-			gbc_txtUsuario2.gridx = 1;
-			gbc_txtUsuario2.gridy = 5;
-			contentPanel.add(getTxtUsuario2(), gbc_txtUsuario2);
 			jugadores.add(getTxtUsuario2());
-			GridBagConstraints gbc_txtUsuario3 = new GridBagConstraints();
-			gbc_txtUsuario3.insets = new Insets(0, 0, 5, 5);
-			gbc_txtUsuario3.gridx = 1;
-			gbc_txtUsuario3.gridy = 6;
-			contentPanel.add(getTxtUsuario3(), gbc_txtUsuario3);
 			jugadores.add(getTxtUsuario3());
-			GridBagConstraints gbc_txtUsuario4 = new GridBagConstraints();
-			gbc_txtUsuario4.insets = new Insets(0, 0, 5, 5);
-			gbc_txtUsuario4.gridx = 1;
-			gbc_txtUsuario4.gridy = 7;
-			contentPanel.add(getTxtUsuario4(), gbc_txtUsuario4);
 			jugadores.add(getTxtUsuario4());
-			GridBagConstraints gbc_txtUsuario5 = new GridBagConstraints();
-			gbc_txtUsuario5.insets = new Insets(0, 0, 5, 5);
-			gbc_txtUsuario5.gridx = 1;
-			gbc_txtUsuario5.gridy = 8;
-			contentPanel.add(getTxtUsuario5(), gbc_txtUsuario5);
 			jugadores.add(getTxtUsuario5());
-			GridBagConstraints gbc_txtUsuario6 = new GridBagConstraints();
-			gbc_txtUsuario6.insets = new Insets(0, 0, 0, 5);
-			gbc_txtUsuario6.gridx = 1;
-			gbc_txtUsuario6.gridy = 9;
-			contentPanel.add(getTxtUsuario6(), gbc_txtUsuario6);
 			jugadores.add(getTxtUsuario6());
+			contentPanel.add(getPnJugadores());
+			{
+				JPanel buttonPane = new JPanel();
+				contentPanel.add(buttonPane, BorderLayout.SOUTH);
+				buttonPane.setOpaque(false);
+				buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+				{
+					okButton = new JButton("Jugar");
+					okButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							mostrarVentanaJuego();
+						}
+					});
+					okButton.setEnabled(false);
+					okButton.setActionCommand("OK");
+					buttonPane.add(okButton);
+					getRootPane().setDefaultButton(okButton);
+				}
+				{
+					JButton cancelButton = new JButton("Cancel");
+					cancelButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							dispose();
+						}
+					});
+					cancelButton.setActionCommand("Cancel");
+					buttonPane.add(cancelButton);
+				}
+			}
 			asociarEventosJugadores();
 		}
 		return contentPanel;
@@ -107,7 +106,7 @@ public class VentanaJugadores extends JDialog {
 		return txtUsuario1;
 	}
 
-	// se activa la posibilidad de a�adir el siguiente jugador
+	// se activa la posibilidad de añadir el siguiente jugador
 	// y se queda guardado el nombre dle jugador anteior
 	private void txtComprobaciones() {
 		okButton.setEnabled(jugadores.get(0).getText().isEmpty() ? false : true);
@@ -123,11 +122,10 @@ public class VentanaJugadores extends JDialog {
 					}
 				}
 			}
-
 		}
 	}
 
-	// comprueba que no se repita el nombre de ning�n jugador en la aprtida
+	// comprueba que no se repita el nombre de ningún jugador en la aprtida
 	private boolean exist(int i) {
 		boolean rep = false;
 		int j = 0;
@@ -157,8 +155,8 @@ public class VentanaJugadores extends JDialog {
 	}
 
 	private void asociarEventosJugadores() {
-		for (int i = 1; i < contentPanel.getComponents().length; i++) {
-			JTextField txt = (JTextField) contentPanel.getComponent(i);
+		for (int i = 1; i < pnJugadores.getComponents().length; i = i + 2) {
+			JTextField txt = (JTextField) pnJugadores.getComponent(i);
 
 			txt.addKeyListener(new KeyAdapter() {
 				@Override
@@ -167,7 +165,6 @@ public class VentanaJugadores extends JDialog {
 				}
 			});
 		}
-
 	}
 
 	public JTextField getTxtUsuario3() {
@@ -207,10 +204,6 @@ public class VentanaJugadores extends JDialog {
 		return txtUsuario6;
 	}
 
-	private JTextField txtUsuario5;
-	private JTextField txtUsuario6;
-	private JLabel lblJugadores;
-
 	/**
 	 * Launch the application.
 	 */
@@ -229,41 +222,20 @@ public class VentanaJugadores extends JDialog {
 	 */
 	public VentanaJugadores(VentanaPrincipal ventanaPrincipal) {
 		this.vp = ventanaPrincipal;
-		setBounds(100, 100, 760, 418);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(
+				VentanaPrincipal.class
+						.getResource("/es/uniovi/asw/trivial/images/icon.png")));
+		setResizable(false);
+		setTitle("Trivial2a");
+		setBounds(100, 100, 600, 400);
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(getContentPanel(), BorderLayout.CENTER);
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				okButton = new JButton("Jugar");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						mostrarVentanaJuego();
-					}
-				});
-				okButton.setEnabled(false);
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						dispose();
-					}
-				});
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
-		}
 	}
 
 	private JLabel getLblJugadores() {
 		if (lblJugadores == null) {
 			lblJugadores = new JLabel("\u00BFQui\u00E9n va a jugar?");
+			lblJugadores.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		}
 		return lblJugadores;
 	}
@@ -274,9 +246,78 @@ public class VentanaJugadores extends JDialog {
 		// g.selectBoardOption(BoardOptions.BIG);
 		for (JTextField txt : jugadores)
 			g.createUser(new User(txt.getText()));
-		// Mostrar ventana de confirmaci�n de jugadores mejor
+		// Mostrar ventana de confirmación de jugadores mejor
 		VentanaJuego vJ = new VentanaJuego(this, g);
 		vJ.setModal(true);
 		vJ.setVisible(true);
+	}
+
+	private JPanel getPnJugadores() {
+		if (pnJugadores == null) {
+			pnJugadores = new JPanel();
+			pnJugadores.setOpaque(false);
+			pnJugadores.setLayout(new GridLayout(6, 2, 30, 20));
+			pnJugadores.add(getLblJ1());
+			pnJugadores.add(getTxtUsuario1());
+			pnJugadores.add(getLblJ2());
+			pnJugadores.add(getTxtUsuario2());
+			pnJugadores.add(getLblJ3());
+			pnJugadores.add(getTxtUsuario3());
+			pnJugadores.add(getLblJ4());
+			pnJugadores.add(getTxtUsuario4());
+			pnJugadores.add(getLblJ5());
+			pnJugadores.add(getTxtUsuario5());
+			pnJugadores.add(getLblJ6());
+			pnJugadores.add(getTxtUsuario6());
+		}
+		return pnJugadores;
+	}
+
+	private JLabel getLblJ1() {
+		if (lblJ1 == null) {
+			lblJ1 = new JLabel("Jugador Uno:");
+			lblJ1.setHorizontalAlignment(SwingConstants.RIGHT);
+		}
+		return lblJ1;
+	}
+
+	private JLabel getLblJ6() {
+		if (lblJ6 == null) {
+			lblJ6 = new JLabel("Jugador Seis:");
+			lblJ6.setHorizontalAlignment(SwingConstants.RIGHT);
+		}
+		return lblJ6;
+	}
+
+	private JLabel getLblJ4() {
+		if (lblJ4 == null) {
+			lblJ4 = new JLabel("Jugador Cuatro:");
+			lblJ4.setHorizontalAlignment(SwingConstants.RIGHT);
+		}
+		return lblJ4;
+	}
+
+	private JLabel getLblJ5() {
+		if (lblJ5 == null) {
+			lblJ5 = new JLabel("Jugador Cinco:");
+			lblJ5.setHorizontalAlignment(SwingConstants.RIGHT);
+		}
+		return lblJ5;
+	}
+
+	private JLabel getLblJ2() {
+		if (lblJ2 == null) {
+			lblJ2 = new JLabel("Jugador Dos:");
+			lblJ2.setHorizontalAlignment(SwingConstants.RIGHT);
+		}
+		return lblJ2;
+	}
+
+	private JLabel getLblJ3() {
+		if (lblJ3 == null) {
+			lblJ3 = new JLabel("Jugador Tres:");
+			lblJ3.setHorizontalAlignment(SwingConstants.RIGHT);
+		}
+		return lblJ3;
 	}
 }
