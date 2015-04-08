@@ -48,16 +48,20 @@ public class VentanaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPrincipal() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(
+				VentanaPrincipal.class
+						.getResource("/es/uniovi/asw/trivial/images/icon.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 20, 1050, 700); // XXX: Tamaño de la pantalla 1050x700
 		contentPane = new JPanelBackground(
-				"/es/uniovi/asw/trivial/images/background.png"); //XXX: Ruta desde src
+				"/es/uniovi/asw/trivial/images/background.png");
 		// XXX: Con el otro JPanelBackgroundImage da un error de ImageIcon
 		contentPane.setLayout(null);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.add(getPnBackground());
+		setTitle("Trivial2a");
 		setResizable(false);
 	}
 

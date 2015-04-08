@@ -18,15 +18,15 @@ public class JPanelBackground extends JPanel {
 	 * Create the panel.
 	 */
 	public JPanelBackground(String nombre) {
-		this.url=nombre;
+		this.url = nombre;
 	}
-	
-	public void paint(Graphics g){
-		Dimension tam=getSize();
-		imagen= new ImageIcon(VentanaPrincipal.class.getResource(url));
-		g.drawImage(imagen.getImage(), 0,0, tam.width, tam.height, null);
+
+	public void paint(Graphics g) {
+		Dimension tam = getSize();
+		imagen = new ImageIcon(VentanaPrincipal.class.getResource(url));
+		g.drawImage(imagen.getImage(), 0, 0, tam.width, tam.height, null);
 		this.setOpaque(false);
-		super.paint(g);		
+		super.paint(g);
 	}
 
 }
