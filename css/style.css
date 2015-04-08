@@ -956,7 +956,7 @@ img.port-pic {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	-ms-background-size: cover;
-	min-height: 1035px;
+	min-height: 1400px;
 }
 .team-left img{
 	width:100%;
@@ -966,6 +966,7 @@ img.port-pic {
 }
 .team-left{
 	position:relative;
+	margin-bottom: 2%;
 }
 .team-one{
 	position:absolute;
@@ -976,7 +977,7 @@ img.port-pic {
 .team-one h4, .team-one h5 {
 	color: #fff;
 	font-weight: 600;
-	font-size: 1.65em;
+	font-size: 1.2em;
 	margin: 10px 0 0 0;
 }
 .team-one p {
