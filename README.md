@@ -5,6 +5,7 @@ Repository for Trivial programs.
 
 Software Architecture course - [University of Oviedo](http://www.uniovi.es), 2014-15
 
+[Web del proyecto](http://arquisoft.github.io/Trivial2a/)
 
 =======
 Desarrolladores:
