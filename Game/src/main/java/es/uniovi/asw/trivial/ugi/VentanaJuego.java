@@ -59,8 +59,7 @@ public class VentanaJuego extends JDialog {
 	 */
 	public VentanaJuego(VentanaJugadores ventanaJugadores, GameAPI game) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				VentanaPrincipal.class
-						.getResource("/es/uniovi/asw/trivial/images/icon.png")));
+				"resources/images/icon.png"));
 		setResizable(false);
 		setTitle("Trivial2a");
 		getContentPane().setBackground(new Color(49, 54, 146));
@@ -81,8 +80,7 @@ public class VentanaJuego extends JDialog {
 
 	private JPanel getPnBoard() {
 		if (pnBoard == null) {
-			pnBoard = new JPanelBackground(
-					"/es/uniovi/asw/trivial/images/gameboard.jpg");
+			pnBoard = new JPanelBackground("resources/images/gameboard.jpg");
 			pnBoard.setBounds(187, 1, 670, 670);
 			pnBoard.setOpaque(false);
 			pnBoard.setLayout(null);
