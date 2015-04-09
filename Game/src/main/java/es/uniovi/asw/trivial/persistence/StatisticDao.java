@@ -1,54 +1,72 @@
-package es.uniovi.asw.trivial.persistence;
+package persistence;
 
 import java.util.Map;
 
 public interface StatisticDao {
 
 	/**
-	 * Mï¿½todo para obtener las estadï¿½sticas sobre deportes
+	 * Método para obtener las estadísticas sobre deportes
 	 * @return Map<RespuestasTotalesDeportes, RespuestasCorrectasDeportes>
 	 */
 	Map<Integer, Integer> getStatisticSports();
 	
 	/**
-	 * Mï¿½todo para obtener las estadï¿½sticas sobre Entretenimiento
+	 * Método para obtener las estadísticas sobre Entretenimiento
 	 * @return Map<RespuestasTotalesShows, RespuestasCorrectasShows>
 	 */
 	Map<Integer, Integer> getStatisticShows();
 	
 	/**
-	 * Mï¿½todo para obtener las estadï¿½sticas sobre Ciencia
+	 * Método para obtener las estadísticas sobre Ciencia
 	 * @return Map<RespuestasTotalesCiencia, RespuestasCorrectasCiencia>
 	 */
 	Map<Integer, Integer> getStatisticScience();
 	
 	/**
-	 * Mï¿½todo para obtener las estadï¿½sticas sobre Arte y Literatura
+	 * Método para obtener las estadísticas sobre Arte y Literatura
 	 * @return Map<RespuestasTotalesArte, RespuestasCorrectasArte>
 	 */
 	Map<Integer, Integer> getStatisticArt();
 	
 	/**
-	 * mï¿½todo para obtener las estadï¿½sticas sobre Geografï¿½a
+	 * método para obtener las estadísticas sobre Geografía
 	 * @return Map<RespuestasTotalesGeografia, RespuestasCorrectasGeografia>
 	 */
 	Map<Integer, Integer> getStatisticGeography();
 	
 	/**
-	 * Mï¿½todo para obtener las estadï¿½sticas sobre Historia
+	 * Método para obtener las estadísticas sobre Historia
 	 * @return Map<RespuestasTotalesHistoria, RespuestasCorrectasHistoria>
 	 */
 	Map<Integer, Integer> getStatisticHistory();
 	
 	/**
-	 * Mï¿½todo para obtener las estadï¿½sticas clasificadas por temas
+	 * Método para obtener las estadísticas clasificadas por temas
 	 * @return Map<Tema, RespuestasTotalesTema, RespuestasCorrectasTema>
 	 */
 	Map<String,Map<Integer,Integer>> getAllStatistics();
 	
 	/**
-	 * Mï¿½todo de utilidad para obtener el ï¿½ltimo ID de la tabla Statistics
+	 * Método de utilidad para obtener el último ID de la tabla Statistics
 	 * @return int ID
 	 */
 	int getLastId();
+	
+	/**
+	 * Método para obtener el número total de respuestas
+	 * @return
+	 */
+	int getRespuestasTotales();
+	
+	/**
+	 * Método para obtener el número total de respuestas acertadas
+	 * @return
+	 */
+	int getRespuestasCorrectas();
+	
+	/**
+	 * Método para obtener el número total de respuestas incorrectas
+	 * @return
+	 */
+	int getRespuestasIncorrectas();
 }

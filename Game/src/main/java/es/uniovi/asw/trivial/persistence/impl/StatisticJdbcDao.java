@@ -1,4 +1,4 @@
-package es.uniovi.asw.trivial.persistence.impl;
+package persistence.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-import es.uniovi.asw.trivial.conf.Conf;
-import es.uniovi.asw.trivial.conf.Jdbc;
-import es.uniovi.asw.trivial.persistence.StatisticDao;
+import conf.Conf;
+import conf.Jdbc;
+import persistence.StatisticDao;
 
 public class StatisticJdbcDao implements StatisticDao {
 
@@ -25,7 +25,7 @@ public class StatisticJdbcDao implements StatisticDao {
 			con = Jdbc.getConnection();
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
-			if(rs.next()){
+			if (rs.next()) {
 				sports.put(rs.getInt(1), rs.getInt(2));
 			}
 		} catch (SQLException e) {
@@ -49,7 +49,7 @@ public class StatisticJdbcDao implements StatisticDao {
 			con = Jdbc.getConnection();
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
-			while(rs.next()){
+			while (rs.next()) {
 				shows.put(rs.getInt(1), rs.getInt(2));
 			}
 		} catch (SQLException e) {
@@ -73,7 +73,7 @@ public class StatisticJdbcDao implements StatisticDao {
 			con = Jdbc.getConnection();
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
-			while(rs.next()){
+			while (rs.next()) {
 				science.put(rs.getInt(1), rs.getInt(2));
 			}
 		} catch (SQLException e) {
@@ -97,7 +97,7 @@ public class StatisticJdbcDao implements StatisticDao {
 			con = Jdbc.getConnection();
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
-			if(rs.next()){
+			if (rs.next()) {
 				art.put(rs.getInt(1), rs.getInt(2));
 			}
 		} catch (SQLException e) {
@@ -121,7 +121,7 @@ public class StatisticJdbcDao implements StatisticDao {
 			con = Jdbc.getConnection();
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
-			while(rs.next()){
+			while (rs.next()) {
 				geo.put(rs.getInt(1), rs.getInt(2));
 			}
 		} catch (SQLException e) {
@@ -145,7 +145,7 @@ public class StatisticJdbcDao implements StatisticDao {
 			con = Jdbc.getConnection();
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
-			if(rs.next()){
+			if (rs.next()) {
 				history.put(rs.getInt(1), rs.getInt(2));
 			}
 		} catch (SQLException e) {
@@ -163,8 +163,8 @@ public class StatisticJdbcDao implements StatisticDao {
 		ResultSet rs = null;
 		Connection con = null;
 		String SQL = Conf.get("Statistic.getAll");
-		
-		Map<String,Map<Integer, Integer>> statistic = new HashMap<String,Map<Integer, Integer>>();
+
+		Map<String, Map<Integer, Integer>> statistic = new HashMap<String, Map<Integer, Integer>>();
 		Map<Integer, Integer> sports = new HashMap<Integer, Integer>();
 		Map<Integer, Integer> shows = new HashMap<Integer, Integer>();
 		Map<Integer, Integer> science = new HashMap<Integer, Integer>();
@@ -175,18 +175,18 @@ public class StatisticJdbcDao implements StatisticDao {
 			con = Jdbc.getConnection();
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
-			if(rs.next()){
+			if (rs.next()) {
 				sports.put(rs.getInt(1), rs.getInt(2));
-				shows.put(rs.getInt(3),rs.getInt(4));
-				science.put(rs.getInt(5),rs.getInt(6));
+				shows.put(rs.getInt(3), rs.getInt(4));
+				science.put(rs.getInt(5), rs.getInt(6));
 				art.put(rs.getInt(7), rs.getInt(8));
 				geo.put(rs.getInt(9), rs.getInt(10));
 				history.put(rs.getInt(11), rs.getInt(12));
 				statistic.put("sports", sports);
 				statistic.put("shows", shows);
-				statistic.put("science",science);
-				statistic.put("art",art);
-				statistic.put("geography",geo);
+				statistic.put("science", science);
+				statistic.put("art", art);
+				statistic.put("geography", geo);
 				statistic.put("history", history);
 			}
 		} catch (SQLException e) {
@@ -213,6 +213,74 @@ public class StatisticJdbcDao implements StatisticDao {
 			if (rs.next())
 				result = rs.getInt(1);
 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			Jdbc.close(rs, pst);
+		}
+		return result;
+	}
+
+	@Override
+	public int getRespuestasTotales() {
+		int result = -1;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		Connection c = null;
+		String SQL = Conf.get("Statistic.totalAnswers");
+
+		try {
+			c = Jdbc.getConnection();
+			pst = c.prepareStatement(SQL);
+			rs = pst.executeQuery();
+			if (rs.next())
+				result = rs.getInt(1);
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			Jdbc.close(rs, pst);
+		}
+		return result;
+	}
+
+	@Override
+	public int getRespuestasCorrectas() {
+		int result = -1;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		Connection c = null;
+		String SQL = Conf.get("Statistic.totalCorrect");
+
+		try {
+			c = Jdbc.getConnection();
+			pst = c.prepareStatement(SQL);
+			rs = pst.executeQuery();
+			if (rs.next())
+				result = rs.getInt(1);
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			Jdbc.close(rs, pst);
+		}
+		return result;
+	}
+
+	@Override
+	public int getRespuestasIncorrectas() {
+		int result = -1;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		Connection c = null;
+		String SQL = Conf.get("Statistic.totalIncorrect");
+
+		try {
+			c = Jdbc.getConnection();
+			pst = c.prepareStatement(SQL);
+			rs = pst.executeQuery();
+			if (rs.next())
+				result = rs.getInt(1);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
