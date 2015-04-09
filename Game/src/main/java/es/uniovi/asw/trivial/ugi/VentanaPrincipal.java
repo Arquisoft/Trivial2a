@@ -21,8 +21,7 @@ public class VentanaPrincipal extends JFrame {
 	 * instrucciones y salir
 	 * 
 	 * 
-	 * Faltan ventanas de: instrucciones, pregunta correcta, pregunta
-	 * incorrecta, fin del juego
+	 * Faltan ventanas de: fin del juego
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
