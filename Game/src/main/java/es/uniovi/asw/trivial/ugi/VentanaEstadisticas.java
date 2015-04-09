@@ -8,9 +8,7 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -22,6 +20,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableColumnModel;
 
+import es.uniovi.asw.trivial.factories.BusinessFactory;
 import es.uniovi.asw.trivial.model.Category;
 
 public class VentanaEstadisticas extends JDialog {
@@ -483,19 +482,27 @@ public class VentanaEstadisticas extends JDialog {
 
 	private void rellenarTablas() {
 		// Obtener los datos de las estadísticas de cada categoría
-		rellenarTabla(getInfoQuestionsByCategory(Category.ART_AND_LITERATURE),
+		rellenarTabla(BusinessFactory.getStatisticsLoader()
+				.getInfoQuestionsByCategory(Category.ART_AND_LITERATURE + ""),
 				modeloTablaAYL);
 		rellenarTabla(
-				getInfoQuestionsByCategory(Category.SCIENCE_AND_TECHNOLOGY),
+				BusinessFactory.getStatisticsLoader()
+						.getInfoQuestionsByCategory(
+								Category.SCIENCE_AND_TECHNOLOGY + ""),
 				modeloTablaCYT);
-		rellenarTabla(getInfoQuestionsByCategory(Category.SPORTS),
+		rellenarTabla(BusinessFactory.getStatisticsLoader()
+				.getInfoQuestionsByCategory(Category.SPORTS + ""),
 				modeloTablaDep);
 		rellenarTabla(
-				getInfoQuestionsByCategory(Category.SHOWS_AND_ENTERTAINMENT),
+				BusinessFactory.getStatisticsLoader()
+						.getInfoQuestionsByCategory(
+								Category.SHOWS_AND_ENTERTAINMENT + ""),
 				modeloTablaEntr);
-		rellenarTabla(getInfoQuestionsByCategory(Category.GEOGRAPHY),
+		rellenarTabla(BusinessFactory.getStatisticsLoader()
+				.getInfoQuestionsByCategory(Category.GEOGRAPHY + ""),
 				modeloTablaGeo);
-		rellenarTabla(getInfoQuestionsByCategory(Category.HISTORY),
+		rellenarTabla(BusinessFactory.getStatisticsLoader()
+				.getInfoQuestionsByCategory(Category.HISTORY + ""),
 				modeloTablaHist);
 	}
 
