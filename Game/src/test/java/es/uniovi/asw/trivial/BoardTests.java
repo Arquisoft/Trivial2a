@@ -7,33 +7,36 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import cucumber.deps.com.thoughtworks.xstream.converters.extended.ISO8601SqlTimestampConverter;
 import es.uniovi.asw.trivial.bussines.gameClasses.Board;
 import es.uniovi.asw.trivial.model.BoardOption;
+import es.uniovi.asw.trivial.model.Category;
 
 public class BoardTests {
-	
+
 	private Board board;
 	private BoardOption boardOption;
-	
+
 	@Before
 	public void setUp() {
 		boardOption = new BoardOption(1);
 		boardOption.setName("");
 		boardOption.setMiniatureImageUrl("");
 		boardOption.setBoardImageUrl("");
-		boardOption.setBoardTextFileUrl(System.getProperty("user.dir") + "/resources/boards/grafo.txt");
+		boardOption.setBoardTextFileUrl(System.getProperty("user.dir")
+				+ "/resources/boards/board1/board1Graph.txt");
 		boardOption.setMinPlayers(2);
 		boardOption.setMaxPlayers(6);
-		
+
 		board = new Board(boardOption);
 	}
 
 	@Test
 	public void loadGraphTest() {
 		assertThat(board.size()).isEqualTo(73);
-		
+
 	}
-	
+
 	@Test
 	public void nodesAtDistanceTest() {
 		List<Integer> destinos = board.getSquaresAtDistance(73, 1);
