@@ -8,6 +8,9 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -19,6 +22,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableColumnModel;
 
+import es.uniovi.asw.trivial.model.Category;
+
 public class VentanaEstadisticas extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -26,7 +31,7 @@ public class VentanaEstadisticas extends JDialog {
 	private JPanel pnEstadisticas;
 	private JLabel lblEstadsticas;
 
-	String[] nombreColumnas = { "Usuario", "Totales", "Acertadas"};
+	String[] nombreColumnas = { "Usuario", "Totales", "Acertadas" };
 
 	// GEOGRAFIA
 	private JPanel pnCatGeografia;
@@ -123,6 +128,7 @@ public class VentanaEstadisticas extends JDialog {
 			}
 		}
 		contentPanel.add(getLblEstadsticas(), BorderLayout.NORTH);
+		rellenarTablas();
 	}
 
 	/**
@@ -174,6 +180,7 @@ public class VentanaEstadisticas extends JDialog {
 	private JPanel getPnGeoTabla() {
 		if (pnGeoTabla == null) {
 			pnGeoTabla = new JPanel();
+			pnGeoTabla.setOpaque(false);
 			pnGeoTabla.setBounds(0, 24, 344, 277);
 			pnGeoTabla.setLayout(new CardLayout(0, 0));
 			pnGeoTabla.add(getScrGeoTabla(), "name_722905047230256");
@@ -194,7 +201,7 @@ public class VentanaEstadisticas extends JDialog {
 			modeloTablaGeo = new ModeloNoEditable(nombreColumnas, 0);
 			tblGeo = new JTable(modeloTablaGeo);
 			tblGeo.getTableHeader().setReorderingAllowed(false);
-			
+
 			TableColumnModel columnModel = tblGeo.getColumnModel();
 			columnModel.getColumn(0).setPreferredWidth(5);
 			columnModel.getColumn(1).setPreferredWidth(2);
@@ -226,6 +233,7 @@ public class VentanaEstadisticas extends JDialog {
 	private JPanel getPnEntrTabla() {
 		if (pnEntrTabla == null) {
 			pnEntrTabla = new JPanel();
+			pnEntrTabla.setOpaque(false);
 			pnEntrTabla.setBounds(0, 24, 344, 277);
 			pnEntrTabla.setLayout(new CardLayout(0, 0));
 			pnEntrTabla.add(getScrEntrTabla(), "name_722932889272643");
@@ -246,7 +254,7 @@ public class VentanaEstadisticas extends JDialog {
 			modeloTablaEntr = new ModeloNoEditable(nombreColumnas, 0);
 			tblEntr = new JTable(modeloTablaEntr);
 			tblEntr.getTableHeader().setReorderingAllowed(false);
-			
+
 			TableColumnModel columnModel = tblEntr.getColumnModel();
 			columnModel.getColumn(0).setPreferredWidth(5);
 			columnModel.getColumn(1).setPreferredWidth(2);
@@ -279,6 +287,7 @@ public class VentanaEstadisticas extends JDialog {
 	private JPanel getPnHistTabla() {
 		if (pnHistTabla == null) {
 			pnHistTabla = new JPanel();
+			pnHistTabla.setOpaque(false);
 			pnHistTabla.setBounds(0, 24, 344, 277);
 			pnHistTabla.setLayout(new CardLayout(0, 0));
 			pnHistTabla.add(getScrHistTabla(), "name_82321767191981");
@@ -299,7 +308,7 @@ public class VentanaEstadisticas extends JDialog {
 			modeloTablaHist = new ModeloNoEditable(nombreColumnas, 0);
 			tblHist = new JTable(modeloTablaHist);
 			tblHist.getTableHeader().setReorderingAllowed(false);
-			
+
 			TableColumnModel columnModel = tblHist.getColumnModel();
 			columnModel.getColumn(0).setPreferredWidth(5);
 			columnModel.getColumn(1).setPreferredWidth(2);
@@ -332,6 +341,7 @@ public class VentanaEstadisticas extends JDialog {
 	private JPanel getPnAYLTabla() {
 		if (pnAYLTabla == null) {
 			pnAYLTabla = new JPanel();
+			pnAYLTabla.setOpaque(false);
 			pnAYLTabla.setBounds(0, 24, 344, 277);
 			pnAYLTabla.setLayout(new CardLayout(0, 0));
 			pnAYLTabla.add(getScrAYLTabla(), "name_722886192758659");
@@ -352,7 +362,7 @@ public class VentanaEstadisticas extends JDialog {
 			modeloTablaAYL = new ModeloNoEditable(nombreColumnas, 0);
 			tblAYL = new JTable(modeloTablaAYL);
 			tblAYL.getTableHeader().setReorderingAllowed(false);
-			
+
 			TableColumnModel columnModel = tblAYL.getColumnModel();
 			columnModel.getColumn(0).setPreferredWidth(5);
 			columnModel.getColumn(1).setPreferredWidth(2);
@@ -385,6 +395,7 @@ public class VentanaEstadisticas extends JDialog {
 	private JPanel getPnCYTTabla() {
 		if (pnCYTTabla == null) {
 			pnCYTTabla = new JPanel();
+			pnCYTTabla.setOpaque(false);
 			pnCYTTabla.setBounds(0, 24, 344, 277);
 			pnCYTTabla.setLayout(new CardLayout(0, 0));
 			pnCYTTabla.add(getScrCYTTabla(), "name_82321767191981");
@@ -405,7 +416,7 @@ public class VentanaEstadisticas extends JDialog {
 			modeloTablaCYT = new ModeloNoEditable(nombreColumnas, 0);
 			tblCYT = new JTable(modeloTablaCYT);
 			tblCYT.getTableHeader().setReorderingAllowed(false);
-			
+
 			TableColumnModel columnModel = tblCYT.getColumnModel();
 			columnModel.getColumn(0).setPreferredWidth(5);
 			columnModel.getColumn(1).setPreferredWidth(2);
@@ -415,7 +426,7 @@ public class VentanaEstadisticas extends JDialog {
 	}
 
 	// //////////////DEPORTES//////////////////////
-	
+
 	private JPanel getPnCatDep() {
 		if (pnCatDep == null) {
 			pnCatDep = new JPanel();
@@ -426,6 +437,7 @@ public class VentanaEstadisticas extends JDialog {
 		}
 		return pnCatDep;
 	}
+
 	private JLabel getLblDep() {
 		if (lblDep == null) {
 			lblDep = new JLabel("Deportes");
@@ -433,16 +445,18 @@ public class VentanaEstadisticas extends JDialog {
 		}
 		return lblDep;
 	}
-	
+
 	private JPanel getPnDepTabla() {
 		if (pnDepTabla == null) {
 			pnDepTabla = new JPanel();
+			pnDepTabla.setOpaque(false);
 			pnDepTabla.setBounds(0, 24, 344, 277);
 			pnDepTabla.setLayout(new CardLayout(0, 0));
 			pnDepTabla.add(getScrDepTabla(), "name_82321767191981");
 		}
 		return pnDepTabla;
 	}
+
 	private JScrollPane getScrDepTabla() {
 		if (scrDepTabla == null) {
 			scrDepTabla = new JScrollPane();
@@ -450,17 +464,45 @@ public class VentanaEstadisticas extends JDialog {
 		}
 		return scrDepTabla;
 	}
+
 	private JTable getTblDep() {
 		if (tblDep == null) {
-			modeloTablaDep= new ModeloNoEditable(nombreColumnas, 0);
+			modeloTablaDep = new ModeloNoEditable(nombreColumnas, 0);
 			tblDep = new JTable(modeloTablaDep);
 			tblDep.getTableHeader().setReorderingAllowed(false);
-			
+
 			TableColumnModel columnModel = tblDep.getColumnModel();
 			columnModel.getColumn(0).setPreferredWidth(5);
 			columnModel.getColumn(1).setPreferredWidth(2);
 			columnModel.getColumn(2).setPreferredWidth(2);
 		}
 		return tblDep;
+	}
+
+	// //////////////////////////RELLENAR TABLA////////////////////////////
+
+	private void rellenarTablas() {
+		// Obtener los datos de las estadísticas de cada categoría
+		rellenarTabla(getInfoQuestionsByCategory(Category.ART_AND_LITERATURE),
+				modeloTablaAYL);
+		rellenarTabla(
+				getInfoQuestionsByCategory(Category.SCIENCE_AND_TECHNOLOGY),
+				modeloTablaCYT);
+		rellenarTabla(getInfoQuestionsByCategory(Category.SPORTS),
+				modeloTablaDep);
+		rellenarTabla(
+				getInfoQuestionsByCategory(Category.SHOWS_AND_ENTERTAINMENT),
+				modeloTablaEntr);
+		rellenarTabla(getInfoQuestionsByCategory(Category.GEOGRAPHY),
+				modeloTablaGeo);
+		rellenarTabla(getInfoQuestionsByCategory(Category.HISTORY),
+				modeloTablaHist);
+	}
+
+	private void rellenarTabla(List<Object[]> datos,
+			ModeloNoEditable modeloTabla) {
+		for (Object[] r : datos) {
+			modeloTabla.addRow(r);
+		}
 	}
 }
