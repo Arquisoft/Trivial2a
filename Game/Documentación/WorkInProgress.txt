@@ -24,6 +24,17 @@
 Punto 1 Descripción del proyecto
 Ruan Alves.
 
+Punto 2 Metodología utilizada
+Ruan Alves.
+
+Punto 4 Identificación inicial de los atributos de calidad
+Ruan Alves.
+
 Punto 6 Lista actualizada de stakeholders.
 Ruan Alves.
 
+Punto 7 Lista de atributos de calidad
+Ruan Alves.
+
+Punto 8 Atributos de calidad e interesados
+Ruan Alves.
