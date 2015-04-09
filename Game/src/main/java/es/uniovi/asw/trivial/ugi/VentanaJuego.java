@@ -97,8 +97,7 @@ public class VentanaJuego extends JDialog {
 	}
 
 	private void mostrarPregunta(Square s) {
-		// TODO Auto-generated method stub
-
+		// TODO Obtener pregunta de la categoría y pasarla a VentanaPregunta
 	}
 
 	private JPanel getPnIzq() {

@@ -6,11 +6,14 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -23,8 +26,9 @@ public class VentanaLoginAdmin extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel;
 	private JTextField txtUser;
-	private JTextField txtPass;
+	private JPasswordField txtPass;
 	private VentanaPrincipal vp;
+	private char[] passInput;
 
 	/**
 	 * Launch the application.
@@ -43,13 +47,13 @@ public class VentanaLoginAdmin extends JDialog {
 	 * Create the dialog.
 	 */
 	public VentanaLoginAdmin(VentanaPrincipal ventanaPrincipal) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/icon.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(
+				"resources/images/icon.png"));
 		setResizable(false);
 		setTitle("Trivial2a");
 		setBounds(400, 180, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel = new JPanelBackground(
-				"resources/images/bgquestion.png");
+		contentPanel = new JPanelBackground("resources/images/bgquestion.png");
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
@@ -80,10 +84,9 @@ public class VentanaLoginAdmin extends JDialog {
 				pnForm.add(lblContrasea);
 			}
 			{
-				txtPass = new JTextField();
+				txtPass = new JPasswordField(10);
 				txtPass.setBounds(161, 92, 157, 25);
 				pnForm.add(txtPass);
-				txtPass.setColumns(10);
 			}
 		}
 		{
@@ -93,6 +96,16 @@ public class VentanaLoginAdmin extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			{
 				JButton okButton = new JButton("Entrar");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						passInput = txtPass.getPassword();						
+						if (txtUser.getText().equals("admin") && isPasswordCorrect()) {
+							mostrarVentanaEstadisticas();
+						} else {
+							mostrarVentanaError();
+						}
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -108,5 +121,28 @@ public class VentanaLoginAdmin extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+
+	private void mostrarVentanaError() {
+		JOptionPane.showMessageDialog(this, "Datos incorrectos", "Error",
+				JOptionPane.ERROR_MESSAGE);
+	}
+
+	private void mostrarVentanaEstadisticas() {
+		dispose();
+		VentanaEstadisticas vEst = new VentanaEstadisticas();
+		vEst.setModal(true);
+		vEst.setVisible(true);		
+	}
+	
+	private boolean isPasswordCorrect() {
+		boolean isCorrect = true;
+		char[] correctPassword = { 'a', 'd', 'm', 'i', 'n' };
+		if (passInput.length != correctPassword.length) {
+			isCorrect = false;
+		} else {
+			isCorrect = Arrays.equals(passInput, correctPassword);
+		}
+		return isCorrect;
 	}
 }
