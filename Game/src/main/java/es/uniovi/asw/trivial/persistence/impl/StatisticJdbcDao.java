@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import model.User;
 import conf.Conf;
 import conf.Jdbc;
 import persistence.StatisticDao;
@@ -27,7 +28,7 @@ public class StatisticJdbcDao implements StatisticDao {
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				sports.add(0,rs.getInt(1));
+				sports.add(0, rs.getInt(1));
 				sports.add(1, rs.getInt(2));
 			}
 		} catch (SQLException e) {
@@ -52,7 +53,7 @@ public class StatisticJdbcDao implements StatisticDao {
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				shows.add(0,rs.getInt(1));
+				shows.add(0, rs.getInt(1));
 				shows.add(1, rs.getInt(2));
 			}
 		} catch (SQLException e) {
@@ -77,7 +78,7 @@ public class StatisticJdbcDao implements StatisticDao {
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				science.add(0,rs.getInt(1));
+				science.add(0, rs.getInt(1));
 				science.add(1, rs.getInt(2));
 			}
 		} catch (SQLException e) {
@@ -102,7 +103,7 @@ public class StatisticJdbcDao implements StatisticDao {
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				art.add(0,rs.getInt(1));
+				art.add(0, rs.getInt(1));
 				art.add(1, rs.getInt(2));
 			}
 		} catch (SQLException e) {
@@ -127,7 +128,7 @@ public class StatisticJdbcDao implements StatisticDao {
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				geo.add(0,rs.getInt(1));
+				geo.add(0, rs.getInt(1));
 				geo.add(1, rs.getInt(2));
 			}
 		} catch (SQLException e) {
@@ -152,7 +153,7 @@ public class StatisticJdbcDao implements StatisticDao {
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				history.add(0,rs.getInt(1));
+				history.add(0, rs.getInt(1));
 				history.add(1, rs.getInt(2));
 			}
 		} catch (SQLException e) {
@@ -177,23 +178,23 @@ public class StatisticJdbcDao implements StatisticDao {
 		ArrayList<Integer> science = new ArrayList<Integer>();
 		ArrayList<Integer> art = new ArrayList<Integer>();
 		ArrayList<Integer> geo = new ArrayList<Integer>();
-		ArrayList<Integer> history = new ArrayList<Integer>();		
+		ArrayList<Integer> history = new ArrayList<Integer>();
 		try {
 			con = Jdbc.getConnection();
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				sports.add(0,rs.getInt(1));
+				sports.add(0, rs.getInt(1));
 				sports.add(1, rs.getInt(2));
-				shows.add(0,rs.getInt(3));
+				shows.add(0, rs.getInt(3));
 				shows.add(1, rs.getInt(4));
-				science.add(0,rs.getInt(5));
+				science.add(0, rs.getInt(5));
 				science.add(1, rs.getInt(6));
-				art.add(0,rs.getInt(7));
+				art.add(0, rs.getInt(7));
 				art.add(1, rs.getInt(8));
-				geo.add(0,rs.getInt(9));
+				geo.add(0, rs.getInt(9));
 				geo.add(1, rs.getInt(10));
-				history.add(0,rs.getInt(11));
+				history.add(0, rs.getInt(11));
 				history.add(1, rs.getInt(12));
 				statistic.put("sports", sports);
 				statistic.put("shows", shows);
@@ -300,6 +301,60 @@ public class StatisticJdbcDao implements StatisticDao {
 			Jdbc.close(rs, pst);
 		}
 		return result;
+	}
+
+	@Override
+	public Map<String, Integer[]> getStatisticUser(User user) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Connection con = null;
+
+		Map<String, Integer[]> statistic = new HashMap<String, Integer[]>();
+		try {
+			con = Jdbc.getConnection();
+			ps = con.prepareStatement(Conf.get("User.getStatisticID"));
+			ps.setString(1, user.getLogin());
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				int ID = rs.getInt("STATISTICID");
+				PreparedStatement ps2 = null;
+				ResultSet rs2 = null;
+				ps2 = con.prepareStatement(Conf.get("Statistic.getByID"));
+				ps2.setInt(1, ID);
+				rs2 = ps2.executeQuery();
+				while (rs2.next()) {
+					Integer[] sports = { rs.getInt("correctsports"),
+							rs.getInt("totalsports") };
+					Integer[] shows = { rs.getInt("correctshows"),
+							rs.getInt("totalshows") };
+					Integer[] science = { rs.getInt("correctscience"),
+							rs.getInt("totalscience") };
+					Integer[] art = { rs.getInt("correctart"),
+							rs.getInt("totalart") };
+					Integer[] geo = { rs.getInt("correctgeography"),
+							rs.getInt("totalgeography") };
+					Integer[] history = { rs.getInt("correcthistory"),
+							rs.getInt("totalhistory") };
+
+					statistic.put("sports", sports);
+					statistic.put("shows", shows);
+					statistic.put("science", science);
+					statistic.put("art", art);
+					statistic.put("geography", geo);
+					statistic.put("history", history);
+				}
+				rs2.close();
+				ps2.close();
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Jdbc.close(rs, ps);
+		}
+
+		return statistic;
+
 	}
 
 }
