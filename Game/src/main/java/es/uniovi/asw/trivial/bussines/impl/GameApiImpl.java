@@ -25,15 +25,10 @@ public class GameApiImpl implements GameAPI {
 	public List<BoardOption> getBoardOptions() {
 		return BoardOptionsFactory.getBoardOptions();
 	}
-
+	
 	@Override
 	public void selectBoardOption(int boardOptionId) {
 		board = new Board(BoardOptionsFactory.getBoardOption(boardOptionId));
-	}
-
-	@Override
-	public List<User> getUserList() {
-		return users;
 	}
 
 	@Override
