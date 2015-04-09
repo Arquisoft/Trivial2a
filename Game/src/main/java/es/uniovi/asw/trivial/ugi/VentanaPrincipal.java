@@ -3,6 +3,7 @@ package es.uniovi.asw.trivial.ugi;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.Toolkit;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -54,13 +54,11 @@ public class VentanaPrincipal extends JFrame {
 	 */
 	public VentanaPrincipal() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				VentanaPrincipal.class
-						.getResource("/es/uniovi/asw/trivial/images/icon.png")));
+				"resources/images/icon.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 20, 1050, 700); // XXX: Tamaño de la pantalla 1050x700
-		contentPane = new JPanelBackground(
-				"/es/uniovi/asw/trivial/images/background.png");
-		// XXX: Con el otro JPanelBackgroundImage da un error de ImageIcon
+		contentPane = new JPanel();
+		contentPane = new JPanelBackground("resources/images/background.png");
 		contentPane.setLayout(null);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

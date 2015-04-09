@@ -102,8 +102,8 @@ public class VentanaJugada extends JDialog {
 	}
 
 	public void tirarDado() {
-		lblDado.setIcon(new ImageIcon(VentanaJuego.class.getResource("/images/"
-				+ vj.getGame().rollDice() + ".png")));
+		lblDado.setIcon(new ImageIcon("resources/images/"
+				+ vj.getGame().rollDice() + ".png"));
 		btnTirar.setText("mover");
 	}
 

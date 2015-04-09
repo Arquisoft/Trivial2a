@@ -53,7 +53,7 @@ public class VentanaJugadores extends JDialog {
 	public JPanel getContentPanel() {
 		if (contentPanel == null) {
 			contentPanel = new JPanelBackground(
-					"/es/uniovi/asw/trivial/images/bgquestion.png");
+					"resources/images/bgquestion.png");
 			contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 			contentPanel.setLayout(new BorderLayout(0, 0));
 			contentPanel.add(getLblJugadores(), BorderLayout.NORTH);
@@ -222,9 +222,7 @@ public class VentanaJugadores extends JDialog {
 	 */
 	public VentanaJugadores(VentanaPrincipal ventanaPrincipal) {
 		this.vp = ventanaPrincipal;
-		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				VentanaPrincipal.class
-						.getResource("/es/uniovi/asw/trivial/images/icon.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/icon.png"));
 		setResizable(false);
 		setTitle("Trivial2a");
 		setBounds(370, 180, 600, 400);

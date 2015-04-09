@@ -46,12 +46,9 @@ public class VentanaPregunta extends JDialog {
 	 * Create the dialog. Se le podría pasar la ventana juego entera
 	 */
 	public VentanaPregunta(Question question) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				VentanaPrincipal.class
-						.getResource("/es/uniovi/asw/trivial/images/icon.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/icon.png"));
 		this.question = question;
-		contentPanel = new JPanelBackground(
-				"/es/uniovi/asw/trivial/images/bgquestion.png");
+		contentPanel = new JPanelBackground("resources/images/bgquestion.png");
 		setTitle(question.getCategory());// Habría que hacerlo con un map para
 											// que la muestre en castellano
 		setBounds(500, 180, 400, 450);

@@ -18,7 +18,7 @@ public class VentanaLoginAdmin extends JDialog {
 
 	/**
 	 * Ventana que permite al administrador registrarse para ver las
-	 * estadísticas
+	 * estadï¿½sticas
 	 */
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel;
@@ -43,15 +43,13 @@ public class VentanaLoginAdmin extends JDialog {
 	 * Create the dialog.
 	 */
 	public VentanaLoginAdmin(VentanaPrincipal ventanaPrincipal) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				VentanaPrincipal.class
-						.getResource("/es/uniovi/asw/trivial/images/icon.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/icon.png"));
 		setResizable(false);
 		setTitle("Trivial2a");
 		setBounds(400, 180, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel = new JPanelBackground(
-				"/es/uniovi/asw/trivial/images/bgquestion.png");
+				"resources/images/bgquestion.png");
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));

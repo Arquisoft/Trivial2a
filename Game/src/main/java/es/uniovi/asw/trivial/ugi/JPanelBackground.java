@@ -23,10 +23,12 @@ public class JPanelBackground extends JPanel {
 
 	public void paint(Graphics g) {
 		Dimension tam = getSize();
-		imagen = new ImageIcon(VentanaPrincipal.class.getResource(url));
-		g.drawImage(imagen.getImage(), 0, 0, tam.width, tam.height, null);
-		this.setOpaque(false);
-		super.paint(g);
+		imagen = new ImageIcon(url);
+		if (imagen != null) {
+			g.drawImage(imagen.getImage(), 0, 0, tam.width, tam.height, null);
+			this.setOpaque(false);
+			super.paint(g);
+		}
 	}
 
 }

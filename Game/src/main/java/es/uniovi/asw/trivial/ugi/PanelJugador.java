@@ -47,8 +47,7 @@ public class PanelJugador extends JPanel {
 	private JLabel getLblscore() {
 		if (lblscore == null) {
 			lblscore = new JLabel("");
-			lblscore.setIcon(new ImageIcon(PanelJugador.class
-					.getResource("/images/scoreCompleto.jpg")));
+			lblscore.setIcon(new ImageIcon("resources/images/scoreCompleto.jpg"));
 		}
 		return lblscore;
 	}
