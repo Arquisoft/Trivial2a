@@ -1,14 +1,18 @@
 package es.uniovi.asw.trivial.bussines.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import es.uniovi.asw.trivial.bussines.GameAPI;
 import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
 import es.uniovi.asw.trivial.bussines.gameClasses.Board;
 import es.uniovi.asw.trivial.bussines.gameClasses.BoardOptionsFactory;
 import es.uniovi.asw.trivial.bussines.gameClasses.Dice;
+import es.uniovi.asw.trivial.factories.PersistenceFactory;
 import es.uniovi.asw.trivial.model.BoardOption;
 import es.uniovi.asw.trivial.model.Category;
+import es.uniovi.asw.trivial.model.Question;
+import es.uniovi.asw.trivial.model.Score;
 import es.uniovi.asw.trivial.model.SquareType;
 import es.uniovi.asw.trivial.model.User;
 
@@ -118,6 +122,87 @@ public class GameApiImpl implements GameAPI {
 	@Override
 	public void wrongAnswer() {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void startGame(List<String> userNames, BoardOption boardOption)
+			throws IllegalActionException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getPlayerLocation(String userName) throws IllegalActionException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Score getPlayerScore(String userName) throws IllegalActionException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Integer> getMovements(int userName, int squareNumber)
+			throws IllegalActionException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Question getQuestion(String userName, int squareNumber)
+			throws IllegalActionException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isAnswerCorrect(int questionId, String answer,
+			String userName, int squareNumber) throws IllegalActionException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String getWinner() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getActivePlayer() throws IllegalActionException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<String> getUserNameList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void createUser(String userName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String[] getSquares() throws IllegalActionException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getWinner() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> getUsers() {
+		return PersistenceFactory.persistenceFactory().createUserDao().getUsers();
 	}
 
 	

@@ -7,6 +7,7 @@ import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
 import es.uniovi.asw.trivial.model.BoardOption;
 import es.uniovi.asw.trivial.model.Question;
 import es.uniovi.asw.trivial.model.Score;
+import es.uniovi.asw.trivial.model.User;
 
 public interface GameAPI {
 
@@ -175,6 +176,9 @@ public interface GameAPI {
 	 * @return List of user names.
 	 */
 	Set<String> getUserNameList();
+	
+	
+	List<User> getUsers();
 
 	/**
 	 * Method used to add a new user to the system.
