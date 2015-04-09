@@ -7,8 +7,7 @@
 *								*
 *****************************************************************
 
-Punto 4 Identificación inicial de los atributos de calidad.
-Ruan Alves.
+
 
 *****************************************************************
 *  COMPLETED							*
@@ -23,5 +22,8 @@ Ruan Alves.
 *****************************************************************
 
 Punto 1 Descripción del proyecto
+Ruan Alves.
+
+Punto 6 Lista actualizada de stakeholders.
 Ruan Alves.
 
