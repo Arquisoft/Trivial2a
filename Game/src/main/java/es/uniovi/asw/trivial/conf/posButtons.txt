@@ -1,0 +1,52 @@
+private void rellenarMap(){
+//		Point izqInf=new Point(pnBoard.getLocation());
+//		int pieza=33;
+//		int ancho=Math.round(pnBoard.getWidth());
+//		int alto=Math.round(pnBoard.getHeight());
+//		Point drchSup=new Point(izqInf.x+ancho,izqInf.y+alto);
+//		casillas=new HashMap<Integer,Point>();
+//		int pos=48;
+//		int k=0;
+//		int j=0;
+//		while(pos<68)
+//		{
+//			if(pos<53){
+//				casillas.put(pos, new Point(izqInf.x+pieza*(2+k),alto/2));
+//				k++;
+//			}
+//			if(pos>62){
+//				casillas.put(pos, new Point(drchSup.x-pieza*(2+j),alto/2));
+//				j++;
+//			}
+//			pos++;
+//		}
+//		int m = Math.min(ancho/2, alto/2);
+//		int r=4 * m / 5;
+//		for(int i=1;i<43;i++){
+//			double t = 2 * Math.PI * i / 43;
+//            int x = (int) Math.round(ancho/2 + r * Math.cos(t));
+//            int y = (int) Math.round(alto/2 + r * Math.sin(t));
+//            casillas.put(i, new Point(x,y));
+//		}
+//		
+//		
+//	}
+
+
+showbuttons
+
+squares= new ArrayList<JButtonSquare>();
+		for (Square s: sqs)
+		{
+			if(casillas.containsKey(s.getId()))
+			{
+				JButton aux=new JButtonSquare(casillas.get(s.getId()),s);
+				aux.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						JButtonSquare o= (JButtonSquare) e.getSource();
+						pintarTablero(null);
+						mostrarPregunta(o.getInfo());
+					}
+				});
+				pnBoard.add(aux);
+			}
