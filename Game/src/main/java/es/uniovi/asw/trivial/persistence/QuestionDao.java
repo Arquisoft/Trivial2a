@@ -11,8 +11,6 @@ import es.uniovi.asw.trivial.model.Question;
  */
 
 public interface QuestionDao {
-	
 	List<Question> getQuestions();
 	void save(Question question);
-
 }

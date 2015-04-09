@@ -1,4 +1,4 @@
-package persistence.impl;
+package es.uniovi.asw.trivial.persistence.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import model.User;
-import conf.Conf;
-import conf.Jdbc;
-import persistence.StatisticDao;
+import es.uniovi.asw.trivial.model.User;
+import es.uniovi.asw.trivial.conf.Conf;
+import es.uniovi.asw.trivial.conf.Jdbc;
+import es.uniovi.asw.trivial.persistence.StatisticDao;
 
 public class StatisticJdbcDao implements StatisticDao {
 
@@ -336,12 +336,12 @@ public class StatisticJdbcDao implements StatisticDao {
 					Integer[] history = { rs.getInt("correcthistory"),
 							rs.getInt("totalhistory") };
 
-					statistic.put("sports", sports);
-					statistic.put("shows", shows);
-					statistic.put("science", science);
-					statistic.put("art", art);
-					statistic.put("geography", geo);
-					statistic.put("history", history);
+					statistic.put("SPORTS", sports);
+					statistic.put("SHOWS_AND_ENTERTAINMENT", shows);
+					statistic.put("SCIENCE_AND_TECHNOLOGY", science);
+					statistic.put("ART_AND_LITERATURE", art);
+					statistic.put("GEOGRAPHY", geo);
+					statistic.put("HISTORY", history);
 				}
 				rs2.close();
 				ps2.close();
