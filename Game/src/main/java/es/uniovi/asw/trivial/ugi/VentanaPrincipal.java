@@ -7,8 +7,10 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -113,7 +115,7 @@ public class VentanaPrincipal extends JFrame {
 			btnInstrucciones = new JButton("Instrucciones");
 			btnInstrucciones.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-
+					mostrarVentanaInstrucciones();
 				}
 			});
 			btnInstrucciones.setBackground(Color.yellow);
@@ -143,7 +145,7 @@ public class VentanaPrincipal extends JFrame {
 			btnSalir.setOpaque(true);
 			btnSalir.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					System.exit(0);
+					System.exit(0);				
 				}
 			});
 		}
@@ -160,5 +162,21 @@ public class VentanaPrincipal extends JFrame {
 		VentanaLoginAdmin vL = new VentanaLoginAdmin(this);
 		vL.setModal(true);
 		vL.setVisible(true);
+	}
+	
+	private void mostrarVentanaInstrucciones(){
+		JOptionPane.showMessageDialog(this,
+			    "Para jugar, lo primero que has de hacer es seleccionar \n "
+			    + "los usuarios de todos los jugadores. \n"
+			    + "Una vez hecho esto, podrás aceder a la partida. \n\n"
+			    + "Por turnos, id tirando el dado y respondiendo a las preguntas \n"
+			    + "de las casillas que os haya tocado. Si aciertas, volverá a ser \n"
+			    + "tu turno. Ganarás quesitos cada vez que respondas una pregunta \n"
+			    + "de una casilla grande. \n\n "
+			    + "Una vez conseguidos los SEIS quesitos de colores, ve a la casilla \n"
+			    + "central y responde bien a las preguntas indicadas para ganar la partida. ",
+			    "Instrucciones",
+			    JOptionPane.INFORMATION_MESSAGE,
+			    new ImageIcon("resources/images/icon.png"));
 	}
 }

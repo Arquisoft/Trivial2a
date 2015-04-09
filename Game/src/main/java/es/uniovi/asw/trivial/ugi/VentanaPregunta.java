@@ -6,10 +6,13 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -31,10 +34,26 @@ public class VentanaPregunta extends JDialog {
 	private JButton btnPrimerarespuesta;
 	private JButton btnSegundarespuesta;
 	private JButton btnTercerarespuesta;
+	private JPanel pnRespuestas;
+
+	private String[] respuestas = new String[3];
+	private int[] valor = new int[3];
 
 	public static void main(String[] args) {
 		try {
-			VentanaPregunta dialog = new VentanaPregunta(new Question());
+			//TODO: Quitar al acabar
+			//Pregunta de prueba
+			Question q = new Question();
+			q.setCategory("C1");
+			q.setCorrectAnswer("Correcta");
+			List<String> f = new ArrayList<String>();
+			f.add("Falsa 1");
+			f.add("Falsa 2");
+			q.setIncorrectAnswers(f);
+			q.setStatement("Cual es la respuesta correcta?");
+			//Pregunta de prueba
+
+			VentanaPregunta dialog = new VentanaPregunta(q);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -46,12 +65,16 @@ public class VentanaPregunta extends JDialog {
 	 * Create the dialog. Se le podría pasar la ventana juego entera
 	 */
 	public VentanaPregunta(Question question) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/icon.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(
+				"resources/images/icon.png"));
 		this.question = question;
 		contentPanel = new JPanelBackground("resources/images/bgquestion.png");
 		setTitle(question.getCategory());// Habría que hacerlo con un map para
 											// que la muestre en castellano
 		setBounds(500, 180, 400, 450);
+
+		asignarRespuestas();
+
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 384, 411);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -59,6 +82,37 @@ public class VentanaPregunta extends JDialog {
 		contentPanel.setLayout(new GridLayout(2, 1, 0, 15));
 		contentPanel.add(getTxtPregunta());
 		contentPanel.add(getPnRespuestas());
+	}
+
+	/**
+	 * Método para desordenar las respuestas
+	 */
+	private void asignarRespuestas() {
+		boolean[] usadas = new boolean[3]; // F F V
+		int pos;
+
+		for (int i = 0; i < 3; i++) {
+			// Boton de la pregunta
+			do {
+				pos = (int) ((Math.random() * 3));
+			} while (valor[pos] != 0);
+
+			// Pregunta
+			int v;
+			do {
+				v = (int) ((Math.random() * 3));
+			} while (usadas[v]);
+
+			if (v == 2) {
+				usadas[v] = true;
+				respuestas[pos] = question.getCorrectAnswer();
+				valor[pos] = 1;
+			} else {
+				usadas[v] = true;
+				respuestas[pos] = question.getIncorrectAnswers().get(v);
+				valor[pos] = -1;
+			}
+		}
 	}
 
 	private JTextField getTxtPregunta() {
@@ -77,7 +131,12 @@ public class VentanaPregunta extends JDialog {
 
 	private JButton getBtnPrimerarespuesta() {
 		if (btnPrimerarespuesta == null) {
-			btnPrimerarespuesta = new JButton(crearRespuesta());
+			btnPrimerarespuesta = new JButton(getRespuesta(1));
+			btnPrimerarespuesta.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					validarRespuesta(valor[0]);
+				}
+			});
 			btnPrimerarespuesta.setVerticalAlignment(SwingConstants.TOP);
 			btnPrimerarespuesta.setHorizontalAlignment(SwingConstants.LEFT);
 		}
@@ -86,12 +145,13 @@ public class VentanaPregunta extends JDialog {
 
 	private JButton getBtnSegundarespuesta() {
 		if (btnSegundarespuesta == null) {
-			btnSegundarespuesta = new JButton(crearRespuesta());
+			btnSegundarespuesta = new JButton(getRespuesta(2));
 			btnSegundarespuesta.setVerticalAlignment(SwingConstants.TOP);
 			btnSegundarespuesta.setHorizontalTextPosition(SwingConstants.LEFT);
 			btnSegundarespuesta.setHorizontalAlignment(SwingConstants.LEFT);
 			btnSegundarespuesta.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					validarRespuesta(valor[1]);
 				}
 			});
 		}
@@ -100,26 +160,20 @@ public class VentanaPregunta extends JDialog {
 
 	private JButton getBtnTercerarespuesta() {
 		if (btnTercerarespuesta == null) {
-			btnTercerarespuesta = new JButton(crearRespuesta());
+			btnTercerarespuesta = new JButton(getRespuesta(3));
+			btnTercerarespuesta.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					validarRespuesta(valor[2]);
+				}
+			});
 			btnTercerarespuesta.setVerticalAlignment(SwingConstants.TOP);
 			btnTercerarespuesta.setHorizontalAlignment(SwingConstants.LEFT);
 		}
 		return btnTercerarespuesta;
 	}
 
-	// coloca las respuestas de forma aleatoria
-	private boolean[] creadas = { false, false, false };
-	private JPanel pnRespuestas;
-
-	private String crearRespuesta() {
-		Random rnd = new Random();
-		int pos = -1;
-		do {
-			pos = (int) (rnd.nextDouble() * 3 + 0);
-		} while (!creadas[pos]);
-		return (pos > 0) ? question.getIncorrectAnswers().get(pos) : question
-				.getCorrectAnswer();
-
+	private String getRespuesta(int boton) {
+		return respuestas[boton - 1];
 	}
 
 	// TODO: hay que crear el método que comprueba si la respuesta es correcta y
@@ -135,5 +189,26 @@ public class VentanaPregunta extends JDialog {
 			pnRespuestas.add(getBtnTercerarespuesta());
 		}
 		return pnRespuestas;
+	}
+
+	private void validarRespuesta(int respuesta) {
+		{
+			if (respuesta == 1) {
+				dispose();
+				//TODO: Contar turno acertado
+				JOptionPane.showMessageDialog(this,
+						"¡Has acertado la pregunta!", "¡Correcto!",
+						JOptionPane.INFORMATION_MESSAGE, new ImageIcon(
+								"resources/images/acierto.png"));
+			} else {
+				dispose();
+				//TODO: Contar turno fallado
+				JOptionPane.showMessageDialog(this,
+						"¡Has fallado la pregunta!", "¡Mal!",
+						JOptionPane.INFORMATION_MESSAGE, new ImageIcon(
+								"resources/images/fallo.png"));
+			}
+		}
+
 	}
 }
