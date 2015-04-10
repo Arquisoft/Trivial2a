@@ -312,18 +312,14 @@ public class StatisticJdbcDao implements StatisticDao {
 		Map<String, Integer[]> statistic = new HashMap<String, Integer[]>();
 		try {
 			con = Jdbc.getConnection();
-			// FIXME: Cambiar por consulta externalizada cuando funcione el Conf
-			ps = con.prepareStatement("select statisticid from users where login = ?");
+			ps = con.prepareStatement(Conf.get("User.getStatisticID"));
 			ps.setString(1, user.getLogin());
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				int ID = rs.getInt("STATISTICID");
 				PreparedStatement ps2 = null;
 				ResultSet rs2 = null;
-				// FIXME: Cambiar por consulta externalizada cuando funcione el
-				// Conf
-				ps2 = con
-						.prepareStatement("select * from statistics where statisticid = ?");
+				ps2 = con.prepareStatement(Conf.get("Statistic.getByID"));
 				ps2.setInt(1, ID);
 				rs2 = ps2.executeQuery();
 				while (rs2.next()) {

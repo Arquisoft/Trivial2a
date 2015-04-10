@@ -110,8 +110,7 @@ public class UserJdbcDao implements UserDao {
 			rs = ps.executeQuery();
 			if (rs.next())
 				statisticID = rs.getInt(1);
-			else
-				throw new SQLException("El usuario no existe");
+			else throw new SQLException("El usuario no existe");
 			ps.close();
 			// Actualizar estad�stica usuario
 			ps = con.prepareStatement(Conf.get("Statistic.update"));
@@ -131,17 +130,17 @@ public class UserJdbcDao implements UserDao {
 			rows = ps.executeUpdate();
 			if (rows != 1) {
 				throw new SQLException("No se pudo actualizar la estad�stica");
-			} else
-				con.commit();
+			}
+			else con.commit();
 			ps.close();
-
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			Jdbc.close(rs, ps);
 		}
 
-	}
+	}	
 
 	@Override
 	public void delete(String login) {
@@ -157,9 +156,9 @@ public class UserJdbcDao implements UserDao {
 
 			rows = ps.executeUpdate();
 			if (rows != 1) {
-				throw new SQLException("No se encontr� al usuario " + login);
-			} else
-				con.commit();
+				throw new SQLException("No se encontr� al usuario "+login);
+			}
+			else con.commit();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -181,7 +180,7 @@ public class UserJdbcDao implements UserDao {
 			ps = con.prepareStatement(Conf.get("User.getStatisticID"));
 			ps.setString(1, user.getLogin());
 			rs = ps.executeQuery();
-			while (rs.next()) {
+			while (rs.next()) {				
 				int ID = rs.getInt("STATISTICID");
 				PreparedStatement ps2 = null;
 				ResultSet rs2 = null;
@@ -189,26 +188,26 @@ public class UserJdbcDao implements UserDao {
 				ps2.setInt(1, ID);
 				rs2 = ps2.executeQuery();
 				while (rs2.next()) {
-					statistic.setTotalsports(rs2.getInt("totalsports"));
-					statistic.setSports(rs2.getInt("correctsports"));
-					statistic.setTotalshowsAndEntertainment(rs2
+					statistic.setTotalsports(rs.getInt("totalsports"));
+					statistic.setSports(rs.getInt("correctsports"));
+					statistic.setTotalshowsAndEntertainment(rs
 							.getInt("totalshows"));
-					statistic.setShowsAndEntertainment(rs2
+					statistic.setShowsAndEntertainment(rs
 							.getInt("correctshows"));
-					statistic.setTotalscienceAndTechnology(rs2
+					statistic.setTotalscienceAndTechnology(rs
 							.getInt("totalscience"));
-					statistic.setScienceAndTechnology(rs2
+					statistic.setScienceAndTechnology(rs
 							.getInt("correctscience"));
-					statistic.setTotalartAndLiterature(rs2.getInt("totalart"));
-					statistic.setArtAndLiterature(rs2.getInt("correctart"));
-					statistic.setTotalgeography(rs2.getInt("totalgeography"));
-					statistic.setGeography(rs2.getInt("correctgeography"));
-					statistic.setTotalhistory(rs2.getInt("totalhistory"));
-					statistic.setHistory(rs2.getInt("correcthistory"));
+					statistic.setTotalartAndLiterature(rs.getInt("totalart"));
+					statistic.setArtAndLiterature(rs.getInt("correctart"));
+					statistic.setTotalgeography(rs.getInt("totalgeography"));
+					statistic.setGeography(rs.getInt("correctgeography"));
+					statistic.setTotalhistory(rs.getInt("totalhistory"));
+					statistic.setHistory(rs.getInt("correcthistory"));
 					user.setStatistics(statistic);
 				}
 				rs2.close();
-				ps2.close();
+				ps2.close();			
 			}
 
 		} catch (SQLException e) {
@@ -230,18 +229,14 @@ public class UserJdbcDao implements UserDao {
 
 		try {
 			con = Jdbc.getConnection();
-			// FIXME: Cambiar por consulta externalizada cuando funcione el Conf
-			ps = con.prepareStatement("select * from users");
+			ps = con.prepareStatement(Conf.get("User.getUsers"));
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				User user = new User(rs.getString("LOGIN"));
 				int ID = rs.getInt("STATISTICID");
 				PreparedStatement ps2 = null;
 				ResultSet rs2 = null;
-				// FIXME: Cambiar por consulta externalizada cuando funcione el
-				// Conf
-				ps2 = con
-						.prepareStatement("select * from statistics where statisticid = ?");
+				ps2 = con.prepareStatement(Conf.get("Statistic.getByID"));
 				ps2.setInt(1, ID);
 				rs2 = ps2.executeQuery();
 				while (rs2.next()) {
@@ -284,7 +279,7 @@ public class UserJdbcDao implements UserDao {
 		PreparedStatement ps = null;
 		Connection con = null;
 		ResultSet rs = null;
-		String SQL = Conf.get("User.updateLogin");
+		String SQL = Conf.get("User.updateLogin");		
 		int rows = 0;
 		try {
 			con = Jdbc.getConnection();
@@ -294,9 +289,8 @@ public class UserJdbcDao implements UserDao {
 			rows = ps.executeUpdate();
 			if (rows != 1) {
 				throw new SQLException("No se pudo actualizar el usuario");
-			} else {
-				con.commit();
 			}
+			else con.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
