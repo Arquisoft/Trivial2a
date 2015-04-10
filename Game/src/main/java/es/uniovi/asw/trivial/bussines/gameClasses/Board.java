@@ -1,9 +1,9 @@
 package es.uniovi.asw.trivial.bussines.gameClasses;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import es.uniovi.asw.trivial.bussines.fileLoaders.GraphFileLoader;
 import es.uniovi.asw.trivial.model.BoardOption;
@@ -53,7 +53,7 @@ public class Board {
 		return boardOption.getMaxPlayers();
 	}
 
-	private Square getSquare(int squareNumber) {
+	public Square getSquare(int squareNumber) {
 		return squareList.get(squareNumber);
 	}
 	
@@ -69,7 +69,7 @@ public class Board {
 		return getSquare(squareNumber).getCategory();
 	}
 
-	public List<Integer> getSquaresAtDistance(int currentSquareNumber, int dice) {
+	public Set<Integer> getSquaresAtDistance(int currentSquareNumber, int dice) {
 
 		Square currentSquare;
 		if ((currentSquare = getSquare(currentSquareNumber)) == null
@@ -77,15 +77,15 @@ public class Board {
 			throw new IllegalArgumentException();
 
 		boolean[] visited = new boolean[size()];
-		List<Integer> resultSquares = new ArrayList<Integer>();
+		Set<Integer> resultSquares = new HashSet<Integer>();
 
 		return getSquaresAtDistanceDFS(currentSquare, dice, 0, visited,
 				resultSquares);
 	}
 
-	private List<Integer> getSquaresAtDistanceDFS(Square currentSquare,
+	private Set<Integer> getSquaresAtDistanceDFS(Square currentSquare,
 			int dice, int distance, boolean[] visited,
-			List<Integer> resultSquares) {
+			Set<Integer> resultSquares) {
 		
 		visited[currentSquare.getSquareNumber() - 1] = true;
 		

@@ -40,7 +40,7 @@ public class GameApiImpl implements GameAPI {
 		else
 		{
 			users.add(user);
-			user.setPosition(board.getStartPosition());
+			user.setLocation(board.getStartPosition());
 			return true;
 		}
 		
@@ -62,7 +62,7 @@ public class GameApiImpl implements GameAPI {
 		if(!canMove())
 			return null;
 		
-		int origin = getCurentUser().getPosition();
+		int origin = getCurentUser().getLocation();
 		return board.getSquaresAtDistance(origin, state.getDiceNumber());
 	}
 
@@ -72,7 +72,7 @@ public class GameApiImpl implements GameAPI {
 		if(!getMovements().contains(squareNumber))
 			throw new IllegalActionException("Invalid movement requested.");
 		
-		getCurentUser().setPosition(squareNumber);
+		getCurentUser().setLocation(squareNumber);
 		
 		//Si la casilla es de tirar otra vez
 		if(board.getSquareCategory(squareNumber).equals(SquareType.DICE))
