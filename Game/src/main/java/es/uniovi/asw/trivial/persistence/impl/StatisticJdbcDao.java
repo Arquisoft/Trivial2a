@@ -312,29 +312,33 @@ public class StatisticJdbcDao implements StatisticDao {
 		Map<String, Integer[]> statistic = new HashMap<String, Integer[]>();
 		try {
 			con = Jdbc.getConnection();
-			ps = con.prepareStatement(Conf.get("User.getStatisticID"));
+			// FIXME: Cambiar por consulta externalizada cuando funcione el Conf
+			ps = con.prepareStatement("select statisticid from users where login = ?");
 			ps.setString(1, user.getLogin());
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				int ID = rs.getInt("STATISTICID");
 				PreparedStatement ps2 = null;
 				ResultSet rs2 = null;
-				ps2 = con.prepareStatement(Conf.get("Statistic.getByID"));
+				// FIXME: Cambiar por consulta externalizada cuando funcione el
+				// Conf
+				ps2 = con
+						.prepareStatement("select * from statistics where statisticid = ?");
 				ps2.setInt(1, ID);
 				rs2 = ps2.executeQuery();
 				while (rs2.next()) {
-					Integer[] sports = { rs.getInt("correctsports"),
-							rs.getInt("totalsports") };
-					Integer[] shows = { rs.getInt("correctshows"),
-							rs.getInt("totalshows") };
-					Integer[] science = { rs.getInt("correctscience"),
-							rs.getInt("totalscience") };
-					Integer[] art = { rs.getInt("correctart"),
-							rs.getInt("totalart") };
-					Integer[] geo = { rs.getInt("correctgeography"),
-							rs.getInt("totalgeography") };
-					Integer[] history = { rs.getInt("correcthistory"),
-							rs.getInt("totalhistory") };
+					Integer[] sports = { rs2.getInt("correctsports"),
+							rs2.getInt("totalsports") };
+					Integer[] shows = { rs2.getInt("correctshows"),
+							rs2.getInt("totalshows") };
+					Integer[] science = { rs2.getInt("correctscience"),
+							rs2.getInt("totalscience") };
+					Integer[] art = { rs2.getInt("correctart"),
+							rs2.getInt("totalart") };
+					Integer[] geo = { rs2.getInt("correctgeography"),
+							rs2.getInt("totalgeography") };
+					Integer[] history = { rs2.getInt("correcthistory"),
+							rs2.getInt("totalhistory") };
 
 					statistic.put("SPORTS", sports);
 					statistic.put("SHOWS_AND_ENTERTAINMENT", shows);

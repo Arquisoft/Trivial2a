@@ -58,12 +58,12 @@ public class QuestionJdbcDao implements QuestionDao {
 			ps.setInt(0, question.getId());
 			ps.setString(1, question.getStatement());
 			rs = ps.executeQuery();
-			
+
 			saveCorrectAnswer(question);
 			saveWrongAnswers(question);
 
 		} catch (SQLException e) {
-			
+
 		} finally {
 			Jdbc.close(rs, ps);
 		}
@@ -83,24 +83,24 @@ public class QuestionJdbcDao implements QuestionDao {
 			rs = ps.executeQuery();
 
 		} catch (SQLException e) {
-			
+
 		} finally {
 			Jdbc.close(rs, ps);
 		}
 	}
-	
+
 	private void saveWrongAnswers(Question question) {
 		for (String wrong : question.getIncorrectAnswers()) {
 			saveWrong(question.getId(), wrong);
 		}
 	}
-	
+
 	private void saveWrong(int questionId, String wrong) {
 		PreparedStatement ps = null;
 		Connection con = null;
 		ResultSet rs = null;
 		try {
-			
+
 			String sql = Conf.get("Question.saveWrongAnswers");
 			con = Jdbc.getConnection();
 			ps = con.prepareStatement(sql);
@@ -110,7 +110,7 @@ public class QuestionJdbcDao implements QuestionDao {
 			rs = ps.executeQuery();
 
 		} catch (SQLException e) {
-			
+
 		} finally {
 			Jdbc.close(rs, ps);
 		}
@@ -215,4 +215,3 @@ public class QuestionJdbcDao implements QuestionDao {
 		return null;
 	}
 }
-
