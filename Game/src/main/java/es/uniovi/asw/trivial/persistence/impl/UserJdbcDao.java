@@ -229,16 +229,18 @@ public class UserJdbcDao implements UserDao {
 
 		try {
 			con = Jdbc.getConnection();
-
-			ps = con.prepareStatement(Conf.get("User.getUsers"));
+			
+			//FIXME: Cambiado hasta que funcione Conf
+			ps = con.prepareStatement("select * from users");
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				User user = new User(rs.getString("LOGIN"));
 				int ID = rs.getInt("STATISTICID");
 				PreparedStatement ps2 = null;
 				ResultSet rs2 = null;
-
-				ps2 = con.prepareStatement(Conf.get("Statistic.getByID"));
+				
+				//FIXME: Cambiado hasta que funcione Conf
+				ps2 = con.prepareStatement("select * from statistics where statisticid = ?");
 				ps2.setInt(1, ID);
 				rs2 = ps2.executeQuery();
 				while (rs2.next()) {
@@ -275,7 +277,6 @@ public class UserJdbcDao implements UserDao {
 
 		return users;
 	}
-	
 
 	@Override
 	public void updateLogin(User user, String nuevoLogin) {

@@ -313,7 +313,8 @@ public class StatisticJdbcDao implements StatisticDao {
 		try {
 			con = Jdbc.getConnection();
 
-			ps = con.prepareStatement(Conf.get("User.getStatisticID"));
+			//FIXME: Cambiado hasta que funcione Conf
+			ps = con.prepareStatement("select statisticid from users where login = ?");
 			ps.setString(1, user.getLogin());
 			rs = ps.executeQuery();
 			while (rs.next()) {
@@ -321,7 +322,8 @@ public class StatisticJdbcDao implements StatisticDao {
 				PreparedStatement ps2 = null;
 				ResultSet rs2 = null;
 
-				ps2 = con.prepareStatement(Conf.get("Statistic.getByID"));
+				//FIXME: Cambiado hasta que funcione Conf
+				ps2 = con.prepareStatement("select * from statistics where statisticid = ?");
 				ps2.setInt(1, ID);
 				rs2 = ps2.executeQuery();
 				while (rs2.next()) {

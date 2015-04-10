@@ -1,14 +1,11 @@
 package es.uniovi.asw.trivial.conf;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 public class Conf {
 
-	private static final String CONF_FILE = System.getProperty("user.dir")
-			+ "/src/configuration.properties";
+	private static final String CONF_FILE = "configuration.properties";
 
 	private static Conf instance;
 	private Properties properties;
@@ -16,8 +13,8 @@ public class Conf {
 	private Conf() {
 		properties = new Properties();
 		try {
-			InputStream fis = new FileInputStream(CONF_FILE);
-			properties.load(fis);
+			properties.load(Conf.class.getClassLoader().getResourceAsStream(
+					CONF_FILE));
 		} catch (IOException e) {
 			throw new RuntimeException("Propeties file can not be loaded", e);
 		}
