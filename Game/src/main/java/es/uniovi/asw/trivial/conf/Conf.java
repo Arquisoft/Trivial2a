@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Conf {
+
 	private static final String CONF_FILE = "configuration.properties";
 
 	private static Conf instance;
@@ -37,4 +38,5 @@ public class Conf {
 		}
 		return instance;
 	}
+
 }
