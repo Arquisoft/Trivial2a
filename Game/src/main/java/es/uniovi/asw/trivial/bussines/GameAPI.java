@@ -171,6 +171,15 @@ public interface GameAPI {
 	List<BoardOption> getBoardOptions();
 
 	/**
+	 * Method used to locate the starting square of the board.
+	 * 
+	 * @return square number of the starting square.
+	 * @throws IllegalActionException
+	 *             Thrown if there is no board loaded.
+	 */
+	int getStartSquare() throws IllegalActionException;
+
+	/**
 	 * Method used to get a list of the names of the existing users.
 	 * 
 	 * @return List of user names.
