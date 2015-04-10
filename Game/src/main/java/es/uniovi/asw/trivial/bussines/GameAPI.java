@@ -7,6 +7,7 @@ import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
 import es.uniovi.asw.trivial.model.BoardOption;
 import es.uniovi.asw.trivial.model.Question;
 import es.uniovi.asw.trivial.model.Score;
+import es.uniovi.asw.trivial.model.Square;
 
 public interface GameAPI {
 
@@ -58,7 +59,8 @@ public interface GameAPI {
 	 * 
 	 * @return dice number.
 	 * @throws IllegalActionException
-	 *             Thrown if there is no game running.
+	 *             Thrown if there is no game running or the dice can't be
+	 *             rolled now.
 	 */
 	int rollDice() throws IllegalActionException;
 
@@ -68,11 +70,16 @@ public interface GameAPI {
 	 * 
 	 * @param squareNumber
 	 *            Target square number.
+	 * @param userName
+	 *            user name of the player that is being moved.
+	 * @return destiny square.
 	 * @throws IllegalActionException
-	 *             If the target square number is not valid, the action can't be
-	 *             performed or there is no game in progress.
+	 *             If the target square number is not valid, the user is not a
+	 *             player, the user is not the active player, the action can't
+	 *             be performed or there is no game in progress.
 	 */
-	void movePlayerTo(int squareNumber) throws IllegalActionException;
+	Square movePlayerTo(int squareNumber, String userName)
+			throws IllegalActionException;
 
 	/**
 	 * Method used to get the list of square numbers available for the next
@@ -84,11 +91,11 @@ public interface GameAPI {
 	 *            Square number of the square the player is at.
 	 * @return List of square numbers available for the next move.
 	 * @throws IllegalActionException
-	 *             Thrown if userName is not the active player, he is not at the
-	 *             given square, the dice still has to be rolled or there is no
-	 *             game in progress.
+	 *             Thrown if userName it not a player, he is not the active
+	 *             player, he is not at the given square, the dice still has to
+	 *             be rolled or there is no game in progress.
 	 */
-	Set<Integer> getMovements(int userName, int squareNumber)
+	Set<Integer> getMovements(String userName, int squareNumber)
 			throws IllegalActionException;
 
 	/**
@@ -183,7 +190,7 @@ public interface GameAPI {
 	 * 
 	 * @return List of user names.
 	 */
-	Set<String> getUserNameList();
+	List<String> getUserNameList();
 
 	/**
 	 * Method used to add a new user to the system.

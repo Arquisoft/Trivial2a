@@ -9,15 +9,15 @@ public class User {
 	private String login;
 	private Score score;
 	private Statistic statistics;
-	private int position;
+	private int location;
 	
 
-	public int getPosition() {
-		return position;
+	public int getLocation() {
+		return location;
 	}
 
-	public void setPosition(int position) {
-		this.position = position;
+	public void setLocation(int location) {
+		this.location = location;
 	}
 
 	public User(String login){

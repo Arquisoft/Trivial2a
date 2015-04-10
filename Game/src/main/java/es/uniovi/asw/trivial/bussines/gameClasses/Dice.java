@@ -8,14 +8,16 @@ import java.util.Random;
  */
 public class Dice {
 	
-	/**
-	 * This method throws a dice to get a value in 1-6
-	 * @return the value of the dice
-	 */
-	public static int throwingDice(){
+	private boolean available;
+	private int lastRoll;
+	public int roll(){
 		Random r = new Random();
 		
 		return r.nextInt(5) + 1;
+	}
+	
+	public void reset() {
+		available = true;
 	}
 
 }
