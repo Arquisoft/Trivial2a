@@ -139,7 +139,7 @@ public class StatisticsLoaderImpl implements StatisticsLoader{
 			
 
 			int totales = info.get(category)[1];
-			int acertadas = info.get(category)[0];
+			int acertadas = info.get(category)[2];
 			
 			datos.add(new Object[]{nombre, totales, acertadas});
 		}

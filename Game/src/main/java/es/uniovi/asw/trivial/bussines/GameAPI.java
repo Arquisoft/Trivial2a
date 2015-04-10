@@ -7,7 +7,6 @@ import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
 import es.uniovi.asw.trivial.model.BoardOption;
 import es.uniovi.asw.trivial.model.Question;
 import es.uniovi.asw.trivial.model.Score;
-import es.uniovi.asw.trivial.model.User;
 
 public interface GameAPI {
 
@@ -204,14 +203,6 @@ public interface GameAPI {
 	 *             Thrown if there is no board loaded.
 	 */
 	String[] getSquares() throws IllegalActionException;
-
-	boolean canMove();
-
-	boolean canThrowDice();
-
-	List<Integer> getMovements();
-
-	User getCurentUser();
 
 	// ##########################################################
 	// # Data Query Methods

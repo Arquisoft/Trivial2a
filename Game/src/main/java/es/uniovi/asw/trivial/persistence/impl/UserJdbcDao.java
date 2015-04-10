@@ -233,13 +233,9 @@ public class UserJdbcDao implements UserDao {
 			// FIXME: Cambiar por consulta externalizada cuando funcione el Conf
 			ps = con.prepareStatement("select * from users");
 			rs = ps.executeQuery();
-			
-			
 			while (rs.next()) {
-				System.out.println(rs.getString("LOGIN"));
 				User user = new User(rs.getString("LOGIN"));
 				int ID = rs.getInt("STATISTICID");
-				System.out.println(ID);
 				PreparedStatement ps2 = null;
 				ResultSet rs2 = null;
 				// FIXME: Cambiar por consulta externalizada cuando funcione el
@@ -250,22 +246,22 @@ public class UserJdbcDao implements UserDao {
 				rs2 = ps2.executeQuery();
 				while (rs2.next()) {
 					Statistic statistic = new Statistic();
-					statistic.setTotalsports(rs2.getInt("totalsports"));
-					statistic.setSports(rs2.getInt("correctsports"));
-					statistic.setTotalshowsAndEntertainment(rs2
+					statistic.setTotalsports(rs.getInt("totalsports"));
+					statistic.setSports(rs.getInt("correctsports"));
+					statistic.setTotalshowsAndEntertainment(rs
 							.getInt("totalshows"));
-					statistic.setShowsAndEntertainment(rs2
+					statistic.setShowsAndEntertainment(rs
 							.getInt("correctshows"));
-					statistic.setTotalscienceAndTechnology(rs2
+					statistic.setTotalscienceAndTechnology(rs
 							.getInt("totalscience"));
-					statistic.setScienceAndTechnology(rs2
+					statistic.setScienceAndTechnology(rs
 							.getInt("correctscience"));
-					statistic.setTotalartAndLiterature(rs2.getInt("totalart"));
-					statistic.setArtAndLiterature(rs2.getInt("correctart"));
-					statistic.setTotalgeography(rs2.getInt("totalgeography"));
-					statistic.setGeography(rs2.getInt("correctgeography"));
-					statistic.setTotalhistory(rs2.getInt("totalhistory"));
-					statistic.setHistory(rs2.getInt("correcthistory"));
+					statistic.setTotalartAndLiterature(rs.getInt("totalart"));
+					statistic.setArtAndLiterature(rs.getInt("correctart"));
+					statistic.setTotalgeography(rs.getInt("totalgeography"));
+					statistic.setGeography(rs.getInt("correctgeography"));
+					statistic.setTotalhistory(rs.getInt("totalhistory"));
+					statistic.setHistory(rs.getInt("correcthistory"));
 					user.setStatistics(statistic);
 				}
 				rs2.close();

@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class Jdbc {
 
 	private static String SQL_DRV = "org.hsqldb.jdbcDriver";
-	private static String SQL_URL = "jdbc:hsqldb:hsql://localhost";
+	private static String SQL_URL = "jdbc:hsqldb:hsql://localhost/localDB";
 	private static String USER = "sa";
 	private static String PASS = "";
 
