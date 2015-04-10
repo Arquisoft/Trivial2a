@@ -136,13 +136,8 @@ public class StatisticsLoaderImpl implements StatisticsLoader{
 			String nombre = u.getLogin();
 			
 			Map<String, Integer[]> info = factory.createStatisticDao().getStatisticUser(u);
-			
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of 13c1d20... Arregladas Consultas de la capa de persistencia
 			int totales = info.get(category)[1];
-			int acertadas = info.get(category)[2];
+			int acertadas = info.get(category)[0];
 			
 			datos.add(new Object[]{nombre, totales, acertadas});
 		}

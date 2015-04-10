@@ -6,10 +6,10 @@ import es.uniovi.asw.trivial.persistence.ScoreDao;
 import es.uniovi.asw.trivial.persistence.StatisticDao;
 import es.uniovi.asw.trivial.persistence.UserDao;
 
-public class SimplePersistenceFactory implements PersistFactory{
+public class SimplePersistenceFactory implements PersistFactory {
 
 	@Override
-	public UserDao createUserDao() {		
+	public UserDao createUserDao() {
 		return new UserJdbcDao();
 	}
 
@@ -22,9 +22,9 @@ public class SimplePersistenceFactory implements PersistFactory{
 	public StatisticDao createStatisticDao() {
 		return new StatisticJdbcDao();
 	}
-	
+
 	@Override
-	public QuestionDao createQuestionDao(){
+	public QuestionDao createQuestionDao() {
 		return new QuestionJdbcDao();
 	}
 
