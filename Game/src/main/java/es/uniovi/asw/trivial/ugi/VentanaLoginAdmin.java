@@ -27,7 +27,7 @@ public class VentanaLoginAdmin extends JDialog {
 	private final JPanel contentPanel;
 	private JTextField txtUser;
 	private JPasswordField txtPass;
-	private VentanaPrincipal vp;
+//	private VentanaPrincipal vp;
 	private char[] passInput;
 
 	/**
