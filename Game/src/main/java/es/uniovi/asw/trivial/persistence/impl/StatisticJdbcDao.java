@@ -323,18 +323,18 @@ public class StatisticJdbcDao implements StatisticDao {
 				ps2.setInt(1, ID);
 				rs2 = ps2.executeQuery();
 				while (rs2.next()) {
-					Integer[] sports = { rs.getInt("correctsports"),
-							rs.getInt("totalsports") };
-					Integer[] shows = { rs.getInt("correctshows"),
-							rs.getInt("totalshows") };
-					Integer[] science = { rs.getInt("correctscience"),
-							rs.getInt("totalscience") };
-					Integer[] art = { rs.getInt("correctart"),
-							rs.getInt("totalart") };
-					Integer[] geo = { rs.getInt("correctgeography"),
-							rs.getInt("totalgeography") };
-					Integer[] history = { rs.getInt("correcthistory"),
-							rs.getInt("totalhistory") };
+					Integer[] sports = { rs2.getInt("correctsports"),
+							rs2.getInt("totalsports") };
+					Integer[] shows = { rs2.getInt("correctshows"),
+							rs2.getInt("totalshows") };
+					Integer[] science = { rs2.getInt("correctscience"),
+							rs2.getInt("totalscience") };
+					Integer[] art = { rs2.getInt("correctart"),
+							rs2.getInt("totalart") };
+					Integer[] geo = { rs2.getInt("correctgeography"),
+							rs2.getInt("totalgeography") };
+					Integer[] history = { rs2.getInt("correcthistory"),
+							rs2.getInt("totalhistory") };
 
 					statistic.put("SPORTS", sports);
 					statistic.put("SHOWS_AND_ENTERTAINMENT", shows);

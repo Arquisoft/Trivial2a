@@ -231,9 +231,13 @@ public class UserJdbcDao implements UserDao {
 			con = Jdbc.getConnection();
 			ps = con.prepareStatement(Conf.get("User.getUsers"));
 			rs = ps.executeQuery();
+			
+			
 			while (rs.next()) {
+				System.out.println(rs.getString("LOGIN"));
 				User user = new User(rs.getString("LOGIN"));
 				int ID = rs.getInt("STATISTICID");
+				System.out.println(ID);
 				PreparedStatement ps2 = null;
 				ResultSet rs2 = null;
 				ps2 = con.prepareStatement(Conf.get("Statistic.getByID"));
@@ -241,22 +245,22 @@ public class UserJdbcDao implements UserDao {
 				rs2 = ps2.executeQuery();
 				while (rs2.next()) {
 					Statistic statistic = new Statistic();
-					statistic.setTotalsports(rs.getInt("totalsports"));
-					statistic.setSports(rs.getInt("correctsports"));
-					statistic.setTotalshowsAndEntertainment(rs
+					statistic.setTotalsports(rs2.getInt("totalsports"));
+					statistic.setSports(rs2.getInt("correctsports"));
+					statistic.setTotalshowsAndEntertainment(rs2
 							.getInt("totalshows"));
-					statistic.setShowsAndEntertainment(rs
+					statistic.setShowsAndEntertainment(rs2
 							.getInt("correctshows"));
-					statistic.setTotalscienceAndTechnology(rs
+					statistic.setTotalscienceAndTechnology(rs2
 							.getInt("totalscience"));
-					statistic.setScienceAndTechnology(rs
+					statistic.setScienceAndTechnology(rs2
 							.getInt("correctscience"));
-					statistic.setTotalartAndLiterature(rs.getInt("totalart"));
-					statistic.setArtAndLiterature(rs.getInt("correctart"));
-					statistic.setTotalgeography(rs.getInt("totalgeography"));
-					statistic.setGeography(rs.getInt("correctgeography"));
-					statistic.setTotalhistory(rs.getInt("totalhistory"));
-					statistic.setHistory(rs.getInt("correcthistory"));
+					statistic.setTotalartAndLiterature(rs2.getInt("totalart"));
+					statistic.setArtAndLiterature(rs2.getInt("correctart"));
+					statistic.setTotalgeography(rs2.getInt("totalgeography"));
+					statistic.setGeography(rs2.getInt("correctgeography"));
+					statistic.setTotalhistory(rs2.getInt("totalhistory"));
+					statistic.setHistory(rs2.getInt("correcthistory"));
 					user.setStatistics(statistic);
 				}
 				rs2.close();

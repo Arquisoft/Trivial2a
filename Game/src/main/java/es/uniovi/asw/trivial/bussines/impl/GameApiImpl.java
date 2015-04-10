@@ -25,26 +25,6 @@ public class GameApiImpl implements GameAPI {
 	public List<BoardOption> getBoardOptions() {
 		return BoardOptionsFactory.getBoardOptions();
 	}
-	
-	@Override
-	public void selectBoardOption(int boardOptionId) {
-		board = new Board(BoardOptionsFactory.getBoardOption(boardOptionId));
-	}
-
-	@Override
-	public boolean createUser(User user) {
-		if(users.size()==MAX_PLAYERS)
-		{
-			return false;
-		}
-		else
-		{
-			users.add(user);
-			user.setPosition(board.getStartPosition());
-			return true;
-		}
-		
-	}
 
 	@Override
 	public User getCurentUser() {
@@ -100,24 +80,14 @@ public class GameApiImpl implements GameAPI {
 	}
 
 	@Override
-	public User getWinner() {
-		return users.get(state.getWinner());
+	public String getWinner() {
+		return users.get(state.getWinner()).getLogin();
 	}
 
 	@Override
 	public boolean isFinished() {
 		if(getWinner()!=null) return true;
 		else return false;
-	}
-
-	@Override
-	public void correctAnswer() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void wrongAnswer() {
-		// TODO Auto-generated method stub
 	}
 
 	
