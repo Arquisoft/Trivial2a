@@ -38,3 +38,9 @@ Ruan Alves.
 
 Punto 8 Atributos de calidad e interesados
 Ruan Alves.
+
+Punto 9 Descripción del negocio de la solución.
+Ruan Alves.
+
+Punto 10 Escenarios de calidad.
+Ruan Alves.
