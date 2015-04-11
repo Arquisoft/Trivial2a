@@ -2,6 +2,11 @@ package es.uniovi.asw.trivial;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+import java.util.List;
+>>>>>>> API-Logica
 
 import org.junit.Before;
 import org.junit.Test;
@@ -34,6 +39,7 @@ public class BoardTests {
 
 	}
 
+<<<<<<< HEAD
 //	@Test
 //	public void nodesAtDistanceTest() {
 //		List<Integer> destinos = board.getSquaresAtDistance(73, 1).toArray();
@@ -46,5 +52,19 @@ public class BoardTests {
 //		assertThat(destinos.get(4)).isEqualTo(62);
 //		assertThat(destinos.get(5)).isEqualTo(47);
 //	}
+=======
+	@Test
+	public void nodesAtDistanceTest() {
+		List<Integer> destinos = new ArrayList<Integer>(board.getSquaresAtDistance(73, 1));
+
+		assertThat(destinos.size()).isEqualTo(6);
+		assertThat(destinos.get(0)).isEqualTo(67);
+		assertThat(destinos.get(1)).isEqualTo(52);
+		assertThat(destinos.get(2)).isEqualTo(72);
+		assertThat(destinos.get(3)).isEqualTo(57);
+		assertThat(destinos.get(4)).isEqualTo(62);
+		assertThat(destinos.get(5)).isEqualTo(47);
+	}
+>>>>>>> API-Logica
 
 }

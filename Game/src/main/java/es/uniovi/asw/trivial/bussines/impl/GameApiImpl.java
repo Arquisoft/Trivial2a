@@ -1,125 +1,124 @@
 package es.uniovi.asw.trivial.bussines.impl;
 
+import java.awt.Point;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import es.uniovi.asw.trivial.bussines.GameAPI;
 import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
-import es.uniovi.asw.trivial.bussines.gameClasses.Board;
 import es.uniovi.asw.trivial.bussines.gameClasses.BoardOptionsFactory;
-import es.uniovi.asw.trivial.bussines.gameClasses.Dice;
+import es.uniovi.asw.trivial.bussines.gameClasses.Game;
 import es.uniovi.asw.trivial.model.BoardOption;
-import es.uniovi.asw.trivial.model.Category;
-import es.uniovi.asw.trivial.model.SquareType;
-import es.uniovi.asw.trivial.model.User;
+import es.uniovi.asw.trivial.model.Question;
+import es.uniovi.asw.trivial.model.Score;
+import es.uniovi.asw.trivial.model.Square;
 
 public class GameApiImpl implements GameAPI {
-	
-	public static final int MAX_PLAYERS = 6;
-	
-	//Control the actual state game
-	private StateGame state = new StateGame();
-	private Board board;
-	private List<User> users;
 
+	private Game game;
+	
 	@Override
 	public List<BoardOption> getBoardOptions() {
 		return BoardOptionsFactory.getBoardOptions();
 	}
-	
+
 	@Override
-	public void selectBoardOption(int boardOptionId) {
-		board = new Board(BoardOptionsFactory.getBoardOption(boardOptionId));
+	public int rollDice() throws IllegalActionException {
+		assertGameIsRunning();
+		return game.rollDice();
 	}
 
 	@Override
-	public boolean createUser(User user) {
-		if(users.size()==MAX_PLAYERS)
-		{
-			return false;
-		}
-		else
-		{
-			users.add(user);
-			user.setLocation(board.getStartPosition());
-			return true;
-		}
+	public String getWinner() throws IllegalActionException {
+		assertGameIsRunning();
+		return game.getWinner();
+	}
+
+	@Override
+	public boolean isFinished() throws IllegalActionException {
+		assertGameIsRunning();
+		return game.isFinished();
+	}
+
+	@Override
+	public void startGame(List<String> userNames, BoardOption boardOption)
+			throws IllegalActionException {
+		game = new Game(boardOption, userNames);
+	}
+
+	@Override
+	public int getPlayerLocation(String userName) throws IllegalActionException {
+		assertGameIsRunning();
+		return game.getPlayerLocation(userName);
+	}
+
+	@Override
+	public Score getPlayerScore(String userName) throws IllegalActionException {
+		assertGameIsRunning();
+		return game.getPlayerScore(userName);
+	}
+
+	@Override
+	public Square movePlayerTo(int squareNumber, String userName)
+			throws IllegalActionException {
+		assertGameIsRunning();
+		return game.movePlayerTo(squareNumber, userName);
+	}
+
+	@Override
+	public Set<Integer> getMovements(String userName, int squareNumber)
+			throws IllegalActionException {
+		assertGameIsRunning();
+		return game.getMovements(userName, squareNumber);
+	}
+
+	@Override
+	public Question getQuestion(String userName, int squareNumber)
+			throws IllegalActionException {
+		assertGameIsRunning();
+		return game.getQuestion(userName, squareNumber);
+	}
+
+	@Override
+	public boolean isAnswerCorrect(int questionId, String answer,
+			String userName, int squareNumber) throws IllegalActionException {
+		assertGameIsRunning();
+		return game.isAnswerCorrect(questionId, answer, userName, squareNumber);
+	}
+
+	@Override
+	public String getActivePlayer() throws IllegalActionException {
+		assertGameIsRunning();
+		return game.getActivePlayer();
+	}
+
+	@Override
+	public int getStartSquare() throws IllegalActionException {
+		assertGameIsRunning();
+		return game.getStartSquare();
+	}
+
+	@Override
+	public List<String> getUserNameList() {
+		// TODO acceso a base de datos
+		return null;
+	}
+
+	@Override
+	public void createUser(String userName) {
+		// TODO acceso a base de datos
 		
 	}
 
 	@Override
-	public User getCurentUser() {
-		return users.get(state.getCurrentPlayer());
+	public Map<Integer, Point> getSquares() throws IllegalActionException {
+		assertGameIsRunning();
+		return game.getSquares();
 	}
 
-	@Override
-	public int rollDice() {
-		state.setDiceThrown(true);
-		return Dice.throwingDice();
+	private void assertGameIsRunning() throws IllegalActionException {
+		if (game == null)
+			throw new IllegalActionException("No se ha iniciado partida.");
 	}
-
-	@Override
-	public List<Integer> getMovements() {
-		if(!canMove())
-			return null;
-		
-		int origin = getCurentUser().getLocation();
-		return board.getSquaresAtDistance(origin, state.getDiceNumber());
-	}
-
-	@Override
-	public void movePlayerTo(int squareNumber) throws IllegalActionException {
-		//Comprobar primero que la casilla est� dentro de la lista que devolveria el metodo getMoves.
-		if(!getMovements().contains(squareNumber))
-			throw new IllegalActionException("Invalid movement requested.");
-		
-		getCurentUser().setLocation(squareNumber);
-		
-		//Si la casilla es de tirar otra vez
-		if(board.getSquareCategory(squareNumber).equals(SquareType.DICE))
-		{
-			state.resetTurn();
-		}
-		//Si no, sacamos de la base de datos la pregunta
-		else
-		{
-			Category cat = board.getSquareCategory(squareNumber);
-			//Actualizamos el estado con la pregunta
-			
-			
-		}
-	}
-
-	@Override
-	public boolean canThrowDice() {
-		return getCurentUser()!=null && !state.isDiceThrown();
-	}
-
-	@Override
-	public boolean canMove() {
-		return getCurentUser()!=null && state.isDiceThrown() && state.getQuestion()==null;
-	}
-
-	@Override
-	public User getWinner() {
-		return users.get(state.getWinner());
-	}
-
-	@Override
-	public boolean isFinished() {
-		if(getWinner()!=null) return true;
-		else return false;
-	}
-
-	@Override
-	public void correctAnswer() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void wrongAnswer() {
-		// TODO Auto-generated method stub
-	}
-
-	
-	
 }
