@@ -1,6 +1,7 @@
 package es.uniovi.asw.trivial.bussines.impl;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -9,10 +10,13 @@ import es.uniovi.asw.trivial.bussines.GameAPI;
 import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
 import es.uniovi.asw.trivial.bussines.gameClasses.BoardOptionsFactory;
 import es.uniovi.asw.trivial.bussines.gameClasses.Game;
+import es.uniovi.asw.trivial.factories.PersistenceFactory;
 import es.uniovi.asw.trivial.model.BoardOption;
 import es.uniovi.asw.trivial.model.Question;
 import es.uniovi.asw.trivial.model.Score;
 import es.uniovi.asw.trivial.model.Square;
+import es.uniovi.asw.trivial.model.User;
+import es.uniovi.asw.trivial.persistence.PersistFactory;
 
 public class GameApiImpl implements GameAPI {
 
@@ -101,14 +105,24 @@ public class GameApiImpl implements GameAPI {
 
 	@Override
 	public List<String> getUserNameList() {
-		// TODO acceso a base de datos
-		return null;
+		PersistFactory factory = PersistenceFactory.persistenceFactory();
+		
+		List<String> usuarios = new ArrayList<String>();
+		
+		for(User u : factory.createUserDao().getUsers()){
+			String name = u.getLogin();
+			
+			usuarios.add(name);
+		}
+		
+		return usuarios;
 	}
 
 	@Override
 	public void createUser(String userName) {
-		// TODO acceso a base de datos
+		PersistFactory factory = PersistenceFactory.persistenceFactory();
 		
+		factory.createUserDao().save(new User(userName));
 	}
 
 	@Override

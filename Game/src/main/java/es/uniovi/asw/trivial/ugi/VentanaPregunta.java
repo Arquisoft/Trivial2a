@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import es.uniovi.asw.trivial.model.Category;
 import es.uniovi.asw.trivial.model.Question;
 
 /**
@@ -44,7 +45,7 @@ public class VentanaPregunta extends JDialog {
 			//TODO: Quitar al acabar
 			//Pregunta de prueba
 			Question q = new Question();
-			q.setCategory("C1");
+			q.setCategory(Category.HISTORY);
 			q.setCorrectAnswer("Correcta");
 			List<String> f = new ArrayList<String>();
 			f.add("Falsa 1");

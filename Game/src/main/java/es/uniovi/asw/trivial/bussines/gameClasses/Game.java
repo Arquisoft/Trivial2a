@@ -1,21 +1,21 @@
 package es.uniovi.asw.trivial.bussines.gameClasses;
 
-<<<<<<< HEAD
-=======
 import java.awt.Point;
 import java.util.HashMap;
 import java.util.List;
->>>>>>> API-Logica
 import java.util.Map;
 import java.util.Set;
 
 import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
+import es.uniovi.asw.trivial.factories.PersistenceFactory;
 import es.uniovi.asw.trivial.model.BoardOption;
 import es.uniovi.asw.trivial.model.Question;
 import es.uniovi.asw.trivial.model.Score;
 import es.uniovi.asw.trivial.model.Square;
 import es.uniovi.asw.trivial.model.SquareType;
 import es.uniovi.asw.trivial.model.User;
+import es.uniovi.asw.trivial.persistence.QuestionDao;
+import es.uniovi.asw.trivial.persistence.UserDao;
 
 public class Game {
 	private Board board;
@@ -28,15 +28,30 @@ public class Game {
 
 	private User winner;
 
-	public Game(BoardOption boardOption, List<String> players) throws IllegalActionException {
-		//TODO comprobar que los jugadores existen en la base de datos
+	public Game(BoardOption boardOption, List<String> players)
+			throws IllegalActionException {
+		validateUsers(players);
+
 		board = new Board(boardOption);
 		this.players = new HashMap<String, User>();
-		
+
 		for (String userName : players) {
 			User player = new User(userName);
 			player.setLocation(getStartSquare());
 			this.players.put(userName, player);
+		}
+	}
+
+	private void validateUsers(List<String> players)
+			throws IllegalActionException {
+		UserDao factory = PersistenceFactory.persistenceFactory()
+				.createUserDao();
+
+		for (String name : players) {
+			if (!factory.isValidLogin(name)) {
+				throw new IllegalActionException(
+						"Alguno de los jugadores que van a jugar no están registrados en la BD");
+			}
 		}
 	}
 
@@ -63,6 +78,13 @@ public class Game {
 					+ "can't move to the requested square.");
 
 		players.get(userName).setLocation(squareNumber);
+		
+		//Obteniendo todas las preguntas
+		QuestionDao factory = PersistenceFactory.persistenceFactory()
+				.createQuestionDao();
+
+		List<Question> preguntas = factory.getQuestions();
+		
 
 		switch (square.getSquareType()) {
 		case DICE:
@@ -74,11 +96,24 @@ public class Game {
 			break;
 		case GAME_PIECE:
 			dice.makeUnavailable();
-			// TODO Obtener pregunta de la base de datos
+
+			for (Question q : preguntas) {
+				if (q.getCategory().equals(square.getCategory())) {
+					question = q;
+					break;
+				}
+			}
+
 			break;
 		case NORMAL:
 			dice.makeUnavailable();
-			// TODO Obtener pregunta de la base de datos
+
+			for (Question q : preguntas) {
+				if (q.getCategory().equals(square.getCategory())) {
+					question = q;
+					break;
+				}
+			}
 			break;
 		}
 		return square;
@@ -166,6 +201,7 @@ public class Game {
 	public Map<Integer, Point> getSquares() throws IllegalActionException {
 		// TODO pendiente de que en el fichero se guarden las coordenadas
 		// TODO pendiente de que las Square almacenen sus coordenadas
+		
 		return null;
 	}
 
@@ -221,6 +257,23 @@ public class Game {
 	}
 
 	private void passTurn() {
-		// TODO
+		String[] nombres = (String[]) players.keySet().toArray();
+		
+		String nextPlayer = activePlayer.getLogin();
+		
+		for(int i=0; i<nombres.length; i++){
+			if(nextPlayer.equals(nombres[i])){
+				if(i==(nombres.length - 1)){
+					nextPlayer = nombres[0];
+					break;
+				} else{
+					nextPlayer = nombres[i+1];
+					break;
+				}
+			}
+		}
+		
+		activePlayer = players.get(nextPlayer);
+		
 	}
 }
