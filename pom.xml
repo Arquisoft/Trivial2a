@@ -12,7 +12,7 @@
 
     <modules>
         <module>extract</module>
-        <module>game</module>
+        <module>Game</module>
 <!-- Other modules should be added here: <module>...</module> -->
     </modules>
     
