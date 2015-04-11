@@ -3,20 +3,30 @@ package es.uniovi.asw.trivial.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Clase "Question" del modelo.
- * @author Gonz�lez Fernandez Cristian y Vel�zquez Vico �lvaro
- * @version 2 - Last changes: - ID added
+/**
+ * Clase "Question" del modelo.
+ * 
+ * @author Gonz�lez Fernandez Cristian
+ * @author Vel�zquez Vico �lvaro
+ * @author Montero Hernández, José Antonio
  */
 public class Question {
-	
+
 	private int id;
+	private Category category;
+
 	private String statement;
 	private String correctAnswer;
 	private List<String> incorrectAnswers = new ArrayList<String>();
-	
-	private String category;
-	
-	//Getters and setters
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public List<String> getIncorrectAnswers() {
 		return incorrectAnswers;
 	}
@@ -41,20 +51,17 @@ public class Question {
 		this.correctAnswer = correctAnswer;
 	}
 
-	public String getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
-	public int getId(){
-		return id;
+
+	public boolean isCorrectAnswer(String answer) {
+		if (correctAnswer.equals(answer))
+			return true;
+		return false;
 	}
-	
-	public void setId(int id){
-		this.id = id;
-	}
-	
 }

@@ -2,6 +2,7 @@ package es.uniovi.asw.trivial;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -39,7 +40,7 @@ public class BoardTests {
 
 	@Test
 	public void nodesAtDistanceTest() {
-		List<Integer> destinos = board.getSquaresAtDistance(73, 1);
+		List<Integer> destinos = new ArrayList<Integer>(board.getSquaresAtDistance(73, 1));
 
 		assertThat(destinos.size()).isEqualTo(6);
 		assertThat(destinos.get(0)).isEqualTo(67);

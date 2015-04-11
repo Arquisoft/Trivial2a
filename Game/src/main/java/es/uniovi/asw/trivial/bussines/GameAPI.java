@@ -1,6 +1,8 @@
 package es.uniovi.asw.trivial.bussines;
 
+import java.awt.Point;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
@@ -23,7 +25,8 @@ public interface GameAPI {
 	 * @param boardOption
 	 *            Board selected for this game.
 	 * @throws IllegalActionException
-	 *             Thrown if there is a game already started.
+	 *             Thrown if any of the received users doesn't exists in the
+	 *             database.
 	 */
 	void startGame(List<String> userNames, BoardOption boardOption)
 			throws IllegalActionException;
@@ -108,8 +111,9 @@ public interface GameAPI {
 	 *            Square number of the square the player is at.
 	 * @return Question required.
 	 * @throws IllegalActionException
-	 *             Thrown if userName is not the active player, he is not at the
-	 *             given location or there is no game in progress.
+	 *             Thrown if userName is not a player, he is not the active
+	 *             player, he is not at the given location, he cannot answer a
+	 *             question now or there is no game in progress.
 	 */
 	Question getQuestion(String userName, int squareNumber)
 			throws IllegalActionException;
@@ -148,8 +152,10 @@ public interface GameAPI {
 	 * category of the game and go back to the starting square.
 	 * 
 	 * @return User name of the winner. Null if there is no winner.
+	 * @throws IllegalActionException
+	 *             Throws an exception if there is no game running
 	 */
-	String getWinner();
+	String getWinner() throws IllegalActionException;
 
 	/**
 	 * Method to query is the game is still in progress or someone already win.
@@ -205,11 +211,12 @@ public interface GameAPI {
 	 * corresponding (x,y) coordinates of the point of that square in which
 	 * players and other tokens should be drawn.
 	 * 
-	 * @return String[][] Relation of [squareNumber, [xPoint, yPoint]]
+	 * @return Map<Integer, Point> Relation of squareNumber and graphic location
+	 *         at the board.
 	 * @throws IllegalActionException
 	 *             Thrown if there is no board loaded.
 	 */
-	String[] getSquares() throws IllegalActionException;
+	Map<Integer, Point> getSquares() throws IllegalActionException;
 
 	// ##########################################################
 	// # Data Query Methods

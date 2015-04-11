@@ -47,4 +47,8 @@ public class User {
 		this.statistics = statistics;
 	}
 	
+	public boolean canWin() {
+		return score.hasAllThePieces();
+	}
+	
 }
