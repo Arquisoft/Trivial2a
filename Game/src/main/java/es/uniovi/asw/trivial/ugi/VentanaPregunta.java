@@ -52,17 +52,17 @@ public class VentanaPregunta extends JDialog {
 	public VentanaPregunta(VentanaJuego vj) throws IllegalActionException {
 		this.vj=vj;
 		//no hay preguntas****
-		String name=vj.getGame().getActivePlayer();
-		question=vj.getGame().getQuestion(name,vj.getGame().getPlayerLocation(name));
+//		String name=vj.getGame().getActivePlayer();
+//		question=vj.getGame().getQuestion(name,vj.getGame().getPlayerLocation(name));
 		//Pregunta de prueba
-//			question = new Question();
-//			question.setCategory(Category.SPORTS);
-//			question.setCorrectAnswer("Correcta");
-//			List<String> f = new ArrayList<String>();
-//			f.add("Falsa 1");
-//			f.add("Falsa 2");
-//			question.setIncorrectAnswers(f);
-//			question.setStatement("Cual es la respuesta correcta?");
+			question = new Question();
+			question.setCategory(Category.SPORTS);
+			question.setCorrectAnswer("Correcta");
+			List<String> f = new ArrayList<String>();
+			f.add("Falsa 1");
+			f.add("Falsa 2");
+			question.setIncorrectAnswers(f);
+			question.setStatement("Cual es la respuesta correcta?");
 	//Pregunta de prueba
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				"resources/images/icon.png"));
@@ -129,9 +129,6 @@ public class VentanaPregunta extends JDialog {
 	private JButton getBtnPrimerarespuesta() {
 		if (btnPrimerarespuesta == null) {
 			btnPrimerarespuesta = new JButton(getRespuesta(1));
-			btnPrimerarespuesta.setOpaque(false);
-			btnPrimerarespuesta.setContentAreaFilled(false);
-			btnPrimerarespuesta.setBorderPainted(false);
 			btnPrimerarespuesta.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					try {
@@ -151,9 +148,6 @@ public class VentanaPregunta extends JDialog {
 	private JButton getBtnSegundarespuesta() {
 		if (btnSegundarespuesta == null) {
 			btnSegundarespuesta = new JButton(getRespuesta(2));
-			btnSegundarespuesta.setContentAreaFilled(false);
-			btnSegundarespuesta.setBorderPainted(false);
-			btnSegundarespuesta.setOpaque(false);
 			btnSegundarespuesta.setVerticalAlignment(SwingConstants.TOP);
 			btnSegundarespuesta.setHorizontalTextPosition(SwingConstants.LEFT);
 			btnSegundarespuesta.setHorizontalAlignment(SwingConstants.LEFT);
@@ -174,9 +168,6 @@ public class VentanaPregunta extends JDialog {
 	private JButton getBtnTercerarespuesta() {
 		if (btnTercerarespuesta == null) {
 			btnTercerarespuesta = new JButton(getRespuesta(3));
-			btnTercerarespuesta.setBorderPainted(false);
-			btnTercerarespuesta.setContentAreaFilled(false);
-			btnTercerarespuesta.setOpaque(false);
 			btnTercerarespuesta.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
@@ -196,6 +187,9 @@ public class VentanaPregunta extends JDialog {
 	private String getRespuesta(int boton) {
 		return respuestas[boton - 1];
 	}
+
+	// TODO: hay que crear el método que comprueba si la respuesta es correcta y
+	// muestre la ventana correspondiente
 
 	private JPanel getPnRespuestas() {
 		if (pnRespuestas == null) {
@@ -219,14 +213,13 @@ public class VentanaPregunta extends JDialog {
 								"resources/images/acierto.png"));
 					}
 			else {
+				dispose();
 				JOptionPane.showMessageDialog(this,
 						"¡Has fallado la pregunta!", "¡Mal!",
 						JOptionPane.INFORMATION_MESSAGE, new ImageIcon(
 								"resources/images/fallo.png"));
 			}
 		}
-		dispose();
-		vj.setVisible(true);
 
 	}
 }
