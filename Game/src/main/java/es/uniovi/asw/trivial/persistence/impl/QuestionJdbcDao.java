@@ -1,20 +1,5 @@
 package es.uniovi.asw.trivial.persistence.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import es.uniovi.asw.trivial.conf.Conf;
-import es.uniovi.asw.trivial.conf.Jdbc;
-import es.uniovi.asw.trivial.model.Statistic;
-import es.uniovi.asw.trivial.model.User;
-import es.uniovi.asw.trivial.persistence.UserDao;
-
-public class QuestionJdbcDao implements UserDao {
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -230,5 +215,4 @@ public class QuestionJdbcDao implements QuestionDao {
 		}
 		return null;
 	}
-}
 }

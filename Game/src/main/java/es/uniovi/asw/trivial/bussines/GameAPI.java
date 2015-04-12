@@ -221,5 +221,14 @@ public interface GameAPI {
 	// ##########################################################
 	// # Data Query Methods
 	// ##########################################################
+	
+
+	
+	/**
+	 * Method used to get a list of the players .
+	 * 
+	 * @return List of user names.
+	 */
+	List<String> getPlayersNameList();
 
 }

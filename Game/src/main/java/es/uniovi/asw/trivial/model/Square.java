@@ -1,5 +1,6 @@
 package es.uniovi.asw.trivial.model;
 
+import java.awt.Point;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,14 +25,17 @@ public class Square implements Comparable<Square>{
 	private int squareNumber;
 	private Category category;
 	private SquareType squareType;
+	
+	private Point position;
 
 	private Map<Integer, Square> connectedSquares;
 
-	public Square(int squareNumber, Category category, SquareType squareType) {
+	public Square(int squareNumber, Category category, SquareType squareType,Point point) {
 		this.squareNumber = squareNumber;
 		this.category = category;
 		this.squareType = squareType;
 		connectedSquares = new HashMap<Integer,Square>();
+		this.position=point;
 	}
 
 	public int getSquareNumber() {
@@ -87,5 +91,13 @@ public class Square implements Comparable<Square>{
 	@Override
 	public int compareTo(Square square) {
 		return new Integer(this.getSquareNumber()).compareTo(square.getSquareNumber());
+	}
+
+	public Point getPosition() {
+		return position;
+	}
+
+	public void setPosition(Point position) {
+		this.position = position;
 	}
 }

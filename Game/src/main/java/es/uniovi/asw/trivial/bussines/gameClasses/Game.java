@@ -24,17 +24,21 @@ public class Game {
 	private User activePlayer;
 
 	private User winner;
+	private int a;
 
 	public Game(BoardOption boardOption, List<String> players) throws IllegalActionException {
 		//TODO comprobar que los jugadores existen en la base de datos
 		board = new Board(boardOption);
 		this.players = new HashMap<String, User>();
-		
+		//
+		dice=new Dice();
 		for (String userName : players) {
 			User player = new User(userName);
 			player.setLocation(getStartSquare());
 			this.players.put(userName, player);
 		}
+		activePlayer=this.players.get(players.get(0));
+		dice.makeAvailable();
 	}
 
 	public int getPlayerLocation(String userName) throws IllegalActionException {
@@ -55,9 +59,9 @@ public class Game {
 			throws IllegalActionException {
 		Square square = getSquareIfExists(squareNumber);
 		if (!getMovements(userName, getPlayerLocation(userName)).contains(
-				square))
+				square.getSquareNumber()))
 			throw new IllegalActionException("The player " + userName
-					+ "can't move to the requested square.");
+					+ " can't move to the requested square.");
 
 		players.get(userName).setLocation(squareNumber);
 
@@ -163,7 +167,12 @@ public class Game {
 	public Map<Integer, Point> getSquares() throws IllegalActionException {
 		// TODO pendiente de que en el fichero se guarden las coordenadas
 		// TODO pendiente de que las Square almacenen sus coordenadas
-		return null;
+		Map<Integer, Point> aux= new HashMap<Integer, Point>();
+		for(int i=0;i<board.getSquareList().size();i++)
+		{
+			aux.put(i+1, board.getSquare(i+1).getPosition());
+		}
+		return aux;
 	}
 
 	private Square getSquareIfExists(int squareNumber)
@@ -207,9 +216,9 @@ public class Game {
 	private void assertUserIsAt(String userName, int squareNumber)
 			throws IllegalActionException {
 		User player = getPlayerIfExists(userName);
-		if (player.getLocation() == squareNumber)
+		if (player.getLocation() != squareNumber)
 			throw new IllegalActionException("The player " + player.getLogin()
-					+ "is not at square " + squareNumber);
+					+ " is not at square " + squareNumber);
 	}
 
 	private void assertQuestionCanBeAnswered() throws IllegalActionException {

@@ -1,5 +1,6 @@
 package es.uniovi.asw.trivial.bussines.fileLoaders;
 
+import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -64,7 +65,8 @@ public class GraphFileLoader {
 			category = Category.valueOf(categoryString);
 		}
 		SquareType squareType = SquareType.valueOf(subStrings[2].trim());
-		result.put(squareNumber, new Square(squareNumber, category, squareType));
+		Point point= new Point(Integer.valueOf(subStrings[3].trim()),Integer.valueOf(subStrings[4].trim()));
+		result.put(squareNumber, new Square(squareNumber, category, squareType,point));
 	}
 
 	private void connectUnsplittedNodes(String line) {
