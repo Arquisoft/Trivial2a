@@ -6,11 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
+import java.util.Random;
+import es.uniovi.asw.trivial.model.Category;
 import es.uniovi.asw.trivial.conf.Conf;
 import es.uniovi.asw.trivial.conf.Jdbc;
-import es.uniovi.asw.trivial.model.Category;
 import es.uniovi.asw.trivial.model.Question;
 import es.uniovi.asw.trivial.persistence.QuestionDao;
 
@@ -332,3 +332,4 @@ public class QuestionJdbcDao implements QuestionDao {
 		return null;
 	}
 }
+

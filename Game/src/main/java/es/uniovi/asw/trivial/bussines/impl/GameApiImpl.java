@@ -48,6 +48,11 @@ public class GameApiImpl implements GameAPI {
 	@Override
 	public void startGame(List<String> userNames, BoardOption boardOption)
 			throws IllegalActionException {
+		//New
+		players=new ArrayList<String>();
+		for(String p:userNames)
+			players.add(p);
+		//**
 		game = new Game(boardOption, userNames);
 	}
 
@@ -134,5 +139,14 @@ public class GameApiImpl implements GameAPI {
 	private void assertGameIsRunning() throws IllegalActionException {
 		if (game == null)
 			throw new IllegalActionException("No se ha iniciado partida.");
+	}
+	
+	//New
+
+	private List<String> players;
+
+	@Override
+	public List<String> getPlayersNameList() {
+		return players;
 	}
 }

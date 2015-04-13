@@ -18,8 +18,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
 import es.uniovi.asw.trivial.model.Category;
 import es.uniovi.asw.trivial.model.Question;
+import java.awt.Font;
 
 /**
  * Se muestra la ventana con la pregunta arriba, el tipo de pregunta como título
@@ -31,47 +33,63 @@ public class VentanaPregunta extends JDialog {
 
 	private final JPanel contentPanel;
 	private Question question;
-	private JTextField txtPregunta;
+	//private JTextField txtPregunta;
+
 	private JButton btnPrimerarespuesta;
 	private JButton btnSegundarespuesta;
 	private JButton btnTercerarespuesta;
 	private JPanel pnRespuestas;
 
-	private String[] respuestas = new String[3];
-	private int[] valor = new int[3];
-
-	public static void main(String[] args) {
-		try {
+	//public static void main(String[] args) {
+	//	try {
 			//TODO: Quitar al acabar
 			//Pregunta de prueba
-			Question q = new Question();
-			q.setCategory(Category.HISTORY);
-			q.setCorrectAnswer("Correcta");
-			List<String> f = new ArrayList<String>();
-			f.add("Falsa 1");
-			f.add("Falsa 2");
-			q.setIncorrectAnswers(f);
-			q.setStatement("Cual es la respuesta correcta?");
-			//Pregunta de prueba
+	//		Question q = new Question();
+	//		q.setCategory(Category.HISTORY);
+	//		q.setCorrectAnswer("Correcta");
+	//		List<String> f = new ArrayList<String>();
+	//		f.add("Falsa 1");
+	//		f.add("Falsa 2");
+	//		q.setIncorrectAnswers(f);
+	//		q.setStatement("Cual es la respuesta correcta?");
+	//		//Pregunta de prueba
 
-			VentanaPregunta dialog = new VentanaPregunta(q);
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	//		VentanaPregunta dialog = new VentanaPregunta(q);
+	//		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+	//		dialog.setVisible(true);
+	//	} catch (Exception e) {
+	//		e.printStackTrace();
+	//	}
+//	}
+	
+	private VentanaJuego vj;
+
+	private String[] respuestas = new String[3];
+	private int[] valor = new int[3];
+	private JTextField txtPregunta;
 
 	/**
 	 * Create the dialog. Se le podría pasar la ventana juego entera
+	 * @throws IllegalActionException 
 	 */
-	public VentanaPregunta(Question question) {
+	public VentanaPregunta(VentanaJuego vj) throws IllegalActionException {
+		this.vj=vj;
+		//no hay preguntas****
+		String name=vj.getGame().getActivePlayer();
+		question=vj.getGame().getQuestion(name,vj.getGame().getPlayerLocation(name));
+//		//Pregunta de prueba
+//			question = new Question();
+//			question.setCategory(Category.SPORTS);
+//			question.setCorrectAnswer("Correcta");
+//			List<String> f = new ArrayList<String>();
+//			f.add("Falsa 1");
+//			f.add("Falsa 2");
+//			question.setIncorrectAnswers(f);
+//			question.setStatement("Cual es la respuesta correcta?");
+//	//Pregunta de prueba
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				"resources/images/icon.png"));
-		this.question = question;
 		contentPanel = new JPanelBackground("resources/images/bgquestion.png");
-		setTitle(question.getCategory());// Habría que hacerlo con un map para
-											// que la muestre en castellano
 		setBounds(500, 180, 400, 450);
 
 		asignarRespuestas();
@@ -115,27 +133,31 @@ public class VentanaPregunta extends JDialog {
 			}
 		}
 	}
-
-	private JTextField getTxtPregunta() {
-		if (txtPregunta == null) {
-			txtPregunta = new JTextField();
-			txtPregunta.setBorder(null);
-			txtPregunta.setHorizontalAlignment(SwingConstants.LEFT);
-			txtPregunta.setAlignmentX(Component.LEFT_ALIGNMENT);
-			txtPregunta.setEditable(false);
-			txtPregunta.setText(question.getStatement());
-			txtPregunta.setColumns(10);
-			txtPregunta.setBackground(new Color(0, 0, 0, 0));
-		}
-		return txtPregunta;
-	}
+	//private JTextField getTxtPregunta() {
+	//	if (txtPregunta == null) {
+	//		txtPregunta = new JTextField();
+	//		txtPregunta.setBorder(null);
+	//		txtPregunta.setHorizontalAlignment(SwingConstants.LEFT);
+		//	txtPregunta.setAlignmentX(Component.LEFT_ALIGNMENT);
+		//	txtPregunta.setEditable(false);
+		//	txtPregunta.setText(question.getStatement());
+		//	txtPregunta.setColumns(10);
+		//	txtPregunta.setBackground(new Color(0, 0, 0, 0));
+	//	}
+	//	return txtPregunta;
+	//}
 
 	private JButton getBtnPrimerarespuesta() {
 		if (btnPrimerarespuesta == null) {
 			btnPrimerarespuesta = new JButton(getRespuesta(1));
 			btnPrimerarespuesta.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					validarRespuesta(valor[0]);
+					try {
+						validarRespuesta(((JButton)arg0.getSource()).getText());
+					} catch (IllegalActionException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			});
 			btnPrimerarespuesta.setVerticalAlignment(SwingConstants.TOP);
@@ -152,7 +174,12 @@ public class VentanaPregunta extends JDialog {
 			btnSegundarespuesta.setHorizontalAlignment(SwingConstants.LEFT);
 			btnSegundarespuesta.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					validarRespuesta(valor[1]);
+					try {
+						validarRespuesta(((JButton)e.getSource()).getText());
+					} catch (IllegalActionException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			});
 		}
@@ -164,7 +191,12 @@ public class VentanaPregunta extends JDialog {
 			btnTercerarespuesta = new JButton(getRespuesta(3));
 			btnTercerarespuesta.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					validarRespuesta(valor[2]);
+					try {
+						validarRespuesta(((JButton)e.getSource()).getText());
+					} catch (IllegalActionException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			});
 			btnTercerarespuesta.setVerticalAlignment(SwingConstants.TOP);
@@ -192,18 +224,17 @@ public class VentanaPregunta extends JDialog {
 		return pnRespuestas;
 	}
 
-	private void validarRespuesta(int respuesta) {
+	private void validarRespuesta(String answer) throws IllegalActionException {
 		{
-			if (respuesta == 1) {
-				dispose();
-				//TODO: Contar turno acertado
-				JOptionPane.showMessageDialog(this,
+			if(vj.getGame().isAnswerCorrect(question.getId(), answer, vj.getGame().getActivePlayer(), vj.getGame().getPlayerLocation(vj.getGame().getActivePlayer())))
+					{
+					JOptionPane.showMessageDialog(this,
 						"¡Has acertado la pregunta!", "¡Correcto!",
 						JOptionPane.INFORMATION_MESSAGE, new ImageIcon(
 								"resources/images/acierto.png"));
-			} else {
+					}
+			else {
 				dispose();
-				//TODO: Contar turno fallado
 				JOptionPane.showMessageDialog(this,
 						"¡Has fallado la pregunta!", "¡Mal!",
 						JOptionPane.INFORMATION_MESSAGE, new ImageIcon(
@@ -211,5 +242,15 @@ public class VentanaPregunta extends JDialog {
 			}
 		}
 
+	}
+
+	private JTextField getTxtPregunta() {
+		if (txtPregunta == null) {
+			txtPregunta = new JTextField(question.getStatement());
+			txtPregunta.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			txtPregunta.setOpaque(false);
+			txtPregunta.setColumns(10);
+		}
+		return txtPregunta;
 	}
 }

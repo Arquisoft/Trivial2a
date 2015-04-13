@@ -2,53 +2,42 @@ package es.uniovi.asw.trivial.ugi;
 
 import java.awt.Point;
 
-import javax.swing.JButton;
-
 import es.uniovi.asw.trivial.model.Square;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 public class JButtonSquare extends JButton {
 
 	/**
 	 * Clase que crea un boton en la posicion que debe de 33x33
 	 * 
-	 * Esta clase tiene que ser modificada puesto que la posicion ahora estara
-	 * almacenada en la propia Square
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Point posicion;
-	private Square info;
+	private int info;
 
-	public JButtonSquare(Point pos, Square inf) {
+	public JButtonSquare(int inf, Point p) {
 		super();
-		this.posicion = pos;
+		this.setIcon(new ImageIcon("resources/images/3D.png"));
 		this.info = inf;
 		this.setContentAreaFilled(false);
 		this.setOpaque(false);
 		this.setBorderPainted(false);
-		this.setBounds(pos.x, pos.y, 33, 33);
+		this.setBounds((int)Math.round(p.getX()-20), (int)Math.round(p.getY()-20), 41, 41);
 	}
-
-	public Point getPosicion() {
-		return posicion;
-	}
-
-	public void setPosicion(Point posicion) {
-		this.posicion = posicion;
-	}
-
-	public Square getInfo() {
+	
+	public int getInfo() {
 		return info;
 	}
 
-	public void setInfo(Square info) {
+	public void setInfo(int info) {
 		this.info = info;
 	}
 
-	// @Override
-	// protected void paintComponent(Graphics g) {
-	// g.fillOval(0, 0, getSize().width - 1, getSize().height - 1);
-	// super.paintComponent(g);
-	// }
-
+//	 @Override
+//	 protected void paintComponent(Graphics g) {
+//	 g.drawImage(Toolkit.getDefaultToolkit().getImage("/resources/images/3D.png"), 0, 27, null);
+//	 super.paintComponent(g);
+//	 }
 }

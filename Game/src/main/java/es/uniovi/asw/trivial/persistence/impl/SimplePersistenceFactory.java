@@ -1,6 +1,7 @@
 package es.uniovi.asw.trivial.persistence.impl;
 
-import es.uniovi.asw.trivial.persistence.PersistFactory;
+
+import es.uniovi.asw.trivial.persistence.PersistenceFactory;
 import es.uniovi.asw.trivial.persistence.QuestionDao;
 import es.uniovi.asw.trivial.persistence.ScoreDao;
 import es.uniovi.asw.trivial.persistence.StatisticDao;

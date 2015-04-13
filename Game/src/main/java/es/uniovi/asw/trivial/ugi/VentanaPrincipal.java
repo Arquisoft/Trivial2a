@@ -14,6 +14,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+
 public class VentanaPrincipal extends JFrame {
 
 	/**
@@ -25,12 +28,15 @@ public class VentanaPrincipal extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JPanel contentPane_1;
 	private JPanel pnBackground;
 	private JPanel pnInicio;
 	private JButton btnJugar;
 	private JButton btnInstrucciones;
 	private JButton btnSalir;
 	private JButton btnEstadsticas;
+	private JMenuBar menuBar;
+	private JMenu mnAdministrador;
 
 	// Util
 
@@ -59,12 +65,22 @@ public class VentanaPrincipal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 20, 1050, 700); // XXX: Tamaño de la pantalla 1050x700
 		contentPane = new JPanel();
+//TODO - <<<<<<< HEAD
 		contentPane = new JPanelBackground("resources/images/background.png");
 		contentPane.setLayout(null);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.add(getPnBackground());
+//=======
+		contentPane_1 = new JPanelBackground("resources/images/background.png");
+		contentPane_1.setLayout(null);
+		contentPane_1.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane_1);
+		contentPane_1.setLayout(null);
+		contentPane_1.add(getPnBackground());
+		contentPane_1.add(getMenuBar_1());
+//TODO - >>>>>>> origin/Interface-3.0
 		setTitle("Trivial2a");
 		setResizable(false);
 	}
@@ -177,5 +193,22 @@ public class VentanaPrincipal extends JFrame {
 			    "Instrucciones",
 			    JOptionPane.INFORMATION_MESSAGE,
 			    new ImageIcon("resources/images/icon.png"));
+	}
+	
+	private JMenuBar getMenuBar_1() {
+		if (menuBar == null) {
+			menuBar = new JMenuBar();
+			menuBar.setVisible(false);
+			menuBar.setOpaque(false);
+			menuBar.setBounds(0, 0, 1044, 21);
+			menuBar.add(getMnAdministrador());
+		}
+		return menuBar;
+	}
+	private JMenu getMnAdministrador() {
+		if (mnAdministrador == null) {
+			mnAdministrador = new JMenu("Opciones");
+		}
+		return mnAdministrador;
 	}
 }

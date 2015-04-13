@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+
 import java.util.List;
 
 import javax.swing.JDialog;
@@ -12,6 +13,28 @@ import javax.swing.border.EmptyBorder;
 
 import es.uniovi.asw.trivial.bussines.GameAPI;
 import es.uniovi.asw.trivial.model.Square;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+import java.util.TreeSet;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import es.uniovi.asw.trivial.bussines.GameAPI;
+import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
+import java.awt.Font;
 
 public class VentanaJuego extends JDialog {
 
@@ -44,20 +67,21 @@ public class VentanaJuego extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		try {
-			VentanaJuego dialog = new VentanaJuego(null, null);
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args) {
+//		try {
+//			VentanaJuego dialog = new VentanaJuego(null, null);
+//			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//			dialog.setVisible(true);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	/**
 	 * Create the dialog.
+	 * @throws IllegalActionException 
 	 */
-	public VentanaJuego(VentanaJugadores ventanaJugadores, GameAPI game) {
+	public VentanaJuego(VentanaJugadores ventanaJugadores, GameAPI game) throws IllegalActionException {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				"resources/images/icon.png"));
 		setResizable(false);
@@ -72,107 +96,275 @@ public class VentanaJuego extends JDialog {
 		getContentPane().add(getPnIzq());
 		getContentPane().add(getPnDrch());
 		getContentPane().add(getPnBoard());
+
+		chooseColours();
+		pintarTablero();
 	}
 
 	public GameAPI getGame() {
 		return game;
 	}
 
-	private JPanel getPnBoard() {
+	private JPanel getPnBoard() throws IllegalActionException {
 		if (pnBoard == null) {
-			pnBoard = new JPanelBackground("resources/images/gameboard.jpg");
+			pnBoard = new JPanelBackground("resources/images/gameboard.png");
 			pnBoard.setBounds(187, 1, 670, 670);
 			pnBoard.setOpaque(false);
 			pnBoard.setLayout(null);
+			pnBoard.add(getPanel());
 		}
 		return pnBoard;
 	}
-
-	private void showButtons(List<Square> sqs) {
-
+	List<JButtonSquare> squareButtons;
+	public void showButtons(Set<Integer> sqs) throws IllegalActionException {
+		squareButtons=new ArrayList<JButtonSquare>();
+		for( Integer s: sqs){
+			JButtonSquare aux= new JButtonSquare(s,game.getSquares().get(s));
+			aux.setVisible(true);
+			squareButtons.add(aux);
+			aux.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						JButtonSquare j=(JButtonSquare)e.getSource();
+						game.movePlayerTo(j.getInfo(),game.getActivePlayer());
+						deleteButtons();
+						mostrarPregunta();
+					} catch (IllegalActionException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			});
+			getPnBoard().add(aux);
+		}
+	}
+	private void deleteButtons() throws IllegalActionException{
+		getPnBoard().removeAll();
+		getPnBoard().add(getPanel());
+		pintarTablero();
+	}
+	public void pintarTablero() throws IllegalActionException {
+		Map<Integer,String> pos=new HashMap<Integer,String>();
+		panel.removeAll();
+		panel.add(getPnJugada());
+		int count=0;
+		int i=0;
+		for(String c: colours){
+			String name=game.getPlayersNameList().get(i);
+			int square=game.getPlayerLocation(name);
+				if(!pos.containsKey(square))
+					count=0;
+				pos.put(square, name);
+				int x=(int)game.getSquares().get(square).getX();
+				int y=(int)game.getSquares().get(square).getY();
+				JLabel j=new JLabel(new ImageIcon("resources/images/"+c+".png"));
+				double a=(count)*(Math.PI*2)/colours.size();
+				if(colours.size()>1){
+					x=(int)Math.round(11*Math.cos(a)+x);
+					y=(int)Math.round(11*Math.sin(a)+y);
+				}
+				j.setBounds(x-10, y-20, 25, 24);
+				count++;
+				panel.add(j);
+				i++;
+				}
+		panel.repaint();
+}
+	private void mostrarPregunta() throws IllegalActionException {
+		VentanaPregunta vp= new VentanaPregunta(this);
+		this.setVisible(false);
+		vp.setVisible(true);
+		vp.setModal(true);
+		this.setModal(false);
+		vp.setAlwaysOnTop(true);
 	}
 
-	public void pintarTablero(List<Square> sqs) {
-		showButtons(sqs);
-	}
-
-	private void mostrarPregunta(Square s) {
-		// TODO Obtener pregunta de la categoría y pasarla a VentanaPregunta
-	}
-
-	private JPanel getPnIzq() {
+	private JPanel getPnIzq() throws IllegalActionException {
 		if (pnIzq == null) {
 			pnIzq = new JPanel();
 			pnIzq.setBounds(864, 0, 180, 671);
 			pnIzq.setOpaque(false);
 			pnIzq.setAlignmentX(Component.LEFT_ALIGNMENT);
 			pnIzq.setLayout(new GridLayout(3, 0, 0, 0));
-			pnIzq.add(getPnJugador1());
-			pnIzq.add(getPnJugador5());
-			pnIzq.add(getPnJugador3());
+			
+			pnIzq.add(getPnJugador2());
+			pnIzq.add(getPnJugador6());
+			pnIzq.add(getPnJugador4());
 		}
 		return pnIzq;
 	}
 
-	private JPanel getPnDrch() {
+
+	private JPanel getPnDrch() throws IllegalActionException {
 		if (pnDrch == null) {
 			pnDrch = new JPanel();
 			pnDrch.setBounds(0, 0, 180, 671);
 			pnDrch.setOpaque(false);
 			pnDrch.setAlignmentX(Component.RIGHT_ALIGNMENT);
 			pnDrch.setLayout(new GridLayout(0, 1, 0, 0));
-			pnDrch.add(getPnJugador2());
-			pnDrch.add(getPnJugador6());
-			pnDrch.add(getPnJugador4());
+
+			pnDrch.add(getPnJugador1());
+			pnDrch.add(getPnJugador3());
+			pnDrch.add(getPnJugador5());
+
 		}
 		return pnDrch;
 	}
 
-	private JPanel getPnJugador1() {
+	private JPanel getPnJugador1() throws IllegalActionException {
 		if (pnJugador1 == null) {
 			pnJugador1 = crearPanel(0);
+			pnJugador1.setOpaque(false);
 		}
 		return pnJugador1;
 	}
 
-	private JPanel getPnJugador5() {
+	private JPanel getPnJugador5() throws IllegalActionException {
 		if (pnJugador5 == null) {
 			pnJugador5 = crearPanel(4);
+			pnJugador5.setOpaque(false);
 		}
 		return pnJugador5;
 	}
 
-	private JPanel getPnJugador3() {
+	private JPanel getPnJugador3() throws IllegalActionException {
 		if (pnJugador3 == null) {
 			pnJugador3 = crearPanel(2);
+			pnJugador3.setOpaque(false);
 		}
 		return pnJugador3;
 	}
 
-	private JPanel getPnJugador2() {
+	private JPanel getPnJugador2() throws IllegalActionException {
 		if (pnJugador2 == null) {
 			pnJugador2 = crearPanel(1);
+			pnJugador2.setOpaque(false);
 		}
 		return pnJugador2;
 	}
 
-	private JPanel getPnJugador6() {
+	private JPanel getPnJugador6() throws IllegalActionException {
 		if (pnJugador6 == null) {
 			pnJugador6 = crearPanel(5);
+			pnJugador6.setOpaque(false);
 		}
 		return pnJugador6;
 	}
-
-	private JPanel getPnJugador4() {
+	
+	private JPanel getPnJugador4() throws IllegalActionException {
 		if (pnJugador4 == null) {
 			pnJugador4 = crearPanel(3);
+			pnJugador4.setOpaque(false);
 		}
 		return pnJugador4;
 	}
 
-	private JPanel crearPanel(int i) {
-		return (game.getUserList().size() >= i) ? new PanelJugador(game
-				.getUserList().get(i)) : new JPanel();
+	private JPanel crearPanel(int i) throws IllegalActionException {
+		return (game.getPlayersNameList().size() > i) ? new PanelJugador(i, game): new JPanel();
+	}
+	public void refreshScore() throws IllegalActionException{
+		for(Component c:getPnIzq().getComponents())
+		{
+			if(c instanceof PanelJugador)
+				if(((PanelJugador)c).getLblNombre().equals(game.getActivePlayer()))
+					((PanelJugador)c).refreshScore();
+		}
+		for(Component c:getPnDrch().getComponents())
+		{
+			if(c instanceof PanelJugador)
+				if(((PanelJugador)c).getLblNombre().equals(game.getActivePlayer()))
+					((PanelJugador)c).refreshScore();
+		}				
+	}
+	
+	private Set<String> colours;
+	private JPanel panel;
+	private JPanel pnJugada;
+	private JLabel lblName;
+	private JPanel pnDice;
+	private JButton btnDice;
+	public void chooseColours(){
+		String[] posibleColours={"green","blue","orange","brown","red","yellow"};
+		Random r = new Random();
+		colours=new TreeSet<String>();
+		for(int i=0; i<game.getPlayersNameList().size();i++){
+			int colour;
+			do{
+				colour=r.nextInt(6);
+			}while(colours.contains(posibleColours[colour]));
+			colours.add(posibleColours[colour]);
+		  }
 	}
 
+	private JPanel getPanel() throws IllegalActionException {
+		if (panel == null) {
+			panel = new JPanel();
+			panel.setBounds(0, 10, 670, 660);
+			panel.setOpaque(false);
+			panel.setLayout(null);
+			panel.add(getPnJugada());
+		}
+		return panel;
+	}
+	private JPanel getPnJugada() throws IllegalActionException {
+		if (pnJugada == null) {
+			pnJugada = new JPanel();
+			pnJugada.setBounds(287, 79, 89, 86);
+			pnJugada.setOpaque(false);
+			pnJugada.setLayout(null);
+			pnJugada.add(getLblName());
+			pnJugada.add(getPnDice());
+		}
+		return pnJugada;
+	}
+	private JLabel getLblName() throws IllegalActionException {
+		if (lblName == null) {
+			lblName = new JLabel(game.getActivePlayer());
+			lblName.setVerticalAlignment(SwingConstants.TOP);
+			lblName.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			lblName.setForeground(Color.WHITE);
+			lblName.setHorizontalAlignment(SwingConstants.CENTER);
+			lblName.setHorizontalTextPosition(SwingConstants.CENTER);
+			lblName.setBounds(0, 0, 90, 22);
+		}
+		return lblName;
+	}
+	private JPanel getPnDice() {
+		if (pnDice == null) {
+			pnDice = new JPanel();
+			pnDice.setBounds(0, 33, 90, 54);
+			pnDice.setOpaque(false);
+			pnDice.setLayout(null);
+			pnDice.add(getBtnDice());
+		}
+		return pnDice;
+	}
+	private JButton getBtnDice() {
+		if (btnDice == null) {
+			btnDice = new JButton();
+			btnDice.setContentAreaFilled(false);
+			btnDice.setBorderPainted(false);
+			btnDice.setAlignmentX(Component.CENTER_ALIGNMENT);
+			btnDice.setBounds(20, 0, 50, 50);
+			btnDice.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						tirarDado();
+					} catch (IllegalActionException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			});
+			btnDice.setOpaque(false);
+			btnDice.setIcon(new ImageIcon("resources/images/1.png"));
+		}
+		return btnDice;
+	}
+	
+	public void tirarDado() throws IllegalActionException {
+		btnDice.setIcon(new ImageIcon("resources/images/"
+				+ game.rollDice() + ".png"));
+		showButtons(game.getMovements(game.getActivePlayer(), game.getPlayerLocation(game.getActivePlayer())));
+	}
 }

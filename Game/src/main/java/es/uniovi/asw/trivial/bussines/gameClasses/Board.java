@@ -19,6 +19,10 @@ import es.uniovi.asw.trivial.model.SquareType;
 public class Board {
 
 	private Map<Integer, Square> squareList = new HashMap<Integer, Square>();
+	public Map<Integer, Square> getSquareList() {
+		return squareList;
+	}
+
 	private BoardOption boardOption;
 	private Square startPosition;
 	
