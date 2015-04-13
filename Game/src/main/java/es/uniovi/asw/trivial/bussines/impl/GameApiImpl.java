@@ -16,7 +16,7 @@ import es.uniovi.asw.trivial.model.Question;
 import es.uniovi.asw.trivial.model.Score;
 import es.uniovi.asw.trivial.model.Square;
 import es.uniovi.asw.trivial.model.User;
-import es.uniovi.asw.trivial.persistence.PersistFactory;
+import es.uniovi.asw.trivial.persistence.PersistenceServices;
 
 public class GameApiImpl implements GameAPI {
 
@@ -110,7 +110,7 @@ public class GameApiImpl implements GameAPI {
 
 	@Override
 	public List<String> getUserNameList() {
-		PersistFactory factory = PersistenceFactory.persistenceFactory();
+		PersistenceServices factory = PersistenceFactory.persistenceFactory();
 		
 		List<String> usuarios = new ArrayList<String>();
 		
@@ -125,7 +125,7 @@ public class GameApiImpl implements GameAPI {
 
 	@Override
 	public void createUser(String userName) {
-		PersistFactory factory = PersistenceFactory.persistenceFactory();
+		PersistenceServices factory = PersistenceFactory.persistenceFactory();
 		
 		factory.createUserDao().save(new User(userName));
 	}

@@ -2,8 +2,6 @@ package es.uniovi.asw.trivial.ugi;
 
 import java.awt.Point;
 
-import es.uniovi.asw.trivial.model.Square;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 

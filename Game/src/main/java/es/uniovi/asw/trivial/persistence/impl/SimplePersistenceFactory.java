@@ -1,13 +1,13 @@
 package es.uniovi.asw.trivial.persistence.impl;
 
 
-import es.uniovi.asw.trivial.persistence.PersistenceFactory;
+import es.uniovi.asw.trivial.persistence.PersistenceServices;
 import es.uniovi.asw.trivial.persistence.QuestionDao;
 import es.uniovi.asw.trivial.persistence.ScoreDao;
 import es.uniovi.asw.trivial.persistence.StatisticDao;
 import es.uniovi.asw.trivial.persistence.UserDao;
 
-public class SimplePersistenceFactory implements PersistFactory {
+public class SimplePersistenceFactory implements PersistenceServices {
 
 	@Override
 	public UserDao createUserDao() {

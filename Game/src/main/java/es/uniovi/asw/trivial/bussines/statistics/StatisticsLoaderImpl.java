@@ -7,14 +7,14 @@ import java.util.Map;
 import es.uniovi.asw.trivial.bussines.StatisticsLoader;
 import es.uniovi.asw.trivial.factories.PersistenceFactory;
 import es.uniovi.asw.trivial.model.User;
-import es.uniovi.asw.trivial.persistence.PersistFactory;
+import es.uniovi.asw.trivial.persistence.PersistenceServices;
 
 public class StatisticsLoaderImpl implements StatisticsLoader{
 
 	@Override
 	public int getGlobalCorrectAnswers() {
 		
-		PersistFactory factory = PersistenceFactory.persistenceFactory();
+		PersistenceServices factory = PersistenceFactory.persistenceFactory();
 		
 		return factory.createStatisticDao().getRespuestasCorrectas();
 		
@@ -22,14 +22,14 @@ public class StatisticsLoaderImpl implements StatisticsLoader{
 
 	@Override
 	public int getGlobalWrongAnwers() {
-		PersistFactory factory = PersistenceFactory.persistenceFactory();
+		PersistenceServices factory = PersistenceFactory.persistenceFactory();
 		
 		return factory.createStatisticDao().getRespuestasIncorrectas();
 	}
 
 	@Override
 	public int getGlobalCorrectSportsAnswers() {
-		PersistFactory factory = PersistenceFactory.persistenceFactory();
+		PersistenceServices factory = PersistenceFactory.persistenceFactory();
 		
 		int total = 0;
 		
@@ -44,7 +44,7 @@ public class StatisticsLoaderImpl implements StatisticsLoader{
 
 	@Override
 	public int getGlobalCorrectGeographyAnswers() {
-		PersistFactory factory = PersistenceFactory.persistenceFactory();
+		PersistenceServices factory = PersistenceFactory.persistenceFactory();
 		
 		int total = 0;
 		
@@ -59,7 +59,7 @@ public class StatisticsLoaderImpl implements StatisticsLoader{
 
 	@Override
 	public int getGlobalCorrectShowsAndEntertainmentAnswers() {
-		PersistFactory factory = PersistenceFactory.persistenceFactory();
+		PersistenceServices factory = PersistenceFactory.persistenceFactory();
 		
 		int total = 0;
 		
@@ -74,7 +74,7 @@ public class StatisticsLoaderImpl implements StatisticsLoader{
 
 	@Override
 	public int getGlobalCorrectHistoryAnswers() {
-		PersistFactory factory = PersistenceFactory.persistenceFactory();
+		PersistenceServices factory = PersistenceFactory.persistenceFactory();
 		
 		int total = 0;
 		
@@ -89,7 +89,7 @@ public class StatisticsLoaderImpl implements StatisticsLoader{
 
 	@Override
 	public int getGlobalCorrectArtAndLiteratureAnswers() {
-		PersistFactory factory = PersistenceFactory.persistenceFactory();
+		PersistenceServices factory = PersistenceFactory.persistenceFactory();
 		
 		int total = 0;
 		
@@ -104,7 +104,7 @@ public class StatisticsLoaderImpl implements StatisticsLoader{
 
 	@Override
 	public int getGlobalCorrectScienceAndTechnologyAnswers() {
-		PersistFactory factory = PersistenceFactory.persistenceFactory();
+		PersistenceServices factory = PersistenceFactory.persistenceFactory();
 		
 		int total = 0;
 		
@@ -130,7 +130,7 @@ public class StatisticsLoaderImpl implements StatisticsLoader{
 		
 		ArrayList<Object[]> datos = new ArrayList<Object[]>();
 		
-		PersistFactory factory = PersistenceFactory.persistenceFactory();
+		PersistenceServices factory = PersistenceFactory.persistenceFactory();
 		
 		for(User u: factory.createUserDao().getUsers()){
 			String nombre = u.getLogin();

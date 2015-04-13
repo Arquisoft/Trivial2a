@@ -1,13 +1,11 @@
 package es.uniovi.asw.trivial.ugi;
 
 import java.awt.Color;
-import java.awt.Component;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,9 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
-import es.uniovi.asw.trivial.model.Category;
 import es.uniovi.asw.trivial.model.Question;
-import java.awt.Font;
 
 /**
  * Se muestra la ventana con la pregunta arriba, el tipo de pregunta como título

@@ -21,7 +21,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import es.uniovi.asw.trivial.bussines.GameAPI;
-import es.uniovi.asw.trivial.model.User;
 import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
 import es.uniovi.asw.trivial.bussines.gameClasses.BoardOptionsFactory;
 import es.uniovi.asw.trivial.factories.BusinessFactory;

@@ -1,24 +1,19 @@
 package es.uniovi.asw.trivial.ugi;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
-
+import java.awt.Font;
 import java.awt.GridLayout;
-
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-
-import es.uniovi.asw.trivial.model.User;
-
 import es.uniovi.asw.trivial.bussines.GameAPI;
 import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
 import es.uniovi.asw.trivial.model.Score;
-import java.awt.Color;
-import java.awt.Font;
 
 
 public class PanelJugador extends JPanel {

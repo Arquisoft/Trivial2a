@@ -12,7 +12,6 @@ import es.uniovi.asw.trivial.factories.PersistenceFactory;
 import es.uniovi.asw.trivial.model.Category;
 import es.uniovi.asw.trivial.model.Question;
 import es.uniovi.asw.trivial.persistence.QuestionDao;
-import es.uniovi.asw.trivial.persistence.UserDao;
 
 public class QuestionTests {
 

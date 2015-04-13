@@ -1,6 +1,6 @@
 package es.uniovi.asw.trivial.persistence;
 
-public interface PersistFactory {
+public interface PersistenceServices {
 	
 	UserDao createUserDao();
 	ScoreDao createScoreDao();

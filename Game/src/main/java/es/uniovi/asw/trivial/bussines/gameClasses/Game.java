@@ -27,7 +27,6 @@ public class Game {
 	private User activePlayer;
 
 	private User winner;
-	private int a;
 
 	public Game(BoardOption boardOption, List<String> players)
 			throws IllegalActionException {
