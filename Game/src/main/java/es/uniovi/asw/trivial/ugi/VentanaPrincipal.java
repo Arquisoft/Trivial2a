@@ -117,7 +117,7 @@ public class VentanaPrincipal extends JFrame {
 
 	private JButton getBtnInstrucciones() {
 		if (btnInstrucciones == null) {
-			btnInstrucciones = new JButton("Opciones");
+			btnInstrucciones = new JButton("Instrucciones");
 			btnInstrucciones.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mostrarVentanaInstrucciones();

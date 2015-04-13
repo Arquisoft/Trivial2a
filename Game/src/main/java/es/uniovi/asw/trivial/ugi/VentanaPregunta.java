@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 import es.uniovi.asw.trivial.bussines.exceptions.IllegalActionException;
 import es.uniovi.asw.trivial.model.Category;
 import es.uniovi.asw.trivial.model.Question;
+import java.awt.Font;
 
 /**
  * Se muestra la ventana con la pregunta arriba, el tipo de pregunta como título
@@ -32,7 +33,6 @@ public class VentanaPregunta extends JDialog {
 
 	private final JPanel contentPanel;
 	private Question question;
-	private JTextField txtPregunta;
 	private JButton btnPrimerarespuesta;
 	private JButton btnSegundarespuesta;
 	private JButton btnTercerarespuesta;
@@ -42,6 +42,7 @@ public class VentanaPregunta extends JDialog {
 
 	private String[] respuestas = new String[3];
 	private int[] valor = new int[3];
+	private JTextField txtPregunta;
 
 
 
@@ -52,18 +53,18 @@ public class VentanaPregunta extends JDialog {
 	public VentanaPregunta(VentanaJuego vj) throws IllegalActionException {
 		this.vj=vj;
 		//no hay preguntas****
-//		String name=vj.getGame().getActivePlayer();
-//		question=vj.getGame().getQuestion(name,vj.getGame().getPlayerLocation(name));
-		//Pregunta de prueba
-			question = new Question();
-			question.setCategory(Category.SPORTS);
-			question.setCorrectAnswer("Correcta");
-			List<String> f = new ArrayList<String>();
-			f.add("Falsa 1");
-			f.add("Falsa 2");
-			question.setIncorrectAnswers(f);
-			question.setStatement("Cual es la respuesta correcta?");
-	//Pregunta de prueba
+		String name=vj.getGame().getActivePlayer();
+		question=vj.getGame().getQuestion(name,vj.getGame().getPlayerLocation(name));
+//		//Pregunta de prueba
+//			question = new Question();
+//			question.setCategory(Category.SPORTS);
+//			question.setCorrectAnswer("Correcta");
+//			List<String> f = new ArrayList<String>();
+//			f.add("Falsa 1");
+//			f.add("Falsa 2");
+//			question.setIncorrectAnswers(f);
+//			question.setStatement("Cual es la respuesta correcta?");
+//	//Pregunta de prueba
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				"resources/images/icon.png"));
 		contentPanel = new JPanelBackground("resources/images/bgquestion.png");
@@ -110,20 +111,6 @@ public class VentanaPregunta extends JDialog {
 				valor[pos] = -1;
 			}
 		}
-	}
-
-	private JTextField getTxtPregunta() {
-		if (txtPregunta == null) {
-			txtPregunta = new JTextField();
-			txtPregunta.setBorder(null);
-			txtPregunta.setHorizontalAlignment(SwingConstants.LEFT);
-			txtPregunta.setAlignmentX(Component.LEFT_ALIGNMENT);
-			txtPregunta.setEditable(false);
-			txtPregunta.setText(question.getStatement());
-			txtPregunta.setColumns(10);
-			txtPregunta.setBackground(new Color(0, 0, 0, 0));
-		}
-		return txtPregunta;
 	}
 
 	private JButton getBtnPrimerarespuesta() {
@@ -221,5 +208,14 @@ public class VentanaPregunta extends JDialog {
 			}
 		}
 
+	}
+	private JTextField getTxtPregunta() {
+		if (txtPregunta == null) {
+			txtPregunta = new JTextField(question.getStatement());
+			txtPregunta.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			txtPregunta.setOpaque(false);
+			txtPregunta.setColumns(10);
+		}
+		return txtPregunta;
 	}
 }

@@ -80,7 +80,7 @@ public class VentanaLoginAdmin extends JDialog {
 			}
 			{
 				JLabel lblContrasea = new JLabel("Contrase\u00F1a");
-				lblContrasea.setBounds(90, 86, 59, 36);
+				lblContrasea.setBounds(68, 86, 81, 36);
 				pnForm.add(lblContrasea);
 			}
 			{
