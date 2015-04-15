@@ -1,8 +1,6 @@
 package es.uniovi.asw.trivial.bussines.gameClasses;
 
 import java.util.List;
-
-import edu.emory.mathcs.backport.java.util.Collections;
 import es.uniovi.asw.trivial.bussines.fileLoaders.BoardOptionsLoader;
 import es.uniovi.asw.trivial.model.BoardOption;
 
@@ -21,9 +19,8 @@ public class BoardOptionsFactory {
 	private static List<BoardOption> boardOptions = new BoardOptionsLoader()
 			.loadBoardOptions(BOARDS_FOLDER + BOARDOPTIONS_FILE);
 
-	@SuppressWarnings("unchecked")
 	public static List<BoardOption> getBoardOptions() {
-		return Collections.unmodifiableList(boardOptions);
+		return boardOptions;
 	}
 	
 	public static BoardOption getBoardOption(int boardOptionId) {
