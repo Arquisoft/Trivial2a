@@ -38,13 +38,6 @@ public class VentanaJuego extends JDialog {
 
 	private final JPanel contentPanel;
 	private JPanelBackground pnBoard;
-
-	// Util
-
-	public VentanaJugadores vj;
-
-	// Clases usadas de la lógica
-	public GameAPI game;
 	private JPanel pnIzq;
 	private JPanel pnDrch;
 	private JPanel pnJugador1;
@@ -53,25 +46,41 @@ public class VentanaJuego extends JDialog {
 	private JPanel pnJugador2;
 	private JPanel pnJugador6;
 	private JPanel pnJugador4;
+	private JPanel panel;
+	private JPanel pnJugada;
+	private JLabel lblName;
+	private JPanel pnDice;
+	private JButton btnDice;
+	List<JButtonSquare> squareButtons;
+
+	// Util
+	public VentanaJugadores vj;
+	private Set<String> colours;
+	VentanaPregunta vpreg;
+
+	// Clases usadas de la lógica
+	public GameAPI game;
 
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		try {
-//			VentanaJuego dialog = new VentanaJuego(null, null);
-//			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-//			dialog.setVisible(true);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+	// public static void main(String[] args) {
+	// try {
+	// VentanaJuego dialog = new VentanaJuego(null, null);
+	// dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+	// dialog.setVisible(true);
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// }
+	// }
 
 	/**
 	 * Create the dialog.
-	 * @throws IllegalActionException 
+	 * 
+	 * @throws IllegalActionException
 	 */
-	public VentanaJuego(VentanaJugadores ventanaJugadores, GameAPI game) throws IllegalActionException {
+	public VentanaJuego(VentanaJugadores ventanaJugadores, GameAPI game)
+			throws IllegalActionException {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				"resources/images/icon.png"));
 		setResizable(false);
@@ -79,7 +88,7 @@ public class VentanaJuego extends JDialog {
 		getContentPane().setBackground(new Color(49, 54, 146));
 		this.game = game;
 		this.vj = ventanaJugadores;
-		setBounds(100, 20, 1050, 700); // XXX: Tamaño de la pantalla 1050x700
+		setBounds(100, 20, 1050, 700);
 		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().setLayout(null);
@@ -89,10 +98,6 @@ public class VentanaJuego extends JDialog {
 
 		chooseColours();
 		pintarTablero();
-	}
-
-	public GameAPI getGame() {
-		return game;
 	}
 
 	private JPanel getPnBoard() throws IllegalActionException {
@@ -105,69 +110,6 @@ public class VentanaJuego extends JDialog {
 		}
 		return pnBoard;
 	}
-	List<JButtonSquare> squareButtons;
-	public void showButtons(Set<Integer> sqs) throws IllegalActionException {
-		squareButtons=new ArrayList<JButtonSquare>();
-		for( Integer s: sqs){
-			JButtonSquare aux= new JButtonSquare(s,game.getSquares().get(s));
-			aux.setVisible(true);
-			squareButtons.add(aux);
-			aux.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					try {
-						JButtonSquare j=(JButtonSquare)e.getSource();
-						game.movePlayerTo(j.getInfo(),game.getActivePlayer());
-						deleteButtons();
-						mostrarPregunta();
-					} catch (IllegalActionException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-			});
-			getPnBoard().add(aux);
-		}
-	}
-	private void deleteButtons() throws IllegalActionException{
-		getPnBoard().removeAll();
-		getPnBoard().add(getPanel());
-		pintarTablero();
-	}
-	public void pintarTablero() throws IllegalActionException {
-		Map<Integer,String> pos=new HashMap<Integer,String>();
-		panel.removeAll();
-		panel.add(getPnJugada());
-		int count=0;
-		int i=0;
-		for(String c: colours){
-			String name=game.getPlayersNameList().get(i);
-			int square=game.getPlayerLocation(name);
-				if(!pos.containsKey(square))
-					count=0;
-				pos.put(square, name);
-				int x=(int)game.getSquares().get(square).getX();
-				int y=(int)game.getSquares().get(square).getY();
-				JLabel j=new JLabel(new ImageIcon("resources/images/"+c+".png"));
-				double a=(count)*(Math.PI*2)/colours.size();
-				if(colours.size()>1){
-					x=(int)Math.round(11*Math.cos(a)+x);
-					y=(int)Math.round(11*Math.sin(a)+y);
-				}
-				j.setBounds(x-10, y-20, 25, 24);
-				count++;
-				panel.add(j);
-				i++;
-				}
-		panel.repaint();
-}
-	private void mostrarPregunta() throws IllegalActionException {
-		VentanaPregunta vp= new VentanaPregunta(this);
-		this.setVisible(false);
-		vp.setVisible(true);
-		vp.setModal(true);
-		this.setModal(false);
-		vp.setAlwaysOnTop(true);
-	}
 
 	private JPanel getPnIzq() throws IllegalActionException {
 		if (pnIzq == null) {
@@ -176,14 +118,13 @@ public class VentanaJuego extends JDialog {
 			pnIzq.setOpaque(false);
 			pnIzq.setAlignmentX(Component.LEFT_ALIGNMENT);
 			pnIzq.setLayout(new GridLayout(3, 0, 0, 0));
-			
+
 			pnIzq.add(getPnJugador2());
 			pnIzq.add(getPnJugador6());
 			pnIzq.add(getPnJugador4());
 		}
 		return pnIzq;
 	}
-
 
 	private JPanel getPnDrch() throws IllegalActionException {
 		if (pnDrch == null) {
@@ -209,12 +150,12 @@ public class VentanaJuego extends JDialog {
 		return pnJugador1;
 	}
 
-	private JPanel getPnJugador5() throws IllegalActionException {
-		if (pnJugador5 == null) {
-			pnJugador5 = crearPanel(4);
-			pnJugador5.setOpaque(false);
+	private JPanel getPnJugador2() throws IllegalActionException {
+		if (pnJugador2 == null) {
+			pnJugador2 = crearPanel(1);
+			pnJugador2.setOpaque(false);
 		}
-		return pnJugador5;
+		return pnJugador2;
 	}
 
 	private JPanel getPnJugador3() throws IllegalActionException {
@@ -225,12 +166,20 @@ public class VentanaJuego extends JDialog {
 		return pnJugador3;
 	}
 
-	private JPanel getPnJugador2() throws IllegalActionException {
-		if (pnJugador2 == null) {
-			pnJugador2 = crearPanel(1);
-			pnJugador2.setOpaque(false);
+	private JPanel getPnJugador4() throws IllegalActionException {
+		if (pnJugador4 == null) {
+			pnJugador4 = crearPanel(3);
+			pnJugador4.setOpaque(false);
 		}
-		return pnJugador2;
+		return pnJugador4;
+	}
+
+	private JPanel getPnJugador5() throws IllegalActionException {
+		if (pnJugador5 == null) {
+			pnJugador5 = crearPanel(4);
+			pnJugador5.setOpaque(false);
+		}
+		return pnJugador5;
 	}
 
 	private JPanel getPnJugador6() throws IllegalActionException {
@@ -240,50 +189,10 @@ public class VentanaJuego extends JDialog {
 		}
 		return pnJugador6;
 	}
-	
-	private JPanel getPnJugador4() throws IllegalActionException {
-		if (pnJugador4 == null) {
-			pnJugador4 = crearPanel(3);
-			pnJugador4.setOpaque(false);
-		}
-		return pnJugador4;
-	}
 
 	private JPanel crearPanel(int i) throws IllegalActionException {
-		return (game.getPlayersNameList().size() > i) ? new PanelJugador(i, game): new JPanel();
-	}
-	public void refreshScore() throws IllegalActionException{
-		for(Component c:getPnIzq().getComponents())
-		{
-			if(c instanceof PanelJugador)
-				if(((PanelJugador)c).getLblNombre().equals(game.getActivePlayer()))
-					((PanelJugador)c).refreshScore();
-		}
-		for(Component c:getPnDrch().getComponents())
-		{
-			if(c instanceof PanelJugador)
-				if(((PanelJugador)c).getLblNombre().equals(game.getActivePlayer()))
-					((PanelJugador)c).refreshScore();
-		}				
-	}
-	
-	private Set<String> colours;
-	private JPanel panel;
-	private JPanel pnJugada;
-	private JLabel lblName;
-	private JPanel pnDice;
-	private JButton btnDice;
-	public void chooseColours(){
-		String[] posibleColours={"green","blue","orange","brown","red","yellow"};
-		Random r = new Random();
-		colours=new TreeSet<String>();
-		for(int i=0; i<game.getPlayersNameList().size();i++){
-			int colour;
-			do{
-				colour=r.nextInt(6);
-			}while(colours.contains(posibleColours[colour]));
-			colours.add(posibleColours[colour]);
-		  }
+		return (game.getPlayersNameList().size() > i) ? new PanelJugador(i,
+				game) : new JPanel();
 	}
 
 	private JPanel getPanel() throws IllegalActionException {
@@ -296,6 +205,7 @@ public class VentanaJuego extends JDialog {
 		}
 		return panel;
 	}
+
 	private JPanel getPnJugada() throws IllegalActionException {
 		if (pnJugada == null) {
 			pnJugada = new JPanel();
@@ -307,6 +217,7 @@ public class VentanaJuego extends JDialog {
 		}
 		return pnJugada;
 	}
+
 	private JLabel getLblName() throws IllegalActionException {
 		if (lblName == null) {
 			lblName = new JLabel(game.getActivePlayer());
@@ -319,6 +230,7 @@ public class VentanaJuego extends JDialog {
 		}
 		return lblName;
 	}
+
 	private JPanel getPnDice() {
 		if (pnDice == null) {
 			pnDice = new JPanel();
@@ -329,6 +241,7 @@ public class VentanaJuego extends JDialog {
 		}
 		return pnDice;
 	}
+
 	private JButton getBtnDice() {
 		if (btnDice == null) {
 			btnDice = new JButton();
@@ -341,7 +254,6 @@ public class VentanaJuego extends JDialog {
 					try {
 						tirarDado();
 					} catch (IllegalActionException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
@@ -351,10 +263,111 @@ public class VentanaJuego extends JDialog {
 		}
 		return btnDice;
 	}
-	
+
+	public GameAPI getGame() {
+		return game;
+	}
+
+	public void showButtons(Set<Integer> sqs) throws IllegalActionException {
+		squareButtons = new ArrayList<JButtonSquare>();
+		for (Integer s : sqs) {
+			JButtonSquare aux = new JButtonSquare(s, game.getSquares().get(s));
+			aux.setVisible(true);
+			squareButtons.add(aux);
+			aux.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						JButtonSquare j = (JButtonSquare) e.getSource();
+						game.movePlayerTo(j.getInfo(), game.getActivePlayer());
+						deleteButtons();
+						mostrarPregunta();
+					} catch (IllegalActionException e1) {
+						e1.printStackTrace();
+					}
+				}
+			});
+			getPnBoard().add(aux);
+		}
+	}
+
+	private void mostrarPregunta() throws IllegalActionException {
+		vpreg = new VentanaPregunta(this);
+		vpreg.setModal(true);
+		vpreg.setVisible(true);
+	}
+
+	private void deleteButtons() throws IllegalActionException {
+		getPnBoard().removeAll();
+		getPnBoard().add(getPanel());
+		pintarTablero();
+	}
+
+	public void pintarTablero() throws IllegalActionException {
+		Map<Integer, String> pos = new HashMap<Integer, String>();
+		panel.removeAll();
+		panel.add(getPnJugada());
+		int count = 0;
+		int i = 0;
+		for (String c : colours) {
+			String name = game.getPlayersNameList().get(i);
+			int square = game.getPlayerLocation(name);
+			if (!pos.containsKey(square))
+				count = 0;
+			pos.put(square, name);
+			int x = (int) game.getSquares().get(square).getX();
+			int y = (int) game.getSquares().get(square).getY();
+			JLabel j = new JLabel(new ImageIcon("resources/images/" + c
+					+ ".png"));
+			double a = (count) * (Math.PI * 2) / colours.size();
+			if (colours.size() > 1) {
+				x = (int) Math.round(11 * Math.cos(a) + x);
+				y = (int) Math.round(11 * Math.sin(a) + y);
+			}
+			j.setBounds(x - 10, y - 20, 25, 24);
+			count++;
+			panel.add(j);
+			i++;
+		}
+		panel.repaint();
+	}
+
+	public void refreshScore() throws IllegalActionException {
+		for (Component c : getPnIzq().getComponents()) {
+			if (c instanceof PanelJugador)
+				if (((PanelJugador) c).getLblNombre().equals(
+						game.getActivePlayer()))
+					((PanelJugador) c).refreshScore();
+		}
+		for (Component c : getPnDrch().getComponents()) {
+			if (c instanceof PanelJugador)
+				if (((PanelJugador) c).getLblNombre().equals(
+						game.getActivePlayer()))
+					((PanelJugador) c).refreshScore();
+		}
+	}
+
+	public void chooseColours() {
+		String[] posibleColours = { "green", "blue", "orange", "brown", "red",
+				"yellow" };
+		Random r = new Random();
+		colours = new TreeSet<String>();
+		for (int i = 0; i < game.getPlayersNameList().size(); i++) {
+			int colour;
+			do {
+				colour = r.nextInt(6);
+			} while (colours.contains(posibleColours[colour]));
+			colours.add(posibleColours[colour]);
+		}
+	}
+
 	public void tirarDado() throws IllegalActionException {
-		btnDice.setIcon(new ImageIcon("resources/images/"
-				+ game.rollDice() + ".png"));
-		showButtons(game.getMovements(game.getActivePlayer(), game.getPlayerLocation(game.getActivePlayer())));
+		btnDice.setIcon(new ImageIcon("resources/images/" + game.rollDice()
+				+ ".png"));
+		showButtons(game.getMovements(game.getActivePlayer(),
+				game.getPlayerLocation(game.getActivePlayer())));
+	}
+	
+	public void changeLabelName(String player){
+		lblName.setText(player);
 	}
 }

@@ -96,9 +96,6 @@ public class VentanaEstadisticas extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	/**
-	 * 
-	 */
 	public VentanaEstadisticas() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				"resources/images/icon.png"));
@@ -262,114 +259,6 @@ public class VentanaEstadisticas extends JDialog {
 		return tblEntr;
 	}
 
-	// //////////////HISTORIA//////////////////////
-
-	private JPanel getPnCatHistoria() {
-		if (pnCatHistoria == null) {
-			pnCatHistoria = new JPanel();
-			pnCatHistoria.setOpaque(false);
-			pnCatHistoria.setLayout(null);
-			pnCatHistoria.add(getLblHist());
-			pnCatHistoria.add(getPnHistTabla());
-		}
-		return pnCatHistoria;
-	}
-
-	private JLabel getLblHist() {
-		if (lblHist == null) {
-			lblHist = new JLabel("Historia");
-			lblHist.setBounds(0, 5, 190, 14);
-		}
-		return lblHist;
-	}
-
-	private JPanel getPnHistTabla() {
-		if (pnHistTabla == null) {
-			pnHistTabla = new JPanel();
-			pnHistTabla.setOpaque(false);
-			pnHistTabla.setBounds(0, 24, 344, 277);
-			pnHistTabla.setLayout(new CardLayout(0, 0));
-			pnHistTabla.add(getScrHistTabla(), "name_82321767191981");
-		}
-		return pnHistTabla;
-	}
-
-	private JScrollPane getScrHistTabla() {
-		if (scrHistTabla == null) {
-			scrHistTabla = new JScrollPane();
-			scrHistTabla.setViewportView(getTblHist());
-		}
-		return scrHistTabla;
-	}
-
-	private JTable getTblHist() {
-		if (tblHist == null) {
-			modeloTablaHist = new ModeloNoEditable(nombreColumnas, 0);
-			tblHist = new JTable(modeloTablaHist);
-			tblHist.getTableHeader().setReorderingAllowed(false);
-
-			TableColumnModel columnModel = tblHist.getColumnModel();
-			columnModel.getColumn(0).setPreferredWidth(5);
-			columnModel.getColumn(1).setPreferredWidth(2);
-			columnModel.getColumn(2).setPreferredWidth(2);
-		}
-		return tblHist;
-	}
-
-	// //////////////ARTE Y LIT//////////////////////
-
-	private JPanel getPnCatAYL() {
-		if (pnCatAYL == null) {
-			pnCatAYL = new JPanel();
-			pnCatAYL.setOpaque(false);
-			pnCatAYL.setLayout(null);
-			pnCatAYL.add(getLblAYL());
-			pnCatAYL.add(getPnAYLTabla());
-		}
-		return pnCatAYL;
-	}
-
-	private JLabel getLblAYL() {
-		if (lblAYL == null) {
-			lblAYL = new JLabel("Arte y Literatura");
-			lblAYL.setBounds(0, 5, 190, 14);
-		}
-		return lblAYL;
-	}
-
-	private JPanel getPnAYLTabla() {
-		if (pnAYLTabla == null) {
-			pnAYLTabla = new JPanel();
-			pnAYLTabla.setOpaque(false);
-			pnAYLTabla.setBounds(0, 24, 344, 277);
-			pnAYLTabla.setLayout(new CardLayout(0, 0));
-			pnAYLTabla.add(getScrAYLTabla(), "name_722886192758659");
-		}
-		return pnAYLTabla;
-	}
-
-	private JScrollPane getScrAYLTabla() {
-		if (scrAYLTabla == null) {
-			scrAYLTabla = new JScrollPane();
-			scrAYLTabla.setViewportView(getTblAYL());
-		}
-		return scrAYLTabla;
-	}
-
-	private JTable getTblAYL() {
-		if (tblAYL == null) {
-			modeloTablaAYL = new ModeloNoEditable(nombreColumnas, 0);
-			tblAYL = new JTable(modeloTablaAYL);
-			tblAYL.getTableHeader().setReorderingAllowed(false);
-
-			TableColumnModel columnModel = tblAYL.getColumnModel();
-			columnModel.getColumn(0).setPreferredWidth(5);
-			columnModel.getColumn(1).setPreferredWidth(2);
-			columnModel.getColumn(2).setPreferredWidth(2);
-		}
-		return tblAYL;
-	}
-
 	// //////////////CIENCIA Y TECNO//////////////////////
 
 	private JPanel getPnCatCYT() {
@@ -476,6 +365,114 @@ public class VentanaEstadisticas extends JDialog {
 			columnModel.getColumn(2).setPreferredWidth(2);
 		}
 		return tblDep;
+	}
+
+	// //////////////HISTORIA//////////////////////
+
+	private JPanel getPnCatHistoria() {
+		if (pnCatHistoria == null) {
+			pnCatHistoria = new JPanel();
+			pnCatHistoria.setOpaque(false);
+			pnCatHistoria.setLayout(null);
+			pnCatHistoria.add(getLblHist());
+			pnCatHistoria.add(getPnHistTabla());
+		}
+		return pnCatHistoria;
+	}
+
+	private JLabel getLblHist() {
+		if (lblHist == null) {
+			lblHist = new JLabel("Historia");
+			lblHist.setBounds(0, 5, 190, 14);
+		}
+		return lblHist;
+	}
+
+	private JPanel getPnHistTabla() {
+		if (pnHistTabla == null) {
+			pnHistTabla = new JPanel();
+			pnHistTabla.setOpaque(false);
+			pnHistTabla.setBounds(0, 24, 344, 277);
+			pnHistTabla.setLayout(new CardLayout(0, 0));
+			pnHistTabla.add(getScrHistTabla(), "name_82321767191981");
+		}
+		return pnHistTabla;
+	}
+
+	private JScrollPane getScrHistTabla() {
+		if (scrHistTabla == null) {
+			scrHistTabla = new JScrollPane();
+			scrHistTabla.setViewportView(getTblHist());
+		}
+		return scrHistTabla;
+	}
+
+	private JTable getTblHist() {
+		if (tblHist == null) {
+			modeloTablaHist = new ModeloNoEditable(nombreColumnas, 0);
+			tblHist = new JTable(modeloTablaHist);
+			tblHist.getTableHeader().setReorderingAllowed(false);
+
+			TableColumnModel columnModel = tblHist.getColumnModel();
+			columnModel.getColumn(0).setPreferredWidth(5);
+			columnModel.getColumn(1).setPreferredWidth(2);
+			columnModel.getColumn(2).setPreferredWidth(2);
+		}
+		return tblHist;
+	}
+
+	// //////////////ARTE Y LIT//////////////////////
+
+	private JPanel getPnCatAYL() {
+		if (pnCatAYL == null) {
+			pnCatAYL = new JPanel();
+			pnCatAYL.setOpaque(false);
+			pnCatAYL.setLayout(null);
+			pnCatAYL.add(getLblAYL());
+			pnCatAYL.add(getPnAYLTabla());
+		}
+		return pnCatAYL;
+	}
+
+	private JLabel getLblAYL() {
+		if (lblAYL == null) {
+			lblAYL = new JLabel("Arte y Literatura");
+			lblAYL.setBounds(0, 5, 190, 14);
+		}
+		return lblAYL;
+	}
+
+	private JPanel getPnAYLTabla() {
+		if (pnAYLTabla == null) {
+			pnAYLTabla = new JPanel();
+			pnAYLTabla.setOpaque(false);
+			pnAYLTabla.setBounds(0, 24, 344, 277);
+			pnAYLTabla.setLayout(new CardLayout(0, 0));
+			pnAYLTabla.add(getScrAYLTabla(), "name_722886192758659");
+		}
+		return pnAYLTabla;
+	}
+
+	private JScrollPane getScrAYLTabla() {
+		if (scrAYLTabla == null) {
+			scrAYLTabla = new JScrollPane();
+			scrAYLTabla.setViewportView(getTblAYL());
+		}
+		return scrAYLTabla;
+	}
+
+	private JTable getTblAYL() {
+		if (tblAYL == null) {
+			modeloTablaAYL = new ModeloNoEditable(nombreColumnas, 0);
+			tblAYL = new JTable(modeloTablaAYL);
+			tblAYL.getTableHeader().setReorderingAllowed(false);
+
+			TableColumnModel columnModel = tblAYL.getColumnModel();
+			columnModel.getColumn(0).setPreferredWidth(5);
+			columnModel.getColumn(1).setPreferredWidth(2);
+			columnModel.getColumn(2).setPreferredWidth(2);
+		}
+		return tblAYL;
 	}
 
 	// //////////////////////////RELLENAR TABLA////////////////////////////

@@ -4,7 +4,6 @@
 //import java.awt.FlowLayout;
 //import java.awt.event.ActionEvent;
 //import java.awt.event.ActionListener;
-//
 //import javax.swing.ImageIcon;
 //import javax.swing.JButton;
 //import javax.swing.JDialog;
@@ -55,8 +54,13 @@
 //		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 //		getContentPane().add(contentPanel, BorderLayout.NORTH);
 //		{
-//			JLabel lblTurno = new JLabel("Turno de: "
-//					+ vj.getGame().getCurentUser().getLogin());
+//			JLabel lblTurno = new JLabel();
+//			try {
+//				lblTurno = new JLabel("Turno de: "
+//						+ vj.getGame().getActivePlayer());
+//			} catch (IllegalActionException e) {
+//				e.printStackTrace();
+//			}
 //			contentPanel.add(lblTurno);
 //		}
 //		getContentPane().add(getPnDice(), BorderLayout.CENTER);
@@ -70,6 +74,16 @@
 //			pnDice.add(getBtnTirar());
 //		}
 //		return pnDice;
+//	}
+//
+//	public JLabel getLblDado() {
+//		if (lblDado == null) {
+//			getPnDice().setLayout(null);
+//			lblDado = new JLabel("");
+//			lblDado.setBounds(64, 11, 204, 185);
+//			pnDice.add(lblDado);
+//		}
+//		return lblDado;
 //	}
 //
 //	public JButton getBtnTirar() {
@@ -88,30 +102,19 @@
 //		return btnTirar;
 //	}
 //
-//	protected void mover() {
-//		// vj.pintarTablero(vj.getGame().getMovements());
-//		dispose();
-//	}
-//
-//	public JLabel getLblDado() {
-//		if (lblDado == null) {
-//			getPnDice().setLayout(null);
-//			lblDado = new JLabel("");
-//			lblDado.setBounds(64, 11, 204, 185);
-//			pnDice.add(lblDado);
-//		}
-//		return lblDado;
-//	}
-//
 //	public void tirarDado() {
 //		try {
 //			lblDado.setIcon(new ImageIcon("resources/images/"
 //					+ vj.getGame().rollDice() + ".png"));
 //		} catch (IllegalActionException e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 //		btnTirar.setText("mover");
+//	}
+//
+//	protected void mover() {
+//		// vj.pintarTablero(vj.getGame().getMovements());
+//		dispose();
 //	}
 //
 //}

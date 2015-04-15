@@ -36,7 +36,7 @@ public class QuestionJdbcDao implements QuestionDao {
 				question.setStatement(rs.getString("statement"));
 				question.setCorrectAnswer(getCorrectAnswer(question.getId()));
 				question.setIncorrectAnswers(getWrongAnswers(question.getId()));
-				question.setCategory(Category.valueOf(rs.getString("category")));
+				question.setCategory(Category.valueOf(rs.getString("category").toUpperCase()));
 
 				questions.add(question);
 			}

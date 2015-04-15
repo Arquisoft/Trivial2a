@@ -34,13 +34,13 @@ public class Game {
 
 		board = new Board(boardOption);
 		this.players = new HashMap<String, User>();
-		dice=new Dice();
+		dice = new Dice();
 		for (String userName : players) {
 			User player = new User(userName);
 			player.setLocation(getStartSquare());
 			this.players.put(userName, player);
 		}
-		activePlayer=this.players.get(players.get(0));
+		activePlayer = this.players.get(players.get(0));
 		dice.makeAvailable();
 	}
 
@@ -80,13 +80,12 @@ public class Game {
 					+ " can't move to the requested square.");
 
 		players.get(userName).setLocation(squareNumber);
-		
-		//Obteniendo todas las preguntas
+
+		// Obteniendo todas las preguntas
 		QuestionDao factory = PersistenceFactory.persistenceFactory()
 				.createQuestionDao();
 
 		List<Question> preguntas = factory.getQuestions();
-		
 
 		switch (square.getSquareType()) {
 		case DICE:
@@ -98,14 +97,12 @@ public class Game {
 			break;
 		case GAME_PIECE:
 			dice.makeUnavailable();
-
 			for (Question q : preguntas) {
 				if (q.getCategory().equals(square.getCategory())) {
 					question = q;
 					break;
 				}
 			}
-
 			break;
 		case NORMAL:
 			dice.makeUnavailable();
@@ -203,10 +200,9 @@ public class Game {
 	public Map<Integer, Point> getSquares() throws IllegalActionException {
 		// TODO pendiente de que en el fichero se guarden las coordenadas
 		// TODO pendiente de que las Square almacenen sus coordenadas
-		Map<Integer, Point> aux= new HashMap<Integer, Point>();
-		for(int i=0;i<board.getSquareList().size();i++)
-		{
-			aux.put(i+1, board.getSquare(i+1).getPosition());
+		Map<Integer, Point> aux = new HashMap<Integer, Point>();
+		for (int i = 0; i < board.getSquareList().size(); i++) {
+			aux.put(i + 1, board.getSquare(i + 1).getPosition());
 		}
 		return aux;
 	}
@@ -263,23 +259,22 @@ public class Game {
 	}
 
 	private void passTurn() {
-		String[] nombres = (String[]) players.keySet().toArray();
-		
+		String[] nombres = (String[]) players.keySet().toArray(new String[players.size()]);
+
 		String nextPlayer = activePlayer.getLogin();
-		
-		for(int i=0; i<nombres.length; i++){
-			if(nextPlayer.equals(nombres[i])){
-				if(i==(nombres.length - 1)){
+
+		for (int i = 0; i < nombres.length; i++) {
+			if (nextPlayer.equals(nombres[i])) {
+				if (i == (nombres.length - 1)) {
 					nextPlayer = nombres[0];
 					break;
-				} else{
-					nextPlayer = nombres[i+1];
+				} else {
+					nextPlayer = nombres[i + 1];
 					break;
 				}
 			}
 		}
-		
 		activePlayer = players.get(nextPlayer);
-		
+		dice.makeAvailable(); //XXX
 	}
 }

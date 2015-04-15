@@ -12,7 +12,6 @@ public class JButtonSquare extends JButton {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	private int info;
 
 	public JButtonSquare(int inf, Point p) {
@@ -22,9 +21,10 @@ public class JButtonSquare extends JButton {
 		this.setContentAreaFilled(false);
 		this.setOpaque(false);
 		this.setBorderPainted(false);
-		this.setBounds((int)Math.round(p.getX()-20), (int)Math.round(p.getY()-20), 41, 41);
+		this.setBounds((int) Math.round(p.getX() - 20),
+				(int) Math.round(p.getY() - 20), 41, 41);
 	}
-	
+
 	public int getInfo() {
 		return info;
 	}
@@ -33,9 +33,10 @@ public class JButtonSquare extends JButton {
 		this.info = info;
 	}
 
-//	 @Override
-//	 protected void paintComponent(Graphics g) {
-//	 g.drawImage(Toolkit.getDefaultToolkit().getImage("/resources/images/3D.png"), 0, 27, null);
-//	 super.paintComponent(g);
-//	 }
+	// @Override
+	// protected void paintComponent(Graphics g) {
+	// g.drawImage(Toolkit.getDefaultToolkit().getImage("/resources/images/3D.png"),
+	// 0, 27, null);
+	// super.paintComponent(g);
+	// }
 }

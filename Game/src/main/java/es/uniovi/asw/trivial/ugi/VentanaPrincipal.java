@@ -14,9 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-
 public class VentanaPrincipal extends JFrame {
 
 	/**
@@ -27,16 +24,15 @@ public class VentanaPrincipal extends JFrame {
 	 * Faltan ventanas de: fin del juego
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JPanel contentPane_1;
-	private JPanel pnBackground;
-	private JPanel pnInicio;
-	private JButton btnJugar;
 	private JButton btnInstrucciones;
 	private JButton btnSalir;
 	private JButton btnEstadsticas;
-	private JMenuBar menuBar;
-	private JMenu mnAdministrador;
+	private JPanel contentPane;
+	private JPanel pnBackground;
+	private JPanel pnInicio;
+	private JButton btnJugar;
+//	private JMenuBar menuBar;
+//	private JMenu mnAdministrador;
 
 	// Util
 
@@ -65,22 +61,13 @@ public class VentanaPrincipal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 20, 1050, 700); // XXX: Tamaño de la pantalla 1050x700
 		contentPane = new JPanel();
-//TODO - <<<<<<< HEAD
 		contentPane = new JPanelBackground("resources/images/background.png");
 		contentPane.setLayout(null);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.add(getPnBackground());
-//=======
-		contentPane_1 = new JPanelBackground("resources/images/background.png");
-		contentPane_1.setLayout(null);
-		contentPane_1.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane_1);
-		contentPane_1.setLayout(null);
-		contentPane_1.add(getPnBackground());
-		contentPane_1.add(getMenuBar_1());
-//TODO - >>>>>>> origin/Interface-3.0
+//		contentPane.add(getMenuBar_1());
 		setTitle("Trivial2a");
 		setResizable(false);
 	}
@@ -123,6 +110,12 @@ public class VentanaPrincipal extends JFrame {
 			});
 		}
 		return btnJugar;
+	}	
+
+	private void mostrarVentanaJugadores() {
+		VentanaJugadores vJ = new VentanaJugadores(this);
+		vJ.setModal(true);
+		vJ.setVisible(true);
 	}
 
 	private JButton getBtnInstrucciones() {
@@ -137,46 +130,6 @@ public class VentanaPrincipal extends JFrame {
 			btnInstrucciones.setOpaque(true);
 		}
 		return btnInstrucciones;
-	}
-
-	private JButton getBtnEstadsticas() {
-		if (btnEstadsticas == null) {
-			btnEstadsticas = new JButton("Estad\u00EDsticas");
-			btnEstadsticas.setBackground(Color.green);
-			btnEstadsticas.setOpaque(true);
-			btnEstadsticas.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					mostrarVentanaLoginAdmin();
-				}
-			});
-		}
-		return btnEstadsticas;
-	}
-
-	private JButton getBtnSalir() {
-		if (btnSalir == null) {
-			btnSalir = new JButton("Salir");
-			btnSalir.setBackground(Color.magenta);
-			btnSalir.setOpaque(true);
-			btnSalir.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					System.exit(0);				
-				}
-			});
-		}
-		return btnSalir;
-	}
-
-	private void mostrarVentanaJugadores() {
-		VentanaJugadores vJ = new VentanaJugadores(this);
-		vJ.setModal(true);
-		vJ.setVisible(true);
-	}
-
-	private void mostrarVentanaLoginAdmin() {
-		VentanaLoginAdmin vL = new VentanaLoginAdmin(this);
-		vL.setModal(true);
-		vL.setVisible(true);
 	}
 	
 	private void mostrarVentanaInstrucciones(){
@@ -194,21 +147,55 @@ public class VentanaPrincipal extends JFrame {
 			    JOptionPane.INFORMATION_MESSAGE,
 			    new ImageIcon("resources/images/icon.png"));
 	}
+
+	private JButton getBtnEstadsticas() {
+		if (btnEstadsticas == null) {
+			btnEstadsticas = new JButton("Estad\u00EDsticas");
+			btnEstadsticas.setBackground(Color.green);
+			btnEstadsticas.setOpaque(true);
+			btnEstadsticas.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					mostrarVentanaLoginAdmin();
+				}
+			});
+		}
+		return btnEstadsticas;
+	}	
+
+	private void mostrarVentanaLoginAdmin() {
+		VentanaLoginAdmin vL = new VentanaLoginAdmin(this);
+		vL.setModal(true);
+		vL.setVisible(true);
+	}
+
+	private JButton getBtnSalir() {
+		if (btnSalir == null) {
+			btnSalir = new JButton("Salir");
+			btnSalir.setBackground(Color.magenta);
+			btnSalir.setOpaque(true);
+			btnSalir.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					System.exit(0);				
+				}
+			});
+		}
+		return btnSalir;
+	}
 	
-	private JMenuBar getMenuBar_1() {
-		if (menuBar == null) {
-			menuBar = new JMenuBar();
-			menuBar.setVisible(false);
-			menuBar.setOpaque(false);
-			menuBar.setBounds(0, 0, 1044, 21);
-			menuBar.add(getMnAdministrador());
-		}
-		return menuBar;
-	}
-	private JMenu getMnAdministrador() {
-		if (mnAdministrador == null) {
-			mnAdministrador = new JMenu("Opciones");
-		}
-		return mnAdministrador;
-	}
+//	private JMenuBar getMenuBar_1() {
+//		if (menuBar == null) {
+//			menuBar = new JMenuBar();
+//			menuBar.setVisible(false);
+//			menuBar.setOpaque(false);
+//			menuBar.setBounds(0, 0, 1044, 21);
+//			menuBar.add(getMnAdministrador());
+//		}
+//		return menuBar;
+//	}
+//	private JMenu getMnAdministrador() {
+//		if (mnAdministrador == null) {
+//			mnAdministrador = new JMenu("Opciones");
+//		}
+//		return mnAdministrador;
+//	}
 }

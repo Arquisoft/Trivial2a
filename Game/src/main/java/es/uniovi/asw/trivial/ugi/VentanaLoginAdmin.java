@@ -27,8 +27,7 @@ public class VentanaLoginAdmin extends JDialog {
 	private final JPanel contentPanel;
 	private JTextField txtUser;
 	private JPasswordField txtPass;
-//	private VentanaPrincipal vp;
-	
+
 	private char[] passInput;
 
 	/**
@@ -99,8 +98,9 @@ public class VentanaLoginAdmin extends JDialog {
 				JButton okButton = new JButton("Entrar");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						passInput = txtPass.getPassword();						
-						if (txtUser.getText().equals("admin") && isPasswordCorrect()) {
+						passInput = txtPass.getPassword();
+						if (txtUser.getText().equals("admin")
+								&& isPasswordCorrect()) {
 							mostrarVentanaEstadisticas();
 						} else {
 							mostrarVentanaError();
@@ -124,18 +124,6 @@ public class VentanaLoginAdmin extends JDialog {
 		}
 	}
 
-	private void mostrarVentanaError() {
-		JOptionPane.showMessageDialog(this, "Datos incorrectos", "Error",
-				JOptionPane.ERROR_MESSAGE);
-	}
-
-	private void mostrarVentanaEstadisticas() {
-		dispose();
-		VentanaEstadisticas vEst = new VentanaEstadisticas();
-		vEst.setModal(true);
-		vEst.setVisible(true);		
-	}
-	
 	private boolean isPasswordCorrect() {
 		boolean isCorrect = true;
 		char[] correctPassword = { 'a', 'd', 'm', 'i', 'n' };
@@ -145,5 +133,17 @@ public class VentanaLoginAdmin extends JDialog {
 			isCorrect = Arrays.equals(passInput, correctPassword);
 		}
 		return isCorrect;
+	}
+
+	private void mostrarVentanaError() {
+		JOptionPane.showMessageDialog(this, "Datos incorrectos", "Error",
+				JOptionPane.ERROR_MESSAGE);
+	}
+
+	private void mostrarVentanaEstadisticas() {
+		dispose();
+		VentanaEstadisticas vEst = new VentanaEstadisticas();
+		vEst.setModal(true);
+		vEst.setVisible(true);
 	}
 }
