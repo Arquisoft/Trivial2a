@@ -51,6 +51,38 @@ public class VentanaJugadores extends JDialog {
 	private List<JTextField> jugadores;
 	private VentanaPrincipal vp;
 
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			VentanaJugadores dialog = new VentanaJugadores(null);
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public VentanaJugadores(VentanaPrincipal ventanaPrincipal) {
+		this.vp = ventanaPrincipal;
+		setIconImage(Toolkit.getDefaultToolkit().getImage(
+				"resources/images/icon.png"));
+		setResizable(false);
+		setTitle("Trivial2a");
+		setBounds(370, 180, 600, 400);
+		getContentPane().setLayout(new BorderLayout());
+		getContentPane().add(getContentPanel(), BorderLayout.CENTER);
+	}
+
+	/**
+	 * Crea el panel principal
+	 * 
+	 * @return panel principal
+	 */
 	public JPanel getContentPanel() {
 		if (contentPanel == null) {
 			contentPanel = new JPanelBackground(
@@ -104,6 +136,11 @@ public class VentanaJugadores extends JDialog {
 		return contentPanel;
 	}
 
+	/**
+	 * Crea el txt para el usuario 1
+	 * 
+	 * @return txt de usuario 1
+	 */
 	public JTextField getTxtUsuario1() {
 		if (txtUsuario1 == null) {
 			txtUsuario1 = new JTextField();
@@ -112,45 +149,11 @@ public class VentanaJugadores extends JDialog {
 		return txtUsuario1;
 	}
 
-	// // se activa la posibilidad de añadir el siguiente jugador
-	// // y se queda guardado el nombre dle jugador anteior
-	// private void txtComprobaciones() {
-	// okButton.setEnabled(jugadores.get(0).getText().isEmpty() ? false : true);
-	// for (int i = 0; i < jugadores.size() - 1; i++) {
-	// if (i == 0)
-	// jugadores.get(i + 1).setEnabled(true);
-	// else {
-	// if (jugadores.get(i).getText().length() > 0) {
-	// if (!exist(i)) {
-	// jugadores.get(i + 1).setEnabled(true);
-	// if (jugadores.get(i - 1).getText().length() > 0)
-	// jugadores.get(i - 1).setEditable(false);
-	// }
-	// }
-	// }
-	// }
-	// }
-
-	// // comprueba que no se repita el nombre de ningún jugador en la aprtida
-	// private boolean exist(int i) {
-	// boolean rep = false;
-	// int j = 0;
-	// while (!rep && j < jugadores.size()) {
-	// // && !jugadores.get(i).isEditable()) {
-	// if (i != j
-	// && !jugadores.get(j).isEditable()
-	// && jugadores.get(i).getText()
-	// .equals(jugadores.get(j).getText())) {
-	// rep = true;
-	// jugadores.get(i).setText("");
-	// jugadores.get(i).setEnabled(true);
-	// jugadores.get(i + 1).setEnabled(true);
-	// }
-	// j++;
-	// }
-	// return rep;
-	// }
-
+	/**
+	 * Crea el txt para el usuario 2
+	 * 
+	 * @return txt de usuario 2
+	 */
 	public JTextField getTxtUsuario2() {
 		if (txtUsuario2 == null) {
 			txtUsuario2 = new JTextField();
@@ -161,6 +164,109 @@ public class VentanaJugadores extends JDialog {
 		return txtUsuario2;
 	}
 
+	/**
+	 * Crea el txt para el usuario 3
+	 * 
+	 * @return txt de usuario 3
+	 */
+	public JTextField getTxtUsuario3() {
+		if (txtUsuario3 == null) {
+			txtUsuario3 = new JTextField();
+			// txtUsuario3.setEnabled(false);
+			txtUsuario3.setEnabled(true);
+			txtUsuario3.setColumns(10);
+		}
+		return txtUsuario3;
+	}
+
+	/**
+	 * Crea el txt para el usuario 4
+	 * 
+	 * @return txt de usuario 4
+	 */
+	public JTextField getTxtUsuario4() {
+		if (txtUsuario4 == null) {
+			txtUsuario4 = new JTextField();
+			// txtUsuario4.setEnabled(false);
+			txtUsuario4.setEnabled(true);
+			txtUsuario4.setColumns(10);
+		}
+		return txtUsuario4;
+	}
+
+	/**
+	 * Crea el txt para el usuario 5
+	 * 
+	 * @return txt de usuario 5
+	 */
+	public JTextField getTxtUsuario5() {
+		if (txtUsuario5 == null) {
+			txtUsuario5 = new JTextField();
+			// txtUsuario5.setEnabled(false);
+			txtUsuario5.setEnabled(true);
+			txtUsuario5.setColumns(10);
+		}
+
+		return txtUsuario5;
+	}
+
+	/**
+	 * Crea el txt para el usuario 6
+	 * 
+	 * @return txt de usuario 6
+	 */
+	public JTextField getTxtUsuario6() {
+		if (txtUsuario6 == null) {
+			txtUsuario6 = new JTextField();
+			// txtUsuario6.setEnabled(false);
+			txtUsuario6.setEnabled(true);
+			txtUsuario6.setColumns(10);
+		}
+		return txtUsuario6;
+	}
+
+// se activa la posibilidad de añadir el siguiente jugador
+// y se queda guardado el nombre dle jugador anteior
+//	private void txtComprobaciones() {
+//		okButton.setEnabled(jugadores.get(0).getText().isEmpty() ? false : true);
+//		for (int i = 0; i < jugadores.size() - 1; i++) {
+//			if (i == 0)
+//				jugadores.get(i + 1).setEnabled(true);
+//			else {
+//				if (jugadores.get(i).getText().length() > 0) {
+//					if (!exist(i)) {
+//						jugadores.get(i + 1).setEnabled(true);
+//						if (jugadores.get(i - 1).getText().length() > 0)
+//							jugadores.get(i - 1).setEditable(false);
+//					}
+//				}
+//			}
+//		}
+//	}
+
+// // comprueba que no se repita el nombre de ningún jugador en la aprtida
+//	private boolean exist(int i) {
+//		boolean rep = false;
+//		int j = 0;
+//		while (!rep && j < jugadores.size()) {
+//			// && !jugadores.get(i).isEditable()) {
+//			if (i != j
+//					&& !jugadores.get(j).isEditable()
+//					&& jugadores.get(i).getText()
+//							.equals(jugadores.get(j).getText())) {
+//				rep = true;
+//				jugadores.get(i).setText("");
+//				jugadores.get(i).setEnabled(true);
+//				jugadores.get(i + 1).setEnabled(true);
+//			}
+//			j++;
+//		}
+//		return rep;
+//	}
+
+	/**
+	 * Metodo que asocia eventos a los jugadores
+	 */
 	private void asociarEventosJugadores() {
 		for (int i = 1; i < pnJugadores.getComponents().length; i = i + 2) {
 			JTextField txt = (JTextField) pnJugadores.getComponent(i);
@@ -174,74 +280,11 @@ public class VentanaJugadores extends JDialog {
 		}
 	}
 
-	public JTextField getTxtUsuario3() {
-		if (txtUsuario3 == null) {
-			txtUsuario3 = new JTextField();
-			// txtUsuario3.setEnabled(false);
-			txtUsuario3.setEnabled(true);
-			txtUsuario3.setColumns(10);
-		}
-		return txtUsuario3;
-	}
-
-	public JTextField getTxtUsuario4() {
-		if (txtUsuario4 == null) {
-			txtUsuario4 = new JTextField();
-			// txtUsuario4.setEnabled(false);
-			txtUsuario4.setEnabled(true);
-			txtUsuario4.setColumns(10);
-		}
-		return txtUsuario4;
-	}
-
-	public JTextField getTxtUsuario5() {
-		if (txtUsuario5 == null) {
-			txtUsuario5 = new JTextField();
-			// txtUsuario5.setEnabled(false);
-			txtUsuario5.setEnabled(true);
-			txtUsuario5.setColumns(10);
-		}
-
-		return txtUsuario5;
-	}
-
-	public JTextField getTxtUsuario6() {
-		if (txtUsuario6 == null) {
-			txtUsuario6 = new JTextField();
-			// txtUsuario6.setEnabled(false);
-			txtUsuario6.setEnabled(true);
-			txtUsuario6.setColumns(10);
-		}
-		return txtUsuario6;
-	}
-
 	/**
-	 * Launch the application.
+	 * Label de titulo
+	 * 
+	 * @return la label del titulo
 	 */
-	public static void main(String[] args) {
-		try {
-			VentanaJugadores dialog = new VentanaJugadores(null);
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Create the dialog.
-	 */
-	public VentanaJugadores(VentanaPrincipal ventanaPrincipal) {
-		this.vp = ventanaPrincipal;
-		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"resources/images/icon.png"));
-		setResizable(false);
-		setTitle("Trivial2a");
-		setBounds(370, 180, 600, 400);
-		getContentPane().setLayout(new BorderLayout());
-		getContentPane().add(getContentPanel(), BorderLayout.CENTER);
-	}
-
 	private JLabel getLblJugadores() {
 		if (lblJugadores == null) {
 			lblJugadores = new JLabel("\u00BFQui\u00E9n va a jugar?");
@@ -250,20 +293,11 @@ public class VentanaJugadores extends JDialog {
 		return lblJugadores;
 	}
 
-	private void mostrarVentanaJuego() throws IllegalActionException {
-		GameAPI g = BusinessFactory.getGameAPI();
-		List<String> userNames = new ArrayList<String>();
-		for (JTextField txt : jugadores)
-			if (!txt.getText().isEmpty())
-				userNames.add(txt.getText());
-		g.startGame(userNames, BoardOptionsFactory.getBoardOption(0));
-		this.dispose();
-
-		VentanaJuego vJ = new VentanaJuego(this, g);
-		vJ.setModal(true);
-		vJ.setVisible(true);
-	}
-
+	/**
+	 * Crea el panel de jugadores y lo rellena
+	 * 
+	 * @return el panel de jugadores
+	 */
 	private JPanel getPnJugadores() {
 		if (pnJugadores == null) {
 			pnJugadores = new JPanel();
@@ -285,6 +319,11 @@ public class VentanaJugadores extends JDialog {
 		return pnJugadores;
 	}
 
+	/**
+	 * Label del Jugador 1
+	 * 
+	 * @return la label del jugador 1
+	 */
 	private JLabel getLblJ1() {
 		if (lblJ1 == null) {
 			lblJ1 = new JLabel("Jugador Uno:");
@@ -293,6 +332,11 @@ public class VentanaJugadores extends JDialog {
 		return lblJ1;
 	}
 
+	/**
+	 * Label del Jugador 2
+	 * 
+	 * @return la label del jugador 2
+	 */
 	private JLabel getLblJ2() {
 		if (lblJ2 == null) {
 			lblJ2 = new JLabel("Jugador Dos:");
@@ -301,6 +345,11 @@ public class VentanaJugadores extends JDialog {
 		return lblJ2;
 	}
 
+	/**
+	 * Label del Jugador 3
+	 * 
+	 * @return la label del jugador 3
+	 */
 	private JLabel getLblJ3() {
 		if (lblJ3 == null) {
 			lblJ3 = new JLabel("Jugador Tres:");
@@ -309,6 +358,11 @@ public class VentanaJugadores extends JDialog {
 		return lblJ3;
 	}
 
+	/**
+	 * Label del Jugador 4
+	 * 
+	 * @return la label del jugador 4
+	 */
 	private JLabel getLblJ4() {
 		if (lblJ4 == null) {
 			lblJ4 = new JLabel("Jugador Cuatro:");
@@ -317,6 +371,11 @@ public class VentanaJugadores extends JDialog {
 		return lblJ4;
 	}
 
+	/**
+	 * Label del Jugador 5
+	 * 
+	 * @return la label del jugador 5
+	 */
 	private JLabel getLblJ5() {
 		if (lblJ5 == null) {
 			lblJ5 = new JLabel("Jugador Cinco:");
@@ -325,6 +384,11 @@ public class VentanaJugadores extends JDialog {
 		return lblJ5;
 	}
 
+	/**
+	 * Label del Jugador 6
+	 * 
+	 * @return la label del jugador 6
+	 */
 	private JLabel getLblJ6() {
 		if (lblJ6 == null) {
 			lblJ6 = new JLabel("Jugador Seis:");
@@ -332,4 +396,24 @@ public class VentanaJugadores extends JDialog {
 		}
 		return lblJ6;
 	}
+
+	/**
+	 * Muestra la ventana de juego
+	 * 
+	 * @throws IllegalActionException
+	 */
+	private void mostrarVentanaJuego() throws IllegalActionException {
+		GameAPI g = BusinessFactory.getGameAPI();
+		List<String> userNames = new ArrayList<String>();
+		for (JTextField txt : jugadores)
+			if (!txt.getText().isEmpty())
+				userNames.add(txt.getText());
+		g.startGame(userNames, BoardOptionsFactory.getBoardOption(0));
+		this.dispose();
+
+		VentanaJuego vJ = new VentanaJuego(this, g);
+		vJ.setModal(true);
+		vJ.setVisible(true);
+	}
+
 }

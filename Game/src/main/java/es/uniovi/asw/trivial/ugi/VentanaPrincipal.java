@@ -71,7 +71,11 @@ public class VentanaPrincipal extends JFrame {
 		setTitle("Trivial2a");
 		setResizable(false);
 	}
-
+	
+	/**
+	 * Crea panel de fondo
+	 * @return panel de fondo
+	 */
 	private JPanel getPnBackground() {
 		if (pnBackground == null) {
 			pnBackground = new JPanel();
@@ -84,6 +88,10 @@ public class VentanaPrincipal extends JFrame {
 		return pnBackground;
 	}
 
+	/**
+	 * Crea panel de inicio
+	 * @return panel de inicio
+	 */
 	private JPanel getPnInicio() {
 		if (pnInicio == null) {
 			pnInicio = new JPanel();
@@ -97,7 +105,11 @@ public class VentanaPrincipal extends JFrame {
 		}
 		return pnInicio;
 	}
-
+	
+	/**
+	 * Crea boton jugar
+	 * @return boton jugar
+	 */
 	private JButton getBtnJugar() {
 		if (btnJugar == null) {
 			btnJugar = new JButton("Jugar");
@@ -111,13 +123,20 @@ public class VentanaPrincipal extends JFrame {
 		}
 		return btnJugar;
 	}	
-
+	
+	/**
+	 * Muestra la ventana de jugadores
+	 */
 	private void mostrarVentanaJugadores() {
 		VentanaJugadores vJ = new VentanaJugadores(this);
 		vJ.setModal(true);
 		vJ.setVisible(true);
 	}
-
+	
+	/**
+	 * Crea botón instrucciones
+	 * @return boton instrucciones
+	 */
 	private JButton getBtnInstrucciones() {
 		if (btnInstrucciones == null) {
 			btnInstrucciones = new JButton("Instrucciones");
@@ -132,6 +151,9 @@ public class VentanaPrincipal extends JFrame {
 		return btnInstrucciones;
 	}
 	
+	/**
+	 * Muestra la venta de instrucciones
+	 */
 	private void mostrarVentanaInstrucciones(){
 		JOptionPane.showMessageDialog(this,
 			    "Para jugar, lo primero que has de hacer es seleccionar \n "
@@ -148,6 +170,10 @@ public class VentanaPrincipal extends JFrame {
 			    new ImageIcon("resources/images/icon.png"));
 	}
 
+	/**
+	 * Crea boton estadisticas
+	 * @return boton estadisticas
+	 */
 	private JButton getBtnEstadsticas() {
 		if (btnEstadsticas == null) {
 			btnEstadsticas = new JButton("Estad\u00EDsticas");
@@ -162,12 +188,19 @@ public class VentanaPrincipal extends JFrame {
 		return btnEstadsticas;
 	}	
 
+	/**
+	 * Muestra ventana de login del admin
+	 */
 	private void mostrarVentanaLoginAdmin() {
 		VentanaLoginAdmin vL = new VentanaLoginAdmin(this);
 		vL.setModal(true);
 		vL.setVisible(true);
 	}
 
+	/**
+	 * Crea boton salir
+	 * @return boton salir
+	 */
 	private JButton getBtnSalir() {
 		if (btnSalir == null) {
 			btnSalir = new JButton("Salir");

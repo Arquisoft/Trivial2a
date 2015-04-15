@@ -124,6 +124,10 @@ public class VentanaLoginAdmin extends JDialog {
 		}
 	}
 
+	/**
+	 * Comprueba si el password es correcto
+	 * @return si el password es correcto o no
+	 */
 	private boolean isPasswordCorrect() {
 		boolean isCorrect = true;
 		char[] correctPassword = { 'a', 'd', 'm', 'i', 'n' };
@@ -134,12 +138,18 @@ public class VentanaLoginAdmin extends JDialog {
 		}
 		return isCorrect;
 	}
-
+	
+	/**
+	 * Muestra la ventana de error si los datos son incorrectos
+	 */
 	private void mostrarVentanaError() {
 		JOptionPane.showMessageDialog(this, "Datos incorrectos", "Error",
 				JOptionPane.ERROR_MESSAGE);
 	}
 
+	/**
+	 * Muestra la ventana de estadísticas
+	 */
 	private void mostrarVentanaEstadisticas() {
 		dispose();
 		VentanaEstadisticas vEst = new VentanaEstadisticas();

@@ -21,6 +21,9 @@ public class JPanelBackground extends JPanel {
 		this.url = nombre;
 	}
 
+	/**
+	 * Pinta el fondo elegido en el panel
+	 */
 	public void paint(Graphics g) {
 		Dimension tam = getSize();
 		imagen = new ImageIcon(url);

@@ -92,14 +92,20 @@ public class VentanaJuego extends JDialog {
 		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().setLayout(null);
-		getContentPane().add(getPnIzq());
-		getContentPane().add(getPnDrch());
+		getContentPane().add(getPnIzdo());
+		getContentPane().add(getPnDcho());
 		getContentPane().add(getPnBoard());
 
 		chooseColours();
 		pintarTablero();
 	}
 
+	/**
+	 * Crea el panel del tablero
+	 * 
+	 * @return el panel del tabelro
+	 * @throws IllegalActionException
+	 */
 	private JPanel getPnBoard() throws IllegalActionException {
 		if (pnBoard == null) {
 			pnBoard = new JPanelBackground("resources/images/gameboard.png");
@@ -111,7 +117,13 @@ public class VentanaJuego extends JDialog {
 		return pnBoard;
 	}
 
-	private JPanel getPnIzq() throws IllegalActionException {
+	/**
+	 * Crea el panel izquierdo de jugadores
+	 * 
+	 * @return el panel izquierdo de jugadores
+	 * @throws IllegalActionException
+	 */
+	private JPanel getPnIzdo() throws IllegalActionException {
 		if (pnIzq == null) {
 			pnIzq = new JPanel();
 			pnIzq.setBounds(864, 0, 180, 671);
@@ -126,7 +138,13 @@ public class VentanaJuego extends JDialog {
 		return pnIzq;
 	}
 
-	private JPanel getPnDrch() throws IllegalActionException {
+	/**
+	 * Crea el panel derecho de jugadores
+	 * 
+	 * @return el panel derecho de jugadores
+	 * @throws IllegalActionException
+	 */
+	private JPanel getPnDcho() throws IllegalActionException {
 		if (pnDrch == null) {
 			pnDrch = new JPanel();
 			pnDrch.setBounds(0, 0, 180, 671);
@@ -142,6 +160,12 @@ public class VentanaJuego extends JDialog {
 		return pnDrch;
 	}
 
+	/**
+	 * Crea el panel con el score del jugador 1
+	 * 
+	 * @return el panel del jugador 1
+	 * @throws IllegalActionException
+	 */
 	private JPanel getPnJugador1() throws IllegalActionException {
 		if (pnJugador1 == null) {
 			pnJugador1 = crearPanel(0);
@@ -150,6 +174,12 @@ public class VentanaJuego extends JDialog {
 		return pnJugador1;
 	}
 
+	/**
+	 * Crea el panel con el score del jugador 2
+	 * 
+	 * @return el panel del jugador 2
+	 * @throws IllegalActionException
+	 */
 	private JPanel getPnJugador2() throws IllegalActionException {
 		if (pnJugador2 == null) {
 			pnJugador2 = crearPanel(1);
@@ -158,6 +188,12 @@ public class VentanaJuego extends JDialog {
 		return pnJugador2;
 	}
 
+	/**
+	 * Crea el panel con el score del jugador 3
+	 * 
+	 * @return el panel del jugador 3
+	 * @throws IllegalActionException
+	 */
 	private JPanel getPnJugador3() throws IllegalActionException {
 		if (pnJugador3 == null) {
 			pnJugador3 = crearPanel(2);
@@ -166,6 +202,12 @@ public class VentanaJuego extends JDialog {
 		return pnJugador3;
 	}
 
+	/**
+	 * Crea el panel con el score del jugador 4
+	 * 
+	 * @return el panel del jugador 4
+	 * @throws IllegalActionException
+	 */
 	private JPanel getPnJugador4() throws IllegalActionException {
 		if (pnJugador4 == null) {
 			pnJugador4 = crearPanel(3);
@@ -174,6 +216,12 @@ public class VentanaJuego extends JDialog {
 		return pnJugador4;
 	}
 
+	/**
+	 * Crea el panel con el score del jugador 5
+	 * 
+	 * @return el panel del jugador 5
+	 * @throws IllegalActionException
+	 */
 	private JPanel getPnJugador5() throws IllegalActionException {
 		if (pnJugador5 == null) {
 			pnJugador5 = crearPanel(4);
@@ -182,6 +230,12 @@ public class VentanaJuego extends JDialog {
 		return pnJugador5;
 	}
 
+	/**
+	 * Crea el panel con el score del jugador 6
+	 * 
+	 * @return el panel del jugador 6
+	 * @throws IllegalActionException
+	 */
 	private JPanel getPnJugador6() throws IllegalActionException {
 		if (pnJugador6 == null) {
 			pnJugador6 = crearPanel(5);
@@ -190,11 +244,25 @@ public class VentanaJuego extends JDialog {
 		return pnJugador6;
 	}
 
+	/**
+	 * Crea el panel de score del jugador indicado
+	 * 
+	 * @param i
+	 *            el numero del jugador
+	 * @return el panel creado
+	 * @throws IllegalActionException
+	 */
 	private JPanel crearPanel(int i) throws IllegalActionException {
 		return (game.getPlayersNameList().size() > i) ? new PanelJugador(i,
 				game) : new JPanel();
 	}
 
+	/**
+	 * Devuelve el panel
+	 * 
+	 * @return el panel
+	 * @throws IllegalActionException
+	 */
 	private JPanel getPanel() throws IllegalActionException {
 		if (panel == null) {
 			panel = new JPanel();
@@ -206,6 +274,12 @@ public class VentanaJuego extends JDialog {
 		return panel;
 	}
 
+	/**
+	 * Devuelve el panel de juego
+	 * 
+	 * @return el panel de juego
+	 * @throws IllegalActionException
+	 */
 	private JPanel getPnJugada() throws IllegalActionException {
 		if (pnJugada == null) {
 			pnJugada = new JPanel();
@@ -218,6 +292,12 @@ public class VentanaJuego extends JDialog {
 		return pnJugada;
 	}
 
+	/**
+	 * Devuelve la etiqueta del nombre del jugador en turno
+	 * 
+	 * @return la etiqueta del jugador en turno
+	 * @throws IllegalActionException
+	 */
 	private JLabel getLblName() throws IllegalActionException {
 		if (lblName == null) {
 			lblName = new JLabel(game.getActivePlayer());
@@ -231,6 +311,11 @@ public class VentanaJuego extends JDialog {
 		return lblName;
 	}
 
+	/**
+	 * Crea el panel del dado
+	 * 
+	 * @return el panel del dado
+	 */
 	private JPanel getPnDice() {
 		if (pnDice == null) {
 			pnDice = new JPanel();
@@ -242,6 +327,11 @@ public class VentanaJuego extends JDialog {
 		return pnDice;
 	}
 
+	/**
+	 * Crea el boton del dado
+	 * 
+	 * @return el boton del dado
+	 */
 	private JButton getBtnDice() {
 		if (btnDice == null) {
 			btnDice = new JButton();
@@ -264,10 +354,23 @@ public class VentanaJuego extends JDialog {
 		return btnDice;
 	}
 
+	/**
+	 * Devuelve la instancia de GameApi que esta usando la partida en curso
+	 * 
+	 * @return la instancia de GameAPI
+	 */
 	public GameAPI getGame() {
 		return game;
 	}
 
+	/**
+	 * Muestra los botones de las posiciones a las que se puede ir
+	 * 
+	 * @param sqs
+	 *            conjunto de casillas a las que se puede ir en la tirada en
+	 *            curso
+	 * @throws IllegalActionException
+	 */
 	public void showButtons(Set<Integer> sqs) throws IllegalActionException {
 		squareButtons = new ArrayList<JButtonSquare>();
 		for (Integer s : sqs) {
@@ -290,18 +393,33 @@ public class VentanaJuego extends JDialog {
 		}
 	}
 
+	/**
+	 * Muestra la ventana de la pregunta
+	 * 
+	 * @throws IllegalActionException
+	 */
 	private void mostrarPregunta() throws IllegalActionException {
 		vpreg = new VentanaPregunta(this);
 		vpreg.setModal(true);
 		vpreg.setVisible(true);
 	}
 
+	/**
+	 * Elimina todos los botones tras su uso
+	 * 
+	 * @throws IllegalActionException
+	 */
 	private void deleteButtons() throws IllegalActionException {
 		getPnBoard().removeAll();
 		getPnBoard().add(getPanel());
 		pintarTablero();
 	}
 
+	/**
+	 * Pinta el tablero con el estado de la partida
+	 * 
+	 * @throws IllegalActionException
+	 */
 	public void pintarTablero() throws IllegalActionException {
 		Map<Integer, String> pos = new HashMap<Integer, String>();
 		panel.removeAll();
@@ -331,18 +449,29 @@ public class VentanaJuego extends JDialog {
 		panel.repaint();
 	}
 
+	/**
+	 * Refresca las puntuaciones de los jugadores
+	 * 
+	 * @throws IllegalActionException
+	 */
 	public void refreshScore() throws IllegalActionException {
-		for (Component c : getPnIzq().getComponents()) {
-			if (c instanceof PanelJugador)
-				if (((PanelJugador) c).getLblNombre().equals(
-						game.getActivePlayer()))
+		for (Component c : getPnDcho().getComponents()) {
+			if (c instanceof PanelJugador) {
+				if (((PanelJugador) c).getLblNombre().getText()
+						.equals(game.getActivePlayer())) {
 					((PanelJugador) c).refreshScore();
+				}
+			}
 		}
-		for (Component c : getPnDrch().getComponents()) {
-			if (c instanceof PanelJugador)
-				if (((PanelJugador) c).getLblNombre().equals(
-						game.getActivePlayer()))
+		for (Component c : getPnIzdo().getComponents()) {
+			if (c instanceof PanelJugador) {
+				System.out.println(((PanelJugador) c).getLblNombre().getText());
+				System.out.println(game.getActivePlayer());
+				if (((PanelJugador) c).getLblNombre().getText()
+						.equals(game.getActivePlayer())) {
 					((PanelJugador) c).refreshScore();
+				}
+			}
 		}
 	}
 
@@ -360,14 +489,25 @@ public class VentanaJuego extends JDialog {
 		}
 	}
 
+	/**
+	 * Tira el dado
+	 * 
+	 * @throws IllegalActionException
+	 */
 	public void tirarDado() throws IllegalActionException {
 		btnDice.setIcon(new ImageIcon("resources/images/" + game.rollDice()
 				+ ".png"));
 		showButtons(game.getMovements(game.getActivePlayer(),
 				game.getPlayerLocation(game.getActivePlayer())));
 	}
-	
-	public void changeLabelName(String player){
+
+	/**
+	 * Cambia el nombre de la etiqueta del jugador en curso
+	 * 
+	 * @param player
+	 *            el nombre del jugador
+	 */
+	public void changeLabelName(String player) {
 		lblName.setText(player);
 	}
 }

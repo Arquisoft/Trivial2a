@@ -128,6 +128,8 @@ public class VentanaEstadisticas extends JDialog {
 	}
 
 	/**
+	 * Crea el panel de estadisticas
+	 * 
 	 * @return
 	 */
 	private JPanel getPnEstadisticas() {
@@ -145,6 +147,11 @@ public class VentanaEstadisticas extends JDialog {
 		return pnEstadisticas;
 	}
 
+	/**
+	 * Etiqueta de titulo
+	 * 
+	 * @return etiqueta
+	 */
 	private JLabel getLblEstadsticas() {
 		if (lblEstadsticas == null) {
 			lblEstadsticas = new JLabel("Estad\u00EDsticas");
@@ -154,6 +161,11 @@ public class VentanaEstadisticas extends JDialog {
 		return lblEstadsticas;
 	}
 
+	/**
+	 * Panel de la categoria indicada
+	 * 
+	 * @return el panel de esa categoria
+	 */
 	private JPanel getPnCatGeografia() {
 		if (pnCatGeografia == null) {
 			pnCatGeografia = new JPanel();
@@ -165,6 +177,11 @@ public class VentanaEstadisticas extends JDialog {
 		return pnCatGeografia;
 	}
 
+	/**
+	 * Label de la categoria indicada
+	 * 
+	 * @return la label de la categoria
+	 */
 	private JLabel getLblGeografa() {
 		if (lblGeografa == null) {
 			lblGeografa = new JLabel("Geograf\u00EDa");
@@ -173,6 +190,11 @@ public class VentanaEstadisticas extends JDialog {
 		return lblGeografa;
 	}
 
+	/**
+	 * Panel de la tabla de la categoria indicada
+	 * 
+	 * @return el panel de la tabla de la categoria
+	 */
 	private JPanel getPnGeoTabla() {
 		if (pnGeoTabla == null) {
 			pnGeoTabla = new JPanel();
@@ -184,6 +206,11 @@ public class VentanaEstadisticas extends JDialog {
 		return pnGeoTabla;
 	}
 
+	/**
+	 * Scrollpane para la tabla de la categoria indicada
+	 * 
+	 * @return scrollpane de la categoria
+	 */
 	private JScrollPane getScrGeoTabla() {
 		if (scrGeoTabla == null) {
 			scrGeoTabla = new JScrollPane();
@@ -192,6 +219,11 @@ public class VentanaEstadisticas extends JDialog {
 		return scrGeoTabla;
 	}
 
+	/**
+	 * Tabla de la categoria indicada
+	 * 
+	 * @return la tabla de la categoria
+	 */
 	private JTable getTblGeo() {
 		if (tblGeo == null) {
 			modeloTablaGeo = new ModeloNoEditable(nombreColumnas, 0);
@@ -207,6 +239,11 @@ public class VentanaEstadisticas extends JDialog {
 	}
 
 	// ////////////////ENTRETENIMIENTO//////////////////////
+	/**
+	 * Panel de la categoria indicada
+	 * 
+	 * @return el panel de esa categoria
+	 */
 	private JPanel getPnCatEntretenimiento() {
 		if (pnCatEntretenimiento == null) {
 			pnCatEntretenimiento = new JPanel();
@@ -218,6 +255,11 @@ public class VentanaEstadisticas extends JDialog {
 		return pnCatEntretenimiento;
 	}
 
+	/**
+	 * Label de la categoria indicada
+	 * 
+	 * @return la label de la categoria
+	 */
 	private JLabel getLblEntr() {
 		if (lblEntr == null) {
 			lblEntr = new JLabel("Entretenimiento");
@@ -226,6 +268,11 @@ public class VentanaEstadisticas extends JDialog {
 		return lblEntr;
 	}
 
+	/**
+	 * Panel de la tabla de la categoria indicada
+	 * 
+	 * @return el panel de la tabla de la categoria
+	 */
 	private JPanel getPnEntrTabla() {
 		if (pnEntrTabla == null) {
 			pnEntrTabla = new JPanel();
@@ -237,6 +284,11 @@ public class VentanaEstadisticas extends JDialog {
 		return pnEntrTabla;
 	}
 
+	/**
+	 * Scrollpane para la tabla de la categoria indicada
+	 * 
+	 * @return scrollpane de la categoria
+	 */
 	private JScrollPane getScrEntrTabla() {
 		if (scrEntrTabla == null) {
 			scrEntrTabla = new JScrollPane();
@@ -245,6 +297,11 @@ public class VentanaEstadisticas extends JDialog {
 		return scrEntrTabla;
 	}
 
+	/**
+	 * Tabla de la categoria indicada
+	 * 
+	 * @return la tabla de la categoria
+	 */
 	private JTable getTblEntr() {
 		if (tblEntr == null) {
 			modeloTablaEntr = new ModeloNoEditable(nombreColumnas, 0);
@@ -260,7 +317,11 @@ public class VentanaEstadisticas extends JDialog {
 	}
 
 	// //////////////CIENCIA Y TECNO//////////////////////
-
+	/**
+	 * Panel de la categoria indicada
+	 * 
+	 * @return el panel de esa categoria
+	 */
 	private JPanel getPnCatCYT() {
 		if (pnCatCYT == null) {
 			pnCatCYT = new JPanel();
@@ -272,6 +333,11 @@ public class VentanaEstadisticas extends JDialog {
 		return pnCatCYT;
 	}
 
+	/**
+	 * Label de la categoria indicada
+	 * 
+	 * @return la label de la categoria
+	 */
 	private JLabel getLblCYT() {
 		if (lblCYT == null) {
 			lblCYT = new JLabel("Ciencia y Tecnolog\u00EDa");
@@ -280,6 +346,11 @@ public class VentanaEstadisticas extends JDialog {
 		return lblCYT;
 	}
 
+	/**
+	 * Panel de la tabla de la categoria indicada
+	 * 
+	 * @return el panel de la tabla de la categoria
+	 */
 	private JPanel getPnCYTTabla() {
 		if (pnCYTTabla == null) {
 			pnCYTTabla = new JPanel();
@@ -291,6 +362,11 @@ public class VentanaEstadisticas extends JDialog {
 		return pnCYTTabla;
 	}
 
+	/**
+	 * Scrollpane para la tabla de la categoria indicada
+	 * 
+	 * @return scrollpane de la categoria
+	 */
 	private JScrollPane getScrCYTTabla() {
 		if (scrCYTTabla == null) {
 			scrCYTTabla = new JScrollPane();
@@ -299,6 +375,11 @@ public class VentanaEstadisticas extends JDialog {
 		return scrCYTTabla;
 	}
 
+	/**
+	 * Tabla de la categoria indicada
+	 * 
+	 * @return la tabla de la categoria
+	 */
 	private JTable getTblCYT() {
 		if (tblCYT == null) {
 			modeloTablaCYT = new ModeloNoEditable(nombreColumnas, 0);
@@ -314,7 +395,11 @@ public class VentanaEstadisticas extends JDialog {
 	}
 
 	// //////////////DEPORTES//////////////////////
-
+	/**
+	 * Panel de la categoria indicada
+	 * 
+	 * @return el panel de esa categoria
+	 */
 	private JPanel getPnCatDep() {
 		if (pnCatDep == null) {
 			pnCatDep = new JPanel();
@@ -326,6 +411,11 @@ public class VentanaEstadisticas extends JDialog {
 		return pnCatDep;
 	}
 
+	/**
+	 * Label de la categoria indicada
+	 * 
+	 * @return la label de la categoria
+	 */
 	private JLabel getLblDep() {
 		if (lblDep == null) {
 			lblDep = new JLabel("Deportes");
@@ -334,6 +424,11 @@ public class VentanaEstadisticas extends JDialog {
 		return lblDep;
 	}
 
+	/**
+	 * Panel de la tabla de la categoria indicada
+	 * 
+	 * @return el panel de la tabla de la categoria
+	 */
 	private JPanel getPnDepTabla() {
 		if (pnDepTabla == null) {
 			pnDepTabla = new JPanel();
@@ -345,6 +440,11 @@ public class VentanaEstadisticas extends JDialog {
 		return pnDepTabla;
 	}
 
+	/**
+	 * Scrollpane para la tabla de la categoria indicada
+	 * 
+	 * @return scrollpane de la categoria
+	 */
 	private JScrollPane getScrDepTabla() {
 		if (scrDepTabla == null) {
 			scrDepTabla = new JScrollPane();
@@ -353,6 +453,11 @@ public class VentanaEstadisticas extends JDialog {
 		return scrDepTabla;
 	}
 
+	/**
+	 * Tabla de la categoria indicada
+	 * 
+	 * @return la tabla de la categoria
+	 */
 	private JTable getTblDep() {
 		if (tblDep == null) {
 			modeloTablaDep = new ModeloNoEditable(nombreColumnas, 0);
@@ -368,7 +473,11 @@ public class VentanaEstadisticas extends JDialog {
 	}
 
 	// //////////////HISTORIA//////////////////////
-
+	/**
+	 * Panel de la categoria indicada
+	 * 
+	 * @return el panel de esa categoria
+	 */
 	private JPanel getPnCatHistoria() {
 		if (pnCatHistoria == null) {
 			pnCatHistoria = new JPanel();
@@ -380,6 +489,11 @@ public class VentanaEstadisticas extends JDialog {
 		return pnCatHistoria;
 	}
 
+	/**
+	 * Label de la categoria indicada
+	 * 
+	 * @return la label de la categoria
+	 */
 	private JLabel getLblHist() {
 		if (lblHist == null) {
 			lblHist = new JLabel("Historia");
@@ -388,6 +502,11 @@ public class VentanaEstadisticas extends JDialog {
 		return lblHist;
 	}
 
+	/**
+	 * Panel de la tabla de la categoria indicada
+	 * 
+	 * @return el panel de la tabla de la categoria
+	 */
 	private JPanel getPnHistTabla() {
 		if (pnHistTabla == null) {
 			pnHistTabla = new JPanel();
@@ -399,6 +518,11 @@ public class VentanaEstadisticas extends JDialog {
 		return pnHistTabla;
 	}
 
+	/**
+	 * Scrollpane para la tabla de la categoria indicada
+	 * 
+	 * @return scrollpane de la categoria
+	 */
 	private JScrollPane getScrHistTabla() {
 		if (scrHistTabla == null) {
 			scrHistTabla = new JScrollPane();
@@ -407,6 +531,11 @@ public class VentanaEstadisticas extends JDialog {
 		return scrHistTabla;
 	}
 
+	/**
+	 * Tabla de la categoria indicada
+	 * 
+	 * @return la tabla de la categoria
+	 */
 	private JTable getTblHist() {
 		if (tblHist == null) {
 			modeloTablaHist = new ModeloNoEditable(nombreColumnas, 0);
@@ -422,7 +551,11 @@ public class VentanaEstadisticas extends JDialog {
 	}
 
 	// //////////////ARTE Y LIT//////////////////////
-
+	/**
+	 * Panel de la categoria indicada
+	 * 
+	 * @return el panel de esa categoria
+	 */
 	private JPanel getPnCatAYL() {
 		if (pnCatAYL == null) {
 			pnCatAYL = new JPanel();
@@ -434,6 +567,11 @@ public class VentanaEstadisticas extends JDialog {
 		return pnCatAYL;
 	}
 
+	/**
+	 * Label de la categoria indicada
+	 * 
+	 * @return la label de la categoria
+	 */
 	private JLabel getLblAYL() {
 		if (lblAYL == null) {
 			lblAYL = new JLabel("Arte y Literatura");
@@ -442,6 +580,11 @@ public class VentanaEstadisticas extends JDialog {
 		return lblAYL;
 	}
 
+	/**
+	 * Panel de la tabla de la categoria indicada
+	 * 
+	 * @return el panel de la tabla de la categoria
+	 */
 	private JPanel getPnAYLTabla() {
 		if (pnAYLTabla == null) {
 			pnAYLTabla = new JPanel();
@@ -453,6 +596,11 @@ public class VentanaEstadisticas extends JDialog {
 		return pnAYLTabla;
 	}
 
+	/**
+	 * Scrollpane para la tabla de la categoria indicada
+	 * 
+	 * @return scrollpane de la categoria
+	 */
 	private JScrollPane getScrAYLTabla() {
 		if (scrAYLTabla == null) {
 			scrAYLTabla = new JScrollPane();
@@ -461,6 +609,11 @@ public class VentanaEstadisticas extends JDialog {
 		return scrAYLTabla;
 	}
 
+	/**
+	 * Tabla de la categoria indicada
+	 * 
+	 * @return la tabla de la categoria
+	 */
 	private JTable getTblAYL() {
 		if (tblAYL == null) {
 			modeloTablaAYL = new ModeloNoEditable(nombreColumnas, 0);
@@ -477,6 +630,9 @@ public class VentanaEstadisticas extends JDialog {
 
 	// //////////////////////////RELLENAR TABLA////////////////////////////
 
+	/**
+	 * Método que rellena todas las tablas con los datos de las estadisticas
+	 */
 	private void rellenarTablas() {
 		// Obtener los datos de las estadísticas de cada categoría
 		rellenarTabla(BusinessFactory.getStatisticsLoader()
@@ -503,6 +659,14 @@ public class VentanaEstadisticas extends JDialog {
 				modeloTablaHist);
 	}
 
+	/**
+	 * Método que rellena una tabla con los datos de las estadisticas
+	 * 
+	 * @param datos
+	 *            los datos a rellenar
+	 * @param modeloTabla
+	 *            el modelo donde se rellenan
+	 */
 	private void rellenarTabla(List<Object[]> datos,
 			ModeloNoEditable modeloTabla) {
 		for (Object[] r : datos) {
