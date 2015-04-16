@@ -36,9 +36,9 @@ public class ApplicationTest {
 
     @Test
     public void renderTemplate() {
-        Content html = views.html.index.render("Your new application is ready.");
+        Content html = views.html.index.render("Trivial2A. Funcionando con Play");
         assertThat(contentType(html)).isEqualTo("text/html");
-        assertThat(contentAsString(html)).contains("Trivial2A. Funcionando con \"Play\"");
+        assertThat(contentAsString(html)).contains("Trivial2A. Funcionando con Play");
     }
 
 
