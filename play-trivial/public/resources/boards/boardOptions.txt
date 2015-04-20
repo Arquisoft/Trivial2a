@@ -1,0 +1,17 @@
+#-Start boadOption-
+#Name:
+#MiniatureImageUrl:
+#BoardImageUrl:
+#BoardTextFileUrl:
+#MinPlayers:
+#MaxPlayers:
+#-End boardOption-
+
+-Start boadOption-
+Name: Tablero Circular
+MiniatureImageUrl: resources/images/icon.png
+BoardImageUrl: resources/images/gameboard.png
+BoardTextFileUrl:resources/boards/board1/board1Graph.txt
+MinPlayers: 2
+MaxPlayers: 6
+-End boardOption-

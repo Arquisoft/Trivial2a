@@ -1,5 +1,5 @@
 // Square:
-// ID:id|category|
+// ID:id-category-squareType
 
 //Blue -> GEOGRAPHY
 //Red -> SHOWS_AND_ENTERTAINMENT
