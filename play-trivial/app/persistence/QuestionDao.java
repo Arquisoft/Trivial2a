@@ -2,8 +2,8 @@ package persistence;
 
 import java.util.List;
 
-import model.Category;
 import model.Question;
+import bussines.gameClasses.Category;
 
 /**
  * Persistencia para Question

@@ -6,17 +6,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import bussines.GameAPI;
-import bussines.exceptions.IllegalActionException;
-import bussines.gameClasses.BoardOptionsFactory;
-import bussines.gameClasses.Game;
-import factories.PersistenceFactory;
-import model.BoardOption;
 import model.Question;
-import model.Score;
-import model.Square;
 import model.User;
 import persistence.PersistenceServices;
+import bussines.GameAPI;
+import bussines.exceptions.IllegalActionException;
+import bussines.gameClasses.BoardOption;
+import bussines.gameClasses.BoardOptionsFactory;
+import bussines.gameClasses.Game;
+import bussines.gameClasses.Score;
+import bussines.gameClasses.Square;
+import factories.PersistenceFactory;
 
 public class GameApiImpl implements GameAPI {
 
@@ -124,10 +124,10 @@ public class GameApiImpl implements GameAPI {
 	}
 
 	@Override
-	public void createUser(String userName) {
+	public void createUser(String userName, String passwd) {
 		PersistenceServices factory = PersistenceFactory.persistenceFactory();
 		
-		factory.createUserDao().save(new User(userName));
+		factory.createUserDao().save(new User(userName, passwd));
 	}
 
 	@Override

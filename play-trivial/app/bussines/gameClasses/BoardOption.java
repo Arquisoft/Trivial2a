@@ -1,4 +1,4 @@
-﻿package model;
+﻿package bussines.gameClasses;
 
 /**
  * Model class to store and move around the different boards setups available.

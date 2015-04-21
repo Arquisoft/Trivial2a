@@ -9,7 +9,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.BoardOption;
+import bussines.gameClasses.BoardOption;
 
 /**
  * Class that loads a file containing different BoardOption object attributes

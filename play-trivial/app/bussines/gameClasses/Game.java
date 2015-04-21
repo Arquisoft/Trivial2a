@@ -6,16 +6,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import bussines.exceptions.IllegalActionException;
-import factories.PersistenceFactory;
-import model.BoardOption;
 import model.Question;
-import model.Score;
-import model.Square;
-import model.SquareType;
 import model.User;
 import persistence.QuestionDao;
 import persistence.UserDao;
+import bussines.exceptions.IllegalActionException;
+import factories.PersistenceFactory;
 
 public class Game {
 	private Board board;
@@ -36,7 +32,8 @@ public class Game {
 		this.players = new HashMap<String, User>();
 		dice = new Dice();
 		for (String userName : players) {
-			User player = new User(userName);
+			//TODO cambiar contraseña al usuario
+			User player = new User(userName, "usuario");
 			player.setLocation(getStartSquare());
 			this.players.put(userName, player);
 		}
@@ -198,8 +195,6 @@ public class Game {
 	}
 
 	public Map<Integer, Point> getSquares() throws IllegalActionException {
-		// TODO pendiente de que en el fichero se guarden las coordenadas
-		// TODO pendiente de que las Square almacenen sus coordenadas
 		Map<Integer, Point> aux = new HashMap<Integer, Point>();
 		for (int i = 0; i < board.getSquareList().size(); i++) {
 			aux.put(i + 1, board.getSquare(i + 1).getPosition());
@@ -275,6 +270,6 @@ public class Game {
 			}
 		}
 		activePlayer = players.get(nextPlayer);
-		dice.makeAvailable(); //XXX
+		dice.makeAvailable(); 
 	}
 }

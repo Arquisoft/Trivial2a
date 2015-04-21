@@ -1,7 +1,7 @@
 package persistence;
 
-import model.Score;
 import model.User;
+import bussines.gameClasses.Score;
 
 public interface ScoreDao {
 	

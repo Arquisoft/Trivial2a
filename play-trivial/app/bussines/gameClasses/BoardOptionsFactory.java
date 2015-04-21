@@ -1,8 +1,8 @@
 package bussines.gameClasses;
 
 import java.util.List;
+
 import bussines.fileLoaders.BoardOptionsLoader;
-import model.BoardOption;
 
 /**
  * Class that grant access and stores the different BoardOption items.

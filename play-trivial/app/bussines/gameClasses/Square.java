@@ -1,4 +1,4 @@
-﻿package model;
+﻿package bussines.gameClasses;
 
 import java.awt.Point;
 import java.util.Collection;

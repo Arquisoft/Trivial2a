@@ -1,4 +1,4 @@
-﻿package model;
+﻿package bussines.gameClasses;
 
 /**
  * Clase "Score" del modelo.
@@ -8,7 +8,7 @@
  * @version 1 - Last changes: -
  */
 public class Score {
-
+	
 	// Attributes to save the game�s state
 	// If the attribute is false, the current user hasnt got that piece
 	// If the attribute is true, the current user has got that piece

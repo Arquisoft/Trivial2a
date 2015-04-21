@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import model.BoardOption;
 import model.Question;
-import model.Score;
-import model.Square;
 import bussines.exceptions.IllegalActionException;
+import bussines.gameClasses.BoardOption;
+import bussines.gameClasses.Score;
+import bussines.gameClasses.Square;
 
 public interface GameAPI {
 
@@ -204,7 +204,7 @@ public interface GameAPI {
 	 * @param userName
 	 *            user name of the new user.
 	 */
-	void createUser(String userName);
+	void createUser(String userName, String passwd);
 
 	/**
 	 * Method used to get the relation of the square numbers and the

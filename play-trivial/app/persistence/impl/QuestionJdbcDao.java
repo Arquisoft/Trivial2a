@@ -6,13 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.Random;
-import model.Category;
-import conf.Conf;
-import conf.Jdbc;
+
 import model.Question;
 import persistence.QuestionDao;
+import bussines.gameClasses.Category;
+import conf.Conf;
+import conf.Jdbc;
 
 public class QuestionJdbcDao implements QuestionDao {
 

@@ -6,10 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 import bussines.fileLoaders.GraphFileLoader;
-import model.BoardOption;
-import model.Category;
-import model.Square;
-import model.SquareType;
 
 /**
  * Class Board, used to store the Squares, keep their connections and calculate movements.
