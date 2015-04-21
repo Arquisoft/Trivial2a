@@ -1,0 +1,12 @@
+.data-form {
+	margin: 0 auto;
+	padding: 1vh 4vh 4vh 4vh;
+	text-align: left;
+	width: 30vw;
+	background: #F8F8F8;
+	border-radius: 15px;
+}
+
+body {
+	background-image: url("../images/banner.png");
+}
