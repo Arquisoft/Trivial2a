@@ -1,9 +1,7 @@
-﻿package model;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import bussines.gameClasses.Category;
 
 /**
  * Clase "Question" del modelo.

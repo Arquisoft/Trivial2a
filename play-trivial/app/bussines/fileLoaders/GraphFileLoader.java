@@ -10,9 +10,9 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
-import bussines.gameClasses.Category;
-import bussines.gameClasses.Square;
-import bussines.gameClasses.SquareType;
+import model.Category;
+import model.Square;
+import model.SquareType;
 
 /**
  * 

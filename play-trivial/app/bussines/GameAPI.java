@@ -6,10 +6,10 @@ import java.util.Map;
 import java.util.Set;
 
 import model.Question;
+import model.Score;
+import model.Square;
 import bussines.exceptions.IllegalActionException;
 import bussines.gameClasses.BoardOption;
-import bussines.gameClasses.Score;
-import bussines.gameClasses.Square;
 
 public interface GameAPI {
 

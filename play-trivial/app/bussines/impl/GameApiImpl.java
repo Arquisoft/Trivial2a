@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Set;
 
 import model.Question;
+import model.Score;
+import model.Square;
 import model.User;
 import persistence.PersistenceServices;
 import bussines.GameAPI;
@@ -14,12 +16,10 @@ import bussines.exceptions.IllegalActionException;
 import bussines.gameClasses.BoardOption;
 import bussines.gameClasses.BoardOptionsFactory;
 import bussines.gameClasses.Game;
-import bussines.gameClasses.Score;
-import bussines.gameClasses.Square;
 import factories.PersistenceFactory;
 
 public class GameApiImpl implements GameAPI {
-
+	
 	private Game game;
 	
 	@Override
@@ -127,7 +127,7 @@ public class GameApiImpl implements GameAPI {
 	public void createUser(String userName, String passwd) {
 		PersistenceServices factory = PersistenceFactory.persistenceFactory();
 		
-		factory.createUserDao().save(new User(userName, passwd));
+		factory.createUserDao().save(new User(userName));
 	}
 
 	@Override
@@ -141,8 +141,8 @@ public class GameApiImpl implements GameAPI {
 			throw new IllegalActionException("No se ha iniciado partida.");
 	}
 	
+	
 	//New
-
 	private List<String> players;
 
 	@Override

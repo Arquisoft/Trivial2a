@@ -7,6 +7,9 @@ import java.util.Map;
 import java.util.Set;
 
 import model.Question;
+import model.Score;
+import model.Square;
+import model.SquareType;
 import model.User;
 import persistence.QuestionDao;
 import persistence.UserDao;
@@ -33,7 +36,7 @@ public class Game {
 		dice = new Dice();
 		for (String userName : players) {
 			//TODO cambiar contraseña al usuario
-			User player = new User(userName, "usuario");
+			User player = new User(userName);
 			player.setLocation(getStartSquare());
 			this.players.put(userName, player);
 		}

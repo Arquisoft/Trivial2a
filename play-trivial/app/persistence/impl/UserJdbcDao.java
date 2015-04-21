@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Statistic;
 import model.User;
 import persistence.UserDao;
-import bussines.gameClasses.Statistic;
 import conf.Conf;
 import conf.Jdbc;
 
@@ -233,7 +233,7 @@ public class UserJdbcDao implements UserDao {
 			ps = con.prepareStatement(Conf.get("User.getUsers"));
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				User user = new User(rs.getString("LOGIN"), "usuario");
+				User user = new User(rs.getString("LOGIN"));
 				int ID = rs.getInt("STATISTICID");
 				PreparedStatement ps2 = null;
 				ResultSet rs2 = null;

@@ -1,19 +1,11 @@
-﻿package bussines.gameClasses;
-
-import java.io.Serializable;
-
-import play.db.ebean.Model;
+package model;
 
 /** Clase "Statistic" del modelo.
  * @author Gonz�lez Fernandez Cristian y Vel�zquez Vico �lvaro
  * @version 1 - Last changes: -
  */
-public class Statistic extends Model implements Serializable{
+public class Statistic {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	//Correct answers
 	private int sports;
 	private int showsAndEntertainment;
@@ -28,9 +20,6 @@ public class Statistic extends Model implements Serializable{
 	private int TotalartAndLiterature;
 	private int Totalgeography;
 	private int Totalhistory;
-	
-	
-	
 	
 	//Getters and setters
 	public int getSports() {
