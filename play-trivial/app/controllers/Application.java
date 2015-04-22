@@ -14,6 +14,11 @@ public class Application extends Controller {
     	//FIXME: Metodo provisional de sign up
         return ok(signup.render(""));
     }
+    
+    public static Result showGameBoard(){
+    	//FIXME: Metodo provisional de juego, muestra el cuadro de pregunta si existe una
+    	return ok(game.render("",true));
+    }
 
 //	public static Result authenticate() {
 //		Form<Login> loginForm = Form.form(Login.class).bindFromRequest();

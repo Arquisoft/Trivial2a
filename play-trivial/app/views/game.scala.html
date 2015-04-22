@@ -1,0 +1,109 @@
+@(title: String, pregunta: Boolean)
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<title>Juega</title>
+<meta charset="utf-8">
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+</head>
+<body>
+	
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container">
+			<a class="navbar-brand" href="#"> <img alt="Brand"
+				src="@routes.Assets.at("images/trivialHeader.png")">
+			</a>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 ">
+				<div class="page-header">
+  					<h1>Trivial2A <small> Es tu turno!</small></h1>
+				</div>
+				<div class="col-md-6">
+				
+				<table class="table table-condensed">
+					<tfoot></tfoot>
+					<thead></thead>
+					<tbody>
+						<tr><td><button type="button" class="btn btn-lg">1</button></td>
+							<td><button type="submit" class="btn btn-lg">2</button></td>
+							<td><button type="submit" class="btn btn-lg">3</button></td>
+							<td><button type="submit" class="btn btn-lg">4</button></td>
+							<td><button type="submit" class="btn btn-lg">5</button></td>
+						</tr>
+						<tr><td><button type="submit" class="btn btn-lg">6</button></td>
+							<td><button type="submit" class="btn btn-lg hidden">7</button></td>
+							<td><button type="submit" class="btn btn-lg hidden">8</button></td>
+							<td><button type="submit" class="btn btn-lg hidden">9</button></td>
+							<td><button type="submit" class="btn btn-lg">10</button></td>
+						</tr>
+						<tr><td><button type="submit" class="btn btn-lg">11</button></td>
+							<td><button type="submit" class="btn btn-lg hidden">12</button></td>
+							<td><button type="submit" class="btn btn-lg hidden">13</button></td>
+							<td><button type="submit" class="btn btn-lg hidden">14</button></td>
+							<td><button type="submit" class="btn btn-lg">15</button></td>
+						</tr>
+						<tr><td><button type="submit" class="btn btn-lg">16</button></td>
+							<td><button type="submit" class="btn btn-lg hidden">17</button></td>
+							<td><button type="submit" class="btn btn-lg hidden">18</button></td>
+							<td><button type="submit" class="btn btn-lg hidden">19</button></td>
+							<td><button type="submit" class="btn btn-lg">20</button></td>
+						</tr>
+						<tr><td><button type="submit" class="btn btn-lg">21</button></td>
+							<td><button type="submit" class="btn btn-lg">22</button></td>
+							<td><button type="submit" class="btn btn-lg">23</button></td>
+							<td><button type="submit" class="btn btn-lg">24</button></td>
+							<td><button type="submit" class="btn btn-lg">25</button></td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+				@if(pregunta){
+				<div class="col-md-6">
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h2 class="panel-title">Conteste a la pregunta</h2>
+					  </div>
+					  <div class="panel-body">
+					    	¿En qué continente se encuentra Paquistán?
+							<ul class="list-group">
+							</br>
+							  <li class="list-group-item"> 
+								  <button type="button" class="btn btn-primary btn-lg btn-block">								  	<span class="badge">A</span>
+								  	Europa
+								  </button>
+							 </li>
+							  <li class="list-group-item"> 
+							  	<button type="button" class="btn btn-default btn-lg btn-block">
+							  		<span class="badge">B</span>
+							  		Africa
+							  	</button>
+							  </li>
+							  <li class="list-group-item"> 
+							  	<button type="button" class="btn btn-info btn-lg btn-block">
+									<span class="badge">C</span>
+							  		Oriente medio
+							    </button>
+							  </li>
+							  <li class="list-group-item"> 
+							  	<button type="button" class="btn btn-warning btn-lg btn-block">
+							  		<span class="badge">D</span>
+							  		América
+							  	</button>
+							  </li>
+							</ul>
+					  </div>	
+					</div>
+				</div>
+				}
+	</div>
+</body>
+</html>
