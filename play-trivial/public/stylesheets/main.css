@@ -1,3 +1,7 @@
+body {
+	background-image: url("../images/banner.png");
+}
+
 .data-form {
 	margin: 0 auto;
 	padding: 1vh 4vh 4vh 4vh;
@@ -7,6 +11,37 @@
 	border-radius: 15px;
 }
 
-body {
-	background-image: url("../images/banner.png");
+.panel-size {
+	margin: 0 auto;
+	width: 80vw;
+}
+
+.geography {
+	background-color: #58ACFA;
+}
+
+.shows {
+	background-color: #FA58F4;
+}
+
+.history {
+	background-color: #F3F781;
+}
+
+.artlit {
+	background-color: #B45F04;
+}
+
+.science {
+	background-color: #82FA58;
+}
+
+.sports {
+	background-color: #FE9A2E;
+}
+
+.catnames {
+	color: #2E2E2E;
+	font-size: 115%;
+	font-weight: bold;
 }

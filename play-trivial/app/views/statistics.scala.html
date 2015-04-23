@@ -1,0 +1,65 @@
+@(cat: String, data: List[Array[Object]])
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Estadísticas</title>
+<meta charset="utf-8">
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container">
+			<a class="navbar-brand" href="#"> <img alt="Brand"
+				src="@routes.Assets.at("images/trivialHeader.png")">
+			</a>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/logout">Cerrar sesión</a></li>
+			</ul>
+		</div>
+	</nav>
+	<ul class="nav nav-pills nav-justified">
+		<li role="presentation" class="geography"><a class="catnames"
+			href="/stats/geography">Geografía</a></li>
+		<li role="presentation" class="shows"><a class="catnames"
+			href="/stats/shows">Espectáculos</a></li>
+		<li role="presentation" class="history"><a class="catnames"
+			href="/stats/history">Historia</a></li>
+		<li role="presentation" class="artlit"><a class="catnames"
+			href="/stats/artlit">Arte y Literatura</a></li>
+		<li role="presentation" class="science"><a class="catnames"
+			href="/stats/science">Ciencias y Naturaleza</a></li>
+		<li role="presentation" class="sports"><a class="catnames"
+			href="/stats/sports">Deportes</a></li>
+	</ul>
+	<br />
+	<br />
+	<div class="panel panel-default panel-size">
+		<!-- Default panel contents -->
+		<div class="panel-heading">@cat</div>
+
+		<!-- Table -->
+		<table class="table">
+			<tr>
+				<th>Usuario</th>
+				<th>Preguntas totales</th>
+				<th>Acertadas</th>
+				<th>Falladas</th>
+			</tr>
+			@for(user <- data) {
+			<tr>
+				<td>@user(0)</td>
+				<td>@user(1)</td>
+				<td>@user(2)</td>
+				<td>{@user(1) - @user(2)}</td>
+			</tr>
+			}
+		</table>
+	</div>
+
+
+</body>
+</html>
