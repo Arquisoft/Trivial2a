@@ -1,7 +1,7 @@
-New log file opened at Wed Apr 22 22:47:03 CEST 2015 by 1152@MacBook-Air-de-Ruan.local
-Taking next connection to: 59968
-New client attempting to connect on port: 59969-59968
-  Address = /192.168.0.11:59968
-This client on port 59969 has uuid 4264eda6-974a-4aa1-a491-20df26511ad6 configName play-fork-run humanReadableName Play Fork Run protocolVersion 1 featureTags Vector()
-Connected Clients: play-fork-run-4264eda6-974a-4aa1-a491-20df26511ad6
-Taking next connection to: 59968
+New log file opened at Thu Apr 23 19:22:34 CEST 2015 by 1337@MacBook-Air-de-Ruan.local
+Taking next connection to: 51392
+New client attempting to connect on port: 51393-51392
+  Address = /192.168.0.11:51392
+This client on port 51393 has uuid 414b1986-26ad-4b1d-b0ba-51ee138b6915 configName play-fork-run humanReadableName Play Fork Run protocolVersion 1 featureTags Vector()
+Connected Clients: play-fork-run-414b1986-26ad-4b1d-b0ba-51ee138b6915
+Taking next connection to: 51392
