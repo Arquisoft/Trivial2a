@@ -10,6 +10,11 @@ import java.util.Set;
 
 import es.uniovi.asw.trivial.model.Category;
 import es.uniovi.asw.trivial.model.Question;
+import es.uniovi.asw.trivial.persistencia.AnswerDao;
+import es.uniovi.asw.trivial.persistencia.PersistenceServices;
+import es.uniovi.asw.trivial.persistencia.QuestionDao;
+import es.uniovi.asw.trivial.persistencia.impl.QuestionJdbcDao;
+import es.uniovi.asw.trivial.persistencia.impl.SimplePersistenceFactory;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -18,7 +23,7 @@ import com.google.gson.JsonParser;
 
 public class GeneradorBD {
 
-	public List<Question> preguntas;
+	public List<Question> preguntas = new ArrayList<Question>();
 
 	private static final String filePath = System.getProperty("user.dir")
 			+ "/src/salida.txt";
@@ -52,13 +57,28 @@ public class GeneradorBD {
 		JsonArray incorrectas = o.get("incorrect").getAsJsonArray();
 		incorrect.add(incorrectas.get(0).getAsString());
 		incorrect.add(incorrectas.get(1).getAsString());
-		q.setIncorrectAnswers(incorrect);		
+		q.setIncorrectAnswers(incorrect);
+		preguntas.add(q);
 		
 	}
 
 	public void savePreguntas() {
+		System.out.print("Almacenando preguntas en BD...");
 		JsonReader();
-	}
+		PersistenceServices factory = new SimplePersistenceFactory();	
+		AnswerDao a = factory.createAnswerDao();
+		QuestionDao q = factory.createQuestionDao();
+		for (Question pregunta : preguntas){
+			q.save(pregunta);
+			int id = q.getId(pregunta);
+			a.saveCorrect(id, pregunta.getCorrectAnswer());
+			for (String respuesta: pregunta.getIncorrectAnswers()){
+				a.saveIncorrect(id, respuesta);
+			}
+			
+		}
+		System.out.println("FIN");
+}
 	
 	
 
