@@ -1,4 +1,4 @@
-$CATEGORY: Deportes
+$CATEGORY: SPORTS
 
 //Comentario
 ::Q1:: En que ciudad nacio Fernando Alonso? {
@@ -7,16 +7,16 @@ $CATEGORY: Deportes
 ~Sevilla
 };
 
-$CATEGORY: Historia
+$CATEGORY: HISTORY
 
 //Comentario
-::Q2:: Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a "Las Indias"? {
+::Q2:: Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a Las Indias? {
 =La Pinta, La Niña y La Santa Maria
 ~La Punta, La Nena y La Virgen Maria
 ~La Pita, La Minia y La Seniora Maria
 };
 
-$CATEGORY: Arte y Literatura
+$CATEGORY: ART.AND.LITERATURE
 
 ::Q3:: De que estilo arquitectonico es la Catedral de Notre Dame en Paris?{
 =Gotico
@@ -24,7 +24,7 @@ $CATEGORY: Arte y Literatura
 ~Barroco 
 };
 
-$CATEGORY:Historia
+$CATEGORY:HISTORY
 
 ::Q4:: Con que se fabricaba el pergamino?{
 =Con piel de animales
@@ -32,7 +32,7 @@ $CATEGORY:Historia
 ~Con hojas de arbusto 
 };
 
-$CATEGORY: Historia
+$CATEGORY: HISTORY
 
 ::Q5:: Quien fue famoso esposo de Frida Kahlo?{
 =Diego Rivera
@@ -40,7 +40,7 @@ $CATEGORY: Historia
 ~Leon Trotsky 
 };
 
-$CATEGORY: Deportes
+$CATEGORY: SPORTS
 
 ::Q6:: Que atleta se hizo famoso por utilizar una nueva tecnica en atletismo?{
 =Dick Fosbury
@@ -48,50 +48,51 @@ $CATEGORY: Deportes
 ~Emil Zatopek 
 };
 
-$CATEGORY: Arte y Literatura
+$CATEGORY: ART.AND.LITERATURE
 
-::Q7:: Que instrumento esta expresamente "bien afinado" en ciertas obras de Bach?{
+::Q7:: Que instrumento esta expresamente bien afinado en ciertas obras de Bach?{
 =El clave
 ~El oboe
 ~Todos
 };
 
-$CATEGORY: Ciencias y Naturaleza
+$CATEGORY: SHOWS.AND.ENTERTAINMENT
 
-::Q8:: Que grasas hacen tan saludable el aceite de oliva?{
-=Las monoinsaturadas
-~Las saturadas
-~Las trans 
+::Q8:: Marge de Los simpson una vez tenia el pelo de otro color que color?{
+=Gris
+~Verde
+~Rojo 
 };
 
-$CATEGORY: Ciencias y Naturaleza
+$CATEGORY: SCIENCE.AND.TECHNOLOGY
 
-::Q9:: Que es tambien un uno seguido de cien ceros? {
-=El nombre de un buscador de Internet
-~Una secuencia binaria de encriptacion 
-~El nombre de un sistema solar 
+::Q9:: Quien fue el primero en decir que la Tierra orbita alrededor del Sol?
+{
+=Aristarco de Samos
+~Galileo 
+~Kepler 
 };
 
-$CATEGORY: Ciencias y Naturaleza
+$CATEGORY: GEOGRAPHY
 
-::Q10:: Que enfermedad se considera erradicada?{
-=Viruela
-~Peste
-~Colera 
+::Q10:: Cuantas islas componen el archipielago canario?{
+=Siete
+~Cinco
+~Doce 
 };
 
-$CATEGORY: Historia
+$CATEGORY: HISTORY
 
-::Q11:: Quien dijo "solo se que no se nada"?{
+::Q11:: Quien dijo solo se que no se nada?{
 =Socrates
 ~Platon
 ~Aristoteles
 };
 
-$CATEGORY:Ciencias y Naturaleza
+$CATEGORY:GEOGRAPHY
 
-::Q12:: En que lugar del cuerpo se produce la insulina?{
-=En el pancreas
-~En la hipofisis
-~En el duodeno 
+::Q12:: De que pais es capital Bruselas?{
+=Belgica
+~Austria
+~Luxemburgo
 };

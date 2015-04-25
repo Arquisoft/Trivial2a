@@ -1,108 +1,110 @@
-{ "category":" Deportes",
+[
+{ "category":" SPORTS",
   "question":"Q1",
   "text":" En que ciudad nacio Fernando Alonso? ",
   "correct":"Oviedo",
   "incorrect": [
 		"Valencia",
 		"Sevilla" ]
-}
+},
 
-{ "category":" Historia",
+{ "category":" HISTORY",
   "question":"Q2",
-  "text":" Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a "Las Indias"? ",
+  "text":" Como se llamaban las tres carabelas que utilizo Cristobal Colon en su primer viaje a Las Indias? ",
   "correct":"La Pinta, La Niña y La Santa Maria",
   "incorrect": [
 		"La Punta, La Nena y La Virgen Maria",
 		"La Pita, La Minia y La Seniora Maria" ]
-}
+},
 
-{ "category":" Arte y Literatura",
+{ "category":" ART.AND.LITERATURE",
   "question":"Q3",
   "text":" De que estilo arquitectonico es la Catedral de Notre Dame en Paris?",
   "correct":"Gotico",
   "incorrect": [
 		"Romanico",
 		"Barroco " ]
-}
+},
 
-{ "category":"Historia",
+{ "category":"HISTORY",
   "question":"Q4",
   "text":" Con que se fabricaba el pergamino?",
   "correct":"Con piel de animales",
   "incorrect": [
 		"Con tiras de madera",
 		"Con hojas de arbusto " ]
-}
+},
 
-{ "category":" Historia",
+{ "category":" HISTORY",
   "question":"Q5",
   "text":" Quien fue famoso esposo de Frida Kahlo?",
   "correct":"Diego Rivera",
   "incorrect": [
 		"Jose Vasconcelos",
 		"Leon Trotsky " ]
-}
+},
 
-{ "category":" Deportes",
+{ "category":" SPORTS",
   "question":"Q6",
   "text":" Que atleta se hizo famoso por utilizar una nueva tecnica en atletismo?",
   "correct":"Dick Fosbury",
   "incorrect": [
 		"Carl Lewis",
 		"Emil Zatopek " ]
-}
+},
 
-{ "category":" Arte y Literatura",
+{ "category":" ART.AND.LITERATURE",
   "question":"Q7",
-  "text":" Que instrumento esta expresamente "bien afinado" en ciertas obras de Bach?",
+  "text":" Que instrumento esta expresamente bien afinado en ciertas obras de Bach?",
   "correct":"El clave",
   "incorrect": [
 		"El oboe",
 		"Todos" ]
-}
+},
 
-{ "category":" Ciencias y Naturaleza",
+{ "category":" SHOWS.AND.ENTERTAINMENT",
   "question":"Q8",
-  "text":" Que grasas hacen tan saludable el aceite de oliva?",
-  "correct":"Las monoinsaturadas",
+  "text":" Marge de Los simpson una vez tenia el pelo de otro color que color?",
+  "correct":"Gris",
   "incorrect": [
-		"Las saturadas",
-		"Las trans " ]
-}
+		"Verde",
+		"Rojo " ]
+},
 
-{ "category":" Ciencias y Naturaleza",
+{ "category":" SCIENCE.AND.TECHNOLOGY",
   "question":"Q9",
-  "text":" Que es tambien un uno seguido de cien ceros? ",
-  "correct":"El nombre de un buscador de Internet",
+  "text":" Quien fue el primero en decir que la Tierra orbita alrededor del Sol?",
+  "correct":"Aristarco de Samos",
   "incorrect": [
-		"Una secuencia binaria de encriptacion ",
-		"El nombre de un sistema solar " ]
-}
+		"Galileo ",
+		"Kepler " ]
+},
 
-{ "category":" Ciencias y Naturaleza",
+{ "category":" GEOGRAPHY",
   "question":"Q10",
-  "text":" Que enfermedad se considera erradicada?",
-  "correct":"Viruela",
+  "text":" Cuantas islas componen el archipielago canario?",
+  "correct":"Siete",
   "incorrect": [
-		"Peste",
-		"Colera " ]
-}
+		"Cinco",
+		"Doce " ]
+},
 
-{ "category":" Historia",
+{ "category":" HISTORY",
   "question":"Q11",
-  "text":" Quien dijo "solo se que no se nada"?",
+  "text":" Quien dijo solo se que no se nada?",
   "correct":"Socrates",
   "incorrect": [
 		"Platon",
 		"Aristoteles" ]
-}
+},
 
-{ "category":"Ciencias y Naturaleza",
+{ "category":"GEOGRAPHY",
   "question":"Q12",
-  "text":" En que lugar del cuerpo se produce la insulina?",
-  "correct":"En el pancreas",
+  "text":" De que pais es capital Bruselas?",
+  "correct":"Belgica",
   "incorrect": [
-		"En la hipofisis",
-		"En el duodeno " ]
-}
+		"Austria",
+		"Luxemburgo" ]
+},
 
+]

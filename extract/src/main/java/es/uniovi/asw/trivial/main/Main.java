@@ -48,7 +48,7 @@ public class Main {
 		ASTPrinter.toHtml(sourceFile, raiz, "Traza arbol"); // Utilidad generada por VGen (opcional)
 		
 		GeneradorBD bd = new GeneradorBD();
-		
+		bd.savePreguntas();
 	}
 
 	/**

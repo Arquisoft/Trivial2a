@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.io.Writer;
 
 import es.uniovi.asw.trivial.ast.Elemento;
+import es.uniovi.asw.trivial.ast.Fichero;
 import es.uniovi.asw.trivial.ast.Pregunta;
 import es.uniovi.asw.trivial.visitor.DefaultVisitor;
 
@@ -37,8 +38,16 @@ public class FormateadoJSON extends DefaultVisitor {
 	public Object visit(Elemento node, Object param) {
 		out("{ \"category\":\"" + node.getCategoria() + "\",");
 		super.visit(node, param);
-		out("}");
+		out("},");
 		out("");
+		return null;
+	}
+
+	@Override
+	public Object visit(Fichero node, Object param) {
+		out("[");
+		super.visit(node, param);
+		out("]");
 		return null;
 	}
 
