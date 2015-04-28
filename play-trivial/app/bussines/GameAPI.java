@@ -233,4 +233,6 @@ public interface GameAPI {
 	 */
 	List<String> getPlayersNameList();
 
+	int contarUsuarios();
+
 }

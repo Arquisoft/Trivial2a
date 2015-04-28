@@ -161,4 +161,9 @@ public class GameApiImpl implements GameAPI {
 		}
 		return false;
 	}
+
+	@Override
+	public int contarUsuarios() {
+		return PersistenceFactory.persistenceFactory().createUserDao().contarUsuarios();
+	}
 }

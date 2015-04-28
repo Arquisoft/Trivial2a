@@ -15,13 +15,19 @@ import views.html.*;
 public class Application extends Controller {
 	
 	public static class Login {
-		private GameAPI api = new GameApiImpl();
-		public String id;
-		public String password;
+		private GameAPI api;
+		public String id = "Cristian";
+		public String password = "123";
 
 		public String validate() {
+			api = new GameApiImpl();
+			
+			boolean exito = api.existUser(id, password);
+			
 			System.out.println("Validado usuario: Usuario:" + id + " - Contraseña:" + password);
-			return api.existUser(id, password) ? "Datos incorrectos" : null;
+			System.out.println(api.contarUsuarios() + "- Conf cargado correctamente = " + exito);
+//			return api.existUser(id, password) ? "Datos incorrectos" : null;
+			return " Hola ";
 		}
 	}
 

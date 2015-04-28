@@ -234,12 +234,11 @@ public class UserJdbcDao implements UserDao {
 		List<User> users = new ArrayList<User>();
 
 		try {
-			con = ds.getConnection();
+			con = DB.getConnection();
 			System.out.println("Conexion creada");
 			
 			ps = con.prepareStatement(Conf.get("User.getUsers"));
 			rs = ps.executeQuery();
-			System.out.println("Consulta ejecutada. ResultSet exite: " + rs!=null);
 			while (rs.next()) {
 				User user = new User(rs.getString("LOGIN"), rs.getString("PASSWORD"));
 				System.out.println("Usuario Cargado con exito: Id:" + user.getLogin() + " - Password:" + user.getPasswd());
@@ -307,6 +306,28 @@ public class UserJdbcDao implements UserDao {
 		} finally {
 			Jdbc.close(rs, ps);
 		}
+	}
+
+	@Override
+	public int contarUsuarios() {
+		Connection c = DB.getConnection();
+		
+		try {
+			PreparedStatement ps = c.prepareStatement("SELECT count(*) nUsuarios from USERS");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			int n = 0;
+			
+			while(rs.next()){
+				n++;
+			}
+			
+			return n;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 }

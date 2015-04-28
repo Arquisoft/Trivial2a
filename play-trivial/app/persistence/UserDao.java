@@ -58,5 +58,7 @@ public interface UserDao {
 	 */
 	List<User> getUsers();
 
+	int contarUsuarios();
+
 	
 }
