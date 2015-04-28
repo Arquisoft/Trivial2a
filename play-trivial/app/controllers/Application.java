@@ -4,18 +4,44 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.game;
-import views.html.login;
-import views.html.signup;
-import views.html.statistics;
+import bussines.GameAPI;
+import bussines.impl.GameApiImpl;
+import views.html.*;
+
 
 public class Application extends Controller {
+	
+	public static class Login {
+		private GameAPI api = new GameApiImpl();
+		public String id;
+		public String password;
+
+		public String validate() {
+			System.out.println("Validado usuario: Usuario:" + id + " - Contraseña:" + password);
+			return api.existUser(id, password) ? "Datos incorrectos" : null;
+		}
+	}
 
 	public static Result showLogin() {
 		// FIXME: Metodo provisional de login
-		return ok(login.render(""));
+		return ok(login.render(Form.form(Login.class)));
+	}
+
+
+
+	public static Result iniciarSesion() {
+		Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+		if (loginForm.hasErrors()) {
+			return badRequest(login.render(loginForm));
+		} else {
+			session().clear();
+			session("id", loginForm.get().id);
+
+			return redirect("/game");
+		}
 	}
 
 	public static Result showSignUp() {
@@ -79,20 +105,4 @@ public class Application extends Controller {
 		// FIXME: Provisional
 		return showStats("Deportes", null);
 	}
-
-	// public static Result authenticate() {
-	// Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-	// if (loginForm.hasErrors()) {
-	// return badRequest(login.render(loginForm));
-	// } else {
-	// session().clear();
-	// session("id", loginForm.get().id);
-	//
-	// if(!loginForm.get().id.equals("admin"))
-	// return redirect(routes.Juego.showIndex());
-	//
-	// return redirect(routes.Application.showAdminStatistics());
-	// }
-	// }
-
 }

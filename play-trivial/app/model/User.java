@@ -7,10 +7,23 @@ package model;
 public class User {
 	
 	private String login;
+	private String passwd;
 	private Score score;
 	private Statistic statistics;
 	private int location;
 	
+	public User(String login, String passwd){
+		this.login = login;
+		this.passwd = passwd;
+	}
+
+	public String getPasswd() {
+		return passwd;
+	}
+
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
 
 	public int getLocation() {
 		return location;

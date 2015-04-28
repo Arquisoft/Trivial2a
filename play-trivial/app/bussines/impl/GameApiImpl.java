@@ -149,4 +149,16 @@ public class GameApiImpl implements GameAPI {
 	public List<String> getPlayersNameList() {
 		return players;
 	}
+
+	@Override
+	public boolean existUser(String login, String passwd) {
+		List<User> usuarios = PersistenceFactory.persistenceFactory().createUserDao().getUsers();
+		
+		for(User usuario:usuarios){
+			if(usuario.getLogin().equals(login) && usuario.getPasswd().equals(passwd)){
+				return true;
+			}
+		}
+		return false;
+	}
 }

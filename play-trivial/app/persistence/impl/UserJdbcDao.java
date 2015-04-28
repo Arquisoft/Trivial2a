@@ -1,11 +1,15 @@
 package persistence.impl;
 
+import play.db.DB;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.sql.DataSource;
 
 import model.Statistic;
 import model.User;
@@ -23,7 +27,7 @@ public class UserJdbcDao implements UserDao {
 		String sql = Conf.get("User.isValidLogin");
 
 		try {
-			con = Jdbc.getConnection();
+			con = DB.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, login);
 			rs = ps.executeQuery();
@@ -46,7 +50,7 @@ public class UserJdbcDao implements UserDao {
 		int rows = 0;
 		Statistic s = user.getStatistics();
 		try {
-			con = Jdbc.getConnection();
+			con = DB.getConnection();
 			// Buscar �ltimo ID statistic
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
@@ -103,7 +107,7 @@ public class UserJdbcDao implements UserDao {
 		int rows = 0;
 		Statistic s = user.getStatistics();
 		try {
-			con = Jdbc.getConnection();
+			con = DB.getConnection();
 			// Buscar ID statistic del user
 			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
@@ -149,7 +153,7 @@ public class UserJdbcDao implements UserDao {
 		int rows = 0;
 
 		try {
-			con = Jdbc.getConnection();
+			con = DB.getConnection();
 			ps = con.prepareStatement(Conf.get("User.deleteLogin"));
 
 			ps.setString(1, login);
@@ -176,7 +180,7 @@ public class UserJdbcDao implements UserDao {
 
 		Statistic statistic = new Statistic();
 		try {
-			con = Jdbc.getConnection();
+			con = DB.getConnection();
 			ps = con.prepareStatement(Conf.get("User.getStatisticID"));
 			ps.setString(1, user.getLogin());
 			rs = ps.executeQuery();
@@ -224,16 +228,21 @@ public class UserJdbcDao implements UserDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Connection con = null;
+		
+		DataSource ds = DB.getDataSource();
 
 		List<User> users = new ArrayList<User>();
 
 		try {
-			con = Jdbc.getConnection();
+			con = ds.getConnection();
+			System.out.println("Conexion creada");
 			
 			ps = con.prepareStatement(Conf.get("User.getUsers"));
 			rs = ps.executeQuery();
+			System.out.println("Consulta ejecutada. ResultSet exite: " + rs!=null);
 			while (rs.next()) {
-				User user = new User(rs.getString("LOGIN"));
+				User user = new User(rs.getString("LOGIN"), rs.getString("PASSWORD"));
+				System.out.println("Usuario Cargado con exito: Id:" + user.getLogin() + " - Password:" + user.getPasswd());
 				int ID = rs.getInt("STATISTICID");
 				PreparedStatement ps2 = null;
 				ResultSet rs2 = null;
@@ -284,7 +293,7 @@ public class UserJdbcDao implements UserDao {
 		String SQL = Conf.get("User.updateLogin");
 		int rows = 0;
 		try {
-			con = Jdbc.getConnection();
+			con = DB.getConnection();
 			ps = con.prepareStatement(SQL);
 			ps.setString(1, nuevoLogin);
 			ps.setString(2, user.getLogin());

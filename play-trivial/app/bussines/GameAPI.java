@@ -197,6 +197,8 @@ public interface GameAPI {
 	 * @return List of user names.
 	 */
 	List<String> getUserNameList();
+	
+	boolean existUser(String login, String passwd);
 
 	/**
 	 * Method used to add a new user to the system.

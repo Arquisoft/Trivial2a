@@ -5,6 +5,7 @@ import java.util.List;
 import model.Statistic;
 import model.User;
 
+
 /**
  * Persistencia para User
  * @author maria

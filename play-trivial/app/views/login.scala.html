@@ -1,4 +1,4 @@
-@(title: String)
+@(form: Form[Application.Login])
 
 <!DOCTYPE html>
 
@@ -20,11 +20,14 @@
 	</nav>
 	
 	<div class="data-form">
+	
+	@helper.form(action = routes.Application.iniciarSesion) {
 		<h2>Indentifícate</h2>
 		<div class="form-group">
 			<label for="user">Usuario</label> 
 			<input type="text" 
 				class="form-control" 
+				value="@form("id").value"
 				id="user" 
 				name="user" 
 				placeholder="Usuario"
@@ -40,11 +43,12 @@
 				placeholder="Contraseña" 
 				required>
 		</div>
-		
-		<button type="submit" class="btn btn-primary">Entrar</button>
-		<hr/>
-		<p> (O regístrate <a href="/signup">aquí</a>) </p>
-		<a href="/game"> Tablero</a>
+			
+			<button type="submit" class="btn btn-primary">Entrar</button>
+			<hr/>
+			<p> (O regístrate <a href="/signup">aquí</a>) </p>
+			<a href="/game"> Tablero</a>
+		}
 	</div>
 </body>
 </html>
