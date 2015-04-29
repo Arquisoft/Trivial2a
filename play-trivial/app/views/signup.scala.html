@@ -1,4 +1,4 @@
-@(title: String)
+@(form: Form[Application.Register])
 
 <!DOCTYPE html>
 
@@ -19,13 +19,19 @@
 		</div>
 	</nav>
 	<div class="data-form">
+	    @helper.form(routes.Application.register) {
+			@if(form.hasGlobalErrors) {
+			    <p class="error">
+			        @form.globalError.message
+			    </p>
+			}
 		<h2>Regístrate</h2>
 		<div class="form-group">
-			<label for="user">Usuario</label> 
+			<label for="id">Usuario</label> 
 			<input type="text" 
 				class="form-control" 
-				id="user" 
-				name="user" 
+				id="id" 
+				name="id" 
 				placeholder="Usuario"
 				required>
 		</div>
@@ -53,6 +59,7 @@
 		<button type="submit" class="btn btn-primary">Registrarse</button>
 		<hr/>
 		<p> (O entra desde <a href="/">aquí</a>) </p>
+		}
 	</div>
 </body>
 </html>

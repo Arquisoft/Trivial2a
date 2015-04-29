@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 import bussines.GameAPI;
 import bussines.impl.GameApiImpl;
 
@@ -77,6 +79,21 @@ public class User {
 		return true;
 	}
 	
+	public static boolean getUser(String id){
+		GameAPI api = new GameApiImpl();
+		
+		for(String n: api.getUserNameList()){
+			if(id.equals(n))
+				return true;
+		}
+		return false;
+	}
+	
+	public static void addUser(String id, String password){
+		GameAPI api = new GameApiImpl();
+		
+		api.createUser(id, password);
+	}
 	
 	
 }

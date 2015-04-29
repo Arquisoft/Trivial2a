@@ -80,7 +80,8 @@ public class UserJdbcDao implements UserDao {
 			// Guardamos al usuario
 			ps = con.prepareStatement(Conf.get("User.saveUser"));
 			ps.setString(1, user.getLogin());
-			ps.setInt(2, statisticID + 1);
+			ps.setString(2, user.getPasswd());
+			ps.setInt(3, statisticID + 1);
 			rows = ps.executeUpdate();
 			if (rows != 1) {
 				throw new SQLException("El usuario " + user.getLogin()
@@ -228,8 +229,6 @@ public class UserJdbcDao implements UserDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Connection con = null;
-		
-		DataSource ds = DB.getDataSource();
 
 		List<User> users = new ArrayList<User>();
 

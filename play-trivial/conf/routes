@@ -8,9 +8,10 @@ POST	/							controllers.Application.authenticate()
 
 # Sign up page
 GET		/signup						controllers.Application.showSignUp()
+POST    /signup						controllers.Application.register()
 
 # Game board page
-GET 	/game					controllers.Application.showGameBoard()
+GET 	/game						controllers.Application.showGameBoard()
 
 # Stats page
 GET		/stats/geography				controllers.Application.showStatsGeo()

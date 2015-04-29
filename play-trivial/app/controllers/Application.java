@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 import model.User;
-import play.data.Form;
 import play.mvc.Controller;
+import play.data.*;
 import play.mvc.Result;
 import views.html.*;
 
@@ -22,17 +22,28 @@ public class Application extends Controller {
 		if (loginForm.hasErrors()) {
 			return badRequest(login.render(loginForm));
 		} else {
-			System.out.println("Entrando en sesion como " + loginForm.get().id);
 			session().clear();
 			session("id", loginForm.get().id);
 
 			return redirect("/game");
 		}
 	}
+	
+	public static Result register() {
+		Form<Register> registerForm = Form.form(Register.class).bindFromRequest();
+		if (registerForm.hasErrors()) {
+			return badRequest(signup.render(registerForm));
+		} else {
+			System.out.println("Registrando jugador: " + registerForm.get().id);
+			
+			User.addUser(registerForm.get().id,
+					registerForm.get().password);
+			return redirect("/signup");
+		}
+	}
 
 	public static Result showSignUp() {
-		// FIXME: Metodo provisional de sign up
-		return ok(signup.render(""));
+		return ok(signup.render(Form.form(Register.class)));
 	}
 
 	public static Result showGameBoard() {
@@ -92,7 +103,6 @@ public class Application extends Controller {
 		return showStats("Deportes", null);
 	}
 	
-	
 	public static class Login {
 		public String id;
 		public String password;
@@ -102,6 +112,21 @@ public class Application extends Controller {
 		      return "Usuario o contraseña incorrectos";
 		    }
 		    return null;
+		}
+	}
+	
+	public static class Register {
+		public String id = "Paula";
+		public String password = "1";
+		public String passwordRp = "1";
+
+		public String validate() {
+			if (!password.equals(passwordRp)) {
+				return "Las dos contraseñas deben ser iguales";
+			} else if (User.getUser(id)) {
+				return "El ID de usuario introducido ya existe";
+			}
+			return null;
 		}
 	}
 }
