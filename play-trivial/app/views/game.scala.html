@@ -14,11 +14,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="@routes.Assets.at("javascripts/bootstrap.min.js")" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script type="text/javascript" src='@routes.Application.javascriptRoutes()'></script>
 
 <script type="text/javascript">
 	function mostrar(){
-		var div = document.getElementById("valorDado");
-		div.className="show";
+		myJsRoutes.controllers.Application.showQuestion().ajax({
+	    success : function(data) { 
+	    		var myModalLabel = document.getElementById("myModalLabel");
+				myModalLabel.appendChild(document.createTextNode(data));
+	     }
+		
+		});
+		
 	}
    
 </script>
@@ -109,6 +116,7 @@
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
 						  Launch demo modal
 						</button>
+						<button onclick="mostrar()"> mostrar pregunta </button>
 						<!-- Modal -->
 						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						  <div class="modal-dialog">

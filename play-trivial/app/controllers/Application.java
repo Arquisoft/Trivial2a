@@ -5,10 +5,14 @@ import java.util.List;
 import java.util.Random;
 
 import model.User;
+import play.Routes;
+import play.data.Form;
 import play.mvc.Controller;
-import play.data.*;
 import play.mvc.Result;
-import views.html.*;
+import views.html.game;
+import views.html.login;
+import views.html.signup;
+import views.html.statistics;
 
 
 public class Application extends Controller {
@@ -53,9 +57,19 @@ public class Application extends Controller {
 
 	}
 
-	public static Result getNumber() {
-		Random r = new Random(10);
-		return ok(r.nextInt() + "");
+	// Mapea las acciones a javascript	
+	public static Result javascriptRoutes() {
+	    response().setContentType("text/javascript");
+	    return ok(
+	        Routes.javascriptRouter("myJsRoutes",
+	            routes.javascript.Application.showGameBoard(),
+	            routes.javascript.Application.showQuestion()
+	            ));
+	}
+	
+	public static Result showQuestion(){
+		// Simula solicitar y devolver una pregunta, 
+		return ok(System.currentTimeMillis()%100 + "");		
 	}
 
 	public static Result showStats(String category, List<Object[]> dato) {

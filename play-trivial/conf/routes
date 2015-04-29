@@ -11,8 +11,8 @@ GET		/signup						controllers.Application.showSignUp()
 POST    /signup						controllers.Application.register()
 
 # Game board page
-GET 	/game						controllers.Application.showGameBoard()
-
+GET 	/game						    controllers.Application.showGameBoard()
+GET		/question						controllers.Application.showQuestion()
 # Stats page
 GET		/stats/geography				controllers.Application.showStatsGeo()
 GET		/stats/shows					controllers.Application.showStatsShows()
@@ -22,5 +22,6 @@ GET		/stats/science					controllers.Application.showStatsScience()
 GET		/stats/sports					controllers.Application.showStatsSports()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /javascriptRoutes               controllers.Application.javascriptRoutes
+GET     /assets/*file                   controllers.Assets.at(path="/public", file)
 
