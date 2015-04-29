@@ -4,45 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import model.User;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import bussines.GameAPI;
-import bussines.impl.GameApiImpl;
 import views.html.*;
 
 
 public class Application extends Controller {
-	
-	public static class Login {
-		private GameAPI api;
-		public String id = "Cristian";
-		public String password = "123";
-
-		public String validate() {
-			api = new GameApiImpl();
-			
-			boolean exito = api.existUser(id, password);
-			
-			System.out.println("Validado usuario: Usuario:" + id + " - Contraseña:" + password);
-			System.out.println(api.contarUsuarios() + "- Conf cargado correctamente = " + exito);
-//			return api.existUser(id, password) ? "Datos incorrectos" : null;
-			return " Hola ";
-		}
-	}
 
 	public static Result showLogin() {
-		// FIXME: Metodo provisional de login
 		return ok(login.render(Form.form(Login.class)));
 	}
 
-
-
-	public static Result iniciarSesion() {
+	public static Result authenticate() {
 		Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
 		if (loginForm.hasErrors()) {
 			return badRequest(login.render(loginForm));
 		} else {
+			System.out.println("Entrando en sesion como " + loginForm.get().id);
 			session().clear();
 			session("id", loginForm.get().id);
 
@@ -110,5 +90,18 @@ public class Application extends Controller {
 	public static Result showStatsSports() {
 		// FIXME: Provisional
 		return showStats("Deportes", null);
+	}
+	
+	
+	public static class Login {
+		public String id;
+		public String password;
+
+		public String validate() {
+		    if (User.authenticate(id, password) == null) {
+		      return "Usuario o contraseña incorrectos";
+		    }
+		    return null;
+		}
 	}
 }

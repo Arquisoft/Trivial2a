@@ -1,5 +1,8 @@
 package model;
 
+import bussines.GameAPI;
+import bussines.impl.GameApiImpl;
+
 /** Clase "User" del modelo.
  * @author Gonz�lez Fernandez Cristian y Vel�zquez Vico �lvaro
  * @version 1 - Last changes: -
@@ -63,5 +66,17 @@ public class User {
 	public boolean canWin() {
 		return score.hasAllThePieces();
 	}
+
+	public static Object authenticate(String id, String password) {
+		GameAPI api = new GameApiImpl();
+		boolean existe = api.existUser(id, password);
+		System.out.println("Existe usuario = " + existe);
+		if (existe == false)
+			return null;
+		
+		return true;
+	}
+	
+	
 	
 }

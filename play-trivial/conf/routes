@@ -4,7 +4,7 @@
 
 # Home page (Log In)
 GET     /                           controllers.Application.showLogin()
-POST	/							controllers.Application.iniciarSesion()
+POST	/							controllers.Application.authenticate()
 
 # Sign up page
 GET		/signup						controllers.Application.showSignUp()

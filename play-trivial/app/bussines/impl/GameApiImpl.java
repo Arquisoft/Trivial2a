@@ -153,8 +153,9 @@ public class GameApiImpl implements GameAPI {
 	@Override
 	public boolean existUser(String login, String passwd) {
 		List<User> usuarios = PersistenceFactory.persistenceFactory().createUserDao().getUsers();
-		
+		System.out.println("Buscando credenciales en " + usuarios.size());
 		for(User usuario:usuarios){
+			System.out.println("Datos a comparar("+usuario.getLogin() + "," + usuario.getPasswd() + ") - Introducidos(" + login + "," + passwd + ")");
 			if(usuario.getLogin().equals(login) && usuario.getPasswd().equals(passwd)){
 				return true;
 			}
