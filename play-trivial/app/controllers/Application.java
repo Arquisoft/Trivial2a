@@ -2,10 +2,10 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import model.User;
 import play.Routes;
+import play.cache.Cache;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -13,6 +13,7 @@ import views.html.game;
 import views.html.login;
 import views.html.signup;
 import views.html.statistics;
+import factories.BusinessFactory;
 
 
 public class Application extends Controller {
@@ -53,8 +54,8 @@ public class Application extends Controller {
 	public static Result showGameBoard() {
 		// FIXME: Metodo provisional de juego, muestra el cuadro de pregunta si
 		// existe una
-		return ok(game.render("", true));
-
+		Cache.set("gameApi",BusinessFactory.getGameAPI() );
+		return ok(game.render(""));
 	}
 
 	// Mapea las acciones a javascript	
@@ -63,14 +64,39 @@ public class Application extends Controller {
 	    return ok(
 	        Routes.javascriptRouter("myJsRoutes",
 	            routes.javascript.Application.showGameBoard(),
-	            routes.javascript.Application.showQuestion()
+	            routes.javascript.Application.showQuestion(),
+	            routes.javascript.Application.answerQuestion(),
+	            routes.javascript.Application.playDice()
 	            ));
 	}
 	
-	public static Result showQuestion(){
-		// Simula solicitar y devolver una pregunta, 
-		return ok(System.currentTimeMillis()%100 + "");		
+	public static Result playDice() {
+		String valor = System.currentTimeMillis()%6 + "";
+		session("currentDice",valor);
+		return ok(valor); // valor del dado
 	}
+	
+	public static Result showQuestion(Integer id){
+		// Simula solicitar y devolver una pregunta, coincide tambien con la casilla actual 
+		if(id>= 20)
+			return badRequest("Movimiento no valido");
+		session("currentQuestion",id+""); 
+		return ok("Pregunta "+id+"_"
+				+"¿En que ciudad vive Fernando Alonso?_"
+				+ "Oviedo_"
+				+ "Milan_"
+				+ "Paris_"
+				+ "Narnia"
+				);	
+		
+	}
+	
+	// Comprueba la la respuesta y devuelve un positivo o falso
+	public static Result answerQuestion(Integer answerId) {
+		String currentQuestion = session("currentQuestion");
+		return ok(currentQuestion+"_correcto");
+	}
+	
 
 	public static Result showStats(String category, List<Object[]> dato) {
 		// FIXME: Metodo provisional de ver stats
