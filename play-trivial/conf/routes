@@ -3,18 +3,18 @@
 # ~~~~
 
 # Home page (Log In)
-GET     /                           controllers.Application.login()
+GET     /                          		controllers.Application.showLogin()
 
 # Login
-GET		/login		controllers.Application.login()
-POST	/login		controllers.Application.authenticate()
+GET			/login						controllers.Application.showLogin()
+POST		/login						controllers.Application.authenticate()
 
 # Sign up page
-#GET		/signup						controllers.Application.showSignUp()
-#POST    /signup						controllers.Application.register()
+GET		/signup						controllers.Application.showSignUp()
+POST       /signup						controllers.Application.register()
 
 # Game board page
-GET 	/game						    controllers.Application.showGameBoard()
+GET 		/game						    controllers.Application.showGameBoard()
 #GET		/playDice						controllers.Application.playDice()
 #GET		/question/:id					controllers.Application.showQuestion(id: Integer)
 #GET		/answer/:answerId/				controllers.Application.answerQuestion(answerId: Integer)

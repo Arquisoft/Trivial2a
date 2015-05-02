@@ -11,66 +11,41 @@ import models.*;
 import views.html.*;
 
 public class Application extends Controller {
+		
+	public static Result register() {
+		
+		DynamicForm registerForm = form().bindFromRequest();
+		String id = registerForm.get("id");
+		String password = registerForm.get("password");
+		
+		if (User.getUser(id)) {
+			registerForm.reject("User already exists");
+			return badRequest(signup.render(registerForm));
+		} else {
+			User.addUser(id, password);
+			return redirect(routes.Application.showLogin());
+		}
+	}
+
+	public static Result showSignUp() {
+		return ok(signup.render(new DynamicForm()));
+	}
 	
-//	public static class Login {
-//		public String id;
-//		public String password;
-//
-//		public String validate() {
-//		    if (User.authenticate(id, password) == null) {
-//		      return "Usuario o contraseña incorrectos";
-//		    }
-//		    return null;
-//		}
-//	}
-//	public static Result showLogin() {
-//		return ok(login.render(Form.form(Login.class)));
-//	}
-//
-//	public static Result authenticate() {
-//		Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-//		if (loginForm.hasErrors()) {
-//			return badRequest(login.render(loginForm));
-//		} else {
-//			session().clear();
-//			session("id", loginForm.get().id);
-//
-//			return redirect("/game");
-//		}
-//	}
-//	
-//	public static Result register() {
-//		Form<Register> registerForm = Form.form(Register.class).bindFromRequest();
-//		if (registerForm.hasErrors()) {
-//			return badRequest(signup.render(registerForm));
-//		} else {
-//			System.out.println("Registrando jugador: " + registerForm.get().id);
-//			
-//			User.addUser(registerForm.get().id,
-//					registerForm.get().password);
-//			return redirect("/signup");
-//		}
-//	}
-//
-//	public static Result showSignUp() {
-//		return ok(signup.render(Form.form(Register.class)));
-//	}
-	
-	public static Result login() {
+	public static Result showLogin() {
 		return ok(login.render(new DynamicForm()));
 	}
 	
 	public static Result authenticate() {		
 		DynamicForm loginForm = form().bindFromRequest();
-		String login = loginForm.get("login");
-		String passwd = loginForm.get("passwd");
+		String id = loginForm.get("id");
+		String passwd = loginForm.get("password");
 		
-		if (User.authenticate(login, passwd) == null) {
+		if (User.authenticate(id, passwd) == null) {
 			loginForm.reject("Invalid user or password");
-			return badRequest(views.html.login.render(loginForm));
+			return badRequest(login.render(loginForm));
 		} else {
 			session().clear();
-			session("user", login);
+			session("user", id);
 			return redirect(routes.Application.showGameBoard());
 		}
 	}

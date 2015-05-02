@@ -1,25 +1,57 @@
 @(form: DynamicForm)
 
+<!DOCTYPE html>
+
 <html>
-	<head>
-    </head>
-    <body>
-		@helper.form(routes.Application.authenticate) {
-		   <h1>Sign in</h1>
-				@if(form.hasGlobalErrors) {
-		    		<p class="error">
-		        	@form.globalError.message
-		    		</p>
-				}
-			<p>
-			<input type="login" name="login" placeholder="login" value="@form("login").value">
-			</p>
-		 	<p>
-		    	<input type="passwd" name="passwd" placeholder="passwd">
-		   	</p>
-		   	<p>
-		    	<button type="submit">Login</button>
-		   	</p>
+<head>
+<title>Iniciar sesión</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container">
+			<a class="navbar-brand" href="#"> 
+				<img alt="Brand" src="@routes.Assets.at("images/trivialHeader.png")">
+			</a>
+		</div>
+	</nav>
+	
+	<div class="data-form">
+	@helper.form(routes.Application.authenticate) {
+			@if(form.hasGlobalErrors) {
+			    <p class="danger">
+			        @form.globalError.message
+			    </p>
+			}
+			<h2>Indentifícate</h2>
+			
+			<div class="form-group">
+			<label for="id">Usuario</label> 
+			<input type="text" 
+				class="form-control" 
+				name="id" 
+				value="@form("id").value"
+				placeholder="Usuario"
+				autofocus required>
+			</div>
+			
+			<div class="form-group">
+			<label for="password">Contraseña</label> 
+			<input type="password" 
+				class="form-control" 
+				name="password"
+				placeholder="Contraseña" 
+				required>
+			</div>
+			
+			<button type="submit" class="btn btn-primary">Entrar</button>
+			<hr/>
+			<p> (O regístrate <a href="/signup">aquí</a>) </p>
+			<a href="/game"> Tablero</a>
 		}
-    </body>
+	</div>
+</body>
 </html>
