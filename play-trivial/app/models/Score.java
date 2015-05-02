@@ -1,4 +1,4 @@
-package model;
+package models;
 
 /**
  * Clase "Score" del modelo.

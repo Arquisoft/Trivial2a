@@ -1,6 +1,4 @@
-package model;
-
-import java.util.List;
+package models;
 
 import bussines.GameAPI;
 import bussines.impl.GameApiImpl;
@@ -69,9 +67,10 @@ public class User {
 		return score.hasAllThePieces();
 	}
 
-	public static Object authenticate(String id, String password) {
+	public static Object authenticate(String login, String passwd) {
+		System.out.println("Entrando en User.authenticate()");
 		GameAPI api = new GameApiImpl();
-		boolean existe = api.existUser(id, password);
+		boolean existe = api.existUser(login, passwd);
 		System.out.println("Existe usuario = " + existe);
 		if (existe == false)
 			return null;

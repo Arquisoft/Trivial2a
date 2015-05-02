@@ -3,12 +3,15 @@
 # ~~~~
 
 # Home page (Log In)
-GET     /                           controllers.Application.showLogin()
-POST	/							controllers.Application.authenticate()
+GET     /                           controllers.Application.login()
+
+# Login
+GET		/login		controllers.Application.login()
+POST	/login		controllers.Application.authenticate()
 
 # Sign up page
-GET		/signup						controllers.Application.showSignUp()
-POST    /signup						controllers.Application.register()
+#GET		/signup						controllers.Application.showSignUp()
+#POST    /signup						controllers.Application.register()
 
 # Game board page
 GET 	/game						    controllers.Application.showGameBoard()

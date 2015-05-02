@@ -10,9 +10,9 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
-import model.Category;
-import model.Square;
-import model.SquareType;
+import models.Category;
+import models.Square;
+import models.SquareType;
 
 /**
  * 

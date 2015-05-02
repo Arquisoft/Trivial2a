@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import model.User;
+import models.User;
 import conf.Conf;
 import conf.Jdbc;
 import persistence.StatisticDao;

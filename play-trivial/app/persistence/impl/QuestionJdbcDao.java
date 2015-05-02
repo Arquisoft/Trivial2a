@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import model.Category;
-import model.Question;
+import models.Category;
+import models.Question;
 import persistence.QuestionDao;
 import conf.Conf;
 import conf.Jdbc;

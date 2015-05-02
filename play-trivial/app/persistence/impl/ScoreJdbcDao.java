@@ -1,7 +1,7 @@
 package persistence.impl;
 
-import model.Score;
-import model.User;
+import models.Score;
+import models.User;
 import persistence.ScoreDao;
 
 public class ScoreJdbcDao implements ScoreDao {

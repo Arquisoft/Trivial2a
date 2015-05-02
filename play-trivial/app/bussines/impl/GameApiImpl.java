@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import model.Question;
-import model.Score;
-import model.Square;
-import model.User;
+import models.Question;
+import models.Score;
+import models.Square;
+import models.User;
 import persistence.PersistenceServices;
 import bussines.GameAPI;
 import bussines.exceptions.IllegalActionException;

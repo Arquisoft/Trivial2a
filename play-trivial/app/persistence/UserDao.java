@@ -2,8 +2,8 @@ package persistence;
 
 import java.util.List;
 
-import model.Statistic;
-import model.User;
+import models.Statistic;
+import models.User;
 
 
 /**

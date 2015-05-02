@@ -5,9 +5,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import model.Category;
-import model.Square;
-import model.SquareType;
+import models.Category;
+import models.Square;
+import models.SquareType;
 import bussines.fileLoaders.GraphFileLoader;
 
 /**

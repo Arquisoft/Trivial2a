@@ -2,52 +2,77 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-import model.User;
-import play.Routes;
-import play.data.Form;
-import play.mvc.Controller;
-import play.mvc.Result;
-import views.html.game;
-import views.html.login;
-import views.html.signup;
-import views.html.statistics;
-
+import play.*;
+import play.mvc.*;
+import play.data.*;
+import static play.data.Form.*;
+import models.*;
+import views.html.*;
 
 public class Application extends Controller {
-
-	public static Result showLogin() {
-		return ok(login.render(Form.form(Login.class)));
-	}
-
-	public static Result authenticate() {
-		Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-		if (loginForm.hasErrors()) {
-			return badRequest(login.render(loginForm));
-		} else {
-			session().clear();
-			session("id", loginForm.get().id);
-
-			return redirect("/game");
-		}
+	
+//	public static class Login {
+//		public String id;
+//		public String password;
+//
+//		public String validate() {
+//		    if (User.authenticate(id, password) == null) {
+//		      return "Usuario o contraseña incorrectos";
+//		    }
+//		    return null;
+//		}
+//	}
+//	public static Result showLogin() {
+//		return ok(login.render(Form.form(Login.class)));
+//	}
+//
+//	public static Result authenticate() {
+//		Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+//		if (loginForm.hasErrors()) {
+//			return badRequest(login.render(loginForm));
+//		} else {
+//			session().clear();
+//			session("id", loginForm.get().id);
+//
+//			return redirect("/game");
+//		}
+//	}
+//	
+//	public static Result register() {
+//		Form<Register> registerForm = Form.form(Register.class).bindFromRequest();
+//		if (registerForm.hasErrors()) {
+//			return badRequest(signup.render(registerForm));
+//		} else {
+//			System.out.println("Registrando jugador: " + registerForm.get().id);
+//			
+//			User.addUser(registerForm.get().id,
+//					registerForm.get().password);
+//			return redirect("/signup");
+//		}
+//	}
+//
+//	public static Result showSignUp() {
+//		return ok(signup.render(Form.form(Register.class)));
+//	}
+	
+	public static Result login() {
+		return ok(login.render(new DynamicForm()));
 	}
 	
-	public static Result register() {
-		Form<Register> registerForm = Form.form(Register.class).bindFromRequest();
-		if (registerForm.hasErrors()) {
-			return badRequest(signup.render(registerForm));
+	public static Result authenticate() {		
+		DynamicForm loginForm = form().bindFromRequest();
+		String login = loginForm.get("login");
+		String passwd = loginForm.get("passwd");
+		
+		if (User.authenticate(login, passwd) == null) {
+			loginForm.reject("Invalid user or password");
+			return badRequest(views.html.login.render(loginForm));
 		} else {
-			System.out.println("Registrando jugador: " + registerForm.get().id);
-			
-			User.addUser(registerForm.get().id,
-					registerForm.get().password);
-			return redirect("/signup");
+			session().clear();
+			session("user", login);
+			return redirect(routes.Application.showGameBoard());
 		}
-	}
-
-	public static Result showSignUp() {
-		return ok(signup.render(Form.form(Register.class)));
 	}
 
 	public static Result showGameBoard() {
@@ -115,18 +140,6 @@ public class Application extends Controller {
 	public static Result showStatsSports() {
 		// FIXME: Provisional
 		return showStats("Deportes", null);
-	}
-	
-	public static class Login {
-		public String id;
-		public String password;
-
-		public String validate() {
-		    if (User.authenticate(id, password) == null) {
-		      return "Usuario o contraseña incorrectos";
-		    }
-		    return null;
-		}
 	}
 	
 	public static class Register {

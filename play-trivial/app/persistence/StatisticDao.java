@@ -3,7 +3,7 @@ package persistence;
 import java.util.ArrayList;
 import java.util.Map;
 
-import model.User;
+import models.User;
 
 public interface StatisticDao {
 

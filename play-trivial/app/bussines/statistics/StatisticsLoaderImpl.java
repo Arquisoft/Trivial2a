@@ -6,7 +6,7 @@ import java.util.Map;
 
 import bussines.StatisticsLoader;
 import factories.PersistenceFactory;
-import model.User;
+import models.User;
 import persistence.PersistenceServices;
 
 public class StatisticsLoaderImpl implements StatisticsLoader{

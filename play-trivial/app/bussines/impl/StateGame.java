@@ -1,6 +1,6 @@
 package bussines.impl;
 
-import model.Question;
+import models.Question;
 
 public class StateGame {
 

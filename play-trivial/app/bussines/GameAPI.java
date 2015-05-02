@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import model.Question;
-import model.Score;
-import model.Square;
+import models.Question;
+import models.Score;
+import models.Square;
 import bussines.exceptions.IllegalActionException;
 import bussines.gameClasses.BoardOption;
 

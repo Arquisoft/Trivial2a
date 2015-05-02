@@ -1,4 +1,4 @@
-package model;
+package models;
 
 /** Clase "Statistic" del modelo.
  * @author Gonz�lez Fernandez Cristian y Vel�zquez Vico �lvaro

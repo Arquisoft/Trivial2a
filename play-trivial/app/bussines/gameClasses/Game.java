@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import model.Question;
-import model.Score;
-import model.Square;
-import model.SquareType;
-import model.User;
+import models.Question;
+import models.Score;
+import models.Square;
+import models.SquareType;
+import models.User;
 import persistence.QuestionDao;
 import persistence.UserDao;
 import bussines.exceptions.IllegalActionException;
