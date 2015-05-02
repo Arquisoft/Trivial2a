@@ -1,4 +1,5 @@
-@(title: String, pregunta: Boolean)
+
+@(title: String)
 
 <!DOCTYPE html>
 
@@ -17,11 +18,47 @@
 <script type="text/javascript" src='@routes.Application.javascriptRoutes()'></script>
 
 <script type="text/javascript">
-	function mostrar(){
-		myJsRoutes.controllers.Application.showQuestion().ajax({
+	function mostrar( square ){
+		myJsRoutes.controllers.Application.showQuestion(square).ajax({
 	    success : function(data) { 
-	    		var myModalLabel = document.getElementById("myModalLabel");
-				myModalLabel.appendChild(document.createTextNode(data));
+	    		var values = data.split("_");
+	    		document.getElementById("myModalLabel").textContent= values[0];
+	    		document.getElementById("question").textContent= values[1];
+	    		document.getElementById("value_ans1").textContent= values[2];
+	    		document.getElementById("value_ans2").textContent= values[3];
+	    		document.getElementById("value_ans3").textContent= values[4];
+	    		document.getElementById("value_ans4").textContent= values[5];
+	    		$('#myModal').modal('toggle');
+			
+	     },
+	     error: function(data){
+	     	alert("Eh no hagas trampas, este no es un movimiento valido ¬¬");
+	     }
+		
+		});
+		
+	}
+
+	function contestar(answerId){
+		myJsRoutes.controllers.Application.answerQuestion(answerId).ajax({
+	    success : function(data) { 
+	    		var values = data.split("_");
+	    		alert(values);
+	    		var squareButton = document.getElementById(values[0]);
+	    		squareButton.textContent = "X";
+	    		squareButton.disabled = true;
+	    		document.getElementById("value_ciencias").textContent = 2;
+	    		$('#myModal').modal('toggle');
+	     }
+		
+		});
+		
+	}
+
+	function dice(){
+		myJsRoutes.controllers.Application.playDice().ajax({
+	    success : function(data) { 
+	    		document.getElementById("value_dice").textContent = data;
 	     }
 		
 		});
@@ -44,7 +81,7 @@
 		<div class="row">
 			<div class="col-md-12 ">
 				<div class="page-header">
-  					<h1>UsuarioX<small> Es tu turno!</small></h1>
+  					<h1>Usuario @session.get("id")<small> Es tu turno!</small></h1>
 				</div>
 				<div class="col-md-8">
 				
@@ -52,72 +89,68 @@
 					<tfoot></tfoot>
 					<thead></thead>
 					<tbody>
-						<tr><td><button type="button" class="btn-xl geography">1</button></td>
-							<td><button type="submit" class="btn-xl science">1</button></td>
-							<td><button type="submit" class="btn-xl history">1</button></td>
-							<td><button type="submit" class="btn-xl shows">1</button></td>
-							<td><button type="submit" class="btn-xl artlit">1</button></td>
-							<td><button type="submit" class="btn-xl sports">1</button></td>
-							<td><button type="submit" class="btn-xl history">1</button></td>
+						<tr><td><button type="button" id="1" class="btn-xl geography square" onclick="mostrar(1)" >1</button></td>
+							<td><button type="submit" id="2" class="btn-xl science square"   onclick="mostrar(2)">1</button></td>
+							<td><button type="submit" id="3" class="btn-xl history square"   onclick="mostrar(3)">1</button></td>
+							<td><button type="submit" id="4" class="btn-xl shows square"     onclick="mostrar(4)">1</button></td>
+							<td><button type="submit" id="5" class="btn-xl artlit square"    onclick="mostrar(5)">1</button></td>
+							<td><button type="submit" id="6" class="btn-xl sports square"    onclick="mostrar(6)">1</button></td>
+							<td><button type="submit" id="7" class="btn-xl history square"   onclick="mostrar(7)">1</button></td>
 						</tr>
-						<tr><td><button type="submit" class="btn-xl science">1</button></td>
+						<tr><td><button type="submit" id="8" class="btn-xl science  square"  onclick="mostrar(8)">1</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" class="btn-xl shows">1</button></td>
+							<td><button type="submit" id="9" class="btn-xl shows square"     onclick="mostrar(9)">1</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" class="btn-xl history">1</button></td>
+							<td><button type="submit" id="10" class="btn-xl history square"  onclick="mostrar(10)">1</button></td>
 						</tr>
-						<tr><td><button type="submit" class="btn-xl history">1</button></td>
+						<tr><td><button type="submit" id="11" class="btn-xl history square"  onclick="mostrar(11)">1</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" class="btn-xl science">1</button></td>
+							<td><button type="submit" id="12" class="btn-xl science square"  onclick="mostrar(12)">1</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" class="btn-xl artlit">1</button></td>
+							<td><button type="submit" id="13" class="btn-xl artlit square"  onclick="mostrar(13)">1</button></td>
 						</tr>
-						<tr><td><button type="button" class="btn-xl geography">1</button></td>
-							<td><button type="submit" class="btn-xl history">1</button></td>
-							<td><button type="submit" class="btn-xl geography">1</button></td>
-							<td><button type="submit" class="btn-xl science">1</button></td>
-							<td><button type="submit" class="btn-xl history">1</button></td>
-							<td><button type="submit" class="btn-xl science">1</button></td>
-							<td><button type="submit" class="btn-xl sports">1</button></td>
+						<tr><td><button type="button" id="14" class="btn-xl geography square"  onclick="mostrar(14)">1</button></td>
+							<td><button type="submit" id="15" class="btn-xl history square"    onclick="mostrar(15)">1</button></td>
+							<td><button type="submit" id="16" class="btn-xl geography square"  onclick="mostrar(16)">1</button></td>
+							<td><button type="submit" id="17" class="btn-xl science square"    onclick="mostrar(17)">1</button></td>
+							<td><button type="submit" id="18" class="btn-xl history square"    onclick="mostrar(18)">1</button></td>
+							<td><button type="submit" id="19" class="btn-xl science square"    onclick="mostrar(19)">1</button></td>
+							<td><button type="submit" id="20" class="btn-xl sports square"     onclick="mostrar(20)">1</button></td>
 						</tr>
-						<tr><td><button type="submit" class="btn-xl science">1</button></td>
+						<tr><td><button type="submit" id="21" class="btn-xl science square"    onclick="mostrar(21)">1</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" class="btn-xl geography">1</button></td>
+							<td><button type="submit" id="22" class="btn-xl geography square"  onclick="mostrar(22)">1</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" class="btn-xl history">1</button></td>
+							<td><button type="submit" id="23" class="btn-xl history square"    onclick="mostrar(23)">1</button></td>
 						</tr>
-						<tr><td><button type="submit" class="btn-xl shows">1</button></td>
+						<tr><td><button type="submit" id="24" class="btn-xl shows square"      onclick="mostrar(24)">1</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" class="btn-xl sports">1</button></td>
+							<td><button type="submit" id="25" class="btn-xl sports square"     onclick="mostrar(25)">1</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" class="btn-xl geography">1</button></td>
+							<td><button type="submit" id="26" class="btn-xl geography square"  onclick="mostrar(26)">1</button></td>
 						</tr>
-						<tr><td><button type="button" class="btn-xl science">1</button></td>
-							<td><button type="submit" class="btn-xl sports">1</button></td>
-							<td><button type="submit" class="btn-xl history">1</button></td>
-							<td><button type="submit" class="btn-xl artlit">1</button></td>
-							<td><button type="submit" class="btn-xl geography">1</button></td>
-							<td><button type="submit" class="btn-xl artlit">1</button></td>
-							<td><button type="submit" class="btn-xl history">1</button></td>
+						<tr><td><button type="button" id="27" class="btn-xl science square"    onclick="mostrar(27)">1</button></td>
+							<td><button type="submit" id="28" class="btn-xl sports square"     onclick="mostrar(28)">1</button></td>
+							<td><button type="submit" id="29" class="btn-xl history square"    onclick="mostrar(29)">1</button></td>
+							<td><button type="submit" id="30" class="btn-xl artlit square"     onclick="mostrar(30)">1</button></td>
+							<td><button type="submit" id="31" class="btn-xl geography square"  onclick="mostrar(31)">1</button></td>
+							<td><button type="submit" id="32" class="btn-xl artlit square"     onclick="mostrar(32)">1</button></td>
+							<td><button type="submit" id="33" class="btn-xl history square"    onclick="mostrar(33)">1</button></td>
 						</tr>
 					</tbody>
 				</table>
+
 				<div class="row">
 					<div class="col-md-4">
-												<!-- Button trigger modal -->
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-						  Launch demo modal
-						</button>
-						<button onclick="mostrar()"> mostrar pregunta </button>
-						<!-- Modal -->
+						
 						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						  <div class="modal-dialog">
 						    <div class="modal-content">
@@ -125,31 +158,27 @@
 						        <h4 class="modal-title" id="myModalLabel">Pregunta X</h4>
 						      </div>
 						      <div class="modal-body">
-								    ¿En qué continente se encuentra Paquistán?
+								    <p id="question">Enunciado</p>
 									<ul class="list-group">
 									</br>
 									  <li class="list-group-item"> 
-										<button type="button" class="btn btn-primary btn-lg btn-block">					     
-										  	<span class="badge">A</span>
-										  	Europa
+										<button type="button"  onclick="contestar(1)" class="btn btn-primary btn-lg btn-block">					     
+										  	<h4 id="value_ans1">OpcionA</h4>
 										</button>
 									 </li>
 									  <li class="list-group-item"> 
-									  	<button type="button" class="btn btn-default btn-lg btn-block">
-									  		<span class="badge">B</span>
-									  		Africa
+									  	<button type="button" onclick="contestar(2)" class="btn btn-default btn-lg btn-block">
+									  		<h4 id="value_ans2">OpcionB</h4>
 									  	</button>
 									  </li>
 									  <li class="list-group-item"> 
-									  	<button type="button" class="btn btn-info btn-lg btn-block">
-											<span class="badge">C</span>
-									  		Oriente medio
+									  	<button type="button" onclick="contestar(3)" class="btn btn-info btn-lg btn-block">
+											<h4 id="value_ans3">OpcionC</h4>
 									    </button>
 									  </li>
 									  <li class="list-group-item"> 
-									  	<button type="button" class="btn btn-warning btn-lg btn-block">
-									  		<span class="badge">D</span>
-									  		América
+									  	<button type="button" onclick="contestar(4)" class="btn btn-warning btn-lg btn-block">
+									  		<h4 id="value_ans4">OpcionD</h4>
 									  	</button>
 									  </li>
 									</ul>
@@ -163,7 +192,12 @@
 					</div>
 				</div>
 				</div>
-				@if(pregunta){
+				<div class="col-md-3 jumbotron">
+					<button type="button" onclick="dice()" >
+				  		Lanzar dado
+				  	</button>
+				  	<h3 id="value_dice"></h3>
+				</div>
 				<div class="col-md-3">
 					<div class="panel panel-default">
 					  <div class="panel-heading">
@@ -172,7 +206,7 @@
 					  <div class="panel-body">
 							<ul class="list-group">
 							  <li class="list-group-item"> 
-								<h3><span class="label label-primary"> Ciencias <span class="badge">1</span></span></h3>
+								<h3><span class="label label-primary">Ciencias <span class="badge" id="value_ciencias">1</span></span></h3>
 							 </li>
 							  <li class="list-group-item"> 
 							    <h3><span class="label label-danger">Historia <span class="badge">0</span></span></h3>
@@ -187,7 +221,7 @@
 					  </div>	
 					</div>
 				</div>
-				}
+				
 	</div>
 </body>
 </html>

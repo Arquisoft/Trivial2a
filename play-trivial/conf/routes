@@ -15,7 +15,10 @@ POST	/login		controllers.Application.authenticate()
 
 # Game board page
 GET 	/game						    controllers.Application.showGameBoard()
-GET		/question						controllers.Application.showQuestion()
+#GET		/playDice						controllers.Application.playDice()
+#GET		/question/:id					controllers.Application.showQuestion(id: Integer)
+#GET		/answer/:answerId/				controllers.Application.answerQuestion(answerId: Integer)
+
 # Stats page
 GET		/stats/geography				controllers.Application.showStatsGeo()
 GET		/stats/shows					controllers.Application.showStatsShows()

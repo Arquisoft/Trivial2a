@@ -78,18 +78,19 @@ public class Application extends Controller {
 	public static Result showGameBoard() {
 		// FIXME: Metodo provisional de juego, muestra el cuadro de pregunta si
 		// existe una
-		return ok(game.render("", true));
+		return ok(game.render(""));
 
 	}
 
 	// Mapea las acciones a javascript	
 	public static Result javascriptRoutes() {
-	    response().setContentType("text/javascript");
-	    return ok(
-	        Routes.javascriptRouter("myJsRoutes",
-	            routes.javascript.Application.showGameBoard(),
-	            routes.javascript.Application.showQuestion()
-	            ));
+//	    response().setContentType("text/javascript");
+//	    return ok(
+//	        Routes.javascriptRouter("myJsRoutes",
+//	            routes.javascript.Application.showGameBoard(),
+//	            routes.javascript.Application.showQuestion()
+//	            ));
+		return null;
 	}
 	
 	public static Result showQuestion(){
