@@ -25,6 +25,10 @@ local.properties
 .target
 .texlipse
 
+test.log
+test.lck
+.sbtserver
+
 yacc.exe
 *.bat
 lexico.l
