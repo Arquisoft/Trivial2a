@@ -7,8 +7,12 @@ import java.util.Set;
 
 import factories.BusinessFactory;
 import bussines.GameAPI;
+<<<<<<< HEAD
 import bussines.exceptions.IllegalActionException;
 import bussines.gameClasses.BoardOptionsFactory;
+=======
+import bussines.StatisticsLoader;
+>>>>>>> origin/master
 import bussines.impl.GameApiImpl;
 import play.Routes;
 import play.mvc.*;
@@ -151,46 +155,63 @@ public class Application extends Controller {
 	public static Result showStats(String category, List<Object[]> dato) {
 		// FIXME: Metodo provisional de ver stats
 
-		List<Object[]> data = new ArrayList<Object[]>();
-		Object[] o = { "Sam", 10, 3 };
-		data.add(o);
-		Object[] o2 = { "Luna", 20, 3 };
-		data.add(o2);
-		Object[] o3 = { "Neri", 20, 17 };
-		data.add(o3);
-		Object[] o4 = { "Crispin", 20, 17 };
-		data.add(o4);
-		return ok(statistics.render(category, data));
+//		List<Object[]> data = new ArrayList<Object[]>();
+//		Object[] o = { "Sam", 10, 3 };
+//		data.add(o);
+//		Object[] o2 = { "Luna", 20, 3 };
+//		data.add(o2);
+//		Object[] o3 = { "Neri", 20, 17 };
+//		data.add(o3);
+//		Object[] o4 = { "Crispin", 20, 17 };
+//		data.add(o4);
+		return ok(statistics.render(category, dato));
+		
 	}
 
 	public static Result showStatsGeo() {
 		// FIXME: Provisional
-		return showStats("Geografía", null);
+		return showStats("Geografía", getStatisticsCategory("GEOGRAPHY"));
 	}
 
 	public static Result showStatsShows() {
 		// FIXME: Provisional
-		return showStats("Espectáculos", null);
+		return showStats("Espectáculos", getStatisticsCategory("SHOWS_AND_ENTERTAINMENT"));
 	}
 
 	public static Result showStatsHistory() {
 		// FIXME: Provisional
-		return showStats("Historia", null);
+		return showStats("Historia", getStatisticsCategory("HISTORY"));
+		
 	}
 
 	public static Result showStatsArtLit() {
 		// FIXME: Provisional
-		return showStats("Arte y Literatura", null);
+		return showStats("Arte y Literatura", getStatisticsCategory("ART_AND_LITERATURE"));
 	}
 
 	public static Result showStatsScience() {
 		// FIXME: Provisional
-		return showStats("Ciencias y Naturaleza", null);
+		return showStats("Ciencias y Naturaleza", getStatisticsCategory("SCIENCE_AND_TECHNOLOGY"));
 	}
 
 	public static Result showStatsSports() {
 		// FIXME: Provisional
-		return showStats("Deportes", null);
+		return showStats("Deportes", getStatisticsCategory("SPORTS"));
+	}
+	
+	private static List<Object[]> getStatisticsCategory(String category)
+	{
+		return getStatisticsLoader().getInfoQuestionsByCategory(category);
+	}
+	
+	private static StatisticsLoader getStatisticsLoader()
+	{
+		return BusinessFactory.getStatisticsLoader();
+	}
+	private static GameAPI getGameAPI()
+	{
+		return BusinessFactory.getGameAPI();
+		
 	}
 
 	public static Result logout() {
