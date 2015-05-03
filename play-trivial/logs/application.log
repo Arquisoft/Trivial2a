@@ -1,0 +1,9 @@
+2015-05-03 22:27:01,595 - [INFO] - from play in play-fork-run-akka.actor.default-dispatcher-5 
+Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+
+2015-05-03 22:27:29,699 - [INFO] - from play in play-internal-execution-context-1 
+database [default] connected at jdbc:hsqldb:hsql://localhost
+
+2015-05-03 22:27:29,858 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
