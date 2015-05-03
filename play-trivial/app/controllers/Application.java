@@ -3,7 +3,8 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import play.*;
+import bussines.GameAPI;
+import bussines.impl.GameApiImpl;
 import play.mvc.*;
 import play.data.*;
 import static play.data.Form.*;
@@ -11,18 +12,23 @@ import models.*;
 import views.html.*;
 
 public class Application extends Controller {
+	
+	private static GameAPI api = new GameApiImpl();
 		
 	public static Result register() {
-		
 		DynamicForm registerForm = form().bindFromRequest();
 		String id = registerForm.get("id");
 		String password = registerForm.get("password");
+		String passwordRp = registerForm.get("passwordRp");
 		
-		if (User.getUser(id)) {
+		if (User.getUser(id, api)) {
 			registerForm.reject("User already exists");
 			return badRequest(signup.render(registerForm));
+		} else if(!password.equals(passwordRp)){
+			registerForm.reject("You must enter the same password in both fields");
+			return badRequest(signup.render(registerForm));
 		} else {
-			User.addUser(id, password);
+			User.addUser(id, password, api);
 			return redirect(routes.Application.showLogin());
 		}
 	}
@@ -116,20 +122,5 @@ public class Application extends Controller {
 	public static Result showStatsSports() {
 		// FIXME: Provisional
 		return showStats("Deportes", null);
-	}
-	
-	public static class Register {
-		public String id = "Paula";
-		public String password = "1";
-		public String passwordRp = "1";
-
-		public String validate() {
-			if (!password.equals(passwordRp)) {
-				return "Las dos contraseñas deben ser iguales";
-			} else if (User.getUser(id)) {
-				return "El ID de usuario introducido ya existe";
-			}
-			return null;
-		}
 	}
 }

@@ -127,7 +127,11 @@ public class GameApiImpl implements GameAPI {
 	public void createUser(String userName, String passwd) {
 		PersistenceServices factory = PersistenceFactory.persistenceFactory();
 		
+		System.out.println("Accediendo a la bd para registrar al usuario " + userName + " - " + passwd);
+		
 		factory.createUserDao().save(new User(userName, passwd));
+		
+		System.out.println("Usuario registrado con éxtio!");
 	}
 
 	@Override

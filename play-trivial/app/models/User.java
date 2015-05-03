@@ -18,6 +18,9 @@ public class User {
 	public User(String login, String passwd){
 		this.login = login;
 		this.passwd = passwd;
+		
+		score = new Score();
+		statistics = new Statistic();
 	}
 
 	public String getPasswd() {
@@ -78,8 +81,8 @@ public class User {
 		return true;
 	}
 	
-	public static boolean getUser(String id){
-		GameAPI api = new GameApiImpl();
+	public static boolean getUser(String id, GameAPI apiImpl){
+		GameAPI api = apiImpl;
 		
 		for(String n: api.getUserNameList()){
 			if(id.equals(n))
@@ -88,9 +91,8 @@ public class User {
 		return false;
 	}
 	
-	public static void addUser(String id, String password){
-		GameAPI api = new GameApiImpl();
-		
+	public static void addUser(String id, String password, GameAPI apiImpl){
+		GameAPI api = apiImpl;
 		api.createUser(id, password);
 	}
 	

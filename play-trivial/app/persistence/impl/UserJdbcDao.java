@@ -231,13 +231,11 @@ public class UserJdbcDao implements UserDao {
 
 		try {
 			con = DB.getConnection();
-			System.out.println("Conexion creada");
 			
 			ps = con.prepareStatement(Conf.get("User.getUsers"));
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				User user = new User(rs.getString("LOGIN"), rs.getString("PASSWORD"));
-				System.out.println("Usuario Cargado con exito: Id:" + user.getLogin() + " - Password:" + user.getPasswd());
 				int ID = rs.getInt("STATISTICID");
 				PreparedStatement ps2 = null;
 				ResultSet rs2 = null;
