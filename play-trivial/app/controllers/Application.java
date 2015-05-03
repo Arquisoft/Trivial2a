@@ -7,12 +7,9 @@ import java.util.Set;
 
 import factories.BusinessFactory;
 import bussines.GameAPI;
-<<<<<<< HEAD
 import bussines.exceptions.IllegalActionException;
 import bussines.gameClasses.BoardOptionsFactory;
-=======
 import bussines.StatisticsLoader;
->>>>>>> origin/master
 import bussines.impl.GameApiImpl;
 import play.Routes;
 import play.mvc.*;
