@@ -14,10 +14,11 @@ GET		/signup						controllers.Application.showSignUp()
 POST       /signup						controllers.Application.register()
 
 # Game board page
-GET 		/game						    controllers.Application.showGameBoard()
-#GET		/playDice						controllers.Application.playDice()
-#GET		/question/:id					controllers.Application.showQuestion(id: Integer)
-#GET		/answer/:answerId/				controllers.Application.answerQuestion(answerId: Integer)
+GET 	/game						    controllers.Application.showGameBoard()
+GET		/playDice						controllers.Application.playDice()
+GET		/question/:id					controllers.Application.showQuestion(id: Integer)
+GET		/answer/:answerId				controllers.Application.answerQuestion(answerId: Integer)
+
 
 # Stats page
 GET		/stats/geography				controllers.Application.showStatsGeo()

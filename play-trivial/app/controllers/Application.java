@@ -1,31 +1,39 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import factories.BusinessFactory;
 import bussines.GameAPI;
+import bussines.exceptions.IllegalActionException;
+import bussines.gameClasses.BoardOptionsFactory;
 import bussines.impl.GameApiImpl;
+import play.Routes;
 import play.mvc.*;
+import play.cache.Cache;
 import play.data.*;
 import static play.data.Form.*;
 import models.*;
 import views.html.*;
 
 public class Application extends Controller {
-	
-	private static GameAPI api = new GameApiImpl();
-		
+
+	static GameAPI api = new GameApiImpl();
+
 	public static Result register() {
 		DynamicForm registerForm = form().bindFromRequest();
 		String id = registerForm.get("id");
 		String password = registerForm.get("password");
 		String passwordRp = registerForm.get("passwordRp");
-		
+
 		if (User.getUser(id, api)) {
 			registerForm.reject("User already exists");
 			return badRequest(signup.render(registerForm));
-		} else if(!password.equals(passwordRp)){
-			registerForm.reject("You must enter the same password in both fields");
+		} else if (!password.equals(passwordRp)) {
+			registerForm
+					.reject("You must enter the same password in both fields");
 			return badRequest(signup.render(registerForm));
 		} else {
 			User.addUser(id, password, api);
@@ -36,16 +44,16 @@ public class Application extends Controller {
 	public static Result showSignUp() {
 		return ok(signup.render(new DynamicForm()));
 	}
-	
+
 	public static Result showLogin() {
 		return ok(login.render(new DynamicForm()));
 	}
-	
-	public static Result authenticate() {		
+
+	public static Result authenticate() {
 		DynamicForm loginForm = form().bindFromRequest();
 		String id = loginForm.get("id");
 		String passwd = loginForm.get("password");
-		
+
 		if (User.authenticate(id, passwd) == null) {
 			loginForm.reject("Invalid user or password");
 			return badRequest(login.render(loginForm));
@@ -57,26 +65,87 @@ public class Application extends Controller {
 	}
 
 	public static Result showGameBoard() {
-		// FIXME: Metodo provisional de juego, muestra el cuadro de pregunta si
-		// existe una
+		GameAPI api = BusinessFactory.getGameAPI();
+		try {
+			session("id", "Ruan"); // sesion falsa -> dev
+			List<String> players = new ArrayList<String>();
+			players.add("Ruan");
+			api.startGame(players, BoardOptionsFactory.getBoardOption(0));
+			Cache.set("api", api);
+		} catch (IllegalActionException e) {
+			return badRequest("Fallo al cargar boardoption" + e.getMessage());
+		}
 		return ok(game.render(""));
-
 	}
 
-	// Mapea las acciones a javascript	
+	// Mapea las acciones a javascript
 	public static Result javascriptRoutes() {
-//	    response().setContentType("text/javascript");
-//	    return ok(
-//	        Routes.javascriptRouter("myJsRoutes",
-//	            routes.javascript.Application.showGameBoard(),
-//	            routes.javascript.Application.showQuestion()
-//	            ));
-		return null;
+		response().setContentType("text/javascript");
+		return ok(Routes.javascriptRouter("myJsRoutes",
+				routes.javascript.Application.showGameBoard(),
+				routes.javascript.Application.showQuestion(),
+				routes.javascript.Application.answerQuestion(),
+				routes.javascript.Application.playDice()));
 	}
 	
-	public static Result showQuestion(){
-		// Simula solicitar y devolver una pregunta, 
-		return ok(System.currentTimeMillis()%100 + "");		
+	public static Result playDice() {
+		String valor = "";
+		try {
+			GameAPI api = (GameAPI) Cache.get("api");
+			valor = api.rollDice() + "";
+			session("currentDice", valor);
+		} catch (IllegalActionException e) {
+			return badRequest("Fallo al lanzar el dado");
+		}
+		return ok(valor);
+	}
+
+	public static Result showQuestion(Integer id) {
+		GameAPI api = (GameAPI) Cache.get("api");
+		try {
+			api.movePlayerTo(id, session("id"));
+			Question question = api.getQuestion(session("id"), id);
+			session("currentQuestionId", question.getId() + "");
+			return ok(formatQuestion(question));
+		} catch (IllegalActionException e) {
+			return badRequest("Movimiento no valido");
+		}
+	}	
+	
+	private static String formatQuestion(Question question) {
+		// pasa las respuestas a una cadenas string
+		// Nota: Sustituir cadena por json
+		String result = "Pregunta " + question.getId() + "_";
+		result += question.getStatement();
+		Set<String> answers = new HashSet<String>(
+				question.getIncorrectAnswers());
+		answers.add(question.getCorrectAnswer());
+		int n = 1;
+		for (String answer : answers) {
+			result += "_" + answer;
+			session("currentAns"+n,answer);
+			n++;
+		}
+		return result;
+	}
+	
+	public static Result answerQuestion(Integer answerId) {
+		// Comprueba la la respuesta y devuelve un positivo o falso
+		String message="";
+		GameAPI api = (GameAPI) Cache.get("api");
+		try {
+			int currentQuestionId = Integer.valueOf(session("currentQuestionId"));
+			String answerValue = session("currentAns"+answerId);
+			boolean correct = api.isAnswerCorrect(currentQuestionId, answerValue,
+					session("id"), api.getPlayerLocation(session("id")));
+			if(api.isFinished())
+				return showSignUp(); // deberia llevar a una pagina de enhorabuena
+			message += api.getPlayerLocation(session("id")) + "_";
+			message += correct ? "Respuesta Correcta": "Has fallado :'(";
+		} catch (IllegalActionException e) {
+			return badRequest("Ha ocurrido un fallo procesando la peticion");
+		}
+		return ok(message);
 	}
 
 	public static Result showStats(String category, List<Object[]> dato) {
@@ -122,5 +191,11 @@ public class Application extends Controller {
 	public static Result showStatsSports() {
 		// FIXME: Provisional
 		return showStats("Deportes", null);
+	}
+
+	public static Result logout() {
+		session().clear();
+		session().remove("user");
+		return redirect(routes.Application.showLogin());
 	}
 }

@@ -275,4 +275,17 @@ public class Game {
 		activePlayer = players.get(nextPlayer);
 		dice.makeAvailable(); 
 	}
+	
+	public void addUserToGame(String id){
+		
+		User u = null;
+		
+		for(User user:PersistenceFactory.persistenceFactory().createUserDao().getUsers()){
+			if(user.getLogin().equals(id)){
+				u = new User(user.getLogin(), user.getPasswd());
+			}
+		}
+		
+		players.put(u.getLogin(), u);
+	}
 }
