@@ -138,8 +138,8 @@ public class StatisticsLoaderImpl implements StatisticsLoader{
 			Map<String, Integer[]> info = factory.createStatisticDao().getStatisticUser(u);
 			int totales = info.get(category)[1];
 			int acertadas = info.get(category)[0];
-			
-			datos.add(new Object[]{nombre, totales, acertadas});
+			int falladas = totales - acertadas;
+			datos.add(new Object[]{nombre, totales, acertadas,falladas});
 		}
 		
 		return datos;
