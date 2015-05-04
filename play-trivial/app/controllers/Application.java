@@ -68,9 +68,9 @@ public class Application extends Controller {
 	public static Result showGameBoard() {
 		GameAPI api = BusinessFactory.getGameAPI();
 		try {
-			session("id", "Ruan"); // sesion falsa -> dev
+			session("user", "Ruan"); // sesion falsa -> dev
 			List<String> players = new ArrayList<String>();
-			players.add("Ruan");
+			players.add(session("user"));
 			api.startGame(players, BoardOptionsFactory.getBoardOption(0));
 			Cache.set("api", api);
 		} catch (IllegalActionException e) {
@@ -104,9 +104,10 @@ public class Application extends Controller {
 	public static Result showQuestion(Integer id) {
 		GameAPI api = (GameAPI) Cache.get("api");
 		try {
-			api.movePlayerTo(id, session("id"));
-			Question question = api.getQuestion(session("id"), id);
+			api.movePlayerTo(id, session("user"));
+			Question question = api.getQuestion(session("user"), id);
 			session("currentQuestionId", question.getId() + "");
+			session("currentCategory",question.getCategory().toString());
 			return ok(formatQuestion(question));
 		} catch (IllegalActionException e) {
 			return badRequest("Movimiento no valido");
@@ -141,12 +142,19 @@ public class Application extends Controller {
 					session("id"), api.getPlayerLocation(session("id")));
 			if(api.isFinished())
 				return showSignUp(); // deberia llevar a una pagina de enhorabuena
-			message += api.getPlayerLocation(session("id")) + "_";
-			message += correct ? "Respuesta Correcta": "Has fallado :'(";
+			message = scoreMessage(correct,api.getPlayerLocation(session("user")));
 		} catch (IllegalActionException e) {
 			return badRequest("Ha ocurrido un fallo procesando la peticion");
 		}
 		return ok(message);
+	}
+	
+	private static String scoreMessage(boolean correct, int location){
+		String message = location + "_";
+		String[] currentCategory = session("currentCategory").split("_");
+		message += correct ? currentCategory[0].toLowerCase() : "wrong";
+		return message;
+		
 	}
 
 	public static Result showStats(String category, List<Object[]> dato) {

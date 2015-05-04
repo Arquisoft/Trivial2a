@@ -11,7 +11,7 @@
 <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
 <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
 <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-
+<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/animate.css")">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="@routes.Assets.at("javascripts/bootstrap.min.js")" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
@@ -43,12 +43,11 @@
 		myJsRoutes.controllers.Application.answerQuestion(answerId).ajax({
 	    success : function(data) { 
 	    		var values = data.split("_");
-	    		alert(values);
 	    		var squareButton = document.getElementById(values[0]);
 	    		squareButton.textContent = "X";
 	    		squareButton.disabled = true;
-	    		document.getElementById("value_ciencias").textContent = 2;
-	    		$('#myModal').modal('toggle');
+	    		$('#li_'+values[1]).removeClass('hidden')
+	    		$('#myModal').modal('hide');
 	     },
 	     error : function(data){
 	     		alert("Fallo" + data);
@@ -62,6 +61,8 @@
 		myJsRoutes.controllers.Application.playDice().ajax({
 	    success : function(data) { 
 	    		document.getElementById("value_dice").textContent = data;
+	    		$('#value_dice').addClass('animated rubberBand');
+	    		$('#li_wrong').addClass('hidden');
 	     },
 	     error : function(data){
 	     		alert(data);
@@ -87,69 +88,69 @@
 		<div class="row">
 			<div class="col-md-12 ">
 				<div class="page-header">
-  					<h1>@session.get("id")<small> Es tu turno!</small></h1>
+  					<h1>@session.get("user")<small> Es tu turno!</small></h1>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6 ">
 				
-				<table class="table-space ">
+				<table class="table-space animated fadeInLeftBig">
 					<tfoot></tfoot>
 					<thead></thead>
 					<tbody>
-						<tr><td><button type="button" id="1" class="btn-xl geography square" onclick="mostrar(1)">O</button></td>
+						<tr><td><button type="button" id="1" class="btn-xl sports square" onclick="mostrar(1)">O</button></td>
 							<td><button type="submit" id="2" class="btn-xl science square"   onclick="mostrar(2)">O</button></td>
-							<td><button type="submit" id="3" class="btn-xl history square"   onclick="mostrar(3)">O</button></td>
+							<td><button type="submit" id="3" class="btn-xl artlit square"   onclick="mostrar(3)">O</button></td>
 							<td><button type="submit" id="4" class="btn-xl shows square"     onclick="mostrar(4)">O</button></td>
-							<td><button type="submit" id="5" class="btn-xl artlit square"    onclick="mostrar(5)">O</button></td>
-							<td><button type="submit" id="6" class="btn-xl sports square"    onclick="mostrar(6)">O</button></td>
-							<td><button type="submit" id="7" class="btn-xl history square"   onclick="mostrar(7)">O</button></td>
+							<td><button type="submit" id="5" class="btn-xl geography square"    onclick="mostrar(5)">O</button></td>
+							<td><button type="submit" id="6" class="btn-xl science square"    onclick="mostrar(6)">O</button></td>
+							<td><button type="submit" id="7" class="btn-xl artlit square"   onclick="mostrar(7)">O</button></td>
 						</tr>
-						<tr><td><button type="submit" id="8" class="btn-xl science  square"  onclick="mostrar(8)">O</button></td>
+						<tr><td><button type="submit" id="8" class="btn-xl history  square"  onclick="mostrar(8)">O</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" id="9" class="btn-xl shows square"     onclick="mostrar(9)">O</button></td>
+							<td><button type="submit" id="9" class="btn-xl artlit square"     onclick="mostrar(9)">O</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" id="10" class="btn-xl history square"  onclick="mostrar(10)">O</button></td>
+							<td><button type="submit" id="10" class="btn-xl geography square"  onclick="mostrar(10)">O</button></td>
 						</tr>
-						<tr><td><button type="submit" id="11" class="btn-xl history square"  onclick="mostrar(11)">O</button></td>
+						<tr><td><button type="submit" id="11" class="btn-xl science square"  onclick="mostrar(11)">O</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" id="12" class="btn-xl science square"  onclick="mostrar(12)">O</button></td>
+							<td><button type="submit" id="12" class="btn-xl sports square"  onclick="mostrar(12)">O</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
 							<td><button type="submit" id="13" class="btn-xl artlit square"  onclick="mostrar(13)">O</button></td>
 						</tr>
 						<tr><td><button type="button" id="14" class="btn-xl geography square"  onclick="mostrar(14)">O</button></td>
-							<td><button type="submit" id="15" class="btn-xl history square"    onclick="mostrar(15)">O</button></td>
+							<td><button type="submit" id="15" class="btn-xl shows square"    onclick="mostrar(15)">O</button></td>
 							<td><button type="submit" id="16" class="btn-xl geography square"  onclick="mostrar(16)">O</button></td>
-							<td><button type="submit" id="17" class="btn-xl science square"    onclick="mostrar(17)">O</button></td>
-							<td><button type="submit" id="18" class="btn-xl history square"    onclick="mostrar(18)">O</button></td>
-							<td><button type="submit" id="19" class="btn-xl science square"    onclick="mostrar(19)">O</button></td>
-							<td><button type="submit" id="20" class="btn-xl sports square"     onclick="mostrar(20)">O</button></td>
+							<td><button type="submit" id="17" class="btn-xl all square"    onclick="mostrar(17)">O</button></td>
+							<td><button type="submit" id="18" class="btn-xl artlit square"    onclick="mostrar(18)">O</button></td>
+							<td><button type="submit" id="19" class="btn-xl history square"    onclick="mostrar(19)">O</button></td>
+							<td><button type="submit" id="20" class="btn-xl shows square"     onclick="mostrar(20)">O</button></td>
 						</tr>
-						<tr><td><button type="submit" id="21" class="btn-xl science square"    onclick="mostrar(21)">O</button></td>
+						<tr><td><button type="submit" id="21" class="btn-xl sports square"    onclick="mostrar(21)">O</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" id="22" class="btn-xl geography square"  onclick="mostrar(22)">O</button></td>
+							<td><button type="submit" id="22" class="btn-xl science square"  onclick="mostrar(22)">O</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" id="23" class="btn-xl history square"    onclick="mostrar(23)">O</button></td>
+							<td><button type="submit" id="23" class="btn-xl sports square"    onclick="mostrar(23)">O</button></td>
 						</tr>
-						<tr><td><button type="submit" id="24" class="btn-xl shows square"      onclick="mostrar(24)">O</button></td>
+						<tr><td><button type="submit" id="24" class="btn-xl artlit square"      onclick="mostrar(24)">O</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" id="25" class="btn-xl sports square"     onclick="mostrar(25)">O</button></td>
+							<td><button type="submit" id="25" class="btn-xl geography square"     onclick="mostrar(25)">O</button></td>
 							<td><p></p></td>
 							<td><p></p></td>
-							<td><button type="submit" id="26" class="btn-xl geography square"  onclick="mostrar(26)">O</button></td>
+							<td><button type="submit" id="26" class="btn-xl shows square"  onclick="mostrar(26)">O</button></td>
 						</tr>
-						<tr><td><button type="button" id="27" class="btn-xl science square"    onclick="mostrar(27)">O</button></td>
-							<td><button type="submit" id="28" class="btn-xl sports square"     onclick="mostrar(28)">O</button></td>
-							<td><button type="submit" id="29" class="btn-xl history square"    onclick="mostrar(29)">O</button></td>
-							<td><button type="submit" id="30" class="btn-xl artlit square"     onclick="mostrar(30)">O</button></td>
+						<tr><td><button type="button" id="27" class="btn-xl sports square"    onclick="mostrar(27)">O</button></td>
+							<td><button type="submit" id="28" class="btn-xl history square"     onclick="mostrar(28)">O</button></td>
+							<td><button type="submit" id="29" class="btn-xl artlit square"    onclick="mostrar(29)">O</button></td>
+							<td><button type="submit" id="30" class="btn-xl history square"     onclick="mostrar(30)">O</button></td>
 							<td><button type="submit" id="31" class="btn-xl geography square"  onclick="mostrar(31)">O</button></td>
-							<td><button type="submit" id="32" class="btn-xl artlit square"     onclick="mostrar(32)">O</button></td>
-							<td><button type="submit" id="33" class="btn-xl history square"    onclick="mostrar(33)">O</button></td>
+							<td><button type="submit" id="32" class="btn-xl sports square"     onclick="mostrar(32)">O</button></td>
+							<td><button type="submit" id="33" class="btn-xl science square"    onclick="mostrar(33)">O</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -194,29 +195,39 @@
 				</div>
 				</div>
 				<div class="col-md-3">
-					<button type="button" onclick="dice()" >
+					<button type="button" class = "animated bounce" onclick="dice()" >
 				  		<img src="@routes.Assets.at("images/4.png")" alt="">
 				  	</button>
-				  	<h1 id="value_dice"></h1>
+				  	<h1 class="animated tada" id="value_dice"></h1>
+				  	<div class="alert alert-danger alert-dismissible hidden animated shake" id ="li_wrong" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>:'(</strong> respuesta incorrecta.
+					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-3 animated fadeInRightBig">
 					<div class="panel panel-default">
 					  <div class="panel-heading">
 					    <h2 class="panel-title">Puntuación</h2>
 					  </div>
 					  <div class="panel-body">
 							<ul class="list-group">
-							  <li class="list-group-item"> 
-								<h3><span class="label label-primary">Geografia</span></h3>
+							  <li class="list-group-item hidden" id="li_geography"> 
+								<h3 class="animated rubberBand"><span class="label geography">Geografia</span></h3>
 							 </li>
-							  <li class="list-group-item"> 
-							    <h3><span class="label label-warning">Historia</span></h3>
+							  <li class="list-group-item hidden" id="li_history"> 
+							    <h3 class="animated rubberBand"><span class="label history">Historia</span></h3>
 							  </li>
-							  <li class="list-group-item"> 
-							  	<h3><span class="label label-info">Arte <span class="badge">1</span></span></h3>	
+							  <li class="list-group-item hidden" id="li_art"> 
+							  	<h3 class="animated rubberBand"><span class="label artlit">Arte</span></h3>	
 							  </li>
-							  <li class="list-group-item"> 
-							  	<h3><span class="label label-success">Deportes <span class="badge">1</span></span></h3>	
+							  <li class="list-group-item hidden" id="li_sports"> 
+							  	<h3 class="animated rubberBand"><span class="label sports">Deportes</span></h3>	
+							  </li>
+							  <li class="list-group-item hidden" id="li_science"> 
+							  	<h3 class="animated rubberBand"><span class="label science">Ciencias</span></h3>	
+							  </li>
+							  <li class="list-group-item hidden" id="li_shows"> 
+							  	<h3 class="animated rubberBand"><span class="label shows">Entretenimiento</span></h3>	
 							  </li>
 							</ul>
 					  </div>	
