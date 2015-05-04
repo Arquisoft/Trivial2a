@@ -68,7 +68,6 @@ public class Application extends Controller {
 	public static Result showGameBoard() {
 		GameAPI api = BusinessFactory.getGameAPI();
 		try {
-			session("user", "Ruan"); // sesion falsa -> dev
 			List<String> players = new ArrayList<String>();
 			players.add(session("user"));
 			api.startGame(players, BoardOptionsFactory.getBoardOption(0));
@@ -138,12 +137,15 @@ public class Application extends Controller {
 		try {
 			int currentQuestionId = Integer.valueOf(session("currentQuestionId"));
 			String answerValue = session("currentAns"+answerId);
+			System.out.println("Respuesta:"+answerValue);
 			boolean correct = api.isAnswerCorrect(currentQuestionId, answerValue,
-					session("id"), api.getPlayerLocation(session("id")));
+					session("user"), api.getPlayerLocation(session("user")));
+			System.out.println(correct);
 			if(api.isFinished())
 				return showSignUp(); // deberia llevar a una pagina de enhorabuena
 			message = scoreMessage(correct,api.getPlayerLocation(session("user")));
 		} catch (IllegalActionException e) {
+			e.printStackTrace();
 			return badRequest("Ha ocurrido un fallo procesando la peticion");
 		}
 		return ok(message);
