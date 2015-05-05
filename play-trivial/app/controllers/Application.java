@@ -154,9 +154,10 @@ public class Application extends Controller {
 			System.out.println("Cetegoría 4:" + puntos.isScienceAndTechnology());
 			System.out.println("Cetegoría 5:" + puntos.isShowsAndEntertainment());
 			System.out.println("Cetegoría 6:" + puntos.isSports());
+			SquareType type = api.getSquareType(api.getPlayerLocation(session("user")));
 			if(api.isFinished())
 				return showSignUp(); // deberia llevar a una pagina de enhorabuena
-			message = scoreMessage(correct,api.getPlayerLocation(session("user")));
+			message = scoreMessage(correct,api.getPlayerLocation(session("user")),type);
 		} catch (IllegalActionException e) {
 			e.printStackTrace();
 			return badRequest("Ha ocurrido un fallo procesando la peticion");
@@ -164,10 +165,13 @@ public class Application extends Controller {
 		return ok(message);
 	}
 	
-	private static String scoreMessage(boolean correct, int location){
+	private static String scoreMessage(boolean correct, int location,SquareType type){
 		String message = location + "_";
 		String[] currentCategory = session("currentCategory").split("_");
-		message += correct ? currentCategory[0].toLowerCase() : "wrong";
+		String squareMessage ="point";
+		if(type.equals(SquareType.GAME_PIECE))
+			squareMessage = currentCategory[0].toLowerCase();
+		message += correct ? squareMessage : "wrong";
 		return message;
 		
 	}
