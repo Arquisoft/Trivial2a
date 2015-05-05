@@ -24,7 +24,13 @@ GET		/answer/:answerId				controllers.Application.answerQuestion(answerId: Integ
 
 
 # Stats page
-GET 	/statisticsAdmin				controllers.Application.showStatistics()
+GET 	/statisticsAdmin/geography		controllers.Application.showStatistics()
+GET 	/statisticsAdmin/geography		controllers.Application.showStatsGeo()
+GET		/statisticsAdmin/shows			controllers.Application.showStatsShows()
+GET		/statisticsAdmin/history		controllers.Application.showStatsHistory()
+GET		/statisticsAdmin/artlit			controllers.Application.showStatsArtLit()
+GET		/statisticsAdmin/science		controllers.Application.showStatsScience()
+GET		/statisticsAdmin/sports			controllers.Application.showStatsSports()
 
 GET		/stats/geography				controllers.Application.showStatsGeo()
 GET		/stats/shows					controllers.Application.showStatsShows()

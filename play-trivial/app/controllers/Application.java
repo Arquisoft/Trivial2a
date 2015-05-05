@@ -70,7 +70,7 @@ public class Application extends Controller {
 	}
 	
 	public static Result showStatistics(){
-		return redirect(routes.Application.showStatistics());
+		return showStatsGeo(); // Mostramos las de geo por defecto.
 	}
 
 	public static Result showGameBoard() {
@@ -173,7 +173,25 @@ public class Application extends Controller {
 	}
 
 	public static Result showStats(String category, List<Object[]> dato) {
-		return ok(statistics.render(category, dato));
+		String id = session("user");
+		
+		if(id.equals("admin"))
+			return ok(statisticsAdmin.render(category, dato));
+		else
+			return ok(statistics.render(category, filtrarLista(dato)));
+	}
+	
+	public static List<Object[]> filtrarLista(List<Object[]> dato)
+	{
+		List<Object[]> filtrada = new ArrayList<>();
+		String id = session("user");
+		for(Object[] estadistica : dato)
+		{
+			if(estadistica[0].equals(id))
+				filtrada.add(estadistica);
+		}
+		
+		return filtrada;
 	}
 
 	public static Result showStatsGeo() {
