@@ -9,6 +9,7 @@ import java.util.Set;
 import models.Question;
 import models.Score;
 import models.Square;
+import models.SquareType;
 import models.User;
 import persistence.PersistenceServices;
 import bussines.GameAPI;
@@ -169,5 +170,11 @@ public class GameApiImpl implements GameAPI {
 	@Override
 	public void addUserToGame(String id) {
 		game.addUserToGame(id);
+	}
+
+	@Override
+	public SquareType getSquareType(int squareNumber)
+			throws IllegalActionException {
+		return game.getSquareType(squareNumber);
 	}
 }

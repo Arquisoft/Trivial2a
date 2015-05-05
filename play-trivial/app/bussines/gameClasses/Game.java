@@ -35,7 +35,7 @@ public class Game {
 		this.players = new HashMap<String, User>();
 		dice = new Dice();
 		for (String userName : players) {
-			//TODO cambiar contraseña al usuario
+			// TODO cambiar contraseña al usuario
 			User player = new User(userName);
 			player.setLocation(getStartSquare());
 			this.players.put(userName, player);
@@ -175,8 +175,7 @@ public class Game {
 
 		if (!correcta)
 			passTurn();
-		else
-			dice.reset();
+		dice.reset();
 		return correcta;
 	}
 
@@ -257,7 +256,8 @@ public class Game {
 	}
 
 	private void passTurn() {
-		String[] nombres = (String[]) players.keySet().toArray(new String[players.size()]);
+		String[] nombres = (String[]) players.keySet().toArray(
+				new String[players.size()]);
 
 		String nextPlayer = activePlayer.getLogin();
 
@@ -273,19 +273,24 @@ public class Game {
 			}
 		}
 		activePlayer = players.get(nextPlayer);
-		dice.makeAvailable(); 
+		dice.makeAvailable();
 	}
-	
-	public void addUserToGame(String id){
-		
+
+	public void addUserToGame(String id) {
+
 		User u = null;
-		
-		for(User user:PersistenceFactory.persistenceFactory().createUserDao().getUsers()){
-			if(user.getLogin().equals(id)){
+
+		for (User user : PersistenceFactory.persistenceFactory()
+				.createUserDao().getUsers()) {
+			if (user.getLogin().equals(id)) {
 				u = new User(user.getLogin(), user.getPasswd());
 			}
 		}
-		
+
 		players.put(u.getLogin(), u);
+	}
+
+	public SquareType getSquareType(int squareNumber) throws IllegalActionException {
+		return getSquareIfExists(squareNumber).getSquareType();
 	}
 }

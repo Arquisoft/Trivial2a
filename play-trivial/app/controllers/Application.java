@@ -147,6 +147,13 @@ public class Application extends Controller {
 			String answerValue = session("currentAns"+answerId);
 			boolean correct = api.isAnswerCorrect(currentQuestionId, answerValue,
 					session("user"), api.getPlayerLocation(session("user")));
+			Score puntos = api.getPlayerScore(session("user"));
+			System.out.println("Cetegoría 1:" + puntos.isArtAndLiterature());
+			System.out.println("Cetegoría 2:" + puntos.isGeography());
+			System.out.println("Cetegoría 3:" + puntos.isHistory());
+			System.out.println("Cetegoría 4:" + puntos.isScienceAndTechnology());
+			System.out.println("Cetegoría 5:" + puntos.isShowsAndEntertainment());
+			System.out.println("Cetegoría 6:" + puntos.isSports());
 			if(api.isFinished())
 				return showSignUp(); // deberia llevar a una pagina de enhorabuena
 			message = scoreMessage(correct,api.getPlayerLocation(session("user")));

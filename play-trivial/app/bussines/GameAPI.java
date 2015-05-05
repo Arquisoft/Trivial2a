@@ -8,6 +8,7 @@ import java.util.Set;
 import models.Question;
 import models.Score;
 import models.Square;
+import models.SquareType;
 import bussines.exceptions.IllegalActionException;
 import bussines.gameClasses.BoardOption;
 
@@ -219,6 +220,16 @@ public interface GameAPI {
 	 *             Thrown if there is no board loaded.
 	 */
 	Map<Integer, Point> getSquares() throws IllegalActionException;
+
+	/**
+	 * Method used to get the squareType of a given square.
+	 *  
+	 * @param squareNumber Number of the square.
+	 * @return Type of the square
+	 * @throws IllegalActionException Thrown if the square doesn's exists.
+	 */
+	SquareType getSquareType(int squareNumber) throws IllegalActionException;
+
 
 	// ##########################################################
 	// # Data Query Methods
