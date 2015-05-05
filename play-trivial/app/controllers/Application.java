@@ -137,10 +137,8 @@ public class Application extends Controller {
 		try {
 			int currentQuestionId = Integer.valueOf(session("currentQuestionId"));
 			String answerValue = session("currentAns"+answerId);
-			System.out.println("Respuesta:"+answerValue);
 			boolean correct = api.isAnswerCorrect(currentQuestionId, answerValue,
 					session("user"), api.getPlayerLocation(session("user")));
-			System.out.println(correct);
 			if(api.isFinished())
 				return showSignUp(); // deberia llevar a una pagina de enhorabuena
 			message = scoreMessage(correct,api.getPlayerLocation(session("user")));

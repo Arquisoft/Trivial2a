@@ -13,6 +13,9 @@ POST		/login						controllers.Application.authenticate()
 GET		/signup						controllers.Application.showSignUp()
 POST       /signup						controllers.Application.register()
 
+# Logout
+GET		/logout							controllers.Application.logout()
+
 # Game board page
 GET 	/game						    controllers.Application.showGameBoard()
 GET		/playDice						controllers.Application.playDice()
