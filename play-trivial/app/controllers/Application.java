@@ -61,8 +61,16 @@ public class Application extends Controller {
 		} else {
 			session().clear();
 			session("user", id);
-			return redirect(routes.Application.showGameBoard());
+			if(id.equals("admin")){
+				return redirect(routes.Application.showStatistics());
+			} else {
+				return redirect(routes.Application.showGameBoard());
+			}
 		}
+	}
+	
+	public static Result showStatistics(){
+		return redirect(routes.Application.showStatistics());
 	}
 
 	public static Result showGameBoard() {
@@ -158,44 +166,27 @@ public class Application extends Controller {
 	}
 
 	public static Result showStats(String category, List<Object[]> dato) {
-		// FIXME: Metodo provisional de ver stats
-
-//		List<Object[]> data = new ArrayList<Object[]>();
-//		Object[] o = { "Sam", 10, 3 };
-//		data.add(o);
-//		Object[] o2 = { "Luna", 20, 3 };
-//		data.add(o2);
-//		Object[] o3 = { "Neri", 20, 17 };
-//		data.add(o3);
-//		Object[] o4 = { "Crispin", 20, 17 };
-//		data.add(o4);
 		return ok(statistics.render(category, dato));
-		
 	}
 
 	public static Result showStatsGeo() {
-		// FIXME: Provisional
 		return showStats("Geografía", getStatisticsCategory("GEOGRAPHY"));
 	}
 
 	public static Result showStatsShows() {
-		// FIXME: Provisional
 		return showStats("Espectáculos", getStatisticsCategory("SHOWS_AND_ENTERTAINMENT"));
 	}
 
 	public static Result showStatsHistory() {
-		// FIXME: Provisional
 		return showStats("Historia", getStatisticsCategory("HISTORY"));
 		
 	}
 
 	public static Result showStatsArtLit() {
-		// FIXME: Provisional
 		return showStats("Arte y Literatura", getStatisticsCategory("ART_AND_LITERATURE"));
 	}
 
 	public static Result showStatsScience() {
-		// FIXME: Provisional
 		return showStats("Ciencias y Naturaleza", getStatisticsCategory("SCIENCE_AND_TECHNOLOGY"));
 	}
 
@@ -213,7 +204,8 @@ public class Application extends Controller {
 	{
 		return BusinessFactory.getStatisticsLoader();
 	}
-	private static GameAPI getGameAPI()
+	
+	public static GameAPI getGameAPI()
 	{
 		return BusinessFactory.getGameAPI();
 		

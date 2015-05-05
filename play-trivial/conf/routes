@@ -24,6 +24,8 @@ GET		/answer/:answerId				controllers.Application.answerQuestion(answerId: Integ
 
 
 # Stats page
+GET 	/statisticsAdmin				controllers.Application.showStatistics()
+
 GET		/stats/geography				controllers.Application.showStatsGeo()
 GET		/stats/shows					controllers.Application.showStatsShows()
 GET		/stats/history					controllers.Application.showStatsHistory()

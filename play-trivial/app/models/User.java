@@ -71,10 +71,8 @@ public class User {
 	}
 
 	public static Object authenticate(String login, String passwd) {
-		System.out.println("Entrando en User.authenticate()");
 		GameAPI api = new GameApiImpl();
 		boolean existe = api.existUser(login, passwd);
-		System.out.println("Existe usuario = " + existe);
 		if (existe == false)
 			return null;
 		
