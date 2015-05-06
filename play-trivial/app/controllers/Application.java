@@ -62,15 +62,11 @@ public class Application extends Controller {
 			session().clear();
 			session("user", id);
 			if(id.equals("admin")){
-				return redirect(routes.Application.showStatistics());
+				return redirect(routes.Application.showStatsGeo()); // Mostramos las de geo por defecto.
 			} else {
 				return redirect(routes.Application.showGameBoard());
 			}
 		}
-	}
-	
-	public static Result showStatistics(){
-		return showStatsGeo(); // Mostramos las de geo por defecto.
 	}
 
 	public static Result showGameBoard() {
@@ -173,9 +169,21 @@ public class Application extends Controller {
 		String id = session("user");
 		
 		if(id.equals("admin"))
-			return ok(statisticsAdmin.render(category, dato));
+			return ok(statisticsAdmin.render(category, filtrarAdmin(dato)));
 		else
 			return ok(statistics.render(category, filtrarLista(dato)));
+	}
+	
+	public static List<Object[]> filtrarAdmin(List<Object[]> dato)
+	{
+		List<Object[]> filtrada = new ArrayList<>();
+		for(Object[] estadistica : dato)
+		{
+			if(!estadistica[0].equals("admin"))
+				filtrada.add(estadistica);
+		}
+		
+		return filtrada;
 	}
 	
 	public static List<Object[]> filtrarLista(List<Object[]> dato)
