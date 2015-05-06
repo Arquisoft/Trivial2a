@@ -49,15 +49,19 @@
 				if(values[2] == 'true'){ 
 					window.location.replace("/logout");
 				}
-				
+				// Borra la ficha(X) de la casilla anterior
 				$('.visited').text("");
+				// Game piece siempre con O
+				$('.piece').text("O");
+	    		// Muestra la categoria del quesito ganado
 	    		$('#li_'+values[1]).removeClass('hidden')
+	    		// Restablece las clases de las casillas ya visitadas
 	    		$('.visited').removeClass('visited');
 	    		// Button a visitar
 	    		var squareButton = document.getElementById(values[0]);
 	    		squareButton.textContent = "X";
 				squareButton.className += " visited ";
-				// Oculta el modal
+				// Oculta el dialogo modal
 	    		$('#myModal').modal('hide');
 	     },
 	     error : function(data){
