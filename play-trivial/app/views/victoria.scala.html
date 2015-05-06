@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<title>¡Has ganado!</title>
+<meta charset="utf-8">
+<link rel="stylesheet" media="screen"
+	href='@routes.Assets.at("stylesheets/main.css")'>
+<link rel="stylesheet" type="text/css"
+	href='@routes.Assets.at("stylesheets/bootstrap.min.css")'>
+<link rel="shortcut icon" type="image/png"
+	href='@routes.Assets.at("images/favicon.png")'>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container">
+			<a class="navbar-brand" href="#"> <img alt="Brand"
+				src='@routes.Assets.at("images/trivialHeader.png")'>
+			</a>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/logout">Cerrar sesión</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="img-winning ">
+		<h2>
+			¡Has ganado, @session.get("user")!
+			 <a href="/game" class="btn btn-info">Volver a jugar</a>
+		</h2>
+		<img class="img-winning-size" alt="You won"
+			src='@routes.Assets.at("images/youwon.png")'>
+	</div>
+</body>
+</html>

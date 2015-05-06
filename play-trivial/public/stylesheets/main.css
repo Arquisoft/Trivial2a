@@ -60,6 +60,10 @@ body {
     overflow: hidden;
     outline:none;
 }
-.txt-center {
+.img-winning {
 	margin: 0 auto;
+	width: 40vw;
+}
+.img-winning-size {
+	height: 90vh;
 }

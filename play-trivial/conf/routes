@@ -38,6 +38,9 @@ GET		/stats/artlit					controllers.Application.showStatsArtLit()
 GET		/stats/science					controllers.Application.showStatsScience()
 GET		/stats/sports					controllers.Application.showStatsSports()
 
+# Victory page
+GET		/victory						controllers.Application.showVictory()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /javascriptRoutes               controllers.Application.javascriptRoutes
 GET     /assets/*file                   controllers.Assets.at(path="/public", file)

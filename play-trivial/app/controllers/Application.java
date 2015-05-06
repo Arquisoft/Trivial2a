@@ -246,4 +246,8 @@ public class Application extends Controller {
 		session().remove("user");
 		return redirect(routes.Application.showLogin());
 	}
+	
+	public static Result showVictory() {
+		return ok(victoria.render());
+	}
 }
