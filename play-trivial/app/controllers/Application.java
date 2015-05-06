@@ -148,11 +148,15 @@ public class Application extends Controller {
 			boolean correct = api.isAnswerCorrect(currentQuestionId, answerValue,
 					session("user"), api.getPlayerLocation(session("user")));
 			SquareType type = api.getSquareType(api.getPlayerLocation(session("user")));
-			if(api.isFinished()) {
-				System.out.println("Victoria");
-				return ok(login.render(new DynamicForm())); // deberia llevar a una pagina de enhorabuena
-			}
-			message = scoreMessage(correct,api.getPlayerLocation(session("user")),type);
+			boolean isFinished = api.isFinished();
+			Score s = api.getPlayerScore(session("user"));
+			s.setArtAndLiterature(true);
+			s.setGeography(true);
+			s.setHistory(true);
+			s.setScienceAndTechnology(true);
+			s.setShowsAndEntertainment(true);
+			s.setSports(true);
+			message = scoreMessage(correct,api.getPlayerLocation(session("user")),type, isFinished);
 		} catch (IllegalActionException e) {
 			e.printStackTrace();
 			return badRequest("Ha ocurrido un fallo procesando la peticion");
@@ -160,14 +164,14 @@ public class Application extends Controller {
 		return ok(message);
 	}
 	
-	private static String scoreMessage(boolean correct, int location,SquareType type){
+	private static String scoreMessage(boolean correct, int location,SquareType type, Boolean isfinished){
 		String message = location + "_";
 		String[] currentCategory = session("currentCategory").split("_");
 		String squareMessage ="point";
 		if(type.equals(SquareType.GAME_PIECE))
 			squareMessage = currentCategory[0].toLowerCase();
 		message += correct ? squareMessage : "wrong";
-		return message;
+		return message+="_"+isfinished;
 		
 	}
 

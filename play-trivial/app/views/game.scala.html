@@ -43,8 +43,13 @@
 	function contestar(answerId){
 		myJsRoutes.controllers.Application.answerQuestion(answerId).ajax({
 	    success : function(data) { 
+	    		// 0-> La casilla, 1-> La categoria Ganada, 2-> Victoria, fin de juego
 	    		var values = data.split("_");
-	    		
+				
+				if(values[2] == 'true'){ 
+					window.location.replace("/logout");
+				}
+				
 				$('.visited').text("");
 	    		$('#li_'+values[1]).removeClass('hidden')
 	    		$('.visited').removeClass('visited');
@@ -52,6 +57,7 @@
 	    		var squareButton = document.getElementById(values[0]);
 	    		squareButton.textContent = "X";
 				squareButton.className += " visited ";
+				// Oculta el modal
 	    		$('#myModal').modal('hide');
 	     },
 	     error : function(data){
@@ -119,13 +125,13 @@
 					<tfoot></tfoot>
 					<thead></thead>
 					<tbody>
-						<tr><td><button type="button" id="1" class="btn-xl sports square" onclick="mostrar(1)">O</button></td>
+						<tr><td><button type="button" id="1" class="btn-xl sports square piece" onclick="mostrar(1)">O</button></td>
 							<td><button type="submit" id="2" class="btn-xl science square"   onclick="mostrar(2)"></button></td>
 							<td><button type="submit" id="3" class="btn-xl artlit square"   onclick="mostrar(3)"></button></td>
 							<td><button type="submit" id="4" class="btn-xl shows square"     onclick="mostrar(4)"></button></td>
 							<td><button type="submit" id="5" class="btn-xl geography square"    onclick="mostrar(5)"></button></td>
 							<td><button type="submit" id="6" class="btn-xl science square"    onclick="mostrar(6)"></button></td>
-							<td><button type="submit" id="7" class="btn-xl artlit square"   onclick="mostrar(7)">O</button></td>
+							<td><button type="submit" id="7" class="btn-xl artlit square piece"   onclick="mostrar(7)">O</button></td>
 						</tr>
 						<tr><td><button type="submit" id="8" class="btn-xl history  square"  onclick="mostrar(8)"></button></td>
 							<td><p></p></td>
@@ -143,13 +149,13 @@
 							<td><p></p></td>
 							<td><button type="submit" id="13" class="btn-xl artlit square"  onclick="mostrar(13)"></button></td>
 						</tr>
-						<tr><td><button type="button" id="14" class="btn-xl geography square"  onclick="mostrar(14)">O</button></td>
+						<tr><td><button type="button" id="14" class="btn-xl geography square piece"  onclick="mostrar(14)">O</button></td>
 							<td><button type="submit" id="15" class="btn-xl shows square"    onclick="mostrar(15)"></button></td>
 							<td><button type="submit" id="16" class="btn-xl geography square"  onclick="mostrar(16)"></button></td>
 							<td><button type="submit" id="17" class="btn-xl all square"    onclick="mostrar(17)">-</button></td>
 							<td><button type="submit" id="18" class="btn-xl artlit square"    onclick="mostrar(18)"></button></td>
 							<td><button type="submit" id="19" class="btn-xl history square"    onclick="mostrar(19)"></button></td>
-							<td><button type="submit" id="20" class="btn-xl shows square"     onclick="mostrar(20)">O</button></td>
+							<td><button type="submit" id="20" class="btn-xl shows square piece"     onclick="mostrar(20)">O</button></td>
 						</tr>
 						<tr><td><button type="submit" id="21" class="btn-xl sports square"    onclick="mostrar(21)"></button></td>
 							<td><p></p></td>
@@ -167,13 +173,13 @@
 							<td><p></p></td>
 							<td><button type="submit" id="26" class="btn-xl shows square"  onclick="mostrar(26)"></button></td>
 						</tr>
-						<tr><td><button type="button" id="27" class="btn-xl history square"    onclick="mostrar(27)">O</button></td>
+						<tr><td><button type="button" id="27" class="btn-xl history square piece"    onclick="mostrar(27)">O</button></td>
 							<td><button type="submit" id="28" class="btn-xl sports square"     onclick="mostrar(28)"></button></td>
 							<td><button type="submit" id="29" class="btn-xl artlit square"    onclick="mostrar(29)"></button></td>
 							<td><button type="submit" id="30" class="btn-xl history square"     onclick="mostrar(30)"></button></td>
 							<td><button type="submit" id="31" class="btn-xl geography square"  onclick="mostrar(31)"></button></td>
 							<td><button type="submit" id="32" class="btn-xl sports square"     onclick="mostrar(32)"></button></td>
-							<td><button type="submit" id="33" class="btn-xl science square"    onclick="mostrar(33)">O</button></td>
+							<td><button type="submit" id="33" class="btn-xl science square piece"    onclick="mostrar(33)">O</button></td>
 						</tr>
 					</tbody>
 				</table>
