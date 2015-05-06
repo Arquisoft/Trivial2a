@@ -132,10 +132,13 @@ public class QuestionJdbcDao implements QuestionDao {
 				question.setIncorrectAnswers(getWrongAnswers(question.getId()));
 				question.setCategory(Category.valueOf(rs.getString("category")));
 
+				
 				questions.add(question);
 			}
 			Random r = new Random();
-			return questions.get(r.nextInt(questions.size()));
+			
+			int aleatorio = r.nextInt(questions.size());
+			return questions.get(aleatorio);
 
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -97,22 +97,11 @@ public class Game {
 			break;
 		case GAME_PIECE:
 			dice.makeUnavailable();
-			for (Question q : preguntas) {
-				if (q.getCategory().equals(square.getCategory())) {
-					question = q;
-					break;
-				}
-			}
+			question = factory.getQuestionByCategory(square.getCategory());
 			break;
 		case NORMAL:
 			dice.makeUnavailable();
-
-			for (Question q : preguntas) {
-				if (q.getCategory().equals(square.getCategory())) {
-					question = q;
-					break;
-				}
-			}
+			question = factory.getQuestionByCategory(square.getCategory());
 			break;
 		}
 		return square;
