@@ -60,4 +60,6 @@ body {
     overflow: hidden;
     outline:none;
 }
+.txt-center {
+	margin: 0 auto;
 }
