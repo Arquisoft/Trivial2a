@@ -150,12 +150,6 @@ public class Application extends Controller {
 			SquareType type = api.getSquareType(api.getPlayerLocation(session("user")));
 			boolean isFinished = api.isFinished();
 			Score s = api.getPlayerScore(session("user"));
-			s.setArtAndLiterature(true);
-			s.setGeography(true);
-			s.setHistory(true);
-			s.setScienceAndTechnology(true);
-			s.setShowsAndEntertainment(true);
-			s.setSports(true);
 			message = scoreMessage(correct,api.getPlayerLocation(session("user")),type, isFinished);
 		} catch (IllegalActionException e) {
 			e.printStackTrace();
