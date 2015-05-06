@@ -149,7 +149,8 @@ public class Application extends Controller {
 					session("user"), api.getPlayerLocation(session("user")));
 			SquareType type = api.getSquareType(api.getPlayerLocation(session("user")));
 			if(api.isFinished()) {
-				return redirect(routes.Application.showLogin()); // deberia llevar a una pagina de enhorabuena
+				System.out.println("Victoria");
+				return ok(login.render(new DynamicForm())); // deberia llevar a una pagina de enhorabuena
 			}
 			message = scoreMessage(correct,api.getPlayerLocation(session("user")),type);
 		} catch (IllegalActionException e) {

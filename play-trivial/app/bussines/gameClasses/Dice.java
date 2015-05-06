@@ -1,7 +1,5 @@
 package bussines.gameClasses;
 
-import java.util.Random;
-
 import bussines.exceptions.IllegalActionException;
 
 /**
@@ -18,9 +16,9 @@ public class Dice {
 	public int roll() throws IllegalActionException {
 		if (!isAvailable())
 			throw new IllegalActionException("The dice can't be rolled at this state of the game.");
-	
+		
 		if (lastRoll == null )
-			lastRoll = new Random(System.currentTimeMillis()).nextInt(5) + 1;
+			lastRoll = (int)((Math.random() * 6) + 1);
 		return lastRoll;
 	}
 	
