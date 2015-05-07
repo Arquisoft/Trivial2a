@@ -1,3 +1,6 @@
+Hemos utilizado la herramienta de gestión y compresión de proyectos Maven integrada en Eclipse (M2Eclipse).Nos facilitaba la gestión de dependencias y el plugin M2Eclipse
+nos ofrecía además un asistente para creación de proyectos Maven utilizando plantillas...
+
 Para la implementación de las tres aplicaciones elegimos como lenguaje de programación Java ya que era el lenguaje que mejor conocíamos como equipo de desarrollo, además
 es multiplataforma y soportado por múltiples dispositivos.
 Para el almacenamiento de preguntas, usuarios y estadísticas hemos utilizado HSQLDB que es una base de datos relacional. Para realizar las operaciones con esta base de
