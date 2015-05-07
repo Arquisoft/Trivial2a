@@ -1,0 +1,9 @@
+Para la implementación de las tres aplicaciones elegimos como lenguaje de programación Java ya que era el lenguaje que mejor conocíamos como equipo de desarrollo, además
+es multiplataforma y soportado por múltiples dispositivos.
+Para el almacenamiento de preguntas, usuarios y estadísticas hemos utilizado HSQLDB que es una base de datos relacional. Para realizar las operaciones con esta base de
+datos empleamos JDBC y como lenguaje de consultas SQL.
+Para la realización de pruebas empleamos el framework JUnit y el sistema de generación e integración continua Travis que estaba conectado con nuestro repositorio de Github
+y nos permitía hacer pruebas después de cada push.
+
+Particularmente, en el desarrollo de la aplicación web se ha utilizado el framework Play que incluye una utilidad que facilita la creación de las vistas con HTML5 y
+Scala (Scala-based template engine). También se ha introducido código JavaScript
