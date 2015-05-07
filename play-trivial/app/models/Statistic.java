@@ -14,12 +14,12 @@ public class Statistic {
 	private int geography;
 	private int history;
 	
-	private int Totalsports;
-	private int TotalshowsAndEntertainment;
-	private int TotalscienceAndTechnology;
-	private int TotalartAndLiterature;
-	private int Totalgeography;
-	private int Totalhistory;
+	private int Totalsports = 0;
+	private int TotalshowsAndEntertainment = 0;
+	private int TotalscienceAndTechnology = 0;
+	private int TotalartAndLiterature = 0;
+	private int Totalgeography = 0;
+	private int Totalhistory = 0;
 	
 	//Getters and setters
 	public int getSports() {
@@ -94,5 +94,26 @@ public class Statistic {
 	public void setTotalhistory(int totalhistory) {
 		Totalhistory = totalhistory;
 	}		
+	
+	
+	
+	public void incrementTotalsports() {
+		Totalsports++;
+	}
+	public void incrementTotalshowsAndEntertainment() {
+		TotalshowsAndEntertainment++;
+	}
+	public void incrementTotalscienceAndTechnology() {
+		TotalscienceAndTechnology++;
+	}
+	public void incrementTotalartAndLiterature() {
+		TotalartAndLiterature++;
+	}
+	public void incrementTotalgeography() {
+		Totalgeography++;
+	}
+	public void incrementTotalhistory() {
+		Totalhistory++;
+	}
 
 }

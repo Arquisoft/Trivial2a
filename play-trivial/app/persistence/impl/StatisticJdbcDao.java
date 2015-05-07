@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import models.Statistic;
 import models.User;
 import conf.Conf;
 import conf.Jdbc;
@@ -357,6 +358,57 @@ public class StatisticJdbcDao implements StatisticDao {
 
 		return statistic;
 
+	}
+
+	@Override
+	public void updateStatistic(User user) {
+		PreparedStatement ps = null;
+		PreparedStatement ps2;
+		ResultSet rs = null;
+		Connection con = null;
+		String SQL = Conf.get("Statistic.getStatisticId");
+
+		int id = 0;
+		try {
+			con = Jdbc.getConnection();
+			ps = con.prepareStatement(SQL);
+			ps.setString(1, user.getLogin());
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				id = rs.getInt(1);
+			}
+			
+			SQL = Conf.get("Statistic.update");
+			
+			Statistic e = user.getStatistics();
+			
+			ps2 = con.prepareStatement(SQL);
+			ps2.setInt(1, e.getTotalsports());
+			ps2.setInt(2, e.getSports());
+			ps2.setInt(3, e.getTotalshowsAndEntertainment());
+			ps2.setInt(4, e.getShowsAndEntertainment());
+			ps2.setInt(5, e.getTotalscienceAndTechnology());
+			ps2.setInt(6, e.getScienceAndTechnology());
+			ps2.setInt(7, e.getTotalartAndLiterature());
+			ps2.setInt(8, e.getArtAndLiterature());
+			ps2.setInt(9, e.getTotalgeography());
+			ps2.setInt(10, e.getGeography());
+			ps2.setInt(11, e.getTotalhistory());
+			ps2.setInt(12, e.getHistory());
+			ps2.setInt(13, id);
+			
+			ps2.executeUpdate();
+			
+			ps2.close();
+			
+			con.commit();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			Jdbc.close(rs, ps, con);
+		}		
 	}
 
 }

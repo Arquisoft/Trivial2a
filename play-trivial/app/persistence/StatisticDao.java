@@ -79,4 +79,6 @@ public interface StatisticDao {
 	 * @return <Tema,RespuestasCorrectas, RespuestasTotales>
 	 */
 	Map<String,Integer[]> getStatisticUser(User user);
+	
+	void updateStatistic(User user);
 }

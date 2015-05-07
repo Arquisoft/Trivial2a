@@ -10,8 +10,11 @@ import models.Question;
 import models.Score;
 import models.Square;
 import models.SquareType;
+import models.Statistic;
 import models.User;
+import persistence.PersistenceServices;
 import persistence.QuestionDao;
+import persistence.StatisticDao;
 import persistence.UserDao;
 import bussines.exceptions.IllegalActionException;
 import factories.PersistenceFactory;
@@ -85,8 +88,6 @@ public class Game {
 		QuestionDao factory = PersistenceFactory.persistenceFactory()
 				.createQuestionDao();
 
-		List<Question> preguntas = factory.getQuestions();
-
 		switch (square.getSquareType()) {
 		case DICE:
 			dice.reset();
@@ -135,6 +136,9 @@ public class Game {
 		asserIsCurrentQuestion(questionId);
 
 		boolean correcta = question.isCorrectAnswer(answer);
+		
+		updateStatistics(correcta, question);
+		
 		SquareType squareType = board.getSquare(squareNumber).getSquareType();
 		if (squareType.equals(SquareType.GAME_PIECE)) {
 			switch (question.getCategory()) {
@@ -162,10 +166,55 @@ public class Game {
 			}
 		}
 
-		if (!correcta)
+		if (!correcta){
 			passTurn();
+		}
 		dice.reset();
 		return correcta;
+	}
+
+	private void updateStatistics(boolean correcta, Question question) {
+		Statistic estadisticas = activePlayer.getStatistics();
+		
+		int inicial = 0;
+		
+		if(correcta)
+			inicial = 1;
+		
+		switch(question.getCategory()){
+			case ART_AND_LITERATURE:
+				inicial += estadisticas.getArtAndLiterature();
+				estadisticas.setArtAndLiterature(inicial);
+				estadisticas.incrementTotalartAndLiterature();
+				break;
+			case GEOGRAPHY:
+				inicial += estadisticas.getGeography();
+				estadisticas.setGeography(inicial);
+				estadisticas.incrementTotalgeography();
+				break;
+			case HISTORY:
+				inicial += estadisticas.getHistory();
+				estadisticas.setHistory(inicial);
+				estadisticas.incrementTotalhistory();
+				break;
+			case SCIENCE_AND_TECHNOLOGY:
+				inicial += estadisticas.getScienceAndTechnology();
+				estadisticas.setScienceAndTechnology(inicial);
+				estadisticas.incrementTotalscienceAndTechnology();
+				break;
+			case SHOWS_AND_ENTERTAINMENT:
+				inicial += estadisticas.getShowsAndEntertainment();
+				estadisticas.setShowsAndEntertainment(inicial);
+				estadisticas.incrementTotalshowsAndEntertainment();
+				break;
+			case SPORTS:
+				inicial += estadisticas.getSports();
+				estadisticas.setSports(inicial);
+				estadisticas.incrementTotalsports();
+				break;
+		default:
+			break;
+		}
 	}
 
 	public String getWinner() {
@@ -173,6 +222,10 @@ public class Game {
 	}
 
 	public boolean isFinished() {
+		if(winner != null){
+			PersistenceFactory.persistenceFactory().createStatisticDao().updateStatistic(activePlayer);
+		}
+		
 		return (winner == null) ? false : true;
 
 	}
