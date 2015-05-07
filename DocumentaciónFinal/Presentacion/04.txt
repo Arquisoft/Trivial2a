@@ -1,3 +1,22 @@
---Atributos de calidad y cuántos de ellos se han llevado a cabo--
+﻿--Atributos de calidad y cuántos de ellos se han llevado a cabo--
+Se debe asegurar la integridad de los datos almacenados e introducidos por los usuarios en la aplicación.	Seguridad ????
+Consistencia e integridad de la bases de datos del sistema.	Seguridad ????
+Seguridad de acceso a la base de datos.	Seguridad ????
+Denegar el acceso a usuarios ilegítimos de la aplicación.	Seguridad ????
+Los algoritmos que calculan las casillas posibles deben garantizar un tiempo de ejecución inferior a 2 segundos.	Rendimiento ????
+El tiempo de respuesta debe ser inferior a 5 segundos independientemente del número de jugadores activos.	Rendimiento ???
+Un jugador puede acceder en todo momento independientemente del volumen de usuarios activos. Disponibilidad 24/7	Disponibilidad ???
+La aplicación debe estar preparada para añadir nuevas funcionalidades. 	Mantenibilidad-Modificabilidad ?? (aunque creo que sí)
+Disponibilidad 24/7 del sistema para procesar los ficheros	Disponibilidad ??
+Facilidad de cambio de la entrada o salida de los archivos	Mantenibilidad- Modificabilidad ???
+Facilidad para probar la fiabilidad del sistema para procesar los ficheros	Testabilidad ???
+Garantía de conversión de formatos correcta y sin pérdida de datos	Testabilidad ???
+Facilidad al indicar los ficheros a procesar	Usabilidad ????
 
-
+Las aplicaciones deben proporcionarle al usuario una interfaz sencilla.	Usabilidad y Accesibilidad *
+Las representaciones visuales del juego deben ser atractivas.	Usabilidad y Accesibilidad *
+Las acciones de tirar el dado y mover casillas deben ser sencillas e intuitivas.	Usabilidad y Accesibilidad *
+La aplicación debe estar separada en capas para evitar el acoplamiento.	Mantenibilidad *
+Las modificaciones que se lleven a cabo en las implementaciones concretas no deberían implicar al total de la aplicación.	Mantenibilidad *
+El jugador debe ver de forma clara a qué casillas puede desplazarse.	Usabilidad y Accesibilidad *
+La lógica de negocio empleada debe ser totalmente independiente de las vistas que se utilicen.	Mantenibilidad-Reutilización *
