@@ -30,11 +30,11 @@ public class Application extends Controller {
 		String passwordRp = registerForm.get("passwordRp");
 
 		if (User.getUser(id, api)) {
-			registerForm.reject("User already exists");
+			registerForm.reject("Usuario no disponible");
 			return badRequest(signup.render(registerForm));
 		} else if (!password.equals(passwordRp)) {
 			registerForm
-					.reject("You must enter the same password in both fields");
+					.reject("Las contraseñas deben ser iguales");
 			return badRequest(signup.render(registerForm));
 		} else {
 			User.addUser(id, password, api);
@@ -56,7 +56,7 @@ public class Application extends Controller {
 		String passwd = loginForm.get("password");
 
 		if (User.authenticate(id, passwd) == null) {
-			loginForm.reject("Invalid user or password");
+			loginForm.reject("Usuario o contraseña no válidos");
 			return badRequest(login.render(loginForm));
 		} else {
 			session().clear();

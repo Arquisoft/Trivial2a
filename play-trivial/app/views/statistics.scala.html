@@ -43,15 +43,15 @@
 	<br />
 	<div class="panel panel-default panel-size">
 		<!-- Default panel contents -->
-		<div class="panel-heading">@cat</div>
+		<div class="panel-heading category-title">@cat</div>
 
 		<!-- Table -->
 		<table class="table">
 			<tr>
-				<th>Usuario</th>
-				<th>Preguntas totales</th>
-				<th>Acertadas</th>
-				<th>Falladas</th>
+				<th class="stats-header">Usuario</th>
+				<th class="stats-header">Preguntas totales</th>
+				<th class="stats-header">Acertadas</th>
+				<th class="stats-header">Falladas</th>
 			</tr>
 			@for(user <- data) {
 				

@@ -22,7 +22,7 @@
 	<div class="data-form">
 	@helper.form(routes.Application.authenticate) {
 			@if(form.hasGlobalErrors) {
-			    <p class="danger">
+			    <p class="msg-error">
 			        @form.globalError.message
 			    </p>
 			}

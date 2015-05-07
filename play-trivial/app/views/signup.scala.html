@@ -21,7 +21,7 @@
 	<div class="data-form">
 	    @helper.form(routes.Application.register) {
 			@if(form.hasGlobalErrors) {
-			<p class="error">
+			<p class="msg-error">
 			        @form.globalError.message
 			    </p>
 			}

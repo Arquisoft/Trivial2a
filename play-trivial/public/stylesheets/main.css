@@ -46,20 +46,22 @@ body {
 	font-weight: bold;
 }
 
-.btn-xl {  
-    width: 75px;
-    height: 75px;
-    font-size: 35px;
-    border-radius: 6px
+.btn-xl {
+	width: 75px;
+	height: 75px;
+	font-size: 35px;
+	border-radius: 6px
 }
-.btn-dice{
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
+
+.btn-dice {
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	overflow: hidden;
+	outline: none;
 }
+
 .img-winning {
 	margin: 0 auto;
 	width: 40vw;
@@ -75,5 +77,20 @@ body {
 }
 
 .quesitos {
-	height:60px;
+	height: 60px;
+}
+
+.category-title {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.stats-header {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.msg-error {
+	color: red;
 }
