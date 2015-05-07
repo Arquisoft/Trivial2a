@@ -2,7 +2,8 @@ Entrega 1:
 
 Correspondencia con pipes & filter
 
-La información que entra en la tubería, acaba teniendo una estructura de árbol.
+Un fichero cuyo formato  es GIFT y se desea obtener su equivalente en JSON se obtiene
+mediante una estructuración en forma de arbol de la información que el mismo contiene.
 Distintos visitors son aplicados a al árbol hasta lograr el formato final.
 Primero el fichero gift entra por el analizador léxico (GIFTYyLex), luego pasa por un parser GIFTParser
 el cual nos retorna un árbol. Dicho árbol será recorrido por un visitor (FormateadoJSON) cuya responsabilidad es obtener el fichero de salida en el formato adecuado. 
