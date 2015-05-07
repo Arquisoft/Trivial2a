@@ -12,7 +12,7 @@ Entrega 2:
 
 Correspondencia con 3 capas
 
-Para lograr los requisitos de rehusabilidad y bajo acoplamiento nos han llevado a implementar siguiendo el patrón 3 capas:
+Conseguir los requisitos de rehusabilidad y bajo acoplamiento nos han llevado a implementar siguiendo el patrón 3 capas:
 Nuestra capa de negocio ofrece una interfaz única (GameAPI)  que proporciona todos los métodos necesarios tales como iniciar partida, mover jugador, tirar dado etc. para que la capa de presentación (VentanaJugadores, VentanaJuego, VentanaPregunta) pueda ser fácilmente reemplazable y se ocupe únicamente de como representar la información al usuario. Dicha información se corresponde con la capa de datos de la aplicación, en nuestro modelo de dominio nos encontramos con User, Question, Score, Category, Square, SquareType.
 
 Entrega 3:
