@@ -1,0 +1,31 @@
+Entrega 1:
+Pipes & Filters
+Al tratarse de un patrón de flujo de datos se adecúa a las funcionalidades solicitadas:
+Permite procesar los ficheros por etapas y observar los resultados intermedios.
+Aporta testabilidad, permite testear el comportamiento de cada filtro de manera independiente.
+Procesar los datos mediante transformaciones consecutivas facilita la comprensión del proceso.
+Simplifica que la aplicación acepte múltiples formatos de entrada y salida, simplemente se necesita intercambiar filtros.
+
+Entrega 2:
+3-capas estricto
+La aplicación solicitada de puede dividir de manera sencilla en tres niveles de abstracción: Presentación, Negocio y Datos.
+Permite un desarrollo independiente de cada capa, por lo que facilita la división del trabajo.
+Aporta reusabilidad a cada uno de los niveles de abstracción de la aplicación.
+Exponer las funcionalidades de cada capa mediante una API facilita el poder sustituir, por ejemplo, la presentación de la aplicación.
+Éstas ventajas nos hacen pensar que es el patrón que más nos favorece de cara a los futuros requisitos de la última entrega.
+
+Entrega 3:
+3-capas con MVC en la capa de presentación y REST.
+La utilización del patrón 3-capas en la entrega anterior nos permite aprovechar trabajo para ésta entrega.
+Sustituyendo la capa de presentación podemos pasar de manera sencilla y poco costosa de una interfaz de escritorio a una en Web.
+
+REST permite aprovechar las ventajas del protocolo HTTPS y de que internet esté adaptado a trabajar con él (menor carga de red y ahorro en ancho de banda)
+Permite una implementación sencilla y homogenea de una comunicación cliente-servidor a través de la Web.
+Otorga una interfaz uniforme mediante la que exponer los recursos de la presentación.
+Es fácilmente escalable y proporciona buenos tiempos de respuesta.
+Frameworks de desarrollo Web como Play permiten una implementación relativamente sencilla de éste patrón.
+
+Play implementa REST mediante una arquitectura MVC.
+Se adapta bien a la arquitectura de la entrega anterior.
+El controlador de la presentación permite añadir la lógica que se necesite para adaptar las peticiones REST con la API ya existente.
+
