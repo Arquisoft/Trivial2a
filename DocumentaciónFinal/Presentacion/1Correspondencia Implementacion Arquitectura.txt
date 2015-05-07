@@ -1,24 +1,22 @@
-Entrega 1:
+﻿Entrega 1:
 
-Correspondencia con pipes & filter
-
-Un fichero cuyo formato  es GIFT y se desea obtener su equivalente en JSON se obtiene
-mediante una estructuración en forma de arbol de la información que el mismo contiene.
-Distintos visitors son aplicados a al árbol hasta lograr el formato final.
-Primero el fichero gift entra por el analizador léxico (GIFTYyLex), luego pasa por un parser GIFTParser
-el cual nos retorna un árbol. Dicho árbol será recorrido por un visitor (FormateadoJSON) cuya responsabilidad es obtener el fichero de salida en el formato adecuado. 
+Implementación:
+Los datos pasan por los siguientes filtros:
+- Analizador léxico.
+- Analizador Sintáctico (salida en forma de árbol)
+- Generador de cógido JSON
+- Filtro que añade a la base de datos
 
 Entrega 2:
 
-Correspondencia con 3 capas
-
-Conseguir los requisitos de rehusabilidad y bajo acoplamiento nos han llevado a implementar siguiendo el patrón 3 capas:
-Nuestra capa de negocio ofrece una interfaz única (GameAPI)  que proporciona todos los métodos necesarios tales como iniciar partida, mover jugador, tirar dado etc. para que la capa de presentación (VentanaJugadores, VentanaJuego, VentanaPregunta) pueda ser fácilmente reemplazable y se ocupe únicamente de como representar la información al usuario. Dicha información se corresponde con la capa de datos de la aplicación, en nuestro modelo de dominio nos encontramos con User, Question, Score, Category, Square, SquareType.
+Implementación:
+Aplicación directa del patrón 3-capas.
+Implementamos capas de: Interface, Negocio y Datos.
+Interface y Negcio se comunican a través de GameAPI, que recoge de forma documentada todos los métodos q que cualquier Interface pueda necesitar.
 
 Entrega 3:
 
-Correspondencia 3 capas + MVC y REST
-
-El desarrollo de la entrega anterior en 3 capas, nos supuso una inmensa ventaja para re aprovechar la implementación de la misma para lograr su funcionalidad como aplicación web.
-El controlador (Application) atiende a las distintas peticiones REST que recibe del cliente a través del servidor de aplicaciones y dependiendo de la misma invoca a los métodos necesarios de GameAPI para llevar a cabo su acometido.
-La interfaz de comunicación que se le proporciona al usuario es una pagina web donde el mismo realiza peticiones REST cuando interacciona con la misma. Para ofrecer una mejor experiencia de juego a los usuarios evitando refrescos, dichas peticiones se llevan acabo de forma asíncrona utilizando la tecnología AJAX.
+Implementación:
+Reutilizamos las capas de Negocio y Datos de la entrega anterior.
+Utilizamos Play para implementar REST mediante MVC.
+MVC sustituye al contenido anterior de la Interface, que ahora es gestionada por el controlador.
