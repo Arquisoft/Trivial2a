@@ -1,50 +1,28 @@
 ﻿--Atributos de calidad y cuántos de ellos se han llevado a cabo--
-Se debe asegurar la integridad de los datos almacenados e introducidos por los usuarios en la aplicación.	Seguridad ????
-Consistencia e integridad de la bases de datos del sistema.	Seguridad ????
-Seguridad de acceso a la base de datos.	Seguridad ????
-Denegar el acceso a usuarios ilegítimos de la aplicación.	Seguridad ????
-
-Los algoritmos que calculan las casillas posibles deben garantizar un tiempo de ejecución inferior a 2 segundos.	Rendimiento ????
-El tiempo de respuesta debe ser inferior a 5 segundos independientemente del número de jugadores activos.	Rendimiento ???
-
-
-Un jugador puede acceder en todo momento independientemente del volumen de usuarios activos. Disponibilidad 24/7	Disponibilidad ???
-
-
-La aplicación debe estar preparada para añadir nuevas funcionalidades. 	Mantenibilidad-Modificabilidad ?? (aunque creo que sí)
+---------------- General ----------------
 	
 Disponibilidad 24/7 del sistema para procesar los ficheros	Disponibilidad ??
 
 Facilidad de cambio de la entrada o salida de los archivos	Mantenibilidad- Modificabilidad ???
-Facilidad para probar la fiabilidad del sistema para procesar los ficheros	Testabilidad ???
 Garantía de conversión de formatos correcta y sin pérdida de datos	Testabilidad ???
 Facilidad al indicar los ficheros a procesar	Usabilidad ????
 
 
+***Comunes con 3***
+
+Seguridad de acceso a la base de datos.	Seguridad  ???
+Los algoritmos que calculan las casillas posibles deben garantizar un tiempo de ejecución bajo.	Rendimiento ??? ( En general pone "inferior a 2 segundos" )
+El tiempo de respuesta debe ser bajo independientemente del número de jugadores activos.	Rendimiento ?? (En general pone "inferior a 5 segundos")
+Un jugador puede acceder en todo momento independientemente del volumen de usuarios activos	Disponibilidad ???
+Denegar el acceso a usuarios ilegítimos de la aplicación.	Seguridad ??
+
 ---------------- Alvaro -----------------------
 
-Denegar el acceso a usuarios ilegítimos de la aplicación.	Seguridad FIJO
-Se debe asegurar la integridad de los datos almacenados e introducidos por los usuarios en la aplicación.	Seguridad FIJO
-Consistencia e integridad de la bases de datos del sistema.	Seguridad FIJO
-
-//Las de testabilidad solo estoy seguro de ésta.
-Facilidad para probar la lógica del juego. Testabilidad (Creo que si)
-
-//Las de rendimiento las unificaría por algo mas general.
+//Las de rendimiento las unificaría por algo mas general. ++
 Los tiempos de respuesta ante la interacción de los usuarios deben ser los mas cortos posibles. Rendimiento
-
-//Usabilidad
-El administrador debe poder ver las estaidisticas de cada general en todo momento de forma clara y precisa. Usabilidad
 
 //Time to market
 La empresa quiere que el periodo de desarrollo sea el mas corto posible para lanzarlo al mercado. Time to market
-
-//Ésta no estoy seguro ya que dependemos de la base de datos.
-Un jugador puede acceder en todo momento independientemente del volumen de usuarios activos. Disponibilidad 24/7	Disponibilidad ???
-
-//Ésta supongo que si, ya que lo hicimos con el framework de PLAY y lo separamos por capas con las dos APIs, asi que supongo que sería facil añadir algo mas
-La aplicación debe estar preparada para añadir nuevas funcionalidades. 	Mantenibilidad-Modificabilidad 
-
 
 ----------------------------------------------------
 
@@ -56,3 +34,21 @@ La aplicación debe estar separada en capas para evitar el acoplamiento.	Manteni
 Las modificaciones que se lleven a cabo en las implementaciones concretas no deberían implicar al total de la aplicación.	Mantenibilidad *
 El jugador debe ver de forma clara a qué casillas puede desplazarse.	Usabilidad y Accesibilidad *
 La lógica de negocio empleada debe ser totalmente independiente de las vistas que se utilicen.	Mantenibilidad-Reutilización *
+Se debe asegurar la integridad de los datos almacenados e introducidos por los usuarios en la aplicación.	*
+Consistencia e integridad de la bases de datos del sistema.	*
+
+Facilidad para probar la lógica del juego. Testabilidad *
+El administrador debe poder ver las estaidisticas de cada general en todo momento de forma clara y precisa. Usabilidad *
+La aplicación debe estar preparada para añadir nuevas funcionalidades. 	Mantenibilidad-Modificabilidad  *
+
+---------------- Solo la 3 ----------------
+El juego debe proporcionarle al usuario una interfaz que involucre la interacción con los jugadores de forma sencilla.	Usabilidad y Accesibilidad *
+Las representaciones visuales del juego deben ser atractivas.	Usabilidad y Accesibilidad *
+Las acciones de tirar el dado y mover casillas deben ser sencillas e intuitivas.	Usabilidad y Accesibilidad *
+Se debe asegurar los datos almacenados e introducidos por los usuarios en la aplicación.	Seguridad *
+Consistencia e integridad de la bases de datos de la compañía.	Seguridad *
+La aplicación debe estar separada en capas para evitar el acoplamiento.	Mantenibilidad *
+Las modificaciones que se lleven a cabo en las implementaciones concretas no deberían implicar al total de la aplicación.	Mantenibilidad *
+El jugador debe ver de forma clara a qué casillas puede desplazarse.	Usabilidad y Accesibilidad *
+La lógica de negocio empleada debe ser totalmente independiente de las vistas que se utilicen.	Reusable *
+La aplicación debe estar preparada para añadir nuevas funcionalidades. 	Modificabilidad *
