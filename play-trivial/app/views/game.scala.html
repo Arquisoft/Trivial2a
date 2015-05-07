@@ -33,7 +33,7 @@
 			
 	     },
 	     error: function(data){
-	     	alert("Eh no hagas trampas, este no es un movimiento valido ¬¬");
+	     	alert("¡Eh! No hagas trampas, este no es un movimiento valido ¬¬");
 	     }
 		
 		});
@@ -45,21 +45,44 @@
 	    success : function(data) { 
 	    		// 0-> La casilla, 1-> La categoria Ganada, 2-> Victoria, fin de juego
 	    		var values = data.split("_");
-				
+				var imgSRC = "assets/images/piece.png";
 				if(values[2] == 'true'){ 
-					window.location.replace("/logout");
+					window.location.replace("/victory");
 				}
+
 				// Borra la ficha(X) de la casilla anterior
-				$('.visited').text("");
-				// Game piece siempre con O
-				$('.piece').text("O");
+				$('.visited').children('img').attr('src','assets/images/vacia.png');
+				
+				// Game piece siempre con imagen original				 
+				var sami = document.getElementById('1');
+				sami.childNodes[0].src="assets/images/v1.png";
+				var sami = document.getElementById('14');
+				sami.childNodes[0].src="assets/images/v14.png";
+				var sami = document.getElementById('7');
+				sami.childNodes[0].src="assets/images/v7.png";
+				var sami = document.getElementById('17');
+				sami.childNodes[0].src="assets/images/v17.png";
+				var sami = document.getElementById('20');
+				sami.childNodes[0].src="assets/images/v20.png";
+				var sami = document.getElementById('27');
+				sami.childNodes[0].src="assets/images/v27.png";
+				var sami = document.getElementById('33');
+				sami.childNodes[0].src="assets/images/v33.png";
+				
 	    		// Muestra la categoria del quesito ganado
 	    		$('#li_'+values[1]).removeClass('hidden')
 	    		// Restablece las clases de las casillas ya visitadas
 	    		$('.visited').removeClass('visited');
 	    		// Button a visitar
-	    		var squareButton = document.getElementById(values[0]);
-	    		squareButton.textContent = "X";
+	    		var squareButton = document.getElementById(values[0]); // 0-> el id de la casilla
+	    		var classes_button = squareButton.className.split(/\s+/);
+	    		for(var i=0; i<classes_button.length; i++){
+	    			if(classes_button[i] === "piece"){
+	    				imgSRC = "assets/images/"+ squareButton.id + ".png";
+	    			}
+	    		}
+	    		
+	    		squareButton.childNodes[0].src = imgSRC;
 				squareButton.className += " visited ";
 				// Oculta el dialogo modal
 	    		$('#myModal').modal('hide');
@@ -119,99 +142,98 @@
 						<tbody>
 							<tr>
 								<td><button type="button" id="1"
-										class="btn-xl sports square piece" onclick="mostrar(1)">O</button></td>
+										class="btn-xl sports square piece" onclick="mostrar(1)"><img class="quesitos" src='@routes.Assets.at("images/v1.png")'></button></td>
 								<td><button type="submit" id="2"
-										class="btn-xl science square" onclick="mostrar(2)"></button></td>
+										class="btn-xl science square" onclick="mostrar(2)"><img class="quesitos" src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><button type="submit" id="3"
-										class="btn-xl artlit square" onclick="mostrar(3)"></button></td>
+										class="btn-xl artlit square" onclick="mostrar(3)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><button type="submit" id="4"
-										class="btn-xl shows square" onclick="mostrar(4)"></button></td>
+										class="btn-xl shows square" onclick="mostrar(4)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><button type="submit" id="5"
-										class="btn-xl geography square" onclick="mostrar(5)"></button></td>
+										class="btn-xl geography square" onclick="mostrar(5)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><button type="submit" id="6"
-										class="btn-xl science square" onclick="mostrar(6)"></button></td>
+										class="btn-xl science square" onclick="mostrar(6)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><button type="submit" id="7"
-										class="btn-xl artlit square piece" onclick="mostrar(7)">O</button></td>
+										class="btn-xl artlit square piece" onclick="mostrar(7)"><img class="quesitos" src='@routes.Assets.at("images/v7.png")'></button></td>
 							</tr>
 							<tr>
 								<td><button type="submit" id="8"
-										class="btn-xl history  square" onclick="mostrar(8)"></button></td>
+										class="btn-xl history  square" onclick="mostrar(8)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><p></p></td>
 								<td><p></p></td>
 								<td><button type="submit" id="9"
-										class="btn-xl artlit square" onclick="mostrar(9)"></button></td>
+										class="btn-xl artlit square" onclick="mostrar(9)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><p></p></td>
 								<td><p></p></td>
 								<td><button type="submit" id="10"
-										class="btn-xl geography square" onclick="mostrar(10)"></button></td>
+										class="btn-xl geography square" onclick="mostrar(10)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 							</tr>
 							<tr>
 								<td><button type="submit" id="11"
-										class="btn-xl science square" onclick="mostrar(11)"></button></td>
+										class="btn-xl science square" onclick="mostrar(11)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><p></p></td>
 								<td><p></p></td>
 								<td><button type="submit" id="12"
-										class="btn-xl sports square" onclick="mostrar(12)"></button></td>
+										class="btn-xl sports square" onclick="mostrar(12)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><p></p></td>
 								<td><p></p></td>
 								<td><button type="submit" id="13"
-										class="btn-xl artlit square" onclick="mostrar(13)"></button></td>
+										class="btn-xl artlit square" onclick="mostrar(13)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 							</tr>
 							<tr>
 								<td><button type="button" id="14"
-										class="btn-xl geography square piece" onclick="mostrar(14)">O</button></td>
+										class="btn-xl geography square piece" onclick="mostrar(14)"><img class="quesitos" src='@routes.Assets.at("images/v14.png")'></button></td>
 								<td><button type="submit" id="15"
-										class="btn-xl shows square" onclick="mostrar(15)"></button></td>
+										class="btn-xl shows square" onclick="mostrar(15)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><button type="submit" id="16"
-										class="btn-xl geography square" onclick="mostrar(16)"></button></td>
-								<td><button type="submit" id="17" class="btn-xl all square"
-										onclick="mostrar(17)">-</button></td>
+										class="btn-xl geography square" onclick="mostrar(16)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
+								<td><button type="submit" id="17" class="btn-xl all square piece"onclick="mostrar(17)"><img class="quesitos" src='@routes.Assets.at("images/17.png")'></button></td>
 								<td><button type="submit" id="18"
-										class="btn-xl artlit square" onclick="mostrar(18)"></button></td>
+										class="btn-xl artlit square" onclick="mostrar(18)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><button type="submit" id="19"
-										class="btn-xl history square" onclick="mostrar(19)"></button></td>
+										class="btn-xl history square" onclick="mostrar(19)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><button type="submit" id="20"
-										class="btn-xl shows square piece" onclick="mostrar(20)">O</button></td>
+										class="btn-xl shows square piece" onclick="mostrar(20)"><img class="quesitos" src='@routes.Assets.at("images/v20.png")'></button></td>
 							</tr>
 							<tr>
 								<td><button type="submit" id="21"
-										class="btn-xl sports square" onclick="mostrar(21)"></button></td>
+										class="btn-xl sports square" onclick="mostrar(21)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><p></p></td>
 								<td><p></p></td>
 								<td><button type="submit" id="22"
-										class="btn-xl science square" onclick="mostrar(22)"></button></td>
+										class="btn-xl science square" onclick="mostrar(22)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><p></p></td>
 								<td><p></p></td>
 								<td><button type="submit" id="23"
-										class="btn-xl sports square" onclick="mostrar(23)"></button></td>
+										class="btn-xl sports square" onclick="mostrar(23)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 							</tr>
 							<tr>
 								<td><button type="submit" id="24"
-										class="btn-xl artlit square" onclick="mostrar(24)"></button></td>
+										class="btn-xl artlit square" onclick="mostrar(24)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><p></p></td>
 								<td><p></p></td>
 								<td><button type="submit" id="25"
-										class="btn-xl geography square" onclick="mostrar(25)"></button></td>
+										class="btn-xl geography square" onclick="mostrar(25)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><p></p></td>
 								<td><p></p></td>
 								<td><button type="submit" id="26"
-										class="btn-xl shows square" onclick="mostrar(26)"></button></td>
+										class="btn-xl shows square" onclick="mostrar(26)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 							</tr>
 							<tr>
 								<td><button type="button" id="27"
-										class="btn-xl history square piece" onclick="mostrar(27)">O</button></td>
+										class="btn-xl history square piece" onclick="mostrar(27)"><img class="quesitos" src='@routes.Assets.at("images/v27.png")'></button></td>
 								<td><button type="submit" id="28"
-										class="btn-xl sports square" onclick="mostrar(28)"></button></td>
+										class="btn-xl sports square" onclick="mostrar(28)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><button type="submit" id="29"
-										class="btn-xl artlit square" onclick="mostrar(29)"></button></td>
+										class="btn-xl artlit square" onclick="mostrar(29)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><button type="submit" id="30"
-										class="btn-xl history square" onclick="mostrar(30)"></button></td>
+										class="btn-xl history square" onclick="mostrar(30)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><button type="submit" id="31"
-										class="btn-xl geography square" onclick="mostrar(31)"></button></td>
+										class="btn-xl geography square" onclick="mostrar(31)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><button type="submit" id="32"
-										class="btn-xl sports square" onclick="mostrar(32)"></button></td>
+										class="btn-xl sports square" onclick="mostrar(32)"><img class="quesitos"  src='@routes.Assets.at("images/vacia.png")' alt=""></button></td>
 								<td><button type="submit" id="33"
-										class="btn-xl science square piece" onclick="mostrar(33)">O</button></td>
+										class="btn-xl science square piece" onclick="mostrar(33)"><img class="quesitos" class="quesitos" src='@routes.Assets.at("images/v33.png")'></button></td>
 							</tr>
 						</tbody>
 					</table>
@@ -227,7 +249,7 @@
 											<h4 class="modal-title" id="myModalLabel">Pregunta X</h4>
 										</div>
 										<div class="modal-body">
-											<p id="question">Enunciado</p>
+											<p class="question" id="question">Enunciado</p>
 											<ul class="list-group">
 												</br>
 												<li class="list-group-item">
@@ -264,7 +286,7 @@
 					<div
 						class="alert alert-danger alert-dismissible hidden animated shake"
 						id="li_wrong" role="alert">
-						<strong>:'(</strong> respuesta incorrecta.
+						<strong>:'(</strong> Respuesta incorrecta.
 					</div>
 				</div>
 				<div class="col-md-3 animated fadeInRightBig">
@@ -308,7 +330,6 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 </body>
 </html>
