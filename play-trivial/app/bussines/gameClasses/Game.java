@@ -95,6 +95,7 @@ public class Game {
 		case FINAL:
 			if (activePlayer.canWin())
 				winner = activePlayer;
+			question = getPreguntaFinal(factory);
 			break;
 		case GAME_PIECE:
 			dice.makeUnavailable();
@@ -106,6 +107,14 @@ public class Game {
 			break;
 		}
 		return square;
+	}
+
+	private Question getPreguntaFinal(QuestionDao factory) {
+		List<Question> preguntas = factory.getQuestions();
+		int max = preguntas.size();
+		int random = (int)(Math.random() * max);
+		
+		return preguntas.get(random);
 	}
 
 	public Set<Integer> getMovements(String userName, int squareNumber)
